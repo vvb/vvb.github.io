@@ -2,7 +2,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Auto-generate python script for tasks done on UI</title>
+    <title>Python and Ctags</title>
     <meta name="description" content="">
 
     <meta name="HandheldFriendly" content="True">
@@ -15,22 +15,21 @@
     
     <meta property="og:site_name" content="Servers | Containers | Management">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Auto-generate python script for tasks done on UI">
-    <meta property="og:description" content="Welcome the convert_to_ucs_python API. Assumption: User knows to do an operation via the JAVA based UCSM GUI  UCSM UI and convert_to_ucs_python should be launched on the same client machine. Basic Idea: launch the JAVA based UCSM UI launch the python shell and invoke convert_">
-    <meta property="og:url" content="http://localhost:2368/auto-generate-python-script-for-tasks-done-on-ui/">
-    <meta property="article:published_time" content="2016-11-07T23:22:28.000Z">
-    <meta property="article:modified_time" content="2016-11-07T23:22:28.000Z">
-    <meta property="article:tag" content="ucsmsdk">
+    <meta property="og:title" content="Python and Ctags">
+    <meta property="og:description" content="You want to jump to definition of a method, but ctags keep taking you to the import line of that method? add the following to ~/.ctags --python-kinds=-i">
+    <meta property="og:url" content="http://localhost:2368/python-and-ctags/">
+    <meta property="article:published_time" content="2016-11-07T23:30:58.000Z">
+    <meta property="article:modified_time" content="2016-11-07T23:30:58.000Z">
     <meta property="article:tag" content="ucspython">
     
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Auto-generate python script for tasks done on UI">
-    <meta name="twitter:description" content="Welcome the convert_to_ucs_python API. Assumption: User knows to do an operation via the JAVA based UCSM GUI  UCSM UI and convert_to_ucs_python should be launched on the same client machine. Basic Idea: launch the JAVA based UCSM UI launch the python shell and invoke convert_">
-    <meta name="twitter:url" content="http://localhost:2368/auto-generate-python-script-for-tasks-done-on-ui/">
+    <meta name="twitter:title" content="Python and Ctags">
+    <meta name="twitter:description" content="You want to jump to definition of a method, but ctags keep taking you to the import line of that method? add the following to ~/.ctags --python-kinds=-i">
+    <meta name="twitter:url" content="http://localhost:2368/python-and-ctags/">
     <meta name="twitter:label1" content="Written by">
     <meta name="twitter:data1" content="vvb">
     <meta name="twitter:label2" content="Filed under">
-    <meta name="twitter:data2" content="ucsmsdk, ucspython">
+    <meta name="twitter:data2" content="ucspython">
     
     <script type="application/ld+json">
 {
@@ -47,12 +46,12 @@
         "url": "http://localhost:2368/author/vvb/",
         "sameAs": []
     },
-    "headline": "Auto-generate python script for tasks done on UI",
-    "url": "http://localhost:2368/auto-generate-python-script-for-tasks-done-on-ui/",
-    "datePublished": "2016-11-07T23:22:28.000Z",
-    "dateModified": "2016-11-07T23:22:28.000Z",
-    "keywords": "ucsmsdk, ucspython",
-    "description": "Welcome the convert_to_ucs_python API. Assumption: User knows to do an operation via the JAVA based UCSM GUI  UCSM UI and convert_to_ucs_python should be launched on the same client machine. Basic Idea: launch the JAVA based UCSM UI launch the python shell and invoke convert_",
+    "headline": "Python and Ctags",
+    "url": "http://localhost:2368/python-and-ctags/",
+    "datePublished": "2016-11-07T23:30:58.000Z",
+    "dateModified": "2016-11-07T23:30:58.000Z",
+    "keywords": "ucspython",
+    "description": "You want to jump to definition of a method, but ctags keep taking you to the import line of that method? add the following to ~/.ctags --python-kinds&#x3D;-i",
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "http://localhost:2368"
@@ -845,7 +844,7 @@
         <article class="post">
 
             <header class="post-header">
-                <h1 class="post-title">Auto-generate python script for tasks done on UI</h1>
+                <h1 class="post-title">Python and Ctags</h1>
                 <section class="post-meta">
                     <p class="author">by <a href="../../author/vvb/">vvb</a></p>
                     <time class="post-date" datetime="2016-11-07">2016-11-07</time>
@@ -853,95 +852,11 @@
             </header>
             <section class="post-content">
 
-                <p>Welcome the <code>convert_to_ucs_python</code> API.</p>
+                <p>You want to jump to definition of a method, but ctags keep taking you to the import line of that method?</p>
 
-<p>Assumption:</p>
+<p>add the following to ~/.ctags</p>
 
-<p>User knows to do an operation via the JAVA based UCSM GUI <br>
-UCSM UI and <code>convert_to_ucs_python</code> should be launched on the same client machine.</p>
-
-<p>Basic Idea:</p>
-
-<ul>
-<li>launch the JAVA based UCSM UI</li>
-<li>launch the python shell and invoke <code>convert_to_ucs_python</code></li>
-<li>perform the desired operation on the UI</li>
-<li><code>convert_to_ucs_python</code> monitors the operation and generates equivalent python script for the same.</li>
-</ul>
-
-<p>How it works:</p>
-
-<p>UCSM GUI logs all the activities that are performed via it, and the python shell monitors that log to generate the equivalent python script. Since the logging is local to the machine where the UI is running, <code>convert_to_ucs_python</code> also must run on the same machine. <br>
-Sample Usage:</p>
-
-<p>Step 1 - Launch the UCSM GUI.</p>
-
-<pre><code>from ucsmsdk.utils.ucsguilaunch import ucs_gui_launch  
-from ucsmsdk.ucshandle import UcsHandle
-
-# Login to the server
-handle = UcsHandle(&lt;ip&gt;, &lt;username&gt;, &lt;password&gt;)  
-handle.login()
-
-# launch the UCSM GUI
-ucs_gui_launch(handle)  
-</code></pre>
-
-<p>Step 2 - Run <code>convert_to_ucs_python</code></p>
-
-<p>The CLI will go into a listen mode until Ctrl+C is pressed again. Until then it prints equivalent script for operations done on the UI.</p>
-
-<p>Print the equivalent script to console</p>
-
-<pre><code>from ucsmsdk.utils.converttopython import convert_to_ucs_python
-
-convert_to_ucs_python()  
-</code></pre>
-
-<p><br>
-Print the equivalent script to console, also print the XMLs that the UI sends out</p>
-
-<pre><code>from ucsmsdk.utils.converttopython import convert_to_ucs_python
-
-convert_to_ucs_python(dump_xml=True)  
-</code></pre>
-
-<p>Output the script to a file</p>
-
-<pre><code>from ucsmsdk.utils.converttopython import convert_to_ucs_python
-
-file_path = r”/home/user/pythoncode.py”
-
-convert_to_ucs_python(dump_to_file=True, dump_file_path=file_path)  
-</code></pre>
-
-<p>XML to python</p>
-
-<pre><code>xml_str=’‘’&lt;configConfRename  
-                dn=”org-root/ls-ra1” 
-                inNewName=”ra2” 
-                inHierarchical=”false”&gt; 
-                &lt;/configConfRename&gt;’‘’
-
-convert_to_ucs_python(xml=True, request=xml_str)  
-</code></pre>
-
-<p>note:</p>
-
-<p>The path of UCSM UI logs is differs based on the OS and so sometimes the <code>convert_to_ucs_python</code> API may not be able to autodetect the logfiles that it needs to function. The following workaround can be applied in those cases,</p>
-
-<p>Manually find the path to which UCSM UI logs</p>
-
-<pre><code>$ sudo find / -name '.ucsm' 
-./Library/Application Support/Oracle/Java/Deployment/log/.ucsm 
-$
-</code></pre>
-
-<p>Run <code>convert_to_ucs_python</code> by specifying the log_path</p>
-
-<pre><code>from ucsmsdk.utils.converttopython import convert_to_ucs_python
-
-convert_to_ucs_python(gui_log=True, path=&lt;path that was found above&gt;)  
+<pre><code>--python-kinds=-i
 </code></pre>
 
             </section>

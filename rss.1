@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:media="http://search.yahoo.com/mrss/"><channel><title><![CDATA[Servers | Containers | Management]]></title><description><![CDATA[Thoughts, stories and ideas.]]></description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Mon, 07 Nov 2016 22:48:22 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Python - deprecating APIs]]></title><description><![CDATA[<p>Decorators facilitate an easy way to let users know that a given method is deprecated. You can even point users to the method they should be using instead. This is done by using decorators that accept arguments.</p>
+
+<p>The code below demonstrates this,</p>
+
+<pre><code>import warnings
+
+def deprecated(replaced_by_func):  
+    def</code></pre>]]></description><link>http://localhost:2368/python-deprecating-apis/</link><guid isPermaLink="false">90077e72-2c89-487f-81db-af4122a87d26</guid><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 07 Nov 2016 22:23:00 GMT</pubDate><content:encoded><![CDATA[<p>Decorators facilitate an easy way to let users know that a given method is deprecated. You can even point users to the method they should be using instead. This is done by using decorators that accept arguments.</p>
+
+<p>The code below demonstrates this,</p>
+
+<pre><code>import warnings
+
+def deprecated(replaced_by_func):  
+    def wrap(f):
+        def new_func(*args, **kwargs):
+            warnings.simplefilter('always', DeprecationWarning)
+            warnings.warn(
+                "Call to deprecated function " + f.__name__ +
+                ". This method is replaced by " + replaced_by_func.__name__,
+                category=DeprecationWarning, stacklevel=2)
+            warnings.simplefilter('default', DeprecationWarning)
+            return f(*args, **kwargs)
+        new_func.__dict__.update(f.__dict__)
+        new_func.__doc__ = f.__doc__
+        new_func.__name__ = f.__name__
+        return new_func
+    return wrap
+
+
+def new_method(a, b):  
+    return a + b
+
+@deprecated(new_method)
+def some_old_method(a, b):  
+    return a + b
+
+some_old_method(42+42)  
+</code></pre>
+
+<p>When the above code is executed, you would receive a warning stating <code>some_old_method</code> is deprecated, and to use <code>new_method</code> instead.</p>]]></content:encoded></item></channel></rss>

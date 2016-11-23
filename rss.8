@@ -1,16 +1,16 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Wed, 23 Nov 2016 18:34:00 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Running multiple versions of python</title><description>&lt;p&gt;You can generally run multiple version of Python minor release 2.7 vs 2.6. These are symlinks created in /usr/bin/. &lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:media="http://search.yahoo.com/mrss/"><channel><title><![CDATA[Servers | Containers | Management]]></title><description><![CDATA[Servers | Containers | Management]]></description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Wed, 23 Nov 2016 18:34:00 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Running multiple versions of python]]></title><description><![CDATA[<p>You can generally run multiple version of Python minor release 2.7 vs 2.6. These are symlinks created in /usr/bin/. </p>
 
-&lt;p&gt;But how do you go about running multiple versions of the the same minor release - 2.7.9 vs 2.7.10.&lt;/p&gt;
+<p>But how do you go about running multiple versions of the the same minor release - 2.7.9 vs 2.7.10.</p>
 
-&lt;p&gt;I wrote a small script&lt;/p&gt;</description><link>http://localhost:2368/running-multiple-versions-of-python/</link><guid isPermaLink="false">56cfa77e-6fb8-4bcd-b05b-2754f21513b4</guid><category>ucspython</category><dc:creator>vvb</dc:creator><pubDate>Wed, 23 Nov 2016 17:45:55 GMT</pubDate><content:encoded>&lt;p&gt;You can generally run multiple version of Python minor release 2.7 vs 2.6. These are symlinks created in /usr/bin/. &lt;/p&gt;
+<p>I wrote a small script</p>]]></description><link>http://localhost:2368/running-multiple-versions-of-python/</link><guid isPermaLink="false">56cfa77e-6fb8-4bcd-b05b-2754f21513b4</guid><category><![CDATA[ucspython]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Wed, 23 Nov 2016 17:45:55 GMT</pubDate><content:encoded><![CDATA[<p>You can generally run multiple version of Python minor release 2.7 vs 2.6. These are symlinks created in /usr/bin/. </p>
 
-&lt;p&gt;But how do you go about running multiple versions of the the same minor release - 2.7.9 vs 2.7.10.&lt;/p&gt;
+<p>But how do you go about running multiple versions of the the same minor release - 2.7.9 vs 2.7.10.</p>
 
-&lt;p&gt;I wrote a small script that downloads, builds python from source and installs it in a path of its own. &lt;/p&gt;
+<p>I wrote a small script that downloads, builds python from source and installs it in a path of its own. </p>
 
-&lt;p&gt;The below is to be run with the required version, for e.g.&lt;code&gt;2.7.9&lt;/code&gt;. &lt;/p&gt;
+<p>The below is to be run with the required version, for e.g.<code>2.7.9</code>. </p>
 
-&lt;pre&gt;&lt;code&gt;#!/bin/bash
+<pre><code>#!/bin/bash
 version=$1  
 mkdir ~/python  
 wget http://www.python.org/ftp/python/$version/Python-$version.tgz  
@@ -20,25 +20,25 @@ mkdir ~/.localpython-$version
 ./configure --prefix=$HOME/.localpython-$version
 make  
 make install  
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;It can then be used from ~/.localpython-2.7.9/bin/python.&lt;/p&gt;</content:encoded></item><item><title>Python and state of SSL/TLS</title><description>&lt;p&gt;Python 2.7.9 introduces a &lt;code&gt;ssl.SSLContext&lt;/code&gt; object to make selecting SSL version easier.&lt;/p&gt;
+<p>It can then be used from ~/.localpython-2.7.9/bin/python.</p>]]></content:encoded></item><item><title><![CDATA[Python and state of SSL/TLS]]></title><description><![CDATA[<p>Python 2.7.9 introduces a <code>ssl.SSLContext</code> object to make selecting SSL version easier.</p>
 
-&lt;p&gt;Since using SSLv2 or SSLv3 is a crime, most systems rely on TLSv1, TLSv1.1 or TLSv1.2. The SSLContext obect makes it easier to define the generic subset of protocol one desires and then&lt;/p&gt;</description><link>http://localhost:2368/python-and-state-of-ssl-tls/</link><guid isPermaLink="false">2d44fda1-fd55-4c61-a564-997611a5cefc</guid><category>ucspython</category><category>ucsmsdk</category><dc:creator>vvb</dc:creator><pubDate>Wed, 23 Nov 2016 15:37:47 GMT</pubDate><content:encoded>&lt;p&gt;Python 2.7.9 introduces a &lt;code&gt;ssl.SSLContext&lt;/code&gt; object to make selecting SSL version easier.&lt;/p&gt;
+<p>Since using SSLv2 or SSLv3 is a crime, most systems rely on TLSv1, TLSv1.1 or TLSv1.2. The SSLContext obect makes it easier to define the generic subset of protocol one desires and then</p>]]></description><link>http://localhost:2368/python-and-state-of-ssl-tls/</link><guid isPermaLink="false">2d44fda1-fd55-4c61-a564-997611a5cefc</guid><category><![CDATA[ucspython]]></category><category><![CDATA[ucsmsdk]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Wed, 23 Nov 2016 15:37:47 GMT</pubDate><content:encoded><![CDATA[<p>Python 2.7.9 introduces a <code>ssl.SSLContext</code> object to make selecting SSL version easier.</p>
 
-&lt;p&gt;Since using SSLv2 or SSLv3 is a crime, most systems rely on TLSv1, TLSv1.1 or TLSv1.2. The SSLContext obect makes it easier to define the generic subset of protocol one desires and then individually turnoff some of them.&lt;/p&gt;
+<p>Since using SSLv2 or SSLv3 is a crime, most systems rely on TLSv1, TLSv1.1 or TLSv1.2. The SSLContext obect makes it easier to define the generic subset of protocol one desires and then individually turnoff some of them.</p>
 
-&lt;p&gt;The below code relies only on TLSv1, TLSv1.1, TLSv1.2 and not use SSLv2 or SSLv3&lt;/p&gt;
+<p>The below code relies only on TLSv1, TLSv1.1, TLSv1.2 and not use SSLv2 or SSLv3</p>
 
-&lt;pre&gt;&lt;code&gt;ssl_context = ssl.SSLContext(ssl.PROTOCOL_SSLv23)  
+<pre><code>ssl_context = ssl.SSLContext(ssl.PROTOCOL_SSLv23)  
 ssl_context.options |= ssl.OP_NO_SSLv2  
 ssl_context.options |= ssl.OP_NO_SSLv3  
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;So, How can this be used in the larger context. &lt;br&gt;
-We use &lt;code&gt;urllib2&lt;/code&gt; and so the above needs to fit into one of the handlers.&lt;/p&gt;
+<p>So, How can this be used in the larger context. <br>
+We use <code>urllib2</code> and so the above needs to fit into one of the handlers.</p>
 
-&lt;pre&gt;&lt;code&gt;opener = urllib2.build_opener(TLSHandler)  
+<pre><code>opener = urllib2.build_opener(TLSHandler)  
 response = opener.open(url)
 
 class TLSHandler(urllib2.HTTPSHandler):  
@@ -74,135 +74,135 @@ class TLSConnection(httplib.HTTPSConnection):
     ¦   ssl_context.options |= ssl.OP_NO_SSLv3                              
     ¦   ssl_context.load_cert_chain(keyfile, certfile)            
     ¦   self.sock = ssl_context.wrap_socket(sock)  
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;This would produce a &lt;code&gt;SSL_UNSUPPORTED_VERSION&lt;/code&gt; error when the server does not support TLSv1/1.1/1.2&lt;/p&gt;
+<p>This would produce a <code>SSL_UNSUPPORTED_VERSION</code> error when the server does not support TLSv1/1.1/1.2</p>
 
-&lt;p&gt;note: TLSv1.1 and TLSv1.2 are supported only since Openssl version 1.0.1. And so, you might have Python &gt;= 2.7.9 and still not see &lt;code&gt;PROTOCOL_TLSv1_1&lt;/code&gt; and &lt;code&gt;PROTOCOL_TLSv1_2&lt;/code&gt; unless the openssl version is correct.&lt;/p&gt;</content:encoded></item><item><title>Python and Ctags</title><description>&lt;p&gt;You want to jump to definition of a method, but ctags keep taking you to the import line of that method?&lt;/p&gt;
+<p>note: TLSv1.1 and TLSv1.2 are supported only since Openssl version 1.0.1. And so, you might have Python >= 2.7.9 and still not see <code>PROTOCOL_TLSv1_1</code> and <code>PROTOCOL_TLSv1_2</code> unless the openssl version is correct.</p>]]></content:encoded></item><item><title><![CDATA[Python and Ctags]]></title><description><![CDATA[<p>You want to jump to definition of a method, but ctags keep taking you to the import line of that method?</p>
 
-&lt;p&gt;add the following to ~/.ctags&lt;/p&gt;
+<p>add the following to ~/.ctags</p>
 
-&lt;pre&gt;&lt;code&gt;--python-kinds=-i
-&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/python-and-ctags/</link><guid isPermaLink="false">cf40fe70-bc98-4dd9-8c69-1ab17f7456ff</guid><category>ucspython</category><dc:creator>vvb</dc:creator><pubDate>Mon, 07 Nov 2016 23:30:58 GMT</pubDate><content:encoded>&lt;p&gt;You want to jump to definition of a method, but ctags keep taking you to the import line of that method?&lt;/p&gt;
+<pre><code>--python-kinds=-i
+</code></pre>]]></description><link>http://localhost:2368/python-and-ctags/</link><guid isPermaLink="false">cf40fe70-bc98-4dd9-8c69-1ab17f7456ff</guid><category><![CDATA[ucspython]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 07 Nov 2016 23:30:58 GMT</pubDate><content:encoded><![CDATA[<p>You want to jump to definition of a method, but ctags keep taking you to the import line of that method?</p>
 
-&lt;p&gt;add the following to ~/.ctags&lt;/p&gt;
+<p>add the following to ~/.ctags</p>
 
-&lt;pre&gt;&lt;code&gt;--python-kinds=-i
-&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title>Auto-generate python script for tasks done on UI</title><description>&lt;p&gt;Welcome the &lt;code&gt;convert_to_ucs_python&lt;/code&gt; API.&lt;/p&gt;
+<pre><code>--python-kinds=-i
+</code></pre>]]></content:encoded></item><item><title><![CDATA[Auto-generate python script for tasks done on UI]]></title><description><![CDATA[<p>Welcome the <code>convert_to_ucs_python</code> API.</p>
 
-&lt;p&gt;Assumption:&lt;/p&gt;
+<p>Assumption:</p>
 
-&lt;p&gt;User knows to do an operation via the JAVA based UCSM GUI &lt;br&gt;
-UCSM UI and &lt;code&gt;convert_to_ucs_python&lt;/code&gt; should be launched on the same client machine.&lt;/p&gt;
+<p>User knows to do an operation via the JAVA based UCSM GUI <br>
+UCSM UI and <code>convert_to_ucs_python</code> should be launched on the same client machine.</p>
 
-&lt;p&gt;Basic Idea:&lt;/p&gt;
+<p>Basic Idea:</p>
 
-&lt;ul&gt;
-&lt;li&gt;launch the JAVA based UCSM UI&lt;/li&gt;
-&lt;li&gt;launch the python shell and invoke &lt;code&gt;convert_&lt;/code&gt;&lt;/li&gt;&lt;/ul&gt;</description><link>http://localhost:2368/auto-generate-python-script-for-tasks-done-on-ui/</link><guid isPermaLink="false">fcf18feb-e505-4323-89bf-d51cd6ccb5f6</guid><category>ucsmsdk</category><category>ucspython</category><dc:creator>vvb</dc:creator><pubDate>Mon, 07 Nov 2016 23:22:28 GMT</pubDate><content:encoded>&lt;p&gt;Welcome the &lt;code&gt;convert_to_ucs_python&lt;/code&gt; API.&lt;/p&gt;
+<ul>
+<li>launch the JAVA based UCSM UI</li>
+<li>launch the python shell and invoke <code>convert_</code></li></ul>]]></description><link>http://localhost:2368/auto-generate-python-script-for-tasks-done-on-ui/</link><guid isPermaLink="false">fcf18feb-e505-4323-89bf-d51cd6ccb5f6</guid><category><![CDATA[ucsmsdk]]></category><category><![CDATA[ucspython]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 07 Nov 2016 23:22:28 GMT</pubDate><content:encoded><![CDATA[<p>Welcome the <code>convert_to_ucs_python</code> API.</p>
 
-&lt;p&gt;Assumption:&lt;/p&gt;
+<p>Assumption:</p>
 
-&lt;p&gt;User knows to do an operation via the JAVA based UCSM GUI &lt;br&gt;
-UCSM UI and &lt;code&gt;convert_to_ucs_python&lt;/code&gt; should be launched on the same client machine.&lt;/p&gt;
+<p>User knows to do an operation via the JAVA based UCSM GUI <br>
+UCSM UI and <code>convert_to_ucs_python</code> should be launched on the same client machine.</p>
 
-&lt;p&gt;Basic Idea:&lt;/p&gt;
+<p>Basic Idea:</p>
 
-&lt;ul&gt;
-&lt;li&gt;launch the JAVA based UCSM UI&lt;/li&gt;
-&lt;li&gt;launch the python shell and invoke &lt;code&gt;convert_to_ucs_python&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;perform the desired operation on the UI&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;convert_to_ucs_python&lt;/code&gt; monitors the operation and generates equivalent python script for the same.&lt;/li&gt;
-&lt;/ul&gt;
+<ul>
+<li>launch the JAVA based UCSM UI</li>
+<li>launch the python shell and invoke <code>convert_to_ucs_python</code></li>
+<li>perform the desired operation on the UI</li>
+<li><code>convert_to_ucs_python</code> monitors the operation and generates equivalent python script for the same.</li>
+</ul>
 
-&lt;p&gt;How it works:&lt;/p&gt;
+<p>How it works:</p>
 
-&lt;p&gt;UCSM GUI logs all the activities that are performed via it, and the python shell monitors that log to generate the equivalent python script. Since the logging is local to the machine where the UI is running, &lt;code&gt;convert_to_ucs_python&lt;/code&gt; also must run on the same machine. &lt;br&gt;
-Sample Usage:&lt;/p&gt;
+<p>UCSM GUI logs all the activities that are performed via it, and the python shell monitors that log to generate the equivalent python script. Since the logging is local to the machine where the UI is running, <code>convert_to_ucs_python</code> also must run on the same machine. <br>
+Sample Usage:</p>
 
-&lt;p&gt;Step 1 - Launch the UCSM GUI.&lt;/p&gt;
+<p>Step 1 - Launch the UCSM GUI.</p>
 
-&lt;pre&gt;&lt;code&gt;from ucsmsdk.utils.ucsguilaunch import ucs_gui_launch  
+<pre><code>from ucsmsdk.utils.ucsguilaunch import ucs_gui_launch  
 from ucsmsdk.ucshandle import UcsHandle
 
 # Login to the server
-handle = UcsHandle(&amp;lt;ip&amp;gt;, &amp;lt;username&amp;gt;, &amp;lt;password&amp;gt;)  
+handle = UcsHandle(&lt;ip&gt;, &lt;username&gt;, &lt;password&gt;)  
 handle.login()
 
 # launch the UCSM GUI
 ucs_gui_launch(handle)  
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;Step 2 - Run &lt;code&gt;convert_to_ucs_python&lt;/code&gt;&lt;/p&gt;
+<p>Step 2 - Run <code>convert_to_ucs_python</code></p>
 
-&lt;p&gt;The CLI will go into a listen mode until Ctrl+C is pressed again. Until then it prints equivalent script for operations done on the UI.&lt;/p&gt;
+<p>The CLI will go into a listen mode until Ctrl+C is pressed again. Until then it prints equivalent script for operations done on the UI.</p>
 
-&lt;p&gt;Print the equivalent script to console&lt;/p&gt;
+<p>Print the equivalent script to console</p>
 
-&lt;pre&gt;&lt;code&gt;from ucsmsdk.utils.converttopython import convert_to_ucs_python
+<pre><code>from ucsmsdk.utils.converttopython import convert_to_ucs_python
 
 convert_to_ucs_python()  
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;&lt;br&gt;
-Print the equivalent script to console, also print the XMLs that the UI sends out&lt;/p&gt;
+<p><br>
+Print the equivalent script to console, also print the XMLs that the UI sends out</p>
 
-&lt;pre&gt;&lt;code&gt;from ucsmsdk.utils.converttopython import convert_to_ucs_python
+<pre><code>from ucsmsdk.utils.converttopython import convert_to_ucs_python
 
 convert_to_ucs_python(dump_xml=True)  
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;Output the script to a file&lt;/p&gt;
+<p>Output the script to a file</p>
 
-&lt;pre&gt;&lt;code&gt;from ucsmsdk.utils.converttopython import convert_to_ucs_python
+<pre><code>from ucsmsdk.utils.converttopython import convert_to_ucs_python
 
 file_path = r”/home/user/pythoncode.py”
 
 convert_to_ucs_python(dump_to_file=True, dump_file_path=file_path)  
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;XML to python&lt;/p&gt;
+<p>XML to python</p>
 
-&lt;pre&gt;&lt;code&gt;xml_str=’‘’&amp;lt;configConfRename  
+<pre><code>xml_str=’‘’&lt;configConfRename  
                 dn=”org-root/ls-ra1” 
                 inNewName=”ra2” 
-                inHierarchical=”false”&amp;gt; 
-                &amp;lt;/configConfRename&amp;gt;’‘’
+                inHierarchical=”false”&gt; 
+                &lt;/configConfRename&gt;’‘’
 
 convert_to_ucs_python(xml=True, request=xml_str)  
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;note:&lt;/p&gt;
+<p>note:</p>
 
-&lt;p&gt;The path of UCSM UI logs is differs based on the OS and so sometimes the &lt;code&gt;convert_to_ucs_python&lt;/code&gt; API may not be able to autodetect the logfiles that it needs to function. The following workaround can be applied in those cases,&lt;/p&gt;
+<p>The path of UCSM UI logs is differs based on the OS and so sometimes the <code>convert_to_ucs_python</code> API may not be able to autodetect the logfiles that it needs to function. The following workaround can be applied in those cases,</p>
 
-&lt;p&gt;Manually find the path to which UCSM UI logs&lt;/p&gt;
+<p>Manually find the path to which UCSM UI logs</p>
 
-&lt;pre&gt;&lt;code&gt;$ sudo find / -name '.ucsm' 
+<pre><code>$ sudo find / -name '.ucsm' 
 ./Library/Application Support/Oracle/Java/Deployment/log/.ucsm 
 $
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;Run &lt;code&gt;convert_to_ucs_python&lt;/code&gt; by specifying the log_path&lt;/p&gt;
+<p>Run <code>convert_to_ucs_python</code> by specifying the log_path</p>
 
-&lt;pre&gt;&lt;code&gt;from ucsmsdk.utils.converttopython import convert_to_ucs_python
+<pre><code>from ucsmsdk.utils.converttopython import convert_to_ucs_python
 
-convert_to_ucs_python(gui_log=True, path=&amp;lt;path that was found above&amp;gt;)  
-&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title>watch for ucs server events - ucsmsdk</title><description>&lt;p&gt;Starting 0.9.1.1 we have simplified the code required to wait for an event.&lt;/p&gt;
+convert_to_ucs_python(gui_log=True, path=&lt;path that was found above&gt;)  
+</code></pre>]]></content:encoded></item><item><title><![CDATA[watch for ucs server events - ucsmsdk]]></title><description><![CDATA[<p>Starting 0.9.1.1 we have simplified the code required to wait for an event.</p>
 
-&lt;p&gt;The below code creates a Service Profile Mo &lt;code&gt;org-root/ls-eventhandle&lt;/code&gt; &lt;br&gt;
-We then create two threads each thread invokes a wait&lt;em&gt;for&lt;/em&gt;event method to wait for a specific condition &lt;br&gt;
-Here, we wait for the&lt;/p&gt;</description><link>http://localhost:2368/watch-for-ucs-server-events-ucsmsdk/</link><guid isPermaLink="false">93f6ab52-9442-41cb-a93f-b9073134c1b0</guid><category>ucsmsdk</category><category>ucspython</category><dc:creator>vvb</dc:creator><pubDate>Mon, 07 Nov 2016 23:08:02 GMT</pubDate><content:encoded>&lt;p&gt;Starting 0.9.1.1 we have simplified the code required to wait for an event.&lt;/p&gt;
+<p>The below code creates a Service Profile Mo <code>org-root/ls-eventhandle</code> <br>
+We then create two threads each thread invokes a wait<em>for</em>event method to wait for a specific condition <br>
+Here, we wait for the</p>]]></description><link>http://localhost:2368/watch-for-ucs-server-events-ucsmsdk/</link><guid isPermaLink="false">93f6ab52-9442-41cb-a93f-b9073134c1b0</guid><category><![CDATA[ucsmsdk]]></category><category><![CDATA[ucspython]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 07 Nov 2016 23:08:02 GMT</pubDate><content:encoded><![CDATA[<p>Starting 0.9.1.1 we have simplified the code required to wait for an event.</p>
 
-&lt;p&gt;The below code creates a Service Profile Mo &lt;code&gt;org-root/ls-eventhandle&lt;/code&gt; &lt;br&gt;
-We then create two threads each thread invokes a wait&lt;em&gt;for&lt;/em&gt;event method to wait for a specific condition &lt;br&gt;
-Here, we wait for the &lt;code&gt;descr&lt;/code&gt; property to change to specific values&lt;/p&gt;
+<p>The below code creates a Service Profile Mo <code>org-root/ls-eventhandle</code> <br>
+We then create two threads each thread invokes a wait<em>for</em>event method to wait for a specific condition <br>
+Here, we wait for the <code>descr</code> property to change to specific values</p>
 
-&lt;pre&gt;&lt;code&gt;import threading  
+<pre><code>import threading  
 from ucsmsdk.ucshandle import UcsHandle  
 from ucsmsdk.mometa.ls.LsServer import LsServer
 
-handle = UcsHandle(&amp;lt;ucsm_ip&amp;gt;, &amp;lt;username&amp;gt;, &amp;lt;password&amp;gt;)  
+handle = UcsHandle(&lt;ucsm_ip&gt;, &lt;username&gt;, &lt;password&gt;)  
 handle.login()
 
 
@@ -241,15 +241,15 @@ t1.join()
 t2.join()
 
 handle.logout()  
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;The above code when executed will wait, until both the threads finish waiting.&lt;/p&gt;
+<p>The above code when executed will wait, until both the threads finish waiting.</p>
 
-&lt;p&gt;The below script changes the &lt;code&gt;descr&lt;/code&gt; property to match condition in thread1. Similarly, thread2's wait ends when either of the two values specified in thread2's &lt;code&gt;wait_for_event&lt;/code&gt; are seen.&lt;/p&gt;
+<p>The below script changes the <code>descr</code> property to match condition in thread1. Similarly, thread2's wait ends when either of the two values specified in thread2's <code>wait_for_event</code> are seen.</p>
 
-&lt;pre&gt;&lt;code&gt;from ucsmsdk.ucshandle import UcsHandle
+<pre><code>from ucsmsdk.ucshandle import UcsHandle
 
-handle = UcsHandle(&amp;lt;ucsm_ip&amp;gt;, &amp;lt;username&amp;gt;, &amp;lt;password&amp;gt;)  
+handle = UcsHandle(&lt;ucsm_ip&gt;, &lt;username&gt;, &lt;password&gt;)  
 handle.login()
 
 sp = handle.query_dn("org-root/ls-eventhandle")
@@ -260,21 +260,21 @@ handle.set_mo(sp)
 handle.commit()
 
 handle.logout()  
-&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title>metadata and MO information - ucsmsdk</title><description>&lt;p&gt;ucsmsdk now has helper methods to help figure out MO names and dig into the properties and other metadata provided by an object.&lt;/p&gt;
+</code></pre>]]></content:encoded></item><item><title><![CDATA[metadata and MO information - ucsmsdk]]></title><description><![CDATA[<p>ucsmsdk now has helper methods to help figure out MO names and dig into the properties and other metadata provided by an object.</p>
 
-&lt;pre&gt;&lt;code&gt;from ucsmsdk.ucscoreutils import search_class_id  
+<pre><code>from ucsmsdk.ucscoreutils import search_class_id  
 from ucsmsdk.ucscoreutils import get_meta_info  
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;&lt;code&gt;search_class_id&lt;/code&gt; is a case-insensitive grep method that searches all MO names.&lt;/p&gt;</description><link>http://localhost:2368/metadata-and-mo-information-ucsmsdk/</link><guid isPermaLink="false">fa58f6f5-1977-4ba9-9326-71ef4d005348</guid><category>ucsmsdk</category><category>ucspython</category><dc:creator>vvb</dc:creator><pubDate>Mon, 07 Nov 2016 23:06:21 GMT</pubDate><content:encoded>&lt;p&gt;ucsmsdk now has helper methods to help figure out MO names and dig into the properties and other metadata provided by an object.&lt;/p&gt;
+<p><code>search_class_id</code> is a case-insensitive grep method that searches all MO names.</p>]]></description><link>http://localhost:2368/metadata-and-mo-information-ucsmsdk/</link><guid isPermaLink="false">fa58f6f5-1977-4ba9-9326-71ef4d005348</guid><category><![CDATA[ucsmsdk]]></category><category><![CDATA[ucspython]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 07 Nov 2016 23:06:21 GMT</pubDate><content:encoded><![CDATA[<p>ucsmsdk now has helper methods to help figure out MO names and dig into the properties and other metadata provided by an object.</p>
 
-&lt;pre&gt;&lt;code&gt;from ucsmsdk.ucscoreutils import search_class_id  
+<pre><code>from ucsmsdk.ucscoreutils import search_class_id  
 from ucsmsdk.ucscoreutils import get_meta_info  
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;&lt;code&gt;search_class_id&lt;/code&gt; is a case-insensitive grep method that searches all MO names.&lt;/p&gt;
+<p><code>search_class_id</code> is a case-insensitive grep method that searches all MO names.</p>
 
-&lt;pre&gt;&lt;code&gt;In [6]: search_class_id("vlan")  
+<pre><code>In [6]: search_class_id("vlan")  
 2016-06-11 02:26:01,741 - ucs - INFO - "vlan" did not match any available Class Ids.  
 Related Class Ids are:  
 ----------------------
@@ -298,35 +298,35 @@ SwVlanRef
 VmVlan  
 VnicLifVlan  
 VnicVlan  
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;Once you have figured the correct MO name, you can use get&lt;em&gt;meta&lt;/em&gt;info to dig further into the MO. &lt;br&gt;
-Below we get meta information for &lt;code&gt;FabricVlan&lt;/code&gt;&lt;/p&gt;
+<p>Once you have figured the correct MO name, you can use get<em>meta</em>info to dig further into the MO. <br>
+Below we get meta information for <code>FabricVlan</code></p>
 
-&lt;p&gt;It starts with a tree view of where &lt;code&gt;FabricVlan&lt;/code&gt; fits, it parents and children. &lt;br&gt;
-Then it shows MO information &lt;br&gt;
-Finally, it shows information about properties of the MO. &lt;br&gt;
-Mo Property information: &lt;br&gt;
-&lt;code&gt;xml_attribute&lt;/code&gt; - the name of the property as expected by the server.&lt;/p&gt;
+<p>It starts with a tree view of where <code>FabricVlan</code> fits, it parents and children. <br>
+Then it shows MO information <br>
+Finally, it shows information about properties of the MO. <br>
+Mo Property information: <br>
+<code>xml_attribute</code> - the name of the property as expected by the server.</p>
 
-&lt;p&gt;&lt;code&gt;field_type&lt;/code&gt; - type of the field&lt;/p&gt;
+<p><code>field_type</code> - type of the field</p>
 
-&lt;p&gt;&lt;code&gt;min_version&lt;/code&gt; - Ucs server release in which the property was first introduced&lt;/p&gt;
+<p><code>min_version</code> - Ucs server release in which the property was first introduced</p>
 
-&lt;p&gt;&lt;code&gt;access&lt;/code&gt; - defines if a property is interal/user-readable/user-writable&lt;/p&gt;
+<p><code>access</code> - defines if a property is interal/user-readable/user-writable</p>
 
-&lt;p&gt;property restrictions: &lt;br&gt;
-&lt;code&gt;min_length&lt;/code&gt; - minimum length for string property type&lt;/p&gt;
+<p>property restrictions: <br>
+<code>min_length</code> - minimum length for string property type</p>
 
-&lt;p&gt;&lt;code&gt;max_length&lt;/code&gt; - maximum length for string property type&lt;/p&gt;
+<p><code>max_length</code> - maximum length for string property type</p>
 
-&lt;p&gt;&lt;code&gt;pattern&lt;/code&gt; - allowed patterns, regexs&lt;/p&gt;
+<p><code>pattern</code> - allowed patterns, regexs</p>
 
-&lt;p&gt;&lt;code&gt;value_set&lt;/code&gt; - set of allowed values for this property&lt;/p&gt;
+<p><code>value_set</code> - set of allowed values for this property</p>
 
-&lt;p&gt;&lt;code&gt;range_val&lt;/code&gt; - range for int/uint values&lt;/p&gt;
+<p><code>range_val</code> - range for int/uint values</p>
 
-&lt;pre&gt;&lt;code&gt;In [7]: class_meta = get_meta_info("FabricVlan")  
+<pre><code>In [7]: class_meta = get_meta_info("FabricVlan")  
 In [8]: print class_meta  
 [FabricEthEstc]
 [FabricEthEstcCloud]
@@ -764,27 +764,27 @@ max_length                      :None
 pattern                         :((defaultValue|unknown|lan|san|ipc),){0,4}(defaultValue|unknown|lan|san|ipc){0,1}  
 value_set                       :[]  
 range_val                       :[]
-&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title>Multiple parallel transactions - ucsmsdk 0.9.1.1</title><description>&lt;p&gt;Until &lt;code&gt;ucsmsdk&lt;/code&gt; 0.9.1.0 everything until a &lt;code&gt;handle.commit&lt;/code&gt; was a single transaction,&lt;/p&gt;
+</code></pre>]]></content:encoded></item><item><title><![CDATA[Multiple parallel transactions - ucsmsdk 0.9.1.1]]></title><description><![CDATA[<p>Until <code>ucsmsdk</code> 0.9.1.0 everything until a <code>handle.commit</code> was a single transaction,</p>
 
-&lt;pre&gt;&lt;code&gt;handle.add_mo(mo1)  
+<pre><code>handle.add_mo(mo1)  
 handle.add_mo(mo2)  
 handle.remove_mo(mo3)  
 handle.commit()  
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;Starting 0.9.1.1 there is an optional &lt;code&gt;tag&lt;/code&gt; parameter added to &lt;code&gt;add_mo&lt;/code&gt;,&lt;code&gt;set_mo&lt;/code&gt;,&lt;code&gt;remove_mo&lt;/code&gt;,&lt;code&gt;commit&lt;/code&gt;. &lt;code&gt;tag&lt;/code&gt;&lt;/p&gt;</description><link>http://localhost:2368/multiple-parallel-transactions-ucsmsdk-0-9-1-1/</link><guid isPermaLink="false">1d7533c5-68a6-45e3-ab91-622692bd10a0</guid><category>ucsmsdk</category><category>ucspython</category><dc:creator>vvb</dc:creator><pubDate>Mon, 07 Nov 2016 23:03:23 GMT</pubDate><content:encoded>&lt;p&gt;Until &lt;code&gt;ucsmsdk&lt;/code&gt; 0.9.1.0 everything until a &lt;code&gt;handle.commit&lt;/code&gt; was a single transaction,&lt;/p&gt;
+<p>Starting 0.9.1.1 there is an optional <code>tag</code> parameter added to <code>add_mo</code>,<code>set_mo</code>,<code>remove_mo</code>,<code>commit</code>. <code>tag</code></p>]]></description><link>http://localhost:2368/multiple-parallel-transactions-ucsmsdk-0-9-1-1/</link><guid isPermaLink="false">1d7533c5-68a6-45e3-ab91-622692bd10a0</guid><category><![CDATA[ucsmsdk]]></category><category><![CDATA[ucspython]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 07 Nov 2016 23:03:23 GMT</pubDate><content:encoded><![CDATA[<p>Until <code>ucsmsdk</code> 0.9.1.0 everything until a <code>handle.commit</code> was a single transaction,</p>
 
-&lt;pre&gt;&lt;code&gt;handle.add_mo(mo1)  
+<pre><code>handle.add_mo(mo1)  
 handle.add_mo(mo2)  
 handle.remove_mo(mo3)  
 handle.commit()  
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;Starting 0.9.1.1 there is an optional &lt;code&gt;tag&lt;/code&gt; parameter added to &lt;code&gt;add_mo&lt;/code&gt;,&lt;code&gt;set_mo&lt;/code&gt;,&lt;code&gt;remove_mo&lt;/code&gt;,&lt;code&gt;commit&lt;/code&gt;. &lt;code&gt;tag&lt;/code&gt; is the scope of a transaction.&lt;/p&gt;
+<p>Starting 0.9.1.1 there is an optional <code>tag</code> parameter added to <code>add_mo</code>,<code>set_mo</code>,<code>remove_mo</code>,<code>commit</code>. <code>tag</code> is the scope of a transaction.</p>
 
-&lt;p&gt;So, here is how two parallel transactions can be done.  &lt;/p&gt;
+<p>So, here is how two parallel transactions can be done.  </p>
 
-&lt;pre&gt;&lt;code&gt;handle.add_mo(mo1, tag="trans_1")  
+<pre><code>handle.add_mo(mo1, tag="trans_1")  
 handle.add_mo(mo2, tag="trans_2")  
 handle.add_mo(mo3, tag="trans_1")  
 handle.remove_mo(mo4, tag="trans_2")
@@ -796,21 +796,21 @@ handle.add_mo(mo5, tag="trans_1")
 
 # Commit transaction #1
 handle.commit(tag="trans_1")  
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;use case: if we wanted to use the same handle object in different threads, the thread.name could be passed as the tag parameter. This would ensure that operations in one thread do not affect others.&lt;/p&gt;
+<p>use case: if we wanted to use the same handle object in different threads, the thread.name could be passed as the tag parameter. This would ensure that operations in one thread do not affect others.</p>
 
-&lt;p&gt;Without the tag parameter the behaviour is as it was in 0.9.1.0&lt;/p&gt;</content:encoded></item><item><title>Polling for a specific event ucsmsdk.</title><description>&lt;p&gt;Optional poll mode is added to wait&lt;em&gt;for&lt;/em&gt;event API&lt;/p&gt;
+<p>Without the tag parameter the behaviour is as it was in 0.9.1.0</p>]]></content:encoded></item><item><title><![CDATA[Polling for a specific event ucsmsdk.]]></title><description><![CDATA[<p>Optional poll mode is added to wait<em>for</em>event API</p>
 
-&lt;p&gt;The below code will wait for the &lt;code&gt;usr_lbl&lt;/code&gt; property of the service profile &lt;code&gt;org-root/ls-demo-sp&lt;/code&gt; to change to &lt;code&gt;demo_label&lt;/code&gt;. It will poll the server every poll_sec=10 here. It will timeout after 600 seconds.&lt;/p&gt;
+<p>The below code will wait for the <code>usr_lbl</code> property of the service profile <code>org-root/ls-demo-sp</code> to change to <code>demo_label</code>. It will poll the server every poll_sec=10 here. It will timeout after 600 seconds.</p>
 
-&lt;p&gt;&lt;code&gt;wait_for_event&lt;/code&gt;&lt;/p&gt;</description><link>http://localhost:2368/polling-for-a-specific-event-ucsmsdk/</link><guid isPermaLink="false">634fffee-771e-4689-86c5-a33ee4731ec8</guid><category>ucsmsdk</category><category>ucspython</category><dc:creator>vvb</dc:creator><pubDate>Mon, 07 Nov 2016 23:01:12 GMT</pubDate><content:encoded>&lt;p&gt;Optional poll mode is added to wait&lt;em&gt;for&lt;/em&gt;event API&lt;/p&gt;
+<p><code>wait_for_event</code></p>]]></description><link>http://localhost:2368/polling-for-a-specific-event-ucsmsdk/</link><guid isPermaLink="false">634fffee-771e-4689-86c5-a33ee4731ec8</guid><category><![CDATA[ucsmsdk]]></category><category><![CDATA[ucspython]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 07 Nov 2016 23:01:12 GMT</pubDate><content:encoded><![CDATA[<p>Optional poll mode is added to wait<em>for</em>event API</p>
 
-&lt;p&gt;The below code will wait for the &lt;code&gt;usr_lbl&lt;/code&gt; property of the service profile &lt;code&gt;org-root/ls-demo-sp&lt;/code&gt; to change to &lt;code&gt;demo_label&lt;/code&gt;. It will poll the server every poll_sec=10 here. It will timeout after 600 seconds.&lt;/p&gt;
+<p>The below code will wait for the <code>usr_lbl</code> property of the service profile <code>org-root/ls-demo-sp</code> to change to <code>demo_label</code>. It will poll the server every poll_sec=10 here. It will timeout after 600 seconds.</p>
 
-&lt;p&gt;&lt;code&gt;wait_for_event&lt;/code&gt; will keep the script alive until (i) either the condition is met or (ii) timeout is triggered&lt;/p&gt;
+<p><code>wait_for_event</code> will keep the script alive until (i) either the condition is met or (ii) timeout is triggered</p>
 
-&lt;pre&gt;&lt;code&gt;from ucsmsdk.ucshandle import UcsHandle
+<pre><code>from ucsmsdk.ucshandle import UcsHandle
 
 def usr_label_changed(mce):  
      print(mce.mo.usr_label)
@@ -829,45 +829,45 @@ handle.wait_for_event(
     timeout=600,
     poll_sec=10
     )
-&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title>docker - failed to set link up: address already in use</title><description>&lt;p&gt;Noticed the following error message while trying to bring up Docker DTR container.&lt;/p&gt;
+</code></pre>]]></content:encoded></item><item><title><![CDATA[docker - failed to set link up: address already in use]]></title><description><![CDATA[<p>Noticed the following error message while trying to bring up Docker DTR container.</p>
 
-&lt;pre&gt;&lt;code&gt;FATA[0003] Error response from daemon: subnet sandbox join failed for "10.1.0.0/24": vxlan interface creation failed for subnet "10.1.0.0/24": failed to set link up: address already in use  
-I&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/docker-failed-to-set-link-up-address-already-in-use/</link><guid isPermaLink="false">a68e0388-a542-44cd-9a47-69606a236cc3</guid><category>docker</category><dc:creator>vvb</dc:creator><pubDate>Mon, 07 Nov 2016 22:59:57 GMT</pubDate><content:encoded>&lt;p&gt;Noticed the following error message while trying to bring up Docker DTR container.&lt;/p&gt;
+<pre><code>FATA[0003] Error response from daemon: subnet sandbox join failed for "10.1.0.0/24": vxlan interface creation failed for subnet "10.1.0.0/24": failed to set link up: address already in use  
+I</code></pre>]]></description><link>http://localhost:2368/docker-failed-to-set-link-up-address-already-in-use/</link><guid isPermaLink="false">a68e0388-a542-44cd-9a47-69606a236cc3</guid><category><![CDATA[docker]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 07 Nov 2016 22:59:57 GMT</pubDate><content:encoded><![CDATA[<p>Noticed the following error message while trying to bring up Docker DTR container.</p>
 
-&lt;pre&gt;&lt;code&gt;FATA[0003] Error response from daemon: subnet sandbox join failed for "10.1.0.0/24": vxlan interface creation failed for subnet "10.1.0.0/24": failed to set link up: address already in use  
+<pre><code>FATA[0003] Error response from daemon: subnet sandbox join failed for "10.1.0.0/24": vxlan interface creation failed for subnet "10.1.0.0/24": failed to set link up: address already in use  
 I went on a wild-goose chase trying to figure out who was using 10.1.0.0/24. It turns out that it was caused due to the 4789 UDP port conflict that VXLAN uses.  
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;Both Docker overlay and Contiv overlay use VXLAN and use the same port. In this specific scenario Contiv was already using port 4789, and so the failure was seen while configuring a docker overlay network.&lt;/p&gt;
+<p>Both Docker overlay and Contiv overlay use VXLAN and use the same port. In this specific scenario Contiv was already using port 4789, and so the failure was seen while configuring a docker overlay network.</p>
 
-&lt;p&gt;Takeaway: The error message should probably be enhanced to point out the port conflict.&lt;/p&gt;</content:encoded></item><item><title>ucsmsdk offline pip install with dependencies</title><description>&lt;p&gt;The server you want to install the SDK on sometimes might not have internet connectivity. &lt;br&gt;
-The following facilitate a offline install,&lt;/p&gt;
+<p>Takeaway: The error message should probably be enhanced to point out the port conflict.</p>]]></content:encoded></item><item><title><![CDATA[ucsmsdk offline pip install with dependencies]]></title><description><![CDATA[<p>The server you want to install the SDK on sometimes might not have internet connectivity. <br>
+The following facilitate a offline install,</p>
 
-&lt;p&gt;On a machine with internet connectivity (this could be your PC or Mac),  &lt;/p&gt;
+<p>On a machine with internet connectivity (this could be your PC or Mac),  </p>
 
-&lt;pre&gt;&lt;code&gt;pip install --download /path/to/save/dependencies  
-&lt;/code&gt;&lt;/pre&gt;
+<pre><code>pip install --download /path/to/save/dependencies  
+</code></pre>
 
-&lt;ul&gt;
-&lt;li&gt;Now copy /path/to/save/dependencies to the server&lt;/li&gt;&lt;/ul&gt;</description><link>http://localhost:2368/ucsmsdk-offline-pip-install-with-dependencies/</link><guid isPermaLink="false">292b9255-f0a8-458c-b659-d4097fc2654f</guid><category>ucsmsdk</category><category>ucspython</category><dc:creator>vvb</dc:creator><pubDate>Mon, 07 Nov 2016 22:59:16 GMT</pubDate><content:encoded>&lt;p&gt;The server you want to install the SDK on sometimes might not have internet connectivity. &lt;br&gt;
-The following facilitate a offline install,&lt;/p&gt;
+<ul>
+<li>Now copy /path/to/save/dependencies to the server</li></ul>]]></description><link>http://localhost:2368/ucsmsdk-offline-pip-install-with-dependencies/</link><guid isPermaLink="false">292b9255-f0a8-458c-b659-d4097fc2654f</guid><category><![CDATA[ucsmsdk]]></category><category><![CDATA[ucspython]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 07 Nov 2016 22:59:16 GMT</pubDate><content:encoded><![CDATA[<p>The server you want to install the SDK on sometimes might not have internet connectivity. <br>
+The following facilitate a offline install,</p>
 
-&lt;p&gt;On a machine with internet connectivity (this could be your PC or Mac),  &lt;/p&gt;
+<p>On a machine with internet connectivity (this could be your PC or Mac),  </p>
 
-&lt;pre&gt;&lt;code&gt;pip install --download /path/to/save/dependencies  
-&lt;/code&gt;&lt;/pre&gt;
+<pre><code>pip install --download /path/to/save/dependencies  
+</code></pre>
 
-&lt;ul&gt;
-&lt;li&gt;Now copy /path/to/save/dependencies to the server that does not have internet access.&lt;/li&gt;
-&lt;li&gt;The SDK can now be installed offline using,&lt;/li&gt;
-&lt;/ul&gt;
+<ul>
+<li>Now copy /path/to/save/dependencies to the server that does not have internet access.</li>
+<li>The SDK can now be installed offline using,</li>
+</ul>
 
-&lt;pre&gt;&lt;code&gt;pip install --no-index --find-links /path/to/save/dependencies  
-&lt;/code&gt;&lt;/pre&gt;
+<pre><code>pip install --no-index --find-links /path/to/save/dependencies  
+</code></pre>
 
-&lt;p&gt;Example:&lt;/p&gt;
+<p>Example:</p>
 
-&lt;pre&gt;&lt;code&gt;➜  ~ pip install ucsmsdk --download /tmp/ucsmsdk
+<pre><code>➜  ~ pip install ucsmsdk --download /tmp/ucsmsdk
 DEPRECATION: pip install --download has been deprecated and will be removed in the future. Pip now has a download command that should be used instead.  
 Collecting ucsmsdk  
   Downloading ucsmsdk-0.9.1.1-py2.py3-none-any.whl (5.9MB)
@@ -896,22 +896,22 @@ Installing collected packages: ucsmsdk
   Running setup.py install for ucsmsdk ... done
 Successfully installed ucsmsdk-0.9.1.1  
 ➜  ~
-&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title>checking if a docker container is running</title><description>&lt;p&gt;The following will return true if the container is running and false otherwise.&lt;/p&gt;
+</code></pre>]]></content:encoded></item><item><title><![CDATA[checking if a docker container is running]]></title><description><![CDATA[<p>The following will return true if the container is running and false otherwise.</p>
 
-&lt;p&gt;&lt;code&gt;docker inspect -f {{.State.Running}} "$container_id"&lt;/code&gt;&lt;/p&gt;
+<p><code>docker inspect -f {{.State.Running}} "$container_id"</code></p>
 
-&lt;p&gt;The following fetches container id based on it's name,&lt;/p&gt;
+<p>The following fetches container id based on it's name,</p>
 
-&lt;pre&gt;&lt;code&gt;name=alpine  
+<pre><code>name=alpine  
 count=$(docker ps | grep "$name" | wc -l)  
 if [ $count == 1 ]; then  
-    id=$(docker ps | grep "$name" | cut -d '&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/checking-if-a-docker-container-is-running/</link><guid isPermaLink="false">6cae6391-db69-43b6-b7a8-080f38bafd5a</guid><category>docker</category><dc:creator>vvb</dc:creator><pubDate>Mon, 07 Nov 2016 22:57:28 GMT</pubDate><content:encoded>&lt;p&gt;The following will return true if the container is running and false otherwise.&lt;/p&gt;
+    id=$(docker ps | grep "$name" | cut -d '</code></pre>]]></description><link>http://localhost:2368/checking-if-a-docker-container-is-running/</link><guid isPermaLink="false">6cae6391-db69-43b6-b7a8-080f38bafd5a</guid><category><![CDATA[docker]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 07 Nov 2016 22:57:28 GMT</pubDate><content:encoded><![CDATA[<p>The following will return true if the container is running and false otherwise.</p>
 
-&lt;p&gt;&lt;code&gt;docker inspect -f {{.State.Running}} "$container_id"&lt;/code&gt;&lt;/p&gt;
+<p><code>docker inspect -f {{.State.Running}} "$container_id"</code></p>
 
-&lt;p&gt;The following fetches container id based on it's name,&lt;/p&gt;
+<p>The following fetches container id based on it's name,</p>
 
-&lt;pre&gt;&lt;code&gt;name=alpine  
+<pre><code>name=alpine  
 count=$(docker ps | grep "$name" | wc -l)  
 if [ $count == 1 ]; then  
     id=$(docker ps | grep "$name" | cut -d ' ' -f 1)
@@ -921,52 +921,52 @@ elif [ $count == 0 ]; then
 else  
     echo "more than one container with name $name"
 fi  
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;note: In the above example we use docker ps and not docker ps -a. So, we can already assume that the containers it returns are in running state.&lt;/p&gt;</content:encoded></item><item><title>Ucs config backup to Python script - ucsmsdk</title><description>&lt;p&gt;&lt;code&gt;ucmsdk&lt;/code&gt; in version 0.9.2.0 will add the ability of being able to generate a python script for configuring Ucs server based on a config state backup XML.&lt;/p&gt;
+<p>note: In the above example we use docker ps and not docker ps -a. So, we can already assume that the containers it returns are in running state.</p>]]></content:encoded></item><item><title><![CDATA[Ucs config backup to Python script - ucsmsdk]]></title><description><![CDATA[<p><code>ucmsdk</code> in version 0.9.2.0 will add the ability of being able to generate a python script for configuring Ucs server based on a config state backup XML.</p>
 
-&lt;p&gt;&lt;code&gt;convert_from_backup(backup_file, output_file=None)&lt;/code&gt;&lt;/p&gt;
+<p><code>convert_from_backup(backup_file, output_file=None)</code></p>
 
-&lt;p&gt;&lt;code&gt;backup_file&lt;/code&gt; - needs to a config backup XML downloaded from a&lt;/p&gt;</description><link>http://localhost:2368/ucs-config-backup-to-python-script-ucsmsdk/</link><guid isPermaLink="false">b03c3364-2252-4cab-b570-12f3aef89c23</guid><category>ucsmsdk</category><category>ucspython</category><dc:creator>vvb</dc:creator><pubDate>Mon, 07 Nov 2016 22:56:33 GMT</pubDate><content:encoded>&lt;p&gt;&lt;code&gt;ucmsdk&lt;/code&gt; in version 0.9.2.0 will add the ability of being able to generate a python script for configuring Ucs server based on a config state backup XML.&lt;/p&gt;
+<p><code>backup_file</code> - needs to a config backup XML downloaded from a</p>]]></description><link>http://localhost:2368/ucs-config-backup-to-python-script-ucsmsdk/</link><guid isPermaLink="false">b03c3364-2252-4cab-b570-12f3aef89c23</guid><category><![CDATA[ucsmsdk]]></category><category><![CDATA[ucspython]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 07 Nov 2016 22:56:33 GMT</pubDate><content:encoded><![CDATA[<p><code>ucmsdk</code> in version 0.9.2.0 will add the ability of being able to generate a python script for configuring Ucs server based on a config state backup XML.</p>
 
-&lt;p&gt;&lt;code&gt;convert_from_backup(backup_file, output_file=None)&lt;/code&gt;&lt;/p&gt;
+<p><code>convert_from_backup(backup_file, output_file=None)</code></p>
 
-&lt;p&gt;&lt;code&gt;backup_file&lt;/code&gt; - needs to a config backup XML downloaded from a UCS server.&lt;/p&gt;
+<p><code>backup_file</code> - needs to a config backup XML downloaded from a UCS server.</p>
 
-&lt;p&gt;&lt;code&gt;output_file&lt;/code&gt; - file where the equivalent python script is desired.&lt;/p&gt;
+<p><code>output_file</code> - file where the equivalent python script is desired.</p>
 
-&lt;p&gt;Example usage:&lt;/p&gt;
+<p>Example usage:</p>
 
-&lt;pre&gt;&lt;code&gt;from ucsmsdk.utils.convertfrombackup import convert_from_backup  
+<pre><code>from ucsmsdk.utils.convertfrombackup import convert_from_backup  
 convert_from_backup(backup_file="/Users/vvb/configbackup.xml", output_file="/Users/vvb/ucs_config.py")  
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;Without the output_file argument, the output is redirected to stdout.&lt;/p&gt;
+<p>Without the output_file argument, the output is redirected to stdout.</p>
 
-&lt;p&gt;Usage:&lt;/p&gt;
+<p>Usage:</p>
 
-&lt;p&gt;Below is a very small part of the config backup xml,  &lt;/p&gt;
+<p>Below is a very small part of the config backup xml,  </p>
 
-&lt;pre&gt;&lt;code&gt;&amp;lt;?xml version="1.0" ?&amp;gt;  
-&amp;lt;topRoot&amp;gt;  
-  &amp;lt;topMetaInf ecode="E001" name="meta-sec"/&amp;gt;
-    &amp;lt;orgOrg descr="" name="root"&amp;gt;
-      &amp;lt;lsbootPolicy bootMode="legacy" descr="" enforceVnicName="yes" name="new_boot_pol" policyOwner="local" purpose="operational" rebootOnUpdate="no"&amp;gt;
-        &amp;lt;lsbootVirtualMedia access="read-only-remote-cimc" lunId="0" mappingName="" order="1"/&amp;gt;
-    &amp;lt;lsbootVirtualMedia access="read-only-local" lunId="0" mappingName="" order="2"/&amp;gt;
-    &amp;lt;lsbootStorage order="3"&amp;gt;
-      &amp;lt;lsbootLocalStorage&amp;gt;
-        &amp;lt;lsbootUsbFlashStorageImage order="3"/&amp;gt;
-      &amp;lt;/lsbootLocalStorage&amp;gt;
-    &amp;lt;/lsbootStorage&amp;gt;
-      &amp;lt;/lsbootPolicy&amp;gt;
-    &amp;lt;/orgOrg&amp;gt;
-&amp;lt;/topRoot&amp;gt;  
-&lt;/code&gt;&lt;/pre&gt;
+<pre><code>&lt;?xml version="1.0" ?&gt;  
+&lt;topRoot&gt;  
+  &lt;topMetaInf ecode="E001" name="meta-sec"/&gt;
+    &lt;orgOrg descr="" name="root"&gt;
+      &lt;lsbootPolicy bootMode="legacy" descr="" enforceVnicName="yes" name="new_boot_pol" policyOwner="local" purpose="operational" rebootOnUpdate="no"&gt;
+        &lt;lsbootVirtualMedia access="read-only-remote-cimc" lunId="0" mappingName="" order="1"/&gt;
+    &lt;lsbootVirtualMedia access="read-only-local" lunId="0" mappingName="" order="2"/&gt;
+    &lt;lsbootStorage order="3"&gt;
+      &lt;lsbootLocalStorage&gt;
+        &lt;lsbootUsbFlashStorageImage order="3"/&gt;
+      &lt;/lsbootLocalStorage&gt;
+    &lt;/lsbootStorage&gt;
+      &lt;/lsbootPolicy&gt;
+    &lt;/orgOrg&gt;
+&lt;/topRoot&gt;  
+</code></pre>
 
-&lt;p&gt;will be converted into&lt;/p&gt;
+<p>will be converted into</p>
 
-&lt;pre&gt;&lt;code&gt;#!/usr/bin/env python
+<pre><code>#!/usr/bin/env python
 
 from ucsmsdk.ucshandle import UcsHandle
 
@@ -991,64 +991,64 @@ handle.add_mo(mo, True)
 handle.commit()
 
 handle.logout()  
-&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title>Contiv Volplugin Rate limiting - Runtime</title><description>&lt;p&gt;One of the coolest features of Contiv volplugin is the ability to modify volume iops,bps resource restrictions on the fly.&lt;/p&gt;
+</code></pre>]]></content:encoded></item><item><title><![CDATA[Contiv Volplugin Rate limiting - Runtime]]></title><description><![CDATA[<p>One of the coolest features of Contiv volplugin is the ability to modify volume iops,bps resource restrictions on the fly.</p>
 
-&lt;p&gt;This is facilitated by, &lt;br&gt;
-volcli volume runtime upload policy/volume &amp;lt; restrictions.json&lt;/p&gt;
+<p>This is facilitated by, <br>
+volcli volume runtime upload policy/volume &lt; restrictions.json</p>
 
-&lt;p&gt;&lt;code&gt;policy/volume&lt;/code&gt; - policy name /volume name
-&lt;code&gt;restrictions.json&lt;/code&gt; - JSON file with resource restrictions&lt;/p&gt;
+<p><code>policy/volume</code> - policy name /volume name
+<code>restrictions.json</code> - JSON file with resource restrictions</p>
 
-&lt;p&gt;The&lt;/p&gt;</description><link>http://localhost:2368/contiv-volplugin-rate-limiting-runtime/</link><guid isPermaLink="false">8fa44984-6575-40f4-816a-8f8410299d05</guid><category>contiv</category><dc:creator>vvb</dc:creator><pubDate>Mon, 07 Nov 2016 22:54:50 GMT</pubDate><content:encoded>&lt;p&gt;One of the coolest features of Contiv volplugin is the ability to modify volume iops,bps resource restrictions on the fly.&lt;/p&gt;
+<p>The</p>]]></description><link>http://localhost:2368/contiv-volplugin-rate-limiting-runtime/</link><guid isPermaLink="false">8fa44984-6575-40f4-816a-8f8410299d05</guid><category><![CDATA[contiv]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 07 Nov 2016 22:54:50 GMT</pubDate><content:encoded><![CDATA[<p>One of the coolest features of Contiv volplugin is the ability to modify volume iops,bps resource restrictions on the fly.</p>
 
-&lt;p&gt;This is facilitated by, &lt;br&gt;
-volcli volume runtime upload policy/volume &amp;lt; restrictions.json&lt;/p&gt;
+<p>This is facilitated by, <br>
+volcli volume runtime upload policy/volume &lt; restrictions.json</p>
 
-&lt;p&gt;&lt;code&gt;policy/volume&lt;/code&gt; - policy name /volume name
-&lt;code&gt;restrictions.json&lt;/code&gt; - JSON file with resource restrictions&lt;/p&gt;
+<p><code>policy/volume</code> - policy name /volume name
+<code>restrictions.json</code> - JSON file with resource restrictions</p>
 
-&lt;p&gt;The entire flow..&lt;/p&gt;
+<p>The entire flow..</p>
 
-&lt;p&gt;Create a policy&lt;/p&gt;
+<p>Create a policy</p>
 
-&lt;p&gt;&lt;code&gt;volcli policy upload policy1 &amp;lt; policy1.json&lt;/code&gt;&lt;/p&gt;
+<p><code>volcli policy upload policy1 &lt; policy1.json</code></p>
 
-&lt;p&gt;Create a volume&lt;/p&gt;
+<p>Create a volume</p>
 
-&lt;p&gt;&lt;code&gt;volcli volume create policy1/volume1&lt;/code&gt;&lt;/p&gt;
+<p><code>volcli volume create policy1/volume1</code></p>
 
-&lt;p&gt;Attach this volume to a container&lt;/p&gt;
+<p>Attach this volume to a container</p>
 
-&lt;p&gt;&lt;code&gt;docker run -it -v policy1/volume1:/mntpath ubuntu /bin/bash&lt;/code&gt;&lt;/p&gt;
+<p><code>docker run -it -v policy1/volume1:/mntpath ubuntu /bin/bash</code></p>
 
-&lt;p&gt;So, now that the volume is attached - you can still modify the ios/bps on it via volcli&lt;/p&gt;
+<p>So, now that the volume is attached - you can still modify the ios/bps on it via volcli</p>
 
-&lt;p&gt;Create a JSON file - restrictions.json,  &lt;/p&gt;
+<p>Create a JSON file - restrictions.json,  </p>
 
-&lt;pre&gt;&lt;code&gt;    {
+<pre><code>    {
         "rate-limit": {
         "write-bps": 1000,
         "read-bps": 10
         }
     }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;Upload the new restrictions,&lt;/p&gt;
+<p>Upload the new restrictions,</p>
 
-&lt;p&gt;&lt;code&gt;volcli volume runtime upload policy1/volume1 &amp;lt; restrictions.json&lt;/code&gt;&lt;/p&gt;
+<p><code>volcli volume runtime upload policy1/volume1 &lt; restrictions.json</code></p>
 
-&lt;p&gt;Done - the new restrictions are active now!&lt;/p&gt;</content:encoded></item><item><title>vagrant 1.8.5 ssh failures!</title><description>&lt;p&gt;Vagrant 1.8.5 throws the below error when doing a vagrant up&lt;/p&gt;
+<p>Done - the new restrictions are active now!</p>]]></content:encoded></item><item><title><![CDATA[vagrant 1.8.5 ssh failures!]]></title><description><![CDATA[<p>Vagrant 1.8.5 throws the below error when doing a vagrant up</p>
 
-&lt;pre&gt;&lt;code&gt;default: Warning: Authentication failure. Retrying...  
+<pre><code>default: Warning: Authentication failure. Retrying...  
     default: Warning: Authentication failure. Retrying...
     default: Warning: Authentication failure. Retrying...
     default: Warning: Authentication failure. Retrying...
     default: Warning: Authentication failure. Retrying...
     default: Warning: Authentication failure. Retrying...
     default: Warning: Authentication failure. Retrying...
-    default: Warning:&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/vagrant-1-8-5-ssh-failures/</link><guid isPermaLink="false">f37b79ec-4a2b-49b4-800e-984c295073ae</guid><category>vagrant</category><dc:creator>vvb</dc:creator><pubDate>Mon, 07 Nov 2016 22:52:52 GMT</pubDate><content:encoded>&lt;p&gt;Vagrant 1.8.5 throws the below error when doing a vagrant up&lt;/p&gt;
+    default: Warning:</code></pre>]]></description><link>http://localhost:2368/vagrant-1-8-5-ssh-failures/</link><guid isPermaLink="false">f37b79ec-4a2b-49b4-800e-984c295073ae</guid><category><![CDATA[vagrant]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 07 Nov 2016 22:52:52 GMT</pubDate><content:encoded><![CDATA[<p>Vagrant 1.8.5 throws the below error when doing a vagrant up</p>
 
-&lt;pre&gt;&lt;code&gt;default: Warning: Authentication failure. Retrying...  
+<pre><code>default: Warning: Authentication failure. Retrying...  
     default: Warning: Authentication failure. Retrying...
     default: Warning: Authentication failure. Retrying...
     default: Warning: Authentication failure. Retrying...
@@ -1076,12 +1076,12 @@ as well.
 
 If the box appears to be booting properly, you may want to increase  
 the timeout ("config.vm.boot_timeout") value.  
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;Solution: &lt;br&gt;
-Add &lt;code&gt;config.ssh.insert_key = false&lt;/code&gt; to the &lt;code&gt;Vagrantfile&lt;/code&gt;&lt;/p&gt;</content:encoded></item><item><title>vim plugins</title><description>&lt;p&gt;My goto vim plugins,&lt;/p&gt;
+<p>Solution: <br>
+Add <code>config.ssh.insert_key = false</code> to the <code>Vagrantfile</code></p>]]></content:encoded></item><item><title><![CDATA[vim plugins]]></title><description><![CDATA[<p>My goto vim plugins,</p>
 
-&lt;pre&gt;&lt;code&gt;set rtp+=~/.vim/bundle/Vundle.vim  
+<pre><code>set rtp+=~/.vim/bundle/Vundle.vim  
 call vundle#begin()
 
 " let Vundle manage Vundle, required
@@ -1095,9 +1095,9 @@ Plugin 'bling/vim-airline'
 Plugin 'crosbymichael/vim-cfmt'  
 Plugin 'altercation/vim-colors-solarized'  
 Plugin 'tpope/vim-endwise'  
-Plugin 'tpope/&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/vim-plugins/</link><guid isPermaLink="false">fc5ba70b-caab-4525-8039-bdde4a7b5e8f</guid><category>vim</category><dc:creator>vvb</dc:creator><pubDate>Mon, 07 Nov 2016 22:51:45 GMT</pubDate><content:encoded>&lt;p&gt;My goto vim plugins,&lt;/p&gt;
+Plugin 'tpope/</code></pre>]]></description><link>http://localhost:2368/vim-plugins/</link><guid isPermaLink="false">fc5ba70b-caab-4525-8039-bdde4a7b5e8f</guid><category><![CDATA[vim]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 07 Nov 2016 22:51:45 GMT</pubDate><content:encoded><![CDATA[<p>My goto vim plugins,</p>
 
-&lt;pre&gt;&lt;code&gt;set rtp+=~/.vim/bundle/Vundle.vim  
+<pre><code>set rtp+=~/.vim/bundle/Vundle.vim  
 call vundle#begin()
 
 " let Vundle manage Vundle, required
@@ -1130,4 +1130,4 @@ Plugin 'nvie/vim-flake8'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required  
-&lt;/code&gt;&lt;/pre&gt;</content:encoded></item></channel></rss>
+</code></pre>]]></content:encoded></item></channel></rss>

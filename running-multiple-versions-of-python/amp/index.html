@@ -16,15 +16,15 @@
     <meta property="og:site_name" content="Servers | Containers | Management">
     <meta property="og:type" content="article">
     <meta property="og:title" content="Running multiple versions of python">
-    <meta property="og:description" content="You can generally run multiple version of Python minor release 2.7 vs 2.6. These are symlinks created in /usr/bin/ generally.  But how do you go about running multiple versions of the the same minor release - 2.7.9 vs 2.7.10. I wrote a small">
+    <meta property="og:description" content="You can generally run multiple version of Python minor release 2.7 vs 2.6. These are symlinks created in /usr/bin/.  But how do you go about running multiple versions of the the same minor release - 2.7.9 vs 2.7.10. I wrote a small script">
     <meta property="og:url" content="http://localhost:2368/running-multiple-versions-of-python/">
     <meta property="article:published_time" content="2016-11-23T17:45:55.000Z">
-    <meta property="article:modified_time" content="2016-11-23T17:45:55.000Z">
+    <meta property="article:modified_time" content="2016-11-23T17:47:55.000Z">
     <meta property="article:tag" content="ucspython">
     
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Running multiple versions of python">
-    <meta name="twitter:description" content="You can generally run multiple version of Python minor release 2.7 vs 2.6. These are symlinks created in /usr/bin/ generally.  But how do you go about running multiple versions of the the same minor release - 2.7.9 vs 2.7.10. I wrote a small">
+    <meta name="twitter:description" content="You can generally run multiple version of Python minor release 2.7 vs 2.6. These are symlinks created in /usr/bin/.  But how do you go about running multiple versions of the the same minor release - 2.7.9 vs 2.7.10. I wrote a small script">
     <meta name="twitter:url" content="http://localhost:2368/running-multiple-versions-of-python/">
     <meta name="twitter:label1" content="Written by">
     <meta name="twitter:data1" content="vvb">
@@ -49,9 +49,9 @@
     "headline": "Running multiple versions of python",
     "url": "http://localhost:2368/running-multiple-versions-of-python/",
     "datePublished": "2016-11-23T17:45:55.000Z",
-    "dateModified": "2016-11-23T17:45:55.000Z",
+    "dateModified": "2016-11-23T17:47:55.000Z",
     "keywords": "ucspython",
-    "description": "You can generally run multiple version of Python minor release 2.7 vs 2.6. These are symlinks created in /usr/bin/ generally.  But how do you go about running multiple versions of the the same minor release - 2.7.9 vs 2.7.10. I wrote a small",
+    "description": "You can generally run multiple version of Python minor release 2.7 vs 2.6. These are symlinks created in /usr/bin/.  But how do you go about running multiple versions of the the same minor release - 2.7.9 vs 2.7.10. I wrote a small script",
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "http://localhost:2368"
@@ -60,7 +60,7 @@
     </script>
 
     <meta name="generator" content="Ghost 0.11">
-    <link rel="alternate" type="application/rss+xml" title="Servers | Containers | Management" href="../../rss.6">
+    <link rel="alternate" type="application/rss+xml" title="Servers | Containers | Management" href="../../rss.7">
 
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic%7COpen+Sans:700,600,400">
     <style amp-custom>
@@ -852,13 +852,13 @@
             </header>
             <section class="post-content">
 
-                <p>You can generally run multiple version of Python minor release 2.7 vs 2.6. These are symlinks created in /usr/bin/ generally. </p>
+                <p>You can generally run multiple version of Python minor release 2.7 vs 2.6. These are symlinks created in /usr/bin/. </p>
 
 <p>But how do you go about running multiple versions of the the same minor release - 2.7.9 vs 2.7.10.</p>
 
 <p>I wrote a small script that downloads, builds python from source and installs it in a path of its own. </p>
 
-<p>The below needs to be run with a version that needs to be installed - like <code>2.7.9</code>. It can then be used from ~/.localpython-2.7.9/bin/python.</p>
+<p>The below is to be run with the required version, for e.g.<code>2.7.9</code>. </p>
 
 <pre><code>#!/bin/bash
 version=$1  
@@ -871,6 +871,8 @@ mkdir ~/.localpython-$version
 make  
 make install  
 </code></pre>
+
+<p>It can then be used from ~/.localpython-2.7.9/bin/python.</p>
 
             </section>
 

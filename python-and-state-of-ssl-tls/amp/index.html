@@ -2,7 +2,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Contiv Volplugin Rate limiting - Runtime</title>
+    <title>Python and state of SSL/TLS</title>
     <meta name="description" content="">
 
     <meta name="HandheldFriendly" content="True">
@@ -15,21 +15,22 @@
     
     <meta property="og:site_name" content="Servers | Containers | Management">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Contiv Volplugin Rate limiting - Runtime">
-    <meta property="og:description" content="One of the coolest features of Contiv volplugin is the ability to modify volume iops,bps resource restrictions on the fly. This is facilitated by,  volcli volume runtime upload policy/volume &amp;lt; restrictions.json policy/volume - policy name /volume name restrictions.json - JSON file with resource restrictions The">
-    <meta property="og:url" content="http://localhost:2368/contiv-volplugin-rate-limiting-runtime/">
-    <meta property="article:published_time" content="2016-11-07T22:54:50.000Z">
-    <meta property="article:modified_time" content="2016-11-07T22:54:50.000Z">
-    <meta property="article:tag" content="contiv">
+    <meta property="og:title" content="Python and state of SSL/TLS">
+    <meta property="og:description" content="Python 2.7.9 introduces a ssl.SSLContext object to make selecting SSL version easier. Since using SSLv2 or SSLv3 is a crime, most systems rely on TLSv1, TLSv1.1 or TLSv1.2. The SSLContext obect makes it easier to define the generic subset of protocol one desires and then">
+    <meta property="og:url" content="http://localhost:2368/python-and-state-of-ssl-tls/">
+    <meta property="article:published_time" content="2016-11-23T15:37:47.000Z">
+    <meta property="article:modified_time" content="2016-11-23T15:41:39.000Z">
+    <meta property="article:tag" content="ucspython">
+    <meta property="article:tag" content="ucsmsdk">
     
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Contiv Volplugin Rate limiting - Runtime">
-    <meta name="twitter:description" content="One of the coolest features of Contiv volplugin is the ability to modify volume iops,bps resource restrictions on the fly. This is facilitated by,  volcli volume runtime upload policy/volume &amp;lt; restrictions.json policy/volume - policy name /volume name restrictions.json - JSON file with resource restrictions The">
-    <meta name="twitter:url" content="http://localhost:2368/contiv-volplugin-rate-limiting-runtime/">
+    <meta name="twitter:title" content="Python and state of SSL/TLS">
+    <meta name="twitter:description" content="Python 2.7.9 introduces a ssl.SSLContext object to make selecting SSL version easier. Since using SSLv2 or SSLv3 is a crime, most systems rely on TLSv1, TLSv1.1 or TLSv1.2. The SSLContext obect makes it easier to define the generic subset of protocol one desires and then">
+    <meta name="twitter:url" content="http://localhost:2368/python-and-state-of-ssl-tls/">
     <meta name="twitter:label1" content="Written by">
     <meta name="twitter:data1" content="vvb">
     <meta name="twitter:label2" content="Filed under">
-    <meta name="twitter:data2" content="contiv">
+    <meta name="twitter:data2" content="ucspython, ucsmsdk">
     
     <script type="application/ld+json">
 {
@@ -46,12 +47,12 @@
         "url": "http://localhost:2368/author/vvb/",
         "sameAs": []
     },
-    "headline": "Contiv Volplugin Rate limiting - Runtime",
-    "url": "http://localhost:2368/contiv-volplugin-rate-limiting-runtime/",
-    "datePublished": "2016-11-07T22:54:50.000Z",
-    "dateModified": "2016-11-07T22:54:50.000Z",
-    "keywords": "contiv",
-    "description": "One of the coolest features of Contiv volplugin is the ability to modify volume iops,bps resource restrictions on the fly. This is facilitated by,  volcli volume runtime upload policy/volume &amp;lt; restrictions.json policy/volume - policy name /volume name restrictions.json - JSON file with resource restrictions The",
+    "headline": "Python and state of SSL/TLS",
+    "url": "http://localhost:2368/python-and-state-of-ssl-tls/",
+    "datePublished": "2016-11-23T15:37:47.000Z",
+    "dateModified": "2016-11-23T15:41:39.000Z",
+    "keywords": "ucspython, ucsmsdk",
+    "description": "Python 2.7.9 introduces a ssl.SSLContext object to make selecting SSL version easier. Since using SSLv2 or SSLv3 is a crime, most systems rely on TLSv1, TLSv1.1 or TLSv1.2. The SSLContext obect makes it easier to define the generic subset of protocol one desires and then",
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "http://localhost:2368"
@@ -844,53 +845,67 @@
         <article class="post">
 
             <header class="post-header">
-                <h1 class="post-title">Contiv Volplugin Rate limiting - Runtime</h1>
+                <h1 class="post-title">Python and state of SSL/TLS</h1>
                 <section class="post-meta">
                     <p class="author">by <a href="../../author/vvb/">vvb</a></p>
-                    <time class="post-date" datetime="2016-11-07">2016-11-07</time>
+                    <time class="post-date" datetime="2016-11-23">2016-11-23</time>
                 </section>
             </header>
             <section class="post-content">
 
-                <p>One of the coolest features of Contiv volplugin is the ability to modify volume iops,bps resource restrictions on the fly.</p>
+                <p>Python 2.7.9 introduces a <code>ssl.SSLContext</code> object to make selecting SSL version easier.</p>
 
-<p>This is facilitated by, <br>
-volcli volume runtime upload policy/volume &lt; restrictions.json</p>
+<p>Since using SSLv2 or SSLv3 is a crime, most systems rely on TLSv1, TLSv1.1 or TLSv1.2. The SSLContext obect makes it easier to define the generic subset of protocol one desires and then individually turnoff some of them.</p>
 
-<p><code>policy/volume</code> - policy name /volume name
-<code>restrictions.json</code> - JSON file with resource restrictions</p>
+<p>The below code relies only on TLSv1, TLSv1.1, TLSv1.2 and not use SSLv2 or SSLv3</p>
 
-<p>The entire flow..</p>
-
-<p>Create a policy</p>
-
-<p><code>volcli policy upload policy1 &lt; policy1.json</code></p>
-
-<p>Create a volume</p>
-
-<p><code>volcli volume create policy1/volume1</code></p>
-
-<p>Attach this volume to a container</p>
-
-<p><code>docker run -it -v policy1/volume1:/mntpath ubuntu /bin/bash</code></p>
-
-<p>So, now that the volume is attached - you can still modify the ios/bps on it via volcli</p>
-
-<p>Create a JSON file - restrictions.json,  </p>
-
-<pre><code>    {
-        "rate-limit": {
-        "write-bps": 1000,
-        "read-bps": 10
-        }
-    }
+<pre><code>ssl_context = ssl.SSLContext(ssl.PROTOCOL_SSLv23)  
+ssl_context.options |= ssl.OP_NO_SSLv2  
+ssl_context.options |= ssl.OP_NO_SSLv3  
 </code></pre>
 
-<p>Upload the new restrictions,</p>
+<p>So, How can this be used in the larger context. <br>
+We use <code>urllib2</code> and so the above needs to fit into one of the handlers.</p>
 
-<p><code>volcli volume runtime upload policy1/volume1 &lt; restrictions.json</code></p>
+<pre><code>opener = urllib2.build_opener(TLSHandler)  
+response = opener.open(url)
 
-<p>Done - the new restrictions are active now!</p>
+class TLSHandler(urllib2.HTTPSHandler):  
+    """Like HTTPSHandler but more specific"""                                   
+
+    def __init__(self):                                                         
+    ¦   urllib2.HTTPSHandler.__init__(self)                                     
+
+    def https_open(self, req):                                                  
+    ¦   return self.do_open(TLSConnection, req) 
+
+class TLSConnection(httplib.HTTPSConnection):  
+    """Like HTTPSConnection but more specific"""                                
+
+    def __init__(self, host, **kwargs):                                         
+    ¦   httplib.HTTPSConnection.__init__(self, host, **kwargs)                  
+
+    def connect(self):                                                          
+    ¦   """Overrides HTTPSConnection.connect to specify TLS version"""          
+    ¦   # Standard implementation from HTTPSConnection, which is not            
+    ¦   # designed for extension, unfortunately                                 
+    ¦   sock = socket.create_connection((self.host, self.port),             
+    ¦   ¦   ¦   self.timeout, self.source_address)  
+
+    ¦   if getattr(self, '_tunnel_host', None):                                 
+    ¦   ¦   self.sock = sock                                                    
+    ¦   ¦   self._tunnel()                                                      
+
+    ¦   # Since python 2.7.9, tls 1.1 and 1.2 are supported via 
+    ¦   # SSLContext                                                        
+    ¦   ssl_context = ssl.SSLContext(ssl.PROTOCOL_SSLv23)                   
+    ¦   ssl_context.options |= ssl.OP_NO_SSLv2                              
+    ¦   ssl_context.options |= ssl.OP_NO_SSLv3                              
+    ¦   ssl_context.load_cert_chain(keyfile, certfile)            
+    ¦   self.sock = ssl_context.wrap_socket(sock)  
+</code></pre>
+
+<p>This would produce a <code>SSL_UNSUPPORTED_VERSION</code> error when the server does not support TLSv1/1.1/1.2</p>
 
             </section>
 

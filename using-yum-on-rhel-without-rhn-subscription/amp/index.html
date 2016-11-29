@@ -2,7 +2,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>ucsmsdk offline pip install with dependencies</title>
+    <title>Using Yum on RHEL without RHN subscription</title>
     <meta name="description" content="">
 
     <meta name="HandheldFriendly" content="True">
@@ -15,22 +15,17 @@
     
     <meta property="og:site_name" content="Servers | Containers | Management">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="ucsmsdk offline pip install with dependencies">
-    <meta property="og:description" content="The server you want to install the SDK on sometimes might not have internet connectivity.  The following facilitate a offline install, On a machine with internet connectivity (this could be your PC or Mac),   pip install --download /path/to/save/dependencies   Now copy /path/to/save/dependencies to the server">
-    <meta property="og:url" content="http://localhost:2368/ucsmsdk-offline-pip-install-with-dependencies/">
-    <meta property="article:published_time" content="2016-11-07T22:59:16.000Z">
-    <meta property="article:modified_time" content="2016-11-07T22:59:16.000Z">
-    <meta property="article:tag" content="ucsmsdk">
-    <meta property="article:tag" content="ucspython">
-    
+    <meta property="og:title" content="Using Yum on RHEL without RHN subscription">
+    <meta property="og:description" content="Disable the rhn yum plugin, /etc/yum/pluginconf.d/rhnplugin.conf [main] enabled = 0   gpgcheck = 1   Install the epel-repo for the version of redhat you have, RHEL 5.x   wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-5.noarch.rpm   sudo rpm -Uvh epel-release-5*.rpm   RHEL 6.x   wget https://dl.">
+    <meta property="og:url" content="http://localhost:2368/using-yum-on-rhel-without-rhn-subscription/">
+    <meta property="article:published_time" content="2016-11-29T05:13:00.000Z">
+    <meta property="article:modified_time" content="2016-11-29T05:13:00.000Z">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="ucsmsdk offline pip install with dependencies">
-    <meta name="twitter:description" content="The server you want to install the SDK on sometimes might not have internet connectivity.  The following facilitate a offline install, On a machine with internet connectivity (this could be your PC or Mac),   pip install --download /path/to/save/dependencies   Now copy /path/to/save/dependencies to the server">
-    <meta name="twitter:url" content="http://localhost:2368/ucsmsdk-offline-pip-install-with-dependencies/">
+    <meta name="twitter:title" content="Using Yum on RHEL without RHN subscription">
+    <meta name="twitter:description" content="Disable the rhn yum plugin, /etc/yum/pluginconf.d/rhnplugin.conf [main] enabled = 0   gpgcheck = 1   Install the epel-repo for the version of redhat you have, RHEL 5.x   wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-5.noarch.rpm   sudo rpm -Uvh epel-release-5*.rpm   RHEL 6.x   wget https://dl.">
+    <meta name="twitter:url" content="http://localhost:2368/using-yum-on-rhel-without-rhn-subscription/">
     <meta name="twitter:label1" content="Written by">
     <meta name="twitter:data1" content="vvb">
-    <meta name="twitter:label2" content="Filed under">
-    <meta name="twitter:data2" content="ucsmsdk, ucspython">
     
     <script type="application/ld+json">
 {
@@ -47,12 +42,11 @@
         "url": "http://localhost:2368/author/vvb/",
         "sameAs": []
     },
-    "headline": "ucsmsdk offline pip install with dependencies",
-    "url": "http://localhost:2368/ucsmsdk-offline-pip-install-with-dependencies/",
-    "datePublished": "2016-11-07T22:59:16.000Z",
-    "dateModified": "2016-11-07T22:59:16.000Z",
-    "keywords": "ucsmsdk, ucspython",
-    "description": "The server you want to install the SDK on sometimes might not have internet connectivity.  The following facilitate a offline install, On a machine with internet connectivity (this could be your PC or Mac),   pip install --download /path/to/save/dependencies   Now copy /path/to/save/dependencies to the server",
+    "headline": "Using Yum on RHEL without RHN subscription",
+    "url": "http://localhost:2368/using-yum-on-rhel-without-rhn-subscription/",
+    "datePublished": "2016-11-29T05:13:00.000Z",
+    "dateModified": "2016-11-29T05:13:00.000Z",
+    "description": "Disable the rhn yum plugin, /etc/yum/pluginconf.d/rhnplugin.conf [main] enabled &#x3D; 0   gpgcheck &#x3D; 1   Install the epel-repo for the version of redhat you have, RHEL 5.x   wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-5.noarch.rpm   sudo rpm -Uvh epel-release-5*.rpm   RHEL 6.x   wget https://dl.",
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "http://localhost:2368"
@@ -845,61 +839,44 @@
         <article class="post">
 
             <header class="post-header">
-                <h1 class="post-title">ucsmsdk offline pip install with dependencies</h1>
+                <h1 class="post-title">Using Yum on RHEL without RHN subscription</h1>
                 <section class="post-meta">
                     <p class="author">by <a href="../../author/vvb/">vvb</a></p>
-                    <time class="post-date" datetime="2016-11-07">2016-11-07</time>
+                    <time class="post-date" datetime="2016-11-29">2016-11-29</time>
                 </section>
             </header>
             <section class="post-content">
 
-                <p>The server you want to install the SDK on sometimes might not have internet connectivity. <br>
-The following facilitate a offline install,</p>
+                <p>Disable the rhn yum plugin, <code>/etc/yum/pluginconf.d/rhnplugin.conf</code></p>
 
-<p>On a machine with internet connectivity (this could be your PC or Mac),  </p>
-
-<pre><code>pip install --download /path/to/save/dependencies  
+<pre><code>[main]
+enabled = 0  
+gpgcheck = 1  
 </code></pre>
 
-<ul>
-<li>Now copy /path/to/save/dependencies to the server that does not have internet access.</li>
-<li>The SDK can now be installed offline using,</li>
-</ul>
+<p>Install the epel-repo for the version of redhat you have,</p>
 
-<pre><code>pip install --no-index --find-links /path/to/save/dependencies  
+<p>RHEL 5.x  </p>
+
+<pre><code>wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-5.noarch.rpm  
+sudo rpm -Uvh epel-release-5*.rpm  
 </code></pre>
 
-<p>Example:</p>
+<p>RHEL 6.x  </p>
 
-<pre><code>➜  ~ pip install ucsmsdk --download /tmp/ucsmsdk
-DEPRECATION: pip install --download has been deprecated and will be removed in the future. Pip now has a download command that should be used instead.  
-Collecting ucsmsdk  
-  Downloading ucsmsdk-0.9.1.1-py2.py3-none-any.whl (5.9MB)
-    100% |████████████████████████████████| 5.9MB 218kB/s
-  Saved /tmp/ucsmsdk/ucsmsdk-0.9.1.1-py2.py3-none-any.whl
-Collecting pyparsing (from ucsmsdk)  
-  Using cached pyparsing-2.1.5-py2.py3-none-any.whl
-  Saved /tmp/ucsmsdk/pyparsing-2.1.5-py2.py3-none-any.whl
-Successfully downloaded ucsmsdk pyparsing  
-➜  ~
-➜  ~ ls -l /tmp/ucsmsdk
-total 11552  
--rw-r--r--  1 vvb  wheel    42540 Jul 20 10:16 pyparsing-2.1.5-py2.py3-none-any.whl
--rw-r--r--  1 vvb  wheel  5867759 Jul 20 10:16 ucsmsdk-0.9.1.1-py2.py3-none-any.whl
-➜  ~
-➜  ~ sudo pip install ~/work/tpi/release/ucsmsdk/dist/ucsmsdk-0.9.1.1.tar.gz --no-index --find-links /tmp/ucsmsdk
-The directory '/Users/vvb/Library/Caches/pip/http' or its parent directory is not owned by the current user and the cache has been disabled. Please check the permissions and owner of that directory. If executing pip with sudo, you may want sudo's -H flag.  
-Ignoring indexes: https://pypi.python.org/simple  
-The directory '/Users/vvb/Library/Caches/pip' or its parent directory is not owned by the current user and caching wheels has been disabled. check the permissions and owner of that directory. If executing pip with sudo, you may want sudo's -H flag.  
-Processing ./work/tpi/release/ucsmsdk/dist/ucsmsdk-0.9.1.1.tar.gz  
-Requirement already satisfied (use --upgrade to upgrade): pyparsing in /System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python (from ucsmsdk==0.9.1.1)  
-Installing collected packages: ucsmsdk  
-  Found existing installation: ucsmsdk 0.9.1.0
-    Uninstalling ucsmsdk-0.9.1.0:
-      Successfully uninstalled ucsmsdk-0.9.1.0
-  Running setup.py install for ucsmsdk ... done
-Successfully installed ucsmsdk-0.9.1.1  
-➜  ~
+<pre><code>wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm  
+sudo rpm -Uvh epel-release-6*.rpm  
+</code></pre>
+
+<p>RHEL 7.x  </p>
+
+<pre><code>wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm  
+sudo rpm -Uvh epel-release-latest-7*.rpm  
+</code></pre>
+
+<p>Now, you can start using yum, with the install epel repos,</p>
+
+<pre><code>sudo yum update  
 </code></pre>
 
             </section>

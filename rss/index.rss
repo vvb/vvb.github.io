@@ -1,4 +1,51 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Thu, 24 Nov 2016 13:12:07 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Running multiple versions of python</title><description>&lt;p&gt;You can generally run multiple version of Python minor release 2.7 vs 2.6. These are symlinks created in /usr/bin/. &lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Tue, 29 Nov 2016 05:13:34 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Using Yum on RHEL without RHN subscription</title><description>&lt;p&gt;Disable the rhn yum plugin, &lt;code&gt;/etc/yum/pluginconf.d/rhnplugin.conf&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[main]
+enabled = 0  
+gpgcheck = 1  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Install the epel-repo for the version of redhat you have,&lt;/p&gt;
+
+&lt;p&gt;RHEL 5.x  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-5.noarch.rpm  
+sudo rpm -Uvh epel-release-5*.rpm  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;RHEL 6.x  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;wget https://dl.&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/using-yum-on-rhel-without-rhn-subscription/</link><guid isPermaLink="false">01d29217-e20d-4ec3-ae0c-0acf7d9f91db</guid><dc:creator>vvb</dc:creator><pubDate>Tue, 29 Nov 2016 05:13:00 GMT</pubDate><content:encoded>&lt;p&gt;Disable the rhn yum plugin, &lt;code&gt;/etc/yum/pluginconf.d/rhnplugin.conf&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[main]
+enabled = 0  
+gpgcheck = 1  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Install the epel-repo for the version of redhat you have,&lt;/p&gt;
+
+&lt;p&gt;RHEL 5.x  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-5.noarch.rpm  
+sudo rpm -Uvh epel-release-5*.rpm  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;RHEL 6.x  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm  
+sudo rpm -Uvh epel-release-6*.rpm  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;RHEL 7.x  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm  
+sudo rpm -Uvh epel-release-latest-7*.rpm  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, you can start using yum, with the install epel repos,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo yum update  
+&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title>Running multiple versions of python</title><description>&lt;p&gt;You can generally run multiple version of Python minor release 2.7 vs 2.6. These are symlinks created in /usr/bin/. &lt;/p&gt;
 
 &lt;p&gt;But how do you go about running multiple versions of the the same minor release - 2.7.9 vs 2.7.10.&lt;/p&gt;
 
@@ -1110,55 +1157,4 @@ the timeout ("config.vm.boot_timeout") value.
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Solution: &lt;br&gt;
-Add &lt;code&gt;config.ssh.insert_key = false&lt;/code&gt; to the &lt;code&gt;Vagrantfile&lt;/code&gt;&lt;/p&gt;</content:encoded></item><item><title>vim plugins</title><description>&lt;p&gt;My goto vim plugins,&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;set rtp+=~/.vim/bundle/Vundle.vim  
-call vundle#begin()
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-Plugin 'mileszs/ack.vim'  
-Plugin 'vim-scripts/delimitMate.vim'  
-Plugin 'scrooloose/syntastic'  
-Plugin 'godlygeek/tabular'  
-Plugin 'bling/vim-airline'  
-Plugin 'crosbymichael/vim-cfmt'  
-Plugin 'altercation/vim-colors-solarized'  
-Plugin 'tpope/vim-endwise'  
-Plugin 'tpope/&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/vim-plugins/</link><guid isPermaLink="false">fc5ba70b-caab-4525-8039-bdde4a7b5e8f</guid><category>vim</category><dc:creator>vvb</dc:creator><pubDate>Mon, 07 Nov 2016 22:51:45 GMT</pubDate><content:encoded>&lt;p&gt;My goto vim plugins,&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;set rtp+=~/.vim/bundle/Vundle.vim  
-call vundle#begin()
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-Plugin 'mileszs/ack.vim'  
-Plugin 'vim-scripts/delimitMate.vim'  
-Plugin 'scrooloose/syntastic'  
-Plugin 'godlygeek/tabular'  
-Plugin 'bling/vim-airline'  
-Plugin 'crosbymichael/vim-cfmt'  
-Plugin 'altercation/vim-colors-solarized'  
-Plugin 'tpope/vim-endwise'  
-Plugin 'tpope/vim-fugitive'  
-Plugin 'fatih/vim-go'  
-Plugin 'Yggdroot/indentLine'  
-Plugin 'elzr/vim-json'  
-Plugin 'kien/ctrlp.vim'  
-Plugin 'ntpeters/vim-better-whitespace'  
-Plugin 'airblade/vim-gitgutter'  
-Plugin 'moorereason/vim-markdownfmt'  
-Plugin 'hynek/vim-python-pep8-indent'  
-Plugin 'Lokaltog/vim-easymotion'  
-Plugin 'majutsushi/tagbar'  
-Plugin 'reedes/vim-wordy'  
-Plugin 'mattn/gist-vim'  
-Plugin 'chase/vim-ansible-yaml'  
-Plugin 'Valloric/YouCompleteMe'  
-Plugin 'nvie/vim-flake8'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required  
-&lt;/code&gt;&lt;/pre&gt;</content:encoded></item></channel></rss>
+Add &lt;code&gt;config.ssh.insert_key = false&lt;/code&gt; to the &lt;code&gt;Vagrantfile&lt;/code&gt;&lt;/p&gt;</content:encoded></item></channel></rss>

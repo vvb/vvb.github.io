@@ -1,4 +1,24 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Tue, 29 Nov 2016 05:13:34 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Using Yum on RHEL without RHN subscription</title><description>&lt;p&gt;Disable the rhn yum plugin, &lt;code&gt;/etc/yum/pluginconf.d/rhnplugin.conf&lt;/code&gt;&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Mon, 05 Dec 2016 04:25:55 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>ansible - pretty printing errors</title><description>&lt;p&gt;Ansible does not do a great job at pretty printing exceptions/errors. There are plugins available that make this easy.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mkdir -p ~/ansible/plugins/callback  
+cd ~/ansible/plugins/callback  
+wget https://raw.githubusercontent.com/marcosdiez/ansible_human_log.py/master/human_log.py  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;create/edit &lt;code&gt;~/.ansible.cfg&lt;/code&gt; and add the&lt;/p&gt;</description><link>http://localhost:2368/ansible-pretty-printing-errors/</link><guid isPermaLink="false">fd95c5bb-4ed0-4c39-899b-6bb2c8cdaa30</guid><category>ansible</category><dc:creator>vvb</dc:creator><pubDate>Mon, 05 Dec 2016 04:25:34 GMT</pubDate><content:encoded>&lt;p&gt;Ansible does not do a great job at pretty printing exceptions/errors. There are plugins available that make this easy.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mkdir -p ~/ansible/plugins/callback  
+cd ~/ansible/plugins/callback  
+wget https://raw.githubusercontent.com/marcosdiez/ansible_human_log.py/master/human_log.py  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;create/edit &lt;code&gt;~/.ansible.cfg&lt;/code&gt; and add the following to the &lt;code&gt;defaults&lt;/code&gt; section,  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[defaults]
+callback_plugins = ~/ansible_plugins/callback  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Done!&lt;/p&gt;</content:encoded></item><item><title>Using Yum on RHEL without RHN subscription</title><description>&lt;p&gt;Disable the rhn yum plugin, &lt;code&gt;/etc/yum/pluginconf.d/rhnplugin.conf&lt;/code&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;[main]
 enabled = 0  
@@ -1115,46 +1135,4 @@ volcli volume runtime upload policy/volume &amp;lt; restrictions.json&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;volcli volume runtime upload policy1/volume1 &amp;lt; restrictions.json&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;Done - the new restrictions are active now!&lt;/p&gt;</content:encoded></item><item><title>vagrant 1.8.5 ssh failures!</title><description>&lt;p&gt;Vagrant 1.8.5 throws the below error when doing a vagrant up&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;default: Warning: Authentication failure. Retrying...  
-    default: Warning: Authentication failure. Retrying...
-    default: Warning: Authentication failure. Retrying...
-    default: Warning: Authentication failure. Retrying...
-    default: Warning: Authentication failure. Retrying...
-    default: Warning: Authentication failure. Retrying...
-    default: Warning: Authentication failure. Retrying...
-    default: Warning:&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/vagrant-1-8-5-ssh-failures/</link><guid isPermaLink="false">f37b79ec-4a2b-49b4-800e-984c295073ae</guid><category>vagrant</category><dc:creator>vvb</dc:creator><pubDate>Mon, 07 Nov 2016 22:52:52 GMT</pubDate><content:encoded>&lt;p&gt;Vagrant 1.8.5 throws the below error when doing a vagrant up&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;default: Warning: Authentication failure. Retrying...  
-    default: Warning: Authentication failure. Retrying...
-    default: Warning: Authentication failure. Retrying...
-    default: Warning: Authentication failure. Retrying...
-    default: Warning: Authentication failure. Retrying...
-    default: Warning: Authentication failure. Retrying...
-    default: Warning: Authentication failure. Retrying...
-    default: Warning: Authentication failure. Retrying...
-    default: Warning: Authentication failure. Retrying...
-    default: Warning: Authentication failure. Retrying...
-    default: Warning: Authentication failure. Retrying...
-    default: Warning: Authentication failure. Retrying...
-Timed out while waiting for the machine to boot. This means that  
-Vagrant was unable to communicate with the guest machine within  
-the configured ("config.vm.boot_timeout" value) time period.
-
-If you look above, you should be able to see the error(s) that  
-Vagrant had when attempting to connect to the machine. These errors  
-are usually good hints as to what may be wrong.
-
-If you're using a custom box, make sure that networking is properly  
-working and you're able to connect to the machine. It is a common  
-problem that networking isn't setup properly in these boxes.  
-Verify that authentication configurations are also setup properly,  
-as well.
-
-If the box appears to be booting properly, you may want to increase  
-the timeout ("config.vm.boot_timeout") value.  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Solution: &lt;br&gt;
-Add &lt;code&gt;config.ssh.insert_key = false&lt;/code&gt; to the &lt;code&gt;Vagrantfile&lt;/code&gt;&lt;/p&gt;</content:encoded></item></channel></rss>
+&lt;p&gt;Done - the new restrictions are active now!&lt;/p&gt;</content:encoded></item></channel></rss>

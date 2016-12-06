@@ -2,7 +2,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Contiv Volplugin Rate limiting - Runtime</title>
+    <title>configuring a secure front-end for a non-secure service</title>
     <meta name="description" content="">
 
     <meta name="HandheldFriendly" content="True">
@@ -15,21 +15,21 @@
     
     <meta property="og:site_name" content="Servers | Containers | Management">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Contiv Volplugin Rate limiting - Runtime">
-    <meta property="og:description" content="One of the coolest features of Contiv volplugin is the ability to modify volume iops,bps resource restrictions on the fly. This is facilitated by,  volcli volume runtime upload policy/volume &amp;lt; restrictions.json policy/volume - policy name /volume name restrictions.json - JSON file with resource restrictions The">
-    <meta property="og:url" content="http://localhost:2368/contiv-volplugin-rate-limiting-runtime/">
-    <meta property="article:published_time" content="2016-11-07T22:54:50.000Z">
-    <meta property="article:modified_time" content="2016-11-07T22:54:50.000Z">
-    <meta property="article:tag" content="contiv">
+    <meta property="og:title" content="configuring a secure front-end for a non-secure service">
+    <meta property="og:description" content="The goal is to enable https only access for a pre-existing http service. Let us assume that a service is running on http://myserver.com:8000/service. The goal is to make no changes to the pre-existing service and still allow https only access to it. One way this can">
+    <meta property="og:url" content="http://localhost:2368/configuring-a-secure-front-end-for-a-non-secure-service/">
+    <meta property="article:published_time" content="2016-12-06T12:24:01.000Z">
+    <meta property="article:modified_time" content="2016-12-06T12:24:55.000Z">
+    <meta property="article:tag" content="apache">
     
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Contiv Volplugin Rate limiting - Runtime">
-    <meta name="twitter:description" content="One of the coolest features of Contiv volplugin is the ability to modify volume iops,bps resource restrictions on the fly. This is facilitated by,  volcli volume runtime upload policy/volume &amp;lt; restrictions.json policy/volume - policy name /volume name restrictions.json - JSON file with resource restrictions The">
-    <meta name="twitter:url" content="http://localhost:2368/contiv-volplugin-rate-limiting-runtime/">
+    <meta name="twitter:title" content="configuring a secure front-end for a non-secure service">
+    <meta name="twitter:description" content="The goal is to enable https only access for a pre-existing http service. Let us assume that a service is running on http://myserver.com:8000/service. The goal is to make no changes to the pre-existing service and still allow https only access to it. One way this can">
+    <meta name="twitter:url" content="http://localhost:2368/configuring-a-secure-front-end-for-a-non-secure-service/">
     <meta name="twitter:label1" content="Written by">
     <meta name="twitter:data1" content="vvb">
     <meta name="twitter:label2" content="Filed under">
-    <meta name="twitter:data2" content="contiv">
+    <meta name="twitter:data2" content="apache">
     
     <script type="application/ld+json">
 {
@@ -46,12 +46,12 @@
         "url": "http://localhost:2368/author/vvb/",
         "sameAs": []
     },
-    "headline": "Contiv Volplugin Rate limiting - Runtime",
-    "url": "http://localhost:2368/contiv-volplugin-rate-limiting-runtime/",
-    "datePublished": "2016-11-07T22:54:50.000Z",
-    "dateModified": "2016-11-07T22:54:50.000Z",
-    "keywords": "contiv",
-    "description": "One of the coolest features of Contiv volplugin is the ability to modify volume iops,bps resource restrictions on the fly. This is facilitated by,  volcli volume runtime upload policy/volume &amp;lt; restrictions.json policy/volume - policy name /volume name restrictions.json - JSON file with resource restrictions The",
+    "headline": "configuring a secure front-end for a non-secure service",
+    "url": "http://localhost:2368/configuring-a-secure-front-end-for-a-non-secure-service/",
+    "datePublished": "2016-12-06T12:24:01.000Z",
+    "dateModified": "2016-12-06T12:24:55.000Z",
+    "keywords": "apache",
+    "description": "The goal is to enable https only access for a pre-existing http service. Let us assume that a service is running on http://myserver.com:8000/service. The goal is to make no changes to the pre-existing service and still allow https only access to it. One way this can",
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "http://localhost:2368"
@@ -844,53 +844,46 @@
         <article class="post">
 
             <header class="post-header">
-                <h1 class="post-title">Contiv Volplugin Rate limiting - Runtime</h1>
+                <h1 class="post-title">configuring a secure front-end for a non-secure service</h1>
                 <section class="post-meta">
                     <p class="author">by <a href="../../author/vvb/">vvb</a></p>
-                    <time class="post-date" datetime="2016-11-07">2016-11-07</time>
+                    <time class="post-date" datetime="2016-12-06">2016-12-06</time>
                 </section>
             </header>
             <section class="post-content">
 
-                <p>One of the coolest features of Contiv volplugin is the ability to modify volume iops,bps resource restrictions on the fly.</p>
+                <p>The goal is to enable <code>https</code> only access for a pre-existing <code>http</code> service.</p>
 
-<p>This is facilitated by, <br>
-volcli volume runtime upload policy/volume &lt; restrictions.json</p>
+<p>Let us assume that a service is running on <code>http://myserver.com:8000/service</code>. The goal is to make no changes to the pre-existing service and still allow <code>https</code> only access to it.</p>
 
-<p><code>policy/volume</code> - policy name /volume name
-<code>restrictions.json</code> - JSON file with resource restrictions</p>
+<p>One way this can be accomplished, is using apache redirects. We are going to use <code>ProxyPass</code> and <code>ProxyPassReverse</code> directives.</p>
 
-<p>The entire flow..</p>
+<p>Add the following to <code>httpd.conf</code></p>
 
-<p>Create a policy</p>
+<pre><code>&lt;VirtualHost myserver.com:443&gt;
 
-<p><code>volcli policy upload policy1 &lt; policy1.json</code></p>
+# set the SSL options
 
-<p>Create a volume</p>
 
-<p><code>volcli volume create policy1/volume1</code></p>
+# Enable ProxyPass
+SSLProxyEngine On  
+RewriteEngine On  
+#ProxyPreserveHost On        #Important to comment this
+ProxyPass /service http://myserver.com:8000/service/ nocanon  
+ProxyPassReverse /service http://myserver.com:8000/service/
 
-<p>Attach this volume to a container</p>
-
-<p><code>docker run -it -v policy1/volume1:/mntpath ubuntu /bin/bash</code></p>
-
-<p>So, now that the volume is attached - you can still modify the ios/bps on it via volcli</p>
-
-<p>Create a JSON file - restrictions.json,  </p>
-
-<pre><code>    {
-        "rate-limit": {
-        "write-bps": 1000,
-        "read-bps": 10
-        }
-    }
+&lt;/VirtualHost&gt;  
 </code></pre>
 
-<p>Upload the new restrictions,</p>
+<p>The above would expose <code>https://myserver.com/service</code> and internally redirect it to <code>http://myserver.com:8000/service</code>. The <code>ProxyPass</code> directive does that. <code>ProxyPassReverse</code> makes sure that what is sent back to the browser is again converted back to <code>https://msyserver.com/service</code> format.</p>
 
-<p><code>volcli volume runtime upload policy1/volume1 &lt; restrictions.json</code></p>
+<p>Now, <code>https</code> access should be working. But we still need to disable the <code>http</code> access. The below allows all access between internal services (<code>https</code> to <code>http</code> in this case), but disables access to port <code>8000</code> from outside.</p>
 
-<p>Done - the new restrictions are active now!</p>
+<pre><code>sudo /sbin/iptables -A INPUT -p tcp -i lo -j ACCEPT  
+sudo /sbin/iptables -A INPUT -p tcp --dport 8000 -j DROP  
+</code></pre>
+
+<p>Done!</p>
 
             </section>
 

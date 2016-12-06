@@ -1,4 +1,39 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Mon, 05 Dec 2016 04:25:55 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>ansible - pretty printing errors</title><description>&lt;p&gt;Ansible does not do a great job at pretty printing exceptions/errors. There are plugins available that make this easy.&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Tue, 06 Dec 2016 12:25:02 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>configuring a secure front-end for a non-secure service</title><description>&lt;p&gt;The goal is to enable &lt;code&gt;https&lt;/code&gt; only access for a pre-existing &lt;code&gt;http&lt;/code&gt; service.&lt;/p&gt;
+
+&lt;p&gt;Let us assume that a service is running on &lt;code&gt;http://myserver.com:8000/service&lt;/code&gt;. The goal is to make no changes to the pre-existing service and still allow &lt;code&gt;https&lt;/code&gt; only access to it.&lt;/p&gt;
+
+&lt;p&gt;One way this can&lt;/p&gt;</description><link>http://localhost:2368/configuring-a-secure-front-end-for-a-non-secure-service/</link><guid isPermaLink="false">90ab218f-6208-452b-91f6-be39f893d871</guid><category>apache</category><dc:creator>vvb</dc:creator><pubDate>Tue, 06 Dec 2016 12:24:01 GMT</pubDate><content:encoded>&lt;p&gt;The goal is to enable &lt;code&gt;https&lt;/code&gt; only access for a pre-existing &lt;code&gt;http&lt;/code&gt; service.&lt;/p&gt;
+
+&lt;p&gt;Let us assume that a service is running on &lt;code&gt;http://myserver.com:8000/service&lt;/code&gt;. The goal is to make no changes to the pre-existing service and still allow &lt;code&gt;https&lt;/code&gt; only access to it.&lt;/p&gt;
+
+&lt;p&gt;One way this can be accomplished, is using apache redirects. We are going to use &lt;code&gt;ProxyPass&lt;/code&gt; and &lt;code&gt;ProxyPassReverse&lt;/code&gt; directives.&lt;/p&gt;
+
+&lt;p&gt;Add the following to &lt;code&gt;httpd.conf&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;VirtualHost myserver.com:443&amp;gt;
+
+# set the SSL options
+
+
+# Enable ProxyPass
+SSLProxyEngine On  
+RewriteEngine On  
+#ProxyPreserveHost On        #Important to comment this
+ProxyPass /service http://myserver.com:8000/service/ nocanon  
+ProxyPassReverse /service http://myserver.com:8000/service/
+
+&amp;lt;/VirtualHost&amp;gt;  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The above would expose &lt;code&gt;https://myserver.com/service&lt;/code&gt; and internally redirect it to &lt;code&gt;http://myserver.com:8000/service&lt;/code&gt;. The &lt;code&gt;ProxyPass&lt;/code&gt; directive does that. &lt;code&gt;ProxyPassReverse&lt;/code&gt; makes sure that what is sent back to the browser is again converted back to &lt;code&gt;https://msyserver.com/service&lt;/code&gt; format.&lt;/p&gt;
+
+&lt;p&gt;Now, &lt;code&gt;https&lt;/code&gt; access should be working. But we still need to disable the &lt;code&gt;http&lt;/code&gt; access. The below allows all access between internal services (&lt;code&gt;https&lt;/code&gt; to &lt;code&gt;http&lt;/code&gt; in this case), but disables access to port &lt;code&gt;8000&lt;/code&gt; from outside.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo /sbin/iptables -A INPUT -p tcp -i lo -j ACCEPT  
+sudo /sbin/iptables -A INPUT -p tcp --dport 8000 -j DROP  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Done!&lt;/p&gt;</content:encoded></item><item><title>ansible - pretty printing errors</title><description>&lt;p&gt;Ansible does not do a great job at pretty printing exceptions/errors. There are plugins available that make this easy.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;mkdir -p ~/ansible/plugins/callback  
 cd ~/ansible/plugins/callback  
@@ -1089,50 +1124,4 @@ handle.add_mo(mo, True)
 handle.commit()
 
 handle.logout()  
-&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title>Contiv Volplugin Rate limiting - Runtime</title><description>&lt;p&gt;One of the coolest features of Contiv volplugin is the ability to modify volume iops,bps resource restrictions on the fly.&lt;/p&gt;
-
-&lt;p&gt;This is facilitated by, &lt;br&gt;
-volcli volume runtime upload policy/volume &amp;lt; restrictions.json&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;policy/volume&lt;/code&gt; - policy name /volume name
-&lt;code&gt;restrictions.json&lt;/code&gt; - JSON file with resource restrictions&lt;/p&gt;
-
-&lt;p&gt;The&lt;/p&gt;</description><link>http://localhost:2368/contiv-volplugin-rate-limiting-runtime/</link><guid isPermaLink="false">8fa44984-6575-40f4-816a-8f8410299d05</guid><category>contiv</category><dc:creator>vvb</dc:creator><pubDate>Mon, 07 Nov 2016 22:54:50 GMT</pubDate><content:encoded>&lt;p&gt;One of the coolest features of Contiv volplugin is the ability to modify volume iops,bps resource restrictions on the fly.&lt;/p&gt;
-
-&lt;p&gt;This is facilitated by, &lt;br&gt;
-volcli volume runtime upload policy/volume &amp;lt; restrictions.json&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;policy/volume&lt;/code&gt; - policy name /volume name
-&lt;code&gt;restrictions.json&lt;/code&gt; - JSON file with resource restrictions&lt;/p&gt;
-
-&lt;p&gt;The entire flow..&lt;/p&gt;
-
-&lt;p&gt;Create a policy&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;volcli policy upload policy1 &amp;lt; policy1.json&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Create a volume&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;volcli volume create policy1/volume1&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Attach this volume to a container&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;docker run -it -v policy1/volume1:/mntpath ubuntu /bin/bash&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;So, now that the volume is attached - you can still modify the ios/bps on it via volcli&lt;/p&gt;
-
-&lt;p&gt;Create a JSON file - restrictions.json,  &lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    {
-        "rate-limit": {
-        "write-bps": 1000,
-        "read-bps": 10
-        }
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Upload the new restrictions,&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;volcli volume runtime upload policy1/volume1 &amp;lt; restrictions.json&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Done - the new restrictions are active now!&lt;/p&gt;</content:encoded></item></channel></rss>
+&lt;/code&gt;&lt;/pre&gt;</content:encoded></item></channel></rss>

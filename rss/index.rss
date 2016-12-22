@@ -1,4 +1,54 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Tue, 06 Dec 2016 12:25:02 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>configuring a secure front-end for a non-secure service</title><description>&lt;p&gt;The goal is to enable &lt;code&gt;https&lt;/code&gt; only access for a pre-existing &lt;code&gt;http&lt;/code&gt; service.&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Thu, 22 Dec 2016 17:57:29 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>html table search with pure javascript</title><description>&lt;p&gt;The below javascript method searches through all the &lt;code&gt;&amp;lt;td&amp;gt;&lt;/code&gt; elements and hides &lt;code&gt;&amp;lt;tr&amp;gt;&lt;/code&gt; that do not have it.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    function search() {
+    // Declare variables
+    var input, filter, table, tr, td, i, j, tds, ths, matched;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    tr = document.getElementsByTagName("tr");
+
+    // Loop&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/html-table-search-with-pure-javascript/</link><guid isPermaLink="false">f4922a20-0954-4e6e-a0ca-493230cf8fc0</guid><dc:creator>vvb</dc:creator><pubDate>Thu, 22 Dec 2016 17:55:35 GMT</pubDate><content:encoded>&lt;p&gt;The below javascript method searches through all the &lt;code&gt;&amp;lt;td&amp;gt;&lt;/code&gt; elements and hides &lt;code&gt;&amp;lt;tr&amp;gt;&lt;/code&gt; that do not have it.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    function search() {
+    // Declare variables
+    var input, filter, table, tr, td, i, j, tds, ths, matched;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    tr = document.getElementsByTagName("tr");
+
+    // Loop through all table rows, and hide
+    // those who don't match the search query
+    for (i = 0; i &amp;lt; tr.length; i++) {
+        tds = tr[i].getElementsByTagName("td");
+        ths = tr[i].getElementsByTagName("th");
+        matched = false;
+        if (ths.length &amp;gt; 0) {
+            matched = true;
+        }
+        else {
+            for (j = 0; j &amp;lt; tds.length; j++) {
+                td = tds[j];
+                if (td.innerHTML.toUpperCase().indexOf(filter) &amp;gt; -1) {
+                    matched = true;
+                    break;
+                }
+
+            }
+        }
+        if (matched == true) {
+            tr[i].style.display = "";
+        }
+        else {
+            tr[i].style.display = "none";
+        }
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And the below adds the search input box to the webpage and maps it to our &lt;code&gt;search&lt;/code&gt; method&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    &amp;lt;input type="text" id="searchInput" onkeyup="search()" placeholder="Search.."&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title>configuring a secure front-end for a non-secure service</title><description>&lt;p&gt;The goal is to enable &lt;code&gt;https&lt;/code&gt; only access for a pre-existing &lt;code&gt;http&lt;/code&gt; service.&lt;/p&gt;
 
 &lt;p&gt;Let us assume that a service is running on &lt;code&gt;http://myserver.com:8000/service&lt;/code&gt;. The goal is to make no changes to the pre-existing service and still allow &lt;code&gt;https&lt;/code&gt; only access to it.&lt;/p&gt;
 
@@ -1056,72 +1106,4 @@ else
 fi  
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;note: In the above example we use docker ps and not docker ps -a. So, we can already assume that the containers it returns are in running state.&lt;/p&gt;</content:encoded></item><item><title>Ucs config backup to Python script - ucsmsdk</title><description>&lt;p&gt;&lt;code&gt;ucmsdk&lt;/code&gt; in version 0.9.2.0 will add the ability of being able to generate a python script for configuring Ucs server based on a config state backup XML.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;convert_from_backup(backup_file, output_file=None)&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;backup_file&lt;/code&gt; - needs to a config backup XML downloaded from a&lt;/p&gt;</description><link>http://localhost:2368/ucs-config-backup-to-python-script-ucsmsdk/</link><guid isPermaLink="false">b03c3364-2252-4cab-b570-12f3aef89c23</guid><category>ucsmsdk</category><category>ucspython</category><dc:creator>vvb</dc:creator><pubDate>Mon, 07 Nov 2016 22:56:33 GMT</pubDate><content:encoded>&lt;p&gt;&lt;code&gt;ucmsdk&lt;/code&gt; in version 0.9.2.0 will add the ability of being able to generate a python script for configuring Ucs server based on a config state backup XML.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;convert_from_backup(backup_file, output_file=None)&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;backup_file&lt;/code&gt; - needs to a config backup XML downloaded from a UCS server.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;output_file&lt;/code&gt; - file where the equivalent python script is desired.&lt;/p&gt;
-
-&lt;p&gt;Example usage:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;from ucsmsdk.utils.convertfrombackup import convert_from_backup  
-convert_from_backup(backup_file="/Users/vvb/configbackup.xml", output_file="/Users/vvb/ucs_config.py")  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Without the output_file argument, the output is redirected to stdout.&lt;/p&gt;
-
-&lt;p&gt;Usage:&lt;/p&gt;
-
-&lt;p&gt;Below is a very small part of the config backup xml,  &lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;?xml version="1.0" ?&amp;gt;  
-&amp;lt;topRoot&amp;gt;  
-  &amp;lt;topMetaInf ecode="E001" name="meta-sec"/&amp;gt;
-    &amp;lt;orgOrg descr="" name="root"&amp;gt;
-      &amp;lt;lsbootPolicy bootMode="legacy" descr="" enforceVnicName="yes" name="new_boot_pol" policyOwner="local" purpose="operational" rebootOnUpdate="no"&amp;gt;
-        &amp;lt;lsbootVirtualMedia access="read-only-remote-cimc" lunId="0" mappingName="" order="1"/&amp;gt;
-    &amp;lt;lsbootVirtualMedia access="read-only-local" lunId="0" mappingName="" order="2"/&amp;gt;
-    &amp;lt;lsbootStorage order="3"&amp;gt;
-      &amp;lt;lsbootLocalStorage&amp;gt;
-        &amp;lt;lsbootUsbFlashStorageImage order="3"/&amp;gt;
-      &amp;lt;/lsbootLocalStorage&amp;gt;
-    &amp;lt;/lsbootStorage&amp;gt;
-      &amp;lt;/lsbootPolicy&amp;gt;
-    &amp;lt;/orgOrg&amp;gt;
-&amp;lt;/topRoot&amp;gt;  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;will be converted into&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#!/usr/bin/env python
-
-from ucsmsdk.ucshandle import UcsHandle
-
-handle = UcsHandle(ip="", username="", password="")  
-handle.login()
-
-from ucsmsdk.mometa.lsboot.LsbootPolicy import LsbootPolicy  
-from ucsmsdk.mometa.lsboot.LsbootVirtualMedia import LsbootVirtualMedia  
-from ucsmsdk.mometa.lsboot.LsbootStorage import LsbootStorage  
-from ucsmsdk.mometa.lsboot.LsbootLocalStorage import LsbootLocalStorage  
-from ucsmsdk.mometa.lsboot.LsbootUsbFlashStorageImage import LsbootUsbFlashStorageImage
-
-
-
-mo = LsbootPolicy(parent_mo_or_dn=obj, name="new_boot_pol", reboot_on_update="no", policy_owner="local", purpose="operational", enforce_vnic_name="yes", boot_mode="legacy")  
-mo_1 = LsbootVirtualMedia(parent_mo_or_dn=mo, access="read-only-remote-cimc", lun_id="0", order="1")  
-mo_2 = LsbootVirtualMedia(parent_mo_or_dn=mo, access="read-only-local", lun_id="0", order="2")  
-mo_3 = LsbootStorage(parent_mo_or_dn=mo, order="3")  
-mo_4 = LsbootLocalStorage(parent_mo_or_dn=mo_3, )  
-mo_5 = LsbootUsbFlashStorageImage(parent_mo_or_dn=mo_4, order="3")  
-handle.add_mo(mo, True)  
-handle.commit()
-
-handle.logout()  
-&lt;/code&gt;&lt;/pre&gt;</content:encoded></item></channel></rss>
+&lt;p&gt;note: In the above example we use docker ps and not docker ps -a. So, we can already assume that the containers it returns are in running state.&lt;/p&gt;</content:encoded></item></channel></rss>

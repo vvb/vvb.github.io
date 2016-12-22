@@ -1,4 +1,4 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Thu, 22 Dec 2016 17:57:29 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>html table search with pure javascript</title><description>&lt;p&gt;The below javascript method searches through all the &lt;code&gt;&amp;lt;td&amp;gt;&lt;/code&gt; elements and hides &lt;code&gt;&amp;lt;tr&amp;gt;&lt;/code&gt; that do not have it.&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Thu, 22 Dec 2016 17:59:46 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>html table search with pure javascript</title><description>&lt;p&gt;The below javascript method searches through all the &lt;code&gt;&amp;lt;td&amp;gt;&lt;/code&gt; elements and hides &lt;code&gt;&amp;lt;tr&amp;gt;&lt;/code&gt; that do not have it.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;    function search() {
     // Declare variables
@@ -22,6 +22,8 @@
         tds = tr[i].getElementsByTagName("td");
         ths = tr[i].getElementsByTagName("th");
         matched = false;
+
+        // leave the row header 
         if (ths.length &amp;gt; 0) {
             matched = true;
         }

@@ -19,7 +19,7 @@
     <meta property="og:description" content='The below javascript method searches through all the &amp;lt;td&amp;gt; elements and hides &amp;lt;tr&amp;gt; that do not have it.     function search() {     // Declare variables     var input, filter, table, tr, td, i, j, tds, ths, matched;     input = document.getElementById("searchInput");     filter = input.value.toUpperCase();     tr = document.getElementsByTagName("tr");     // Loop'>
     <meta property="og:url" content="http://localhost:2368/html-table-search-with-pure-javascript/">
     <meta property="article:published_time" content="2016-12-22T17:55:35.000Z">
-    <meta property="article:modified_time" content="2016-12-22T17:57:10.000Z">
+    <meta property="article:modified_time" content="2016-12-22T17:59:39.000Z">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="html table search with pure javascript">
     <meta name="twitter:description" content='The below javascript method searches through all the &amp;lt;td&amp;gt; elements and hides &amp;lt;tr&amp;gt; that do not have it.     function search() {     // Declare variables     var input, filter, table, tr, td, i, j, tds, ths, matched;     input = document.getElementById("searchInput");     filter = input.value.toUpperCase();     tr = document.getElementsByTagName("tr");     // Loop'>
@@ -45,7 +45,7 @@
     "headline": "html table search with pure javascript",
     "url": "http://localhost:2368/html-table-search-with-pure-javascript/",
     "datePublished": "2016-12-22T17:55:35.000Z",
-    "dateModified": "2016-12-22T17:57:10.000Z",
+    "dateModified": "2016-12-22T17:59:39.000Z",
     "description": "The below javascript method searches through all the &amp;lt;td&amp;gt; elements and hides &amp;lt;tr&amp;gt; that do not have it.     function search() {     // Declare variables     var input, filter, table, tr, td, i, j, tds, ths, matched;     input &#x3D; document.getElementById(&quot;searchInput&quot;);     filter &#x3D; input.value.toUpperCase();     tr &#x3D; document.getElementsByTagName(&quot;tr&quot;);     // Loop",
     "mainEntityOfPage": {
         "@type": "WebPage",
@@ -55,7 +55,7 @@
     </script>
 
     <meta name="generator" content="Ghost 0.11">
-    <link rel="alternate" type="application/rss+xml" title="Servers | Containers | Management" href="../../rss.16">
+    <link rel="alternate" type="application/rss+xml" title="Servers | Containers | Management" href="../../rss.17">
 
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic%7COpen+Sans:700,600,400">
     <style amp-custom>
@@ -862,6 +862,8 @@
         tds = tr[i].getElementsByTagName("td");
         ths = tr[i].getElementsByTagName("th");
         matched = false;
+
+        // leave the row header 
         if (ths.length &gt; 0) {
             matched = true;
         }

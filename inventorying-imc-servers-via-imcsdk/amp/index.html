@@ -2,7 +2,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>vim plugins</title>
+    <title>Inventorying IMC servers via imcsdk</title>
     <meta name="description" content="">
 
     <meta name="HandheldFriendly" content="True">
@@ -15,21 +15,22 @@
     
     <meta property="og:site_name" content="Servers | Containers | Management">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="vim plugins">
-    <meta property="og:description" content="My goto vim plugins, set rtp+=~/.vim/bundle/Vundle.vim   call vundle#begin() &quot; let Vundle manage Vundle, required Plugin 'VundleVim/Vundle.vim' Plugin 'mileszs/ack.vim'   Plugin 'vim-scripts/delimitMate.vim'   Plugin 'scrooloose/syntastic'   Plugin 'godlygeek/tabular'   Plugin 'bling/vim-airline'   Plugin 'crosbymichael/vim-cfmt'   Plugin 'altercation/vim-colors-solarized'   Plugin 'tpope/vim-endwise'   Plugin 'tpope/">
-    <meta property="og:url" content="http://localhost:2368/vim-plugins/">
-    <meta property="article:published_time" content="2016-11-07T22:51:45.000Z">
-    <meta property="article:modified_time" content="2016-11-07T22:51:45.000Z">
-    <meta property="article:tag" content="vim">
+    <meta property="og:title" content="Inventorying IMC servers via imcsdk">
+    <meta property="og:description" content="The 0.9.2.0 release of imcsdk will add support for inventory APIs.  The following output formats are supported - JSON (default) HTML CSV Refer the API documentation for a list of components that can be inventoried. all fetches inventory for all components. Usage is shown below, from imcsdk.">
+    <meta property="og:url" content="http://localhost:2368/inventorying-imc-servers-via-imcsdk/">
+    <meta property="article:published_time" content="2017-01-03T06:41:48.000Z">
+    <meta property="article:modified_time" content="2017-01-03T06:44:06.000Z">
+    <meta property="article:tag" content="ucspython">
+    <meta property="article:tag" content="imcsdk">
     
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="vim plugins">
-    <meta name="twitter:description" content="My goto vim plugins, set rtp+=~/.vim/bundle/Vundle.vim   call vundle#begin() &quot; let Vundle manage Vundle, required Plugin 'VundleVim/Vundle.vim' Plugin 'mileszs/ack.vim'   Plugin 'vim-scripts/delimitMate.vim'   Plugin 'scrooloose/syntastic'   Plugin 'godlygeek/tabular'   Plugin 'bling/vim-airline'   Plugin 'crosbymichael/vim-cfmt'   Plugin 'altercation/vim-colors-solarized'   Plugin 'tpope/vim-endwise'   Plugin 'tpope/">
-    <meta name="twitter:url" content="http://localhost:2368/vim-plugins/">
+    <meta name="twitter:title" content="Inventorying IMC servers via imcsdk">
+    <meta name="twitter:description" content="The 0.9.2.0 release of imcsdk will add support for inventory APIs.  The following output formats are supported - JSON (default) HTML CSV Refer the API documentation for a list of components that can be inventoried. all fetches inventory for all components. Usage is shown below, from imcsdk.">
+    <meta name="twitter:url" content="http://localhost:2368/inventorying-imc-servers-via-imcsdk/">
     <meta name="twitter:label1" content="Written by">
     <meta name="twitter:data1" content="vvb">
     <meta name="twitter:label2" content="Filed under">
-    <meta name="twitter:data2" content="vim">
+    <meta name="twitter:data2" content="ucspython, imcsdk">
     
     <script type="application/ld+json">
 {
@@ -46,12 +47,12 @@
         "url": "http://localhost:2368/author/vvb/",
         "sameAs": []
     },
-    "headline": "vim plugins",
-    "url": "http://localhost:2368/vim-plugins/",
-    "datePublished": "2016-11-07T22:51:45.000Z",
-    "dateModified": "2016-11-07T22:51:45.000Z",
-    "keywords": "vim",
-    "description": "My goto vim plugins, set rtp+&#x3D;~/.vim/bundle/Vundle.vim   call vundle#begin() &quot; let Vundle manage Vundle, required Plugin &#x27;VundleVim/Vundle.vim&#x27; Plugin &#x27;mileszs/ack.vim&#x27;   Plugin &#x27;vim-scripts/delimitMate.vim&#x27;   Plugin &#x27;scrooloose/syntastic&#x27;   Plugin &#x27;godlygeek/tabular&#x27;   Plugin &#x27;bling/vim-airline&#x27;   Plugin &#x27;crosbymichael/vim-cfmt&#x27;   Plugin &#x27;altercation/vim-colors-solarized&#x27;   Plugin &#x27;tpope/vim-endwise&#x27;   Plugin &#x27;tpope/",
+    "headline": "Inventorying IMC servers via imcsdk",
+    "url": "http://localhost:2368/inventorying-imc-servers-via-imcsdk/",
+    "datePublished": "2017-01-03T06:41:48.000Z",
+    "dateModified": "2017-01-03T06:44:06.000Z",
+    "keywords": "ucspython, imcsdk",
+    "description": "The 0.9.2.0 release of imcsdk will add support for inventory APIs.  The following output formats are supported - JSON (default) HTML CSV Refer the API documentation for a list of components that can be inventoried. all fetches inventory for all components. Usage is shown below, from imcsdk.",
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "http://localhost:2368"
@@ -844,49 +845,53 @@
         <article class="post">
 
             <header class="post-header">
-                <h1 class="post-title">vim plugins</h1>
+                <h1 class="post-title">Inventorying IMC servers via imcsdk</h1>
                 <section class="post-meta">
                     <p class="author">by <a href="../../author/vvb/">vvb</a></p>
-                    <time class="post-date" datetime="2016-11-07">2016-11-07</time>
+                    <time class="post-date" datetime="2017-01-03">2017-01-03</time>
                 </section>
             </header>
             <section class="post-content">
 
-                <p>My goto vim plugins,</p>
+                <p>The <code>0.9.2.0</code> release of <code>imcsdk</code> will add support for <code>inventory</code> APIs. </p>
 
-<pre><code>set rtp+=~/.vim/bundle/Vundle.vim  
-call vundle#begin()
+<p>The following output formats are supported -</p>
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+<ul>
+<li>JSON (default)</li>
+<li>HTML</li>
+<li>CSV</li>
+</ul>
 
-Plugin 'mileszs/ack.vim'  
-Plugin 'vim-scripts/delimitMate.vim'  
-Plugin 'scrooloose/syntastic'  
-Plugin 'godlygeek/tabular'  
-Plugin 'bling/vim-airline'  
-Plugin 'crosbymichael/vim-cfmt'  
-Plugin 'altercation/vim-colors-solarized'  
-Plugin 'tpope/vim-endwise'  
-Plugin 'tpope/vim-fugitive'  
-Plugin 'fatih/vim-go'  
-Plugin 'Yggdroot/indentLine'  
-Plugin 'elzr/vim-json'  
-Plugin 'kien/ctrlp.vim'  
-Plugin 'ntpeters/vim-better-whitespace'  
-Plugin 'airblade/vim-gitgutter'  
-Plugin 'moorereason/vim-markdownfmt'  
-Plugin 'hynek/vim-python-pep8-indent'  
-Plugin 'Lokaltog/vim-easymotion'  
-Plugin 'majutsushi/tagbar'  
-Plugin 'reedes/vim-wordy'  
-Plugin 'mattn/gist-vim'  
-Plugin 'chase/vim-ansible-yaml'  
-Plugin 'Valloric/YouCompleteMe'  
-Plugin 'nvie/vim-flake8'
+<p>Refer the API documentation for a list of components that can be inventoried. <code>all</code> fetches inventory for all components.</p>
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required  
+<p>Usage is shown below,</p>
+
+<pre><code>from imcsdk.apis.server.inventory import get_inventory
+
+# Gets inventory of all components in JSON format
+get_inventory(handle=handle)
+
+# Gets inventory for all servers all components in JSON format
+get_inventory(handle=[handle1, handle2, handle3])
+
+# Gets inventory of one server all components in JSON format
+get_inventory(handle=handle, component="all")
+
+# Gets disks inventory of one server in JSON format
+get_inventory(handle=handle, component="disks")
+
+# Gets cpu and disks inventory for one server in JSON format
+get_inventory(handle=handle, component=["cpu", "disks"])
+
+# Gets cpu and disks inventory for one server in JSON format and writes to inventory.json file
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="json", file_name="inventory.json")
+
+# Gets cpu and disks inventory for one server in CSV format and writes to inventory.csv fie
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="csv", file_name="inventory.csv")
+
+# Gets cpu and disks inventory for one server in HTML format and writes to inventory.html
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="html", file_name="inventory.html")  
 </code></pre>
 
             </section>

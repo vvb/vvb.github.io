@@ -1,4 +1,57 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Thu, 22 Dec 2016 18:07:20 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>html table search with pure javascript</title><description>&lt;p&gt;The below javascript method searches through all the &lt;code&gt;&amp;lt;td&amp;gt;&lt;/code&gt; elements and hides &lt;code&gt;&amp;lt;tr&amp;gt;&lt;/code&gt; that do not have it.&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Tue, 03 Jan 2017 06:44:21 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Inventorying IMC servers via imcsdk</title><description>&lt;p&gt;The &lt;code&gt;0.9.2.0&lt;/code&gt; release of &lt;code&gt;imcsdk&lt;/code&gt; will add support for &lt;code&gt;inventory&lt;/code&gt; APIs. &lt;/p&gt;
+
+&lt;p&gt;The following output formats are supported -&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;JSON (default)&lt;/li&gt;
+&lt;li&gt;HTML&lt;/li&gt;
+&lt;li&gt;CSV&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Refer the API documentation for a list of components that can be inventoried. &lt;code&gt;all&lt;/code&gt; fetches inventory for all components.&lt;/p&gt;
+
+&lt;p&gt;Usage is shown below,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;from imcsdk.&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/inventorying-imc-servers-via-imcsdk/</link><guid isPermaLink="false">8262e689-c3a1-49c9-b6ca-b0e1b703f4d1</guid><category>ucspython</category><category>imcsdk</category><dc:creator>vvb</dc:creator><pubDate>Tue, 03 Jan 2017 06:41:48 GMT</pubDate><content:encoded>&lt;p&gt;The &lt;code&gt;0.9.2.0&lt;/code&gt; release of &lt;code&gt;imcsdk&lt;/code&gt; will add support for &lt;code&gt;inventory&lt;/code&gt; APIs. &lt;/p&gt;
+
+&lt;p&gt;The following output formats are supported -&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;JSON (default)&lt;/li&gt;
+&lt;li&gt;HTML&lt;/li&gt;
+&lt;li&gt;CSV&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Refer the API documentation for a list of components that can be inventoried. &lt;code&gt;all&lt;/code&gt; fetches inventory for all components.&lt;/p&gt;
+
+&lt;p&gt;Usage is shown below,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;from imcsdk.apis.server.inventory import get_inventory
+
+# Gets inventory of all components in JSON format
+get_inventory(handle=handle)
+
+# Gets inventory for all servers all components in JSON format
+get_inventory(handle=[handle1, handle2, handle3])
+
+# Gets inventory of one server all components in JSON format
+get_inventory(handle=handle, component="all")
+
+# Gets disks inventory of one server in JSON format
+get_inventory(handle=handle, component="disks")
+
+# Gets cpu and disks inventory for one server in JSON format
+get_inventory(handle=handle, component=["cpu", "disks"])
+
+# Gets cpu and disks inventory for one server in JSON format and writes to inventory.json file
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="json", file_name="inventory.json")
+
+# Gets cpu and disks inventory for one server in CSV format and writes to inventory.csv fie
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="csv", file_name="inventory.csv")
+
+# Gets cpu and disks inventory for one server in HTML format and writes to inventory.html
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="html", file_name="inventory.html")  
+&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title>html table search with pure javascript</title><description>&lt;p&gt;The below javascript method searches through all the &lt;code&gt;&amp;lt;td&amp;gt;&lt;/code&gt; elements and hides &lt;code&gt;&amp;lt;tr&amp;gt;&lt;/code&gt; that do not have it.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;    function search() {
     // Declare variables
@@ -1081,31 +1134,4 @@ Installing collected packages: ucsmsdk
   Running setup.py install for ucsmsdk ... done
 Successfully installed ucsmsdk-0.9.1.1  
 ➜  ~
-&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title>checking if a docker container is running</title><description>&lt;p&gt;The following will return true if the container is running and false otherwise.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;docker inspect -f {{.State.Running}} "$container_id"&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;The following fetches container id based on it's name,&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;name=alpine  
-count=$(docker ps | grep "$name" | wc -l)  
-if [ $count == 1 ]; then  
-    id=$(docker ps | grep "$name" | cut -d '&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/checking-if-a-docker-container-is-running/</link><guid isPermaLink="false">6cae6391-db69-43b6-b7a8-080f38bafd5a</guid><category>docker</category><dc:creator>vvb</dc:creator><pubDate>Mon, 07 Nov 2016 22:57:28 GMT</pubDate><content:encoded>&lt;p&gt;The following will return true if the container is running and false otherwise.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;docker inspect -f {{.State.Running}} "$container_id"&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;The following fetches container id based on it's name,&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;name=alpine  
-count=$(docker ps | grep "$name" | wc -l)  
-if [ $count == 1 ]; then  
-    id=$(docker ps | grep "$name" | cut -d ' ' -f 1)
-    echo "$container_id"
-elif [ $count == 0 ]; then  
-    echo "No container with name $name"
-else  
-    echo "more than one container with name $name"
-fi  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;note: In the above example we use docker ps and not docker ps -a. So, we can already assume that the containers it returns are in running state.&lt;/p&gt;</content:encoded></item></channel></rss>
+&lt;/code&gt;&lt;/pre&gt;</content:encoded></item></channel></rss>

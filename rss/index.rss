@@ -1,4 +1,54 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Tue, 03 Jan 2017 06:44:21 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Inventorying IMC servers via imcsdk</title><description>&lt;p&gt;The &lt;code&gt;0.9.2.0&lt;/code&gt; release of &lt;code&gt;imcsdk&lt;/code&gt; will add support for &lt;code&gt;inventory&lt;/code&gt; APIs. &lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Sat, 07 Jan 2017 19:07:20 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>imcsdk storage APIs</title><description>&lt;p&gt;0.9.2.0 release of imcsdk will add support for &lt;code&gt;imcsdk.apis.server.storage&lt;/code&gt; to manage virtual drives.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;virtual_drive_create&lt;/code&gt; &lt;br&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;virtual_drive_delete&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Basic usage,  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;vd = virtual_drive_create(handle=handle,  
+                          drive_group=[[1]],
+                          controller_slot="MEZZ",
+                          raid_level=0)
+virtual_drive_delete(handle=handle,  
+                     controller_slot="MEZZ"&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/imcsdk-storage-apis/</link><guid isPermaLink="false">9031319e-31c8-44d7-a324-775ceda5c4a8</guid><category>imcsdk</category><category>ucspython</category><dc:creator>vvb</dc:creator><pubDate>Sat, 07 Jan 2017 19:04:54 GMT</pubDate><content:encoded>&lt;p&gt;0.9.2.0 release of imcsdk will add support for &lt;code&gt;imcsdk.apis.server.storage&lt;/code&gt; to manage virtual drives.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;virtual_drive_create&lt;/code&gt; &lt;br&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;virtual_drive_delete&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Basic usage,  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;vd = virtual_drive_create(handle=handle,  
+                          drive_group=[[1]],
+                          controller_slot="MEZZ",
+                          raid_level=0)
+virtual_drive_delete(handle=handle,  
+                     controller_slot="MEZZ",
+                     name=vd.virtual_drive_name)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Somethings to note about the arguments that &lt;code&gt;virtual_drive_create&lt;/code&gt; takes,&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;drive_group&lt;/code&gt; needs to be array of an array(s) - &lt;code&gt;[[]]&lt;/code&gt;
+The below shows sample inputs for &lt;code&gt;drive_group&lt;/code&gt;,  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;        For Raid 0  - [[1, 2, 3]]
+        For Raid 10 - [[1, 2], [3, 4], [5, 6]]
+        For Raid 50 - [[1, 2, 3], [4, 5, 6]]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Where the numbers are physical drive slots.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;controller_slot&lt;/code&gt; is the name/id of the Storage controller. 
+This could be &lt;code&gt;MEZZ&lt;/code&gt; in some cases. or could be a number &lt;code&gt;0-9&lt;/code&gt; is some.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;raid_level&lt;/code&gt; - refer to the raid levels supported by the platform&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title>Inventorying IMC servers via imcsdk</title><description>&lt;p&gt;The &lt;code&gt;0.9.2.0&lt;/code&gt; release of &lt;code&gt;imcsdk&lt;/code&gt; will add support for &lt;code&gt;inventory&lt;/code&gt; APIs. &lt;/p&gt;
 
 &lt;p&gt;The following output formats are supported -&lt;/p&gt;
 
@@ -1078,60 +1128,4 @@ I went on a wild-goose chase trying to figure out who was using 10.1.0.0/24. It 
 
 &lt;p&gt;Both Docker overlay and Contiv overlay use VXLAN and use the same port. In this specific scenario Contiv was already using port 4789, and so the failure was seen while configuring a docker overlay network.&lt;/p&gt;
 
-&lt;p&gt;Takeaway: The error message should probably be enhanced to point out the port conflict.&lt;/p&gt;</content:encoded></item><item><title>ucsmsdk offline pip install with dependencies</title><description>&lt;p&gt;The server you want to install the SDK on sometimes might not have internet connectivity. &lt;br&gt;
-The following facilitate a offline install,&lt;/p&gt;
-
-&lt;p&gt;On a machine with internet connectivity (this could be your PC or Mac),  &lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;pip install --download /path/to/save/dependencies  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Now copy /path/to/save/dependencies to the server&lt;/li&gt;&lt;/ul&gt;</description><link>http://localhost:2368/ucsmsdk-offline-pip-install-with-dependencies/</link><guid isPermaLink="false">292b9255-f0a8-458c-b659-d4097fc2654f</guid><category>ucsmsdk</category><category>ucspython</category><dc:creator>vvb</dc:creator><pubDate>Mon, 07 Nov 2016 22:59:16 GMT</pubDate><content:encoded>&lt;p&gt;The server you want to install the SDK on sometimes might not have internet connectivity. &lt;br&gt;
-The following facilitate a offline install,&lt;/p&gt;
-
-&lt;p&gt;On a machine with internet connectivity (this could be your PC or Mac),  &lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;pip install --download /path/to/save/dependencies  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Now copy /path/to/save/dependencies to the server that does not have internet access.&lt;/li&gt;
-&lt;li&gt;The SDK can now be installed offline using,&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;pip install --no-index --find-links /path/to/save/dependencies  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Example:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;➜  ~ pip install ucsmsdk --download /tmp/ucsmsdk
-DEPRECATION: pip install --download has been deprecated and will be removed in the future. Pip now has a download command that should be used instead.  
-Collecting ucsmsdk  
-  Downloading ucsmsdk-0.9.1.1-py2.py3-none-any.whl (5.9MB)
-    100% |████████████████████████████████| 5.9MB 218kB/s
-  Saved /tmp/ucsmsdk/ucsmsdk-0.9.1.1-py2.py3-none-any.whl
-Collecting pyparsing (from ucsmsdk)  
-  Using cached pyparsing-2.1.5-py2.py3-none-any.whl
-  Saved /tmp/ucsmsdk/pyparsing-2.1.5-py2.py3-none-any.whl
-Successfully downloaded ucsmsdk pyparsing  
-➜  ~
-➜  ~ ls -l /tmp/ucsmsdk
-total 11552  
--rw-r--r--  1 vvb  wheel    42540 Jul 20 10:16 pyparsing-2.1.5-py2.py3-none-any.whl
--rw-r--r--  1 vvb  wheel  5867759 Jul 20 10:16 ucsmsdk-0.9.1.1-py2.py3-none-any.whl
-➜  ~
-➜  ~ sudo pip install ~/work/tpi/release/ucsmsdk/dist/ucsmsdk-0.9.1.1.tar.gz --no-index --find-links /tmp/ucsmsdk
-The directory '/Users/vvb/Library/Caches/pip/http' or its parent directory is not owned by the current user and the cache has been disabled. Please check the permissions and owner of that directory. If executing pip with sudo, you may want sudo's -H flag.  
-Ignoring indexes: https://pypi.python.org/simple  
-The directory '/Users/vvb/Library/Caches/pip' or its parent directory is not owned by the current user and caching wheels has been disabled. check the permissions and owner of that directory. If executing pip with sudo, you may want sudo's -H flag.  
-Processing ./work/tpi/release/ucsmsdk/dist/ucsmsdk-0.9.1.1.tar.gz  
-Requirement already satisfied (use --upgrade to upgrade): pyparsing in /System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python (from ucsmsdk==0.9.1.1)  
-Installing collected packages: ucsmsdk  
-  Found existing installation: ucsmsdk 0.9.1.0
-    Uninstalling ucsmsdk-0.9.1.0:
-      Successfully uninstalled ucsmsdk-0.9.1.0
-  Running setup.py install for ucsmsdk ... done
-Successfully installed ucsmsdk-0.9.1.1  
-➜  ~
-&lt;/code&gt;&lt;/pre&gt;</content:encoded></item></channel></rss>
+&lt;p&gt;Takeaway: The error message should probably be enhanced to point out the port conflict.&lt;/p&gt;</content:encoded></item></channel></rss>

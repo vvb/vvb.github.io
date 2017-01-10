@@ -1,4 +1,38 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Sat, 07 Jan 2017 19:07:20 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>imcsdk storage APIs</title><description>&lt;p&gt;0.9.2.0 release of imcsdk will add support for &lt;code&gt;imcsdk.apis.server.storage&lt;/code&gt; to manage virtual drives.&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Tue, 10 Jan 2017 20:19:03 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>debugging in an ansible environment</title><description>&lt;p&gt;I was looking for a PDB sort of debugger for debugging custom ansible modules written in Python. This is when i bumped into &lt;a href="http://michaeldehaan.net/post/35403909347/tips-on-using-debuggers-with-ansible"&gt;this&lt;/a&gt; blog.&lt;/p&gt;
+
+&lt;p&gt;As recommended on the blog, I tried out &lt;code&gt;epdb&lt;/code&gt; and it works great for debugging custom ansible modules written in python.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Installation&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;pip install epdb&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/debugging-in-an-ansible-environment/</link><guid isPermaLink="false">265e74b7-1b71-4d1b-a51c-65520d6f6deb</guid><category>ansible</category><dc:creator>vvb</dc:creator><pubDate>Tue, 10 Jan 2017 20:18:27 GMT</pubDate><content:encoded>&lt;p&gt;I was looking for a PDB sort of debugger for debugging custom ansible modules written in Python. This is when i bumped into &lt;a href="http://michaeldehaan.net/post/35403909347/tips-on-using-debuggers-with-ansible"&gt;this&lt;/a&gt; blog.&lt;/p&gt;
+
+&lt;p&gt;As recommended on the blog, I tried out &lt;code&gt;epdb&lt;/code&gt; and it works great for debugging custom ansible modules written in python.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Installation&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;pip install epdb  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Usage&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;p&gt;Insert the below code works as a breakpoint. Insert this at the lines needing debug.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import epdb  
+epdb.serve()  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Run ansible with &lt;code&gt;--forks 1&lt;/code&gt; option to avoid parallel threads&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ansible-playbook -i inventory site.yml --forks 1  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This run should hang when it hits the piece of code that has &lt;code&gt;epdb.serve()&lt;/code&gt;. At this point run the below from another shell&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;python -c "import epdb; epdb.connect()"  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This should get you to the &lt;code&gt;epdb&lt;/code&gt; shell. &lt;br&gt;
+here on, things should look familiar to &lt;code&gt;pdb&lt;/code&gt;.&lt;/p&gt;</content:encoded></item><item><title>imcsdk storage APIs</title><description>&lt;p&gt;0.9.2.0 release of imcsdk will add support for &lt;code&gt;imcsdk.apis.server.storage&lt;/code&gt; to manage virtual drives.&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;virtual_drive_create&lt;/code&gt; &lt;br&gt;&lt;/li&gt;
@@ -1117,15 +1151,4 @@ handle.wait_for_event(
     timeout=600,
     poll_sec=10
     )
-&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title>docker - failed to set link up: address already in use</title><description>&lt;p&gt;Noticed the following error message while trying to bring up Docker DTR container.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;FATA[0003] Error response from daemon: subnet sandbox join failed for "10.1.0.0/24": vxlan interface creation failed for subnet "10.1.0.0/24": failed to set link up: address already in use  
-I&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/docker-failed-to-set-link-up-address-already-in-use/</link><guid isPermaLink="false">a68e0388-a542-44cd-9a47-69606a236cc3</guid><category>docker</category><dc:creator>vvb</dc:creator><pubDate>Mon, 07 Nov 2016 22:59:57 GMT</pubDate><content:encoded>&lt;p&gt;Noticed the following error message while trying to bring up Docker DTR container.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;FATA[0003] Error response from daemon: subnet sandbox join failed for "10.1.0.0/24": vxlan interface creation failed for subnet "10.1.0.0/24": failed to set link up: address already in use  
-I went on a wild-goose chase trying to figure out who was using 10.1.0.0/24. It turns out that it was caused due to the 4789 UDP port conflict that VXLAN uses.  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Both Docker overlay and Contiv overlay use VXLAN and use the same port. In this specific scenario Contiv was already using port 4789, and so the failure was seen while configuring a docker overlay network.&lt;/p&gt;
-
-&lt;p&gt;Takeaway: The error message should probably be enhanced to point out the port conflict.&lt;/p&gt;</content:encoded></item></channel></rss>
+&lt;/code&gt;&lt;/pre&gt;</content:encoded></item></channel></rss>

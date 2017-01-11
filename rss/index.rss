@@ -1,4 +1,4 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Tue, 10 Jan 2017 20:19:03 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>debugging in an ansible environment</title><description>&lt;p&gt;I was looking for a PDB sort of debugger for debugging custom ansible modules written in Python. This is when i bumped into &lt;a href="http://michaeldehaan.net/post/35403909347/tips-on-using-debuggers-with-ansible"&gt;this&lt;/a&gt; blog.&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Wed, 11 Jan 2017 02:45:02 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>debugging in an ansible environment</title><description>&lt;p&gt;I was looking for a PDB sort of debugger for debugging custom ansible modules written in Python. This is when i bumped into &lt;a href="http://michaeldehaan.net/post/35403909347/tips-on-using-debuggers-with-ansible"&gt;this&lt;/a&gt; blog.&lt;/p&gt;
 
 &lt;p&gt;As recommended on the blog, I tried out &lt;code&gt;epdb&lt;/code&gt; and it works great for debugging custom ansible modules written in python.&lt;/p&gt;
 
@@ -12,6 +12,8 @@
 
 &lt;pre&gt;&lt;code&gt;pip install epdb  
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;epdb: &lt;a href="https://pypi.python.org/pypi/epdb"&gt;https://pypi.python.org/pypi/epdb&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Usage&lt;/strong&gt;:&lt;/p&gt;
 

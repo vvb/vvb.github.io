@@ -1,0 +1,1211 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:media="http://search.yahoo.com/mrss/"><channel><title><![CDATA[Servers | Containers | Management]]></title><description><![CDATA[Servers | Containers | Management]]></description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Tue, 24 Jan 2017 15:21:59 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Inventory Ucs Managed servers via ucsmsdk]]></title><description><![CDATA[<p>ucsmsdk 0.9.3.0 will add support for inventory APIs. <br>
+This allows for multi-host multi-component inventory in multiple formats(enough of multiple? :-D ).</p>
+
+<p>The inventory APIs support inventorying,</p>
+
+<pre><code>- fabric interconnects
+- cpus
+- disks
+- dimms
+- storage controller
+- VIC
+- vNICs
+- vHBAs
+- PSUs
+</code></pre>
+
+<p>The</p>]]></description><link>http://localhost:2368/inventory-ucs-managed-servers-via-ucsmsdk/</link><guid isPermaLink="false">017cc972-97b5-4343-a39e-9f777602a504</guid><category><![CDATA[ucspython]]></category><category><![CDATA[ucsmsdk]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Tue, 24 Jan 2017 06:04:13 GMT</pubDate><content:encoded><![CDATA[<p>ucsmsdk 0.9.3.0 will add support for inventory APIs. <br>
+This allows for multi-host multi-component inventory in multiple formats(enough of multiple? :-D ).</p>
+
+<p>The inventory APIs support inventorying,</p>
+
+<pre><code>- fabric interconnects
+- cpus
+- disks
+- dimms
+- storage controller
+- VIC
+- vNICs
+- vHBAs
+- PSUs
+</code></pre>
+
+<p>The supported output formats for the report are,</p>
+
+<pre><code>- csv
+- html
+- json
+</code></pre>
+
+<p>we recommend using the html format, as it has inbuilt javascript based filtering. It can quickly help narrow down a certain component on a certain host.</p>
+
+<pre><code>from ucsmsdk.utils.inventory import get_inventory
+
+# Gets inventory of all components in JSON format
+get_inventory(handle=handle)
+
+# Gets inventory for all servers all components in JSON format
+get_inventory(handle=[handle1, handle2, handle3])
+
+# Gets inventory of one server all components in JSON format
+get_inventory(handle=handle, component="all")
+
+# Gets disks inventory of one server in JSON format
+get_inventory(handle=handle, component="disks")
+
+# Gets cpu and disks inventory for one server in JSON format
+get_inventory(handle=handle, component=["cpu", "disks"])
+
+# Gets cpu and disks inventory for one server in JSON format and writes to inventory.json file
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="json", file_name="inventory.json")
+
+# Gets cpu and disks inventory for one server in CSV format and writes to inventory.csv fie
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="csv", file_name="inventory.csv")
+
+# Gets cpu and disks inventory for one server in HTML format and writes to inventory.html
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="html", file_name="inventory.html")  
+</code></pre>
+
+<p>This can be tried out today via the code available at <a href="https://github.com/ciscoucs/ucsmsdk">https://github.com/ciscoucs/ucsmsdk</a></p>
+
+<p>complete code to run it,  </p>
+
+<pre><code>#! /usr/bin/env python
+
+from ucsmsdk.ucshandle import UcsHandle  
+from ucsmsdk.utils.inventory import get_inventory
+
+handle = UcsHandle("192.168.1.1", "username", "password")  
+handle.login()
+
+# This would create inventory.html in the same directory where the script is run from
+get_inventory(handle=handle, component="all", file_format="html", file_name="inventory.html")
+
+handle.logout()  
+</code></pre>]]></content:encoded></item><item><title><![CDATA[debugging in an ansible environment]]></title><description><![CDATA[<p>I was looking for a PDB sort of debugger for debugging custom ansible modules written in Python. This is when i bumped into <a href="http://michaeldehaan.net/post/35403909347/tips-on-using-debuggers-with-ansible">this</a> blog.</p>
+
+<p>As recommended on the blog, I tried out <code>epdb</code> and it works great for debugging custom ansible modules written in python.</p>
+
+<p><strong>Installation</strong>:</p>
+
+<pre><code>pip install epdb</code></pre>]]></description><link>http://localhost:2368/debugging-in-an-ansible-environment/</link><guid isPermaLink="false">265e74b7-1b71-4d1b-a51c-65520d6f6deb</guid><category><![CDATA[ansible]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Tue, 10 Jan 2017 20:18:27 GMT</pubDate><content:encoded><![CDATA[<p>I was looking for a PDB sort of debugger for debugging custom ansible modules written in Python. This is when i bumped into <a href="http://michaeldehaan.net/post/35403909347/tips-on-using-debuggers-with-ansible">this</a> blog.</p>
+
+<p>As recommended on the blog, I tried out <code>epdb</code> and it works great for debugging custom ansible modules written in python.</p>
+
+<p><strong>Installation</strong>:</p>
+
+<pre><code>pip install epdb  
+</code></pre>
+
+<p>epdb: <a href="https://pypi.python.org/pypi/epdb">https://pypi.python.org/pypi/epdb</a></p>
+
+<p><strong>Usage</strong>:</p>
+
+<p>Insert the below code works as a breakpoint. Insert this at the lines needing debug.</p>
+
+<pre><code>import epdb  
+epdb.serve()  
+</code></pre>
+
+<p>Run ansible with <code>--forks 1</code> option to avoid parallel threads</p>
+
+<pre><code>ansible-playbook -i inventory site.yml --forks 1  
+</code></pre>
+
+<p>This run should hang when it hits the piece of code that has <code>epdb.serve()</code>. At this point run the below from another shell</p>
+
+<pre><code>python -c "import epdb; epdb.connect()"  
+</code></pre>
+
+<p>This should get you to the <code>epdb</code> shell. <br>
+here on, things should look familiar to <code>pdb</code>.</p>]]></content:encoded></item><item><title><![CDATA[imcsdk storage APIs]]></title><description><![CDATA[<p>0.9.2.0 release of imcsdk will add support for <code>imcsdk.apis.server.storage</code> to manage virtual drives.</p>
+
+<ul>
+<li><code>virtual_drive_create</code> <br></li>
+<li><code>virtual_drive_delete</code></li>
+</ul>
+
+<p>Basic usage,  </p>
+
+<pre><code>vd = virtual_drive_create(handle=handle,  
+                          drive_group=[[1]],
+                          controller_slot="MEZZ",
+                          raid_level=0)
+virtual_drive_delete(handle=handle,  
+                     controller_slot="MEZZ"</code></pre>]]></description><link>http://localhost:2368/imcsdk-storage-apis/</link><guid isPermaLink="false">9031319e-31c8-44d7-a324-775ceda5c4a8</guid><category><![CDATA[imcsdk]]></category><category><![CDATA[ucspython]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Sat, 07 Jan 2017 19:04:54 GMT</pubDate><content:encoded><![CDATA[<p>0.9.2.0 release of imcsdk will add support for <code>imcsdk.apis.server.storage</code> to manage virtual drives.</p>
+
+<ul>
+<li><code>virtual_drive_create</code> <br></li>
+<li><code>virtual_drive_delete</code></li>
+</ul>
+
+<p>Basic usage,  </p>
+
+<pre><code>vd = virtual_drive_create(handle=handle,  
+                          drive_group=[[1]],
+                          controller_slot="MEZZ",
+                          raid_level=0)
+virtual_drive_delete(handle=handle,  
+                     controller_slot="MEZZ",
+                     name=vd.virtual_drive_name)
+</code></pre>
+
+<p>Somethings to note about the arguments that <code>virtual_drive_create</code> takes,</p>
+
+<ul>
+<li><code>drive_group</code> needs to be array of an array(s) - <code>[[]]</code>
+The below shows sample inputs for <code>drive_group</code>,  </li>
+</ul>
+
+<pre><code>        For Raid 0  - [[1, 2, 3]]
+        For Raid 10 - [[1, 2], [3, 4], [5, 6]]
+        For Raid 50 - [[1, 2, 3], [4, 5, 6]]
+</code></pre>
+
+<p>Where the numbers are physical drive slots.</p>
+
+<ul>
+<li><p><code>controller_slot</code> is the name/id of the Storage controller. 
+This could be <code>MEZZ</code> in some cases. or could be a number <code>0-9</code> is some.</p></li>
+<li><p><code>raid_level</code> - refer to the raid levels supported by the platform</p></li>
+</ul>]]></content:encoded></item><item><title><![CDATA[Inventorying IMC servers via imcsdk]]></title><description><![CDATA[<p>The <code>0.9.2.0</code> release of <code>imcsdk</code> will add support for <code>inventory</code> APIs. </p>
+
+<p>The following output formats are supported -</p>
+
+<ul>
+<li>JSON (default)</li>
+<li>HTML</li>
+<li>CSV</li>
+</ul>
+
+<p>Refer the API documentation for a list of components that can be inventoried. <code>all</code> fetches inventory for all components.</p>
+
+<p>Usage is shown below,</p>
+
+<pre><code>from imcsdk.</code></pre>]]></description><link>http://localhost:2368/inventorying-imc-servers-via-imcsdk/</link><guid isPermaLink="false">8262e689-c3a1-49c9-b6ca-b0e1b703f4d1</guid><category><![CDATA[ucspython]]></category><category><![CDATA[imcsdk]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Tue, 03 Jan 2017 06:41:48 GMT</pubDate><content:encoded><![CDATA[<p>The <code>0.9.2.0</code> release of <code>imcsdk</code> will add support for <code>inventory</code> APIs. </p>
+
+<p>The following output formats are supported -</p>
+
+<ul>
+<li>JSON (default)</li>
+<li>HTML</li>
+<li>CSV</li>
+</ul>
+
+<p>Refer the API documentation for a list of components that can be inventoried. <code>all</code> fetches inventory for all components.</p>
+
+<p>Usage is shown below,</p>
+
+<pre><code>from imcsdk.apis.server.inventory import get_inventory
+
+# Gets inventory of all components in JSON format
+get_inventory(handle=handle)
+
+# Gets inventory for all servers all components in JSON format
+get_inventory(handle=[handle1, handle2, handle3])
+
+# Gets inventory of one server all components in JSON format
+get_inventory(handle=handle, component="all")
+
+# Gets disks inventory of one server in JSON format
+get_inventory(handle=handle, component="disks")
+
+# Gets cpu and disks inventory for one server in JSON format
+get_inventory(handle=handle, component=["cpu", "disks"])
+
+# Gets cpu and disks inventory for one server in JSON format and writes to inventory.json file
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="json", file_name="inventory.json")
+
+# Gets cpu and disks inventory for one server in CSV format and writes to inventory.csv fie
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="csv", file_name="inventory.csv")
+
+# Gets cpu and disks inventory for one server in HTML format and writes to inventory.html
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="html", file_name="inventory.html")  
+</code></pre>]]></content:encoded></item><item><title><![CDATA[html table search with pure javascript]]></title><description><![CDATA[<p>The below javascript method searches through all the <code>&lt;td&gt;</code> elements and hides <code>&lt;tr&gt;</code> that do not have it.</p>
+
+<pre><code>    function search() {
+    // Declare variables
+    var input, filter, table, tr, td, i, j, tds, ths, matched;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    tr = document.getElementsByTagName("tr");
+
+    // Loop</code></pre>]]></description><link>http://localhost:2368/html-table-search-with-pure-javascript/</link><guid isPermaLink="false">f4922a20-0954-4e6e-a0ca-493230cf8fc0</guid><category><![CDATA[javascript]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Thu, 22 Dec 2016 17:55:35 GMT</pubDate><content:encoded><![CDATA[<p>The below javascript method searches through all the <code>&lt;td&gt;</code> elements and hides <code>&lt;tr&gt;</code> that do not have it.</p>
+
+<pre><code>    function search() {
+    // Declare variables
+    var input, filter, table, tr, td, i, j, tds, ths, matched;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    tr = document.getElementsByTagName("tr");
+
+    // Loop through all table rows, and hide
+    // those who don't match the search query
+    for (i = 0; i &lt; tr.length; i++) {
+        tds = tr[i].getElementsByTagName("td");
+        ths = tr[i].getElementsByTagName("th");
+        matched = false;
+
+        // leave the row header 
+        if (ths.length &gt; 0) {
+            matched = true;
+        }
+        else {
+            for (j = 0; j &lt; tds.length; j++) {
+                td = tds[j];
+                if (td.innerHTML.toUpperCase().indexOf(filter) &gt; -1) {
+                    matched = true;
+                    break;
+                }
+
+            }
+        }
+        if (matched == true) {
+            tr[i].style.display = "";
+        }
+        else {
+            tr[i].style.display = "none";
+        }
+        }
+    }
+</code></pre>
+
+<p>And the below adds the search input box to the webpage and maps it to our <code>search</code> method</p>
+
+<pre><code>    &lt;input type="text" id="searchInput" onkeyup="search()" placeholder="Search.."&gt;
+</code></pre>]]></content:encoded></item><item><title><![CDATA[configuring a secure front-end for a non-secure service]]></title><description><![CDATA[<p>The goal is to enable <code>https</code> only access for a pre-existing <code>http</code> service.</p>
+
+<p>Let us assume that a service is running on <code>http://myserver.com:8000/service</code>. The goal is to make no changes to the pre-existing service and still allow <code>https</code> only access to it.</p>
+
+<p>One way this can</p>]]></description><link>http://localhost:2368/configuring-a-secure-front-end-for-a-non-secure-service/</link><guid isPermaLink="false">90ab218f-6208-452b-91f6-be39f893d871</guid><category><![CDATA[apache]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Tue, 06 Dec 2016 12:24:01 GMT</pubDate><content:encoded><![CDATA[<p>The goal is to enable <code>https</code> only access for a pre-existing <code>http</code> service.</p>
+
+<p>Let us assume that a service is running on <code>http://myserver.com:8000/service</code>. The goal is to make no changes to the pre-existing service and still allow <code>https</code> only access to it.</p>
+
+<p>One way this can be accomplished, is using apache redirects. We are going to use <code>ProxyPass</code> and <code>ProxyPassReverse</code> directives.</p>
+
+<p>Add the following to <code>httpd.conf</code></p>
+
+<pre><code>&lt;VirtualHost myserver.com:443&gt;
+
+# set the SSL options
+
+
+# Enable ProxyPass
+SSLProxyEngine On  
+RewriteEngine On  
+#ProxyPreserveHost On        #Important to comment this
+ProxyPass /service http://myserver.com:8000/service/ nocanon  
+ProxyPassReverse /service http://myserver.com:8000/service/
+
+&lt;/VirtualHost&gt;  
+</code></pre>
+
+<p>The above would expose <code>https://myserver.com/service</code> and internally redirect it to <code>http://myserver.com:8000/service</code>. The <code>ProxyPass</code> directive does that. <code>ProxyPassReverse</code> makes sure that what is sent back to the browser is again converted back to <code>https://msyserver.com/service</code> format.</p>
+
+<p>Now, <code>https</code> access should be working. But we still need to disable the <code>http</code> access. The below allows all access between internal services (<code>https</code> to <code>http</code> in this case), but disables access to port <code>8000</code> from outside.</p>
+
+<pre><code>sudo /sbin/iptables -A INPUT -p tcp -i lo -j ACCEPT  
+sudo /sbin/iptables -A INPUT -p tcp --dport 8000 -j DROP  
+</code></pre>
+
+<p>Done!</p>]]></content:encoded></item><item><title><![CDATA[ansible - pretty printing errors]]></title><description><![CDATA[<p>Ansible does not do a great job at pretty printing exceptions/errors. There are plugins available that make this easy.</p>
+
+<pre><code>mkdir -p ~/ansible/plugins/callback  
+cd ~/ansible/plugins/callback  
+wget https://raw.githubusercontent.com/marcosdiez/ansible_human_log.py/master/human_log.py  
+</code></pre>
+
+<p>create/edit <code>~/.ansible.cfg</code> and add the</p>]]></description><link>http://localhost:2368/ansible-pretty-printing-errors/</link><guid isPermaLink="false">fd95c5bb-4ed0-4c39-899b-6bb2c8cdaa30</guid><category><![CDATA[ansible]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 05 Dec 2016 04:25:34 GMT</pubDate><content:encoded><![CDATA[<p>Ansible does not do a great job at pretty printing exceptions/errors. There are plugins available that make this easy.</p>
+
+<pre><code>mkdir -p ~/ansible/plugins/callback  
+cd ~/ansible/plugins/callback  
+wget https://raw.githubusercontent.com/marcosdiez/ansible_human_log.py/master/human_log.py  
+</code></pre>
+
+<p>create/edit <code>~/.ansible.cfg</code> and add the following to the <code>defaults</code> section,  </p>
+
+<pre><code>[defaults]
+callback_plugins = ~/ansible_plugins/callback  
+</code></pre>
+
+<p>Done!</p>]]></content:encoded></item><item><title><![CDATA[Using Yum on RHEL without RHN subscription]]></title><description><![CDATA[<p>Disable the rhn yum plugin, <code>/etc/yum/pluginconf.d/rhnplugin.conf</code></p>
+
+<pre><code>[main]
+enabled = 0  
+gpgcheck = 1  
+</code></pre>
+
+<p>Install the epel-repo for the version of redhat you have,</p>
+
+<p>RHEL 5.x  </p>
+
+<pre><code>wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-5.noarch.rpm  
+sudo rpm -Uvh epel-release-5*.rpm  
+</code></pre>
+
+<p>RHEL 6.x  </p>
+
+<pre><code>wget https://dl.</code></pre>]]></description><link>http://localhost:2368/using-yum-on-rhel-without-rhn-subscription/</link><guid isPermaLink="false">01d29217-e20d-4ec3-ae0c-0acf7d9f91db</guid><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Tue, 29 Nov 2016 05:13:00 GMT</pubDate><content:encoded><![CDATA[<p>Disable the rhn yum plugin, <code>/etc/yum/pluginconf.d/rhnplugin.conf</code></p>
+
+<pre><code>[main]
+enabled = 0  
+gpgcheck = 1  
+</code></pre>
+
+<p>Install the epel-repo for the version of redhat you have,</p>
+
+<p>RHEL 5.x  </p>
+
+<pre><code>wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-5.noarch.rpm  
+sudo rpm -Uvh epel-release-5*.rpm  
+</code></pre>
+
+<p>RHEL 6.x  </p>
+
+<pre><code>wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm  
+sudo rpm -Uvh epel-release-6*.rpm  
+</code></pre>
+
+<p>RHEL 7.x  </p>
+
+<pre><code>wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm  
+sudo rpm -Uvh epel-release-latest-7*.rpm  
+</code></pre>
+
+<p>Now, you can start using yum, with the install epel repos,</p>
+
+<pre><code>sudo yum update  
+</code></pre>]]></content:encoded></item><item><title><![CDATA[Running multiple versions of python]]></title><description><![CDATA[<p>You can generally run multiple version of Python minor release 2.7 vs 2.6. These are symlinks created in /usr/bin/. </p>
+
+<p>But how do you go about running multiple versions of the the same minor release - 2.7.9 vs 2.7.10.</p>
+
+<p>I wrote a small script</p>]]></description><link>http://localhost:2368/running-multiple-versions-of-python/</link><guid isPermaLink="false">56cfa77e-6fb8-4bcd-b05b-2754f21513b4</guid><category><![CDATA[ucspython]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Wed, 23 Nov 2016 17:45:55 GMT</pubDate><content:encoded><![CDATA[<p>You can generally run multiple version of Python minor release 2.7 vs 2.6. These are symlinks created in /usr/bin/. </p>
+
+<p>But how do you go about running multiple versions of the the same minor release - 2.7.9 vs 2.7.10.</p>
+
+<p>I wrote a small script that downloads, builds python from source and installs it in a path of its own. </p>
+
+<p>The below is to be run with the required version, for e.g.<code>2.7.9</code>. </p>
+
+<pre><code>#!/bin/bash
+version=$1  
+mkdir ~/python  
+wget http://www.python.org/ftp/python/$version/Python-$version.tgz  
+tar -zxvf Python-$version.tgz  
+cd Python-$version  
+mkdir ~/.localpython-$version  
+./configure --prefix=$HOME/.localpython-$version
+make  
+make install  
+</code></pre>
+
+<p>It can then be used from ~/.localpython-2.7.9/bin/python.</p>
+
+<p>we can now set up a virtual environment specifically for each version of python we have installed.</p>
+
+<p>Install virtualenv</p>
+
+<pre><code>sudo apt-get install virtualenv  
+</code></pre>
+
+<p>Add the following to <code>~/.bashrc</code> or <code>~/.zshrc</code>,</p>
+
+<pre><code>source /usr/local/bin/virtualenvwrapper.sh  
+export WORKON_HOME="$HOME/virtual_env/"  
+export PIP_VIRTUALENV_BASE=$WORKON_HOME  
+</code></pre>
+
+<p>Now you can create a new environment using the below command. The <code>-p</code> option specifies the python version to use for this environment. <code>--no-site-packages</code> will restrict this environment from using the python libraries from the global environment.</p>
+
+<pre><code>mkvirtualenv --no-site-packages -p ~/.localpython-2.7.9/bin/python python279  
+</code></pre>
+
+<p>Here on, we call switch to this new environment using the below,</p>
+
+<pre><code>workon python279  
+</code></pre>
+
+<p>Can get out this environment by using</p>
+
+<pre><code>deactivate  
+</code></pre>]]></content:encoded></item><item><title><![CDATA[Python and state of SSL/TLS]]></title><description><![CDATA[<p>Python 2.7.9 introduces a <code>ssl.SSLContext</code> object to make selecting SSL version easier.</p>
+
+<p>Since using SSLv2 or SSLv3 is a crime, most systems rely on TLSv1, TLSv1.1 or TLSv1.2. The SSLContext obect makes it easier to define the generic subset of protocol one desires and then</p>]]></description><link>http://localhost:2368/python-and-state-of-ssl-tls/</link><guid isPermaLink="false">2d44fda1-fd55-4c61-a564-997611a5cefc</guid><category><![CDATA[ucspython]]></category><category><![CDATA[ucsmsdk]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Wed, 23 Nov 2016 15:37:47 GMT</pubDate><content:encoded><![CDATA[<p>Python 2.7.9 introduces a <code>ssl.SSLContext</code> object to make selecting SSL version easier.</p>
+
+<p>Since using SSLv2 or SSLv3 is a crime, most systems rely on TLSv1, TLSv1.1 or TLSv1.2. The SSLContext obect makes it easier to define the generic subset of protocol one desires and then individually turnoff some of them.</p>
+
+<p>The below code relies only on TLSv1, TLSv1.1, TLSv1.2 and not use SSLv2 or SSLv3</p>
+
+<pre><code>ssl_context = ssl.SSLContext(ssl.PROTOCOL_SSLv23)  
+ssl_context.options |= ssl.OP_NO_SSLv2  
+ssl_context.options |= ssl.OP_NO_SSLv3  
+</code></pre>
+
+<p>So, How can this be used in the larger context. <br>
+We use <code>urllib2</code> and so the above needs to fit into one of the handlers.</p>
+
+<pre><code>opener = urllib2.build_opener(TLSHandler)  
+response = opener.open(url)
+
+class TLSHandler(urllib2.HTTPSHandler):  
+    """Like HTTPSHandler but more specific"""                                   
+
+    def __init__(self):                                                         
+    ¦   urllib2.HTTPSHandler.__init__(self)                                     
+
+    def https_open(self, req):                                                  
+    ¦   return self.do_open(TLSConnection, req) 
+
+class TLSConnection(httplib.HTTPSConnection):  
+    """Like HTTPSConnection but more specific"""                                
+
+    def __init__(self, host, **kwargs):                                         
+    ¦   httplib.HTTPSConnection.__init__(self, host, **kwargs)                  
+
+    def connect(self):                                                          
+    ¦   """Overrides HTTPSConnection.connect to specify TLS version"""          
+    ¦   # Standard implementation from HTTPSConnection, which is not            
+    ¦   # designed for extension, unfortunately                                 
+    ¦   sock = socket.create_connection((self.host, self.port),             
+    ¦   ¦   ¦   self.timeout, self.source_address)  
+
+    ¦   if getattr(self, '_tunnel_host', None):                                 
+    ¦   ¦   self.sock = sock                                                    
+    ¦   ¦   self._tunnel()                                                      
+
+    ¦   # Since python 2.7.9, tls 1.1 and 1.2 are supported via 
+    ¦   # SSLContext                                                        
+    ¦   ssl_context = ssl.SSLContext(ssl.PROTOCOL_SSLv23)                   
+    ¦   ssl_context.options |= ssl.OP_NO_SSLv2                              
+    ¦   ssl_context.options |= ssl.OP_NO_SSLv3                              
+    ¦   ssl_context.load_cert_chain(keyfile, certfile)            
+    ¦   self.sock = ssl_context.wrap_socket(sock)  
+</code></pre>
+
+<p>This would produce a <code>SSL_UNSUPPORTED_VERSION</code> error when the server does not support TLSv1/1.1/1.2</p>
+
+<p>note: TLSv1.1 and TLSv1.2 are supported only since Openssl version 1.0.1. And so, you might have Python >= 2.7.9 and still not see <code>PROTOCOL_TLSv1_1</code> and <code>PROTOCOL_TLSv1_2</code> unless the openssl version is correct.</p>
+
+<p>TLS 1.2 handshake fails in some clients, because of a TLV length padding issue. In such cases, we should fallback to TLSv1.</p>]]></content:encoded></item><item><title><![CDATA[Python and Ctags]]></title><description><![CDATA[<p>You want to jump to definition of a method, but ctags keep taking you to the import line of that method?</p>
+
+<p>add the following to ~/.ctags</p>
+
+<pre><code>--python-kinds=-i
+</code></pre>]]></description><link>http://localhost:2368/python-and-ctags/</link><guid isPermaLink="false">cf40fe70-bc98-4dd9-8c69-1ab17f7456ff</guid><category><![CDATA[ucspython]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 07 Nov 2016 23:30:58 GMT</pubDate><content:encoded><![CDATA[<p>You want to jump to definition of a method, but ctags keep taking you to the import line of that method?</p>
+
+<p>add the following to ~/.ctags</p>
+
+<pre><code>--python-kinds=-i
+</code></pre>]]></content:encoded></item><item><title><![CDATA[Auto-generate python script for tasks done on UI]]></title><description><![CDATA[<p>Welcome the <code>convert_to_ucs_python</code> API.</p>
+
+<p>Assumption:</p>
+
+<p>User knows to do an operation via the JAVA based UCSM GUI <br>
+UCSM UI and <code>convert_to_ucs_python</code> should be launched on the same client machine.</p>
+
+<p>Basic Idea:</p>
+
+<ul>
+<li>launch the JAVA based UCSM UI</li>
+<li>launch the python shell and invoke <code>convert_</code></li></ul>]]></description><link>http://localhost:2368/auto-generate-python-script-for-tasks-done-on-ui/</link><guid isPermaLink="false">fcf18feb-e505-4323-89bf-d51cd6ccb5f6</guid><category><![CDATA[ucsmsdk]]></category><category><![CDATA[ucspython]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 07 Nov 2016 23:22:28 GMT</pubDate><content:encoded><![CDATA[<p>Welcome the <code>convert_to_ucs_python</code> API.</p>
+
+<p>Assumption:</p>
+
+<p>User knows to do an operation via the JAVA based UCSM GUI <br>
+UCSM UI and <code>convert_to_ucs_python</code> should be launched on the same client machine.</p>
+
+<p>Basic Idea:</p>
+
+<ul>
+<li>launch the JAVA based UCSM UI</li>
+<li>launch the python shell and invoke <code>convert_to_ucs_python</code></li>
+<li>perform the desired operation on the UI</li>
+<li><code>convert_to_ucs_python</code> monitors the operation and generates equivalent python script for the same.</li>
+</ul>
+
+<p>How it works:</p>
+
+<p>UCSM GUI logs all the activities that are performed via it, and the python shell monitors that log to generate the equivalent python script. Since the logging is local to the machine where the UI is running, <code>convert_to_ucs_python</code> also must run on the same machine. <br>
+Sample Usage:</p>
+
+<p>Step 1 - Launch the UCSM GUI.</p>
+
+<pre><code>from ucsmsdk.utils.ucsguilaunch import ucs_gui_launch  
+from ucsmsdk.ucshandle import UcsHandle
+
+# Login to the server
+handle = UcsHandle(&lt;ip&gt;, &lt;username&gt;, &lt;password&gt;)  
+handle.login()
+
+# launch the UCSM GUI
+ucs_gui_launch(handle)  
+</code></pre>
+
+<p>Step 2 - Run <code>convert_to_ucs_python</code></p>
+
+<p>The CLI will go into a listen mode until Ctrl+C is pressed again. Until then it prints equivalent script for operations done on the UI.</p>
+
+<p>Print the equivalent script to console</p>
+
+<pre><code>from ucsmsdk.utils.converttopython import convert_to_ucs_python
+
+convert_to_ucs_python()  
+</code></pre>
+
+<p><br>
+Print the equivalent script to console, also print the XMLs that the UI sends out</p>
+
+<pre><code>from ucsmsdk.utils.converttopython import convert_to_ucs_python
+
+convert_to_ucs_python(dump_xml=True)  
+</code></pre>
+
+<p>Output the script to a file</p>
+
+<pre><code>from ucsmsdk.utils.converttopython import convert_to_ucs_python
+
+file_path = r”/home/user/pythoncode.py”
+
+convert_to_ucs_python(dump_to_file=True, dump_file_path=file_path)  
+</code></pre>
+
+<p>XML to python</p>
+
+<pre><code>xml_str=’‘’&lt;configConfRename  
+                dn=”org-root/ls-ra1” 
+                inNewName=”ra2” 
+                inHierarchical=”false”&gt; 
+                &lt;/configConfRename&gt;’‘’
+
+convert_to_ucs_python(xml=True, request=xml_str)  
+</code></pre>
+
+<p>note:</p>
+
+<p>The path of UCSM UI logs is differs based on the OS and so sometimes the <code>convert_to_ucs_python</code> API may not be able to autodetect the logfiles that it needs to function. The following workaround can be applied in those cases,</p>
+
+<p>Manually find the path to which UCSM UI logs</p>
+
+<pre><code>$ sudo find / -name '.ucsm' 
+./Library/Application Support/Oracle/Java/Deployment/log/.ucsm 
+$
+</code></pre>
+
+<p>Run <code>convert_to_ucs_python</code> by specifying the log_path</p>
+
+<pre><code>from ucsmsdk.utils.converttopython import convert_to_ucs_python
+
+convert_to_ucs_python(gui_log=True, path=&lt;path that was found above&gt;)  
+</code></pre>]]></content:encoded></item><item><title><![CDATA[watch for ucs server events - ucsmsdk]]></title><description><![CDATA[<p>Starting 0.9.1.1 we have simplified the code required to wait for an event.</p>
+
+<p>The below code creates a Service Profile Mo <code>org-root/ls-eventhandle</code> <br>
+We then create two threads each thread invokes a wait<em>for</em>event method to wait for a specific condition <br>
+Here, we wait for the</p>]]></description><link>http://localhost:2368/watch-for-ucs-server-events-ucsmsdk/</link><guid isPermaLink="false">93f6ab52-9442-41cb-a93f-b9073134c1b0</guid><category><![CDATA[ucsmsdk]]></category><category><![CDATA[ucspython]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 07 Nov 2016 23:08:02 GMT</pubDate><content:encoded><![CDATA[<p>Starting 0.9.1.1 we have simplified the code required to wait for an event.</p>
+
+<p>The below code creates a Service Profile Mo <code>org-root/ls-eventhandle</code> <br>
+We then create two threads each thread invokes a wait<em>for</em>event method to wait for a specific condition <br>
+Here, we wait for the <code>descr</code> property to change to specific values</p>
+
+<pre><code>import threading  
+from ucsmsdk.ucshandle import UcsHandle  
+from ucsmsdk.mometa.ls.LsServer import LsServer
+
+handle = UcsHandle(&lt;ucsm_ip&gt;, &lt;username&gt;, &lt;password&gt;)  
+handle.login()
+
+
+# remove is already exists
+sp = handle.query_dn("org-root/ls-eventhandle")  
+if sp:  
+    handle.remove_mo(sp)
+    handle.commit()
+
+
+# add
+org = handle.query_dn("org-root")  
+sp = LsServer(org, name="eventhandle", descr="")  
+handle.add_mo(sp, True)  
+handle.commit()
+
+
+def cb(mce):  
+    print mce.mo.descr
+
+
+def one():  
+    handle.wait_for_event(sp, "descr", "demo_one", cb)
+
+
+def two():  
+    handle.wait_for_event(sp, "descr", ["demo_two", "demo_three"], cb)
+
+t1 = threading.Thread(name="thread1", target=one)  
+t2 = threading.Thread(name="thread2", target=two)
+
+t1.start()  
+t2.start()
+
+t1.join()  
+t2.join()
+
+handle.logout()  
+</code></pre>
+
+<p>The above code when executed will wait, until both the threads finish waiting.</p>
+
+<p>The below script changes the <code>descr</code> property to match condition in thread1. Similarly, thread2's wait ends when either of the two values specified in thread2's <code>wait_for_event</code> are seen.</p>
+
+<pre><code>from ucsmsdk.ucshandle import UcsHandle
+
+handle = UcsHandle(&lt;ucsm_ip&gt;, &lt;username&gt;, &lt;password&gt;)  
+handle.login()
+
+sp = handle.query_dn("org-root/ls-eventhandle")
+
+# modify
+sp.descr = "demo_one"  
+handle.set_mo(sp)  
+handle.commit()
+
+handle.logout()  
+</code></pre>]]></content:encoded></item><item><title><![CDATA[metadata and MO information - ucsmsdk]]></title><description><![CDATA[<p>ucsmsdk now has helper methods to help figure out MO names and dig into the properties and other metadata provided by an object.</p>
+
+<pre><code>from ucsmsdk.ucscoreutils import search_class_id  
+from ucsmsdk.ucscoreutils import get_meta_info  
+</code></pre>
+
+<p><code>search_class_id</code> is a case-insensitive grep method that searches all MO names.</p>]]></description><link>http://localhost:2368/metadata-and-mo-information-ucsmsdk/</link><guid isPermaLink="false">fa58f6f5-1977-4ba9-9326-71ef4d005348</guid><category><![CDATA[ucsmsdk]]></category><category><![CDATA[ucspython]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 07 Nov 2016 23:06:21 GMT</pubDate><content:encoded><![CDATA[<p>ucsmsdk now has helper methods to help figure out MO names and dig into the properties and other metadata provided by an object.</p>
+
+<pre><code>from ucsmsdk.ucscoreutils import search_class_id  
+from ucsmsdk.ucscoreutils import get_meta_info  
+</code></pre>
+
+<p><code>search_class_id</code> is a case-insensitive grep method that searches all MO names.</p>
+
+<pre><code>In [6]: search_class_id("vlan")  
+2016-06-11 02:26:01,741 - ucs - INFO - "vlan" did not match any available Class Ids.  
+Related Class Ids are:  
+----------------------
+AdaptorVlan  
+FabricBHVlan  
+FabricEthVlanPc  
+FabricEthVlanPortEp  
+FabricOrgVlanPolicy  
+FabricPoolableVlan  
+FabricPooledVlan  
+FabricVlan  
+FabricVlanEp  
+FabricVlanGroupReq  
+FabricVlanPermit  
+FabricVlanReq  
+SwVlan  
+SwVlanGroup  
+SwVlanPortNs  
+SwVlanPortNsOverride  
+SwVlanRef  
+VmVlan  
+VnicLifVlan  
+VnicVlan  
+</code></pre>
+
+<p>Once you have figured the correct MO name, you can use get<em>meta</em>info to dig further into the MO. <br>
+Below we get meta information for <code>FabricVlan</code></p>
+
+<p>It starts with a tree view of where <code>FabricVlan</code> fits, it parents and children. <br>
+Then it shows MO information <br>
+Finally, it shows information about properties of the MO. <br>
+Mo Property information: <br>
+<code>xml_attribute</code> - the name of the property as expected by the server.</p>
+
+<p><code>field_type</code> - type of the field</p>
+
+<p><code>min_version</code> - Ucs server release in which the property was first introduced</p>
+
+<p><code>access</code> - defines if a property is interal/user-readable/user-writable</p>
+
+<p>property restrictions: <br>
+<code>min_length</code> - minimum length for string property type</p>
+
+<p><code>max_length</code> - maximum length for string property type</p>
+
+<p><code>pattern</code> - allowed patterns, regexs</p>
+
+<p><code>value_set</code> - set of allowed values for this property</p>
+
+<p><code>range_val</code> - range for int/uint values</p>
+
+<pre><code>In [7]: class_meta = get_meta_info("FabricVlan")  
+In [8]: print class_meta  
+[FabricEthEstc]
+[FabricEthEstcCloud]
+[FabricEthLan]
+[FabricLanCloud]
+  |-FabricVlan
+     |-FabricEthMonFiltEp
+     |-FabricEthMonSrcEp
+     |-FabricEthVlanPc
+     |  |-FaultInst
+     |-FabricEthVlanPortEp
+     |  |-FaultInst
+     |-FabricPoolableVlan
+     |-FabricSwSubGroup
+     |  |-FabricEthVlanPortEp
+     |  |  |-FaultInst
+     |  |-FabricFcoeVsanPortEp
+     |     |-FaultInst
+     |-FaultInst
+
+ClassId                         FabricVlan  
+-------                         ----------
+xml_attribute                   :fabricVlan  
+rn                              :net-[name]  
+min_version                     :1.0(1e)  
+access                          :InputOutput  
+access_privilege                :['admin', 'ext-lan-config', 'ext-lan-policy']  
+parents                         :[u'fabricEthEstc', u'fabricEthEstcCloud', u'fabricEthLan', u'fabricLanCloud']  
+children                        :[u'fabricEthMonFiltEp', u'fabricEthMonSrcEp', u'fabricEthVlanPc', u'fabricEthVlanPortEp', u'fabricPoolableVlan', u'fabricSwSubGroup', u'faultInst']
+
+Property                        assoc_primary_vlan_state  
+--------                        ------------------------
+xml_attribute                   :assocPrimaryVlanState  
+field_type                      :string  
+min_version                     :2.2(2c)  
+access                          :READ_ONLY  
+min_length                      :None  
+max_length                      :None  
+pattern                         :None  
+value_set                       :['does-not-exists', 'is-empty', 'is-in-error-state', 'is-not-primary-type', 'ok']  
+range_val                       :[]
+
+Property                        assoc_primary_vlan_switch_id  
+--------                        ----------------------------
+xml_attribute                   :assocPrimaryVlanSwitchId  
+field_type                      :string  
+min_version                     :2.2(2c)  
+access                          :READ_ONLY  
+min_length                      :None  
+max_length                      :None  
+pattern                         :None  
+value_set                       :['A', 'B', 'NONE']  
+range_val                       :[]
+
+Property                        child_action  
+--------                        ------------
+xml_attribute                   :childAction  
+field_type                      :string  
+min_version                     :1.0(1e)  
+access                          :INTERNAL  
+min_length                      :None  
+max_length                      :None  
+pattern                         :((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}  
+value_set                       :[]  
+range_val                       :[]
+
+Property                        cloud  
+--------                        -----
+xml_attribute                   :cloud  
+field_type                      :string  
+min_version                     :2.1(1a)  
+access                          :READ_ONLY  
+min_length                      :None  
+max_length                      :None  
+pattern                         :((defaultValue|unknown|fcsanmon|ethlan|ethestclan|fcestc|ethlanmon|fcsan),){0,7}(defaultValue|unknown|fcsanmon|ethlan|ethestclan|fcestc|ethlanmon|fcsan){0,1}  
+value_set                       :[]  
+range_val                       :[]
+
+Property                        compression_type  
+--------                        ----------------
+xml_attribute                   :compressionType  
+field_type                      :string  
+min_version                     :2.1(1a)  
+access                          :READ_WRITE  
+min_length                      :None  
+max_length                      :None  
+pattern                         :None  
+value_set                       :['excluded', 'included']  
+range_val                       :[]
+
+Property                        config_issues  
+--------                        -------------
+xml_attribute                   :configIssues  
+field_type                      :string  
+min_version                     :2.1(1a)  
+access                          :READ_ONLY  
+min_length                      :None  
+max_length                      :None  
+pattern                         :((defaultValue|not-applicable|conflicting-vlan-access|unsupported-multicast-policy),){0,3}(defaultValue|not-applicable|conflicting-vlan-access|unsupported-multicast-policy){0,1}  
+value_set                       :[]  
+range_val                       :[]
+
+Property                        default_net  
+--------                        -----------
+xml_attribute                   :defaultNet  
+field_type                      :string  
+min_version                     :1.0(1e)  
+access                          :READ_WRITE  
+min_length                      :None  
+max_length                      :None  
+pattern                         :None  
+value_set                       :['false', 'no', 'true', 'yes']  
+range_val                       :[]
+
+Property                        dn  
+--------                        --
+xml_attribute                   :dn  
+field_type                      :string  
+min_version                     :1.0(1e)  
+access                          :READ_ONLY  
+min_length                      :0  
+max_length                      :256  
+pattern                         :None  
+value_set                       :[]  
+range_val                       :[]
+
+Property                        ep_dn  
+--------                        -----
+xml_attribute                   :epDn  
+field_type                      :string  
+min_version                     :1.0(1e)  
+access                          :READ_ONLY  
+min_length                      :0  
+max_length                      :256  
+pattern                         :None  
+value_set                       :[]  
+range_val                       :[]
+
+Property                        flt_aggr  
+--------                        --------
+xml_attribute                   :fltAggr  
+field_type                      :ulong  
+min_version                     :2.1(1a)  
+access                          :INTERNAL  
+min_length                      :None  
+max_length                      :None  
+pattern                         :None  
+value_set                       :[]  
+range_val                       :[]
+
+Property                        id  
+--------                        --
+xml_attribute                   :id  
+field_type                      :uint  
+min_version                     :1.0(1e)  
+access                          :READ_WRITE  
+min_length                      :None  
+max_length                      :None  
+pattern                         :None  
+value_set                       :[]  
+range_val                       :['1-4029', '4048-4093']
+
+Property                        if_role  
+--------                        -------
+xml_attribute                   :ifRole  
+field_type                      :string  
+min_version                     :1.0(1e)  
+access                          :READ_ONLY  
+min_length                      :None  
+max_length                      :None  
+pattern                         :None  
+value_set                       :['diag', 'fcoe-nas-storage', 'fcoe-storage', 'fcoe-uplink', 'mgmt', 'monitor', 'nas-storage', 'network', 'network-fcoe-uplink', 'server', 'service', 'storage', 'unknown']  
+range_val                       :[]
+
+Property                        if_type  
+--------                        -------
+xml_attribute                   :ifType  
+field_type                      :string  
+min_version                     :1.0(1e)  
+access                          :READ_ONLY  
+min_length                      :None  
+max_length                      :None  
+pattern                         :None  
+value_set                       :['aggregation', 'physical', 'unknown', 'virtual']  
+range_val                       :[]
+
+Property                        local  
+--------                        -----
+xml_attribute                   :local  
+field_type                      :ulong  
+min_version                     :2.1(2a)  
+access                          :READ_ONLY  
+min_length                      :None  
+max_length                      :None  
+pattern                         :None  
+value_set                       :[]  
+range_val                       :[]
+
+Property                        locale  
+--------                        ------
+xml_attribute                   :locale  
+field_type                      :string  
+min_version                     :1.0(1e)  
+access                          :READ_ONLY  
+min_length                      :None  
+max_length                      :None  
+pattern                         :((defaultValue|unknown|server|chassis|internal|external),){0,5}(defaultValue|unknown|server|chassis|internal|external){0,1}  
+value_set                       :[]  
+range_val                       :[]
+
+Property                        mcast_policy_name  
+--------                        -----------------
+xml_attribute                   :mcastPolicyName  
+field_type                      :string  
+min_version                     :2.1(1a)  
+access                          :READ_WRITE  
+min_length                      :None  
+max_length                      :None  
+pattern                         :[\-\.:_a-zA-Z0-9]{0,16}  
+value_set                       :[]  
+range_val                       :[]
+
+Property                        name  
+--------                        ----
+xml_attribute                   :name  
+field_type                      :string  
+min_version                     :1.0(1e)  
+access                          :NAMING  
+min_length                      :None  
+max_length                      :None  
+pattern                         :[\-\.:_a-zA-Z0-9]{1,32}  
+value_set                       :[]  
+range_val                       :[]
+
+Property                        oper_mcast_policy_name  
+--------                        ----------------------
+xml_attribute                   :operMcastPolicyName  
+field_type                      :string  
+min_version                     :2.1(1a)  
+access                          :READ_ONLY  
+min_length                      :0  
+max_length                      :256  
+pattern                         :None  
+value_set                       :[]  
+range_val                       :[]
+
+Property                        oper_state  
+--------                        ----------
+xml_attribute                   :operState  
+field_type                      :string  
+min_version                     :2.0(1m)  
+access                          :READ_ONLY  
+min_length                      :None  
+max_length                      :None  
+pattern                         :None  
+value_set                       :['error-misconfigured', 'ok']  
+range_val                       :[]
+
+Property                        overlap_state_for_a  
+--------                        -------------------
+xml_attribute                   :overlapStateForA  
+field_type                      :string  
+min_version                     :2.2(2c)  
+access                          :READ_ONLY  
+min_length                      :None  
+max_length                      :None  
+pattern                         :None  
+value_set                       :['active', 'not-active', 'ok', 'primary-id-mismatch', 'sharing-type-mismatch']  
+range_val                       :[]
+
+Property                        overlap_state_for_b  
+--------                        -------------------
+xml_attribute                   :overlapStateForB  
+field_type                      :string  
+min_version                     :2.2(2c)  
+access                          :READ_ONLY  
+min_length                      :None  
+max_length                      :None  
+pattern                         :None  
+value_set                       :['active', 'not-active', 'ok', 'primary-id-mismatch', 'sharing-type-mismatch']  
+range_val                       :[]
+
+Property                        peer_dn  
+--------                        -------
+xml_attribute                   :peerDn  
+field_type                      :string  
+min_version                     :1.0(1e)  
+access                          :READ_ONLY  
+min_length                      :0  
+max_length                      :256  
+pattern                         :None  
+value_set                       :[]  
+range_val                       :[]
+
+Property                        policy_owner  
+--------                        ------------
+xml_attribute                   :policyOwner  
+field_type                      :string  
+min_version                     :2.1(2a)  
+access                          :READ_WRITE  
+min_length                      :None  
+max_length                      :None  
+pattern                         :None  
+value_set                       :['local', 'pending-policy', 'policy']  
+range_val                       :[]
+
+Property                        pub_nw_dn  
+--------                        ---------
+xml_attribute                   :pubNwDn  
+field_type                      :string  
+min_version                     :1.4(1i)  
+access                          :READ_ONLY  
+min_length                      :0  
+max_length                      :256  
+pattern                         :None  
+value_set                       :[]  
+range_val                       :[]
+
+Property                        pub_nw_id  
+--------                        ---------
+xml_attribute                   :pubNwId  
+field_type                      :uint  
+min_version                     :1.4(1i)  
+access                          :READ_ONLY  
+min_length                      :None  
+max_length                      :None  
+pattern                         :None  
+value_set                       :[]  
+range_val                       :[]
+
+Property                        pub_nw_name  
+--------                        -----------
+xml_attribute                   :pubNwName  
+field_type                      :string  
+min_version                     :1.4(1i)  
+access                          :READ_WRITE  
+min_length                      :0  
+max_length                      :510  
+pattern                         :None  
+value_set                       :[]  
+range_val                       :[]
+
+Property                        r_global  
+--------                        --------
+xml_attribute                   :global  
+field_type                      :ulong  
+min_version                     :2.1(2a)  
+access                          :READ_ONLY  
+min_length                      :None  
+max_length                      :None  
+pattern                         :None  
+value_set                       :[]  
+range_val                       :[]
+
+Property                        rn  
+--------                        --
+xml_attribute                   :rn  
+field_type                      :string  
+min_version                     :1.0(1e)  
+access                          :READ_ONLY  
+min_length                      :0  
+max_length                      :256  
+pattern                         :None  
+value_set                       :[]  
+range_val                       :[]
+
+Property                        sacl  
+--------                        ----
+xml_attribute                   :sacl  
+field_type                      :string  
+min_version                     :3.0(2a)  
+access                          :READ_ONLY  
+min_length                      :None  
+max_length                      :None  
+pattern                         :((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}  
+value_set                       :[]  
+range_val                       :[]
+
+Property                        sharing  
+--------                        -------
+xml_attribute                   :sharing  
+field_type                      :string  
+min_version                     :1.4(1i)  
+access                          :READ_WRITE  
+min_length                      :None  
+max_length                      :None  
+pattern                         :None  
+value_set                       :['community', 'isolated', 'none', 'primary']  
+range_val                       :[]
+
+Property                        status  
+--------                        ------
+xml_attribute                   :status  
+field_type                      :string  
+min_version                     :1.0(1e)  
+access                          :READ_WRITE  
+min_length                      :None  
+max_length                      :None  
+pattern                         :((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}  
+value_set                       :[]  
+range_val                       :[]
+
+Property                        switch_id  
+--------                        ---------
+xml_attribute                   :switchId  
+field_type                      :string  
+min_version                     :1.0(1e)  
+access                          :READ_ONLY  
+min_length                      :None  
+max_length                      :None  
+pattern                         :None  
+value_set                       :['A', 'B', 'NONE', 'dual']  
+range_val                       :[]
+
+Property                        transport  
+--------                        ---------
+xml_attribute                   :transport  
+field_type                      :string  
+min_version                     :1.0(1e)  
+access                          :READ_ONLY  
+min_length                      :None  
+max_length                      :None  
+pattern                         :((defaultValue|unknown|ether|dce|fc),){0,4}(defaultValue|unknown|ether|dce|fc){0,1}  
+value_set                       :[]  
+range_val                       :[]
+
+Property                        type  
+--------                        ----
+xml_attribute                   :type  
+field_type                      :string  
+min_version                     :1.0(1e)  
+access                          :READ_ONLY  
+min_length                      :None  
+max_length                      :None  
+pattern                         :((defaultValue|unknown|lan|san|ipc),){0,4}(defaultValue|unknown|lan|san|ipc){0,1}  
+value_set                       :[]  
+range_val                       :[]
+</code></pre>]]></content:encoded></item><item><title><![CDATA[Multiple parallel transactions - ucsmsdk 0.9.1.1]]></title><description><![CDATA[<p>Until <code>ucsmsdk</code> 0.9.1.0 everything until a <code>handle.commit</code> was a single transaction,</p>
+
+<pre><code>handle.add_mo(mo1)  
+handle.add_mo(mo2)  
+handle.remove_mo(mo3)  
+handle.commit()  
+</code></pre>
+
+<p>Starting 0.9.1.1 there is an optional <code>tag</code> parameter added to <code>add_mo</code>,<code>set_mo</code>,<code>remove_mo</code>,<code>commit</code>. <code>tag</code></p>]]></description><link>http://localhost:2368/multiple-parallel-transactions-ucsmsdk-0-9-1-1/</link><guid isPermaLink="false">1d7533c5-68a6-45e3-ab91-622692bd10a0</guid><category><![CDATA[ucsmsdk]]></category><category><![CDATA[ucspython]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 07 Nov 2016 23:03:23 GMT</pubDate><content:encoded><![CDATA[<p>Until <code>ucsmsdk</code> 0.9.1.0 everything until a <code>handle.commit</code> was a single transaction,</p>
+
+<pre><code>handle.add_mo(mo1)  
+handle.add_mo(mo2)  
+handle.remove_mo(mo3)  
+handle.commit()  
+</code></pre>
+
+<p>Starting 0.9.1.1 there is an optional <code>tag</code> parameter added to <code>add_mo</code>,<code>set_mo</code>,<code>remove_mo</code>,<code>commit</code>. <code>tag</code> is the scope of a transaction.</p>
+
+<p>So, here is how two parallel transactions can be done.  </p>
+
+<pre><code>handle.add_mo(mo1, tag="trans_1")  
+handle.add_mo(mo2, tag="trans_2")  
+handle.add_mo(mo3, tag="trans_1")  
+handle.remove_mo(mo4, tag="trans_2")
+
+# Commit transaction #2
+handle.commit(tag="trans_2")
+
+handle.add_mo(mo5, tag="trans_1")
+
+# Commit transaction #1
+handle.commit(tag="trans_1")  
+</code></pre>
+
+<p>use case: if we wanted to use the same handle object in different threads, the thread.name could be passed as the tag parameter. This would ensure that operations in one thread do not affect others.</p>
+
+<p>Without the tag parameter the behaviour is as it was in 0.9.1.0</p>]]></content:encoded></item></channel></rss>

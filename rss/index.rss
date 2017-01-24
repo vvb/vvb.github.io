@@ -1,4 +1,4 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Tue, 24 Jan 2017 06:06:23 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Inventory Ucs Managed servers via ucsmsdk</title><description>&lt;p&gt;ucsmsdk 0.9.3.0 will add support for inventory APIs. &lt;br&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Tue, 24 Jan 2017 15:21:59 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Inventory Ucs Managed servers via ucsmsdk</title><description>&lt;p&gt;ucsmsdk 0.9.3.0 will add support for inventory APIs. &lt;br&gt;
 This allows for multi-host multi-component inventory in multiple formats(enough of multiple? :-D ).&lt;/p&gt;
 
 &lt;p&gt;The inventory APIs support inventorying,&lt;/p&gt;
@@ -66,7 +66,23 @@ get_inventory(handle=handle, component=["cpu", "disks"], file_format="csv", file
 get_inventory(handle=handle, component=["cpu", "disks"], file_format="html", file_name="inventory.html")  
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;This can be tried out today via the code available at &lt;a href="https://github.com/ciscoucs/ucsmsdk"&gt;https://github.com/ciscoucs/ucsmsdk&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title>debugging in an ansible environment</title><description>&lt;p&gt;I was looking for a PDB sort of debugger for debugging custom ansible modules written in Python. This is when i bumped into &lt;a href="http://michaeldehaan.net/post/35403909347/tips-on-using-debuggers-with-ansible"&gt;this&lt;/a&gt; blog.&lt;/p&gt;
+&lt;p&gt;This can be tried out today via the code available at &lt;a href="https://github.com/ciscoucs/ucsmsdk"&gt;https://github.com/ciscoucs/ucsmsdk&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;complete code to run it,  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#! /usr/bin/env python
+
+from ucsmsdk.ucshandle import UcsHandle  
+from ucsmsdk.utils.inventory import get_inventory
+
+handle = UcsHandle("192.168.1.1", "username", "password")  
+handle.login()
+
+# This would create inventory.html in the same directory where the script is run from
+get_inventory(handle=handle, component="all", file_format="html", file_name="inventory.html")
+
+handle.logout()  
+&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title>debugging in an ansible environment</title><description>&lt;p&gt;I was looking for a PDB sort of debugger for debugging custom ansible modules written in Python. This is when i bumped into &lt;a href="http://michaeldehaan.net/post/35403909347/tips-on-using-debuggers-with-ansible"&gt;this&lt;/a&gt; blog.&lt;/p&gt;
 
 &lt;p&gt;As recommended on the blog, I tried out &lt;code&gt;epdb&lt;/code&gt; and it works great for debugging custom ansible modules written in python.&lt;/p&gt;
 

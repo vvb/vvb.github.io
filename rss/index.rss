@@ -1,4 +1,72 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Wed, 11 Jan 2017 02:45:02 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>debugging in an ansible environment</title><description>&lt;p&gt;I was looking for a PDB sort of debugger for debugging custom ansible modules written in Python. This is when i bumped into &lt;a href="http://michaeldehaan.net/post/35403909347/tips-on-using-debuggers-with-ansible"&gt;this&lt;/a&gt; blog.&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Tue, 24 Jan 2017 06:06:23 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Inventory Ucs Managed servers via ucsmsdk</title><description>&lt;p&gt;ucsmsdk 0.9.3.0 will add support for inventory APIs. &lt;br&gt;
+This allows for multi-host multi-component inventory in multiple formats(enough of multiple? :-D ).&lt;/p&gt;
+
+&lt;p&gt;The inventory APIs support inventorying,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;- fabric interconnects
+- cpus
+- disks
+- dimms
+- storage controller
+- VIC
+- vNICs
+- vHBAs
+- PSUs
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The&lt;/p&gt;</description><link>http://localhost:2368/inventory-ucs-managed-servers-via-ucsmsdk/</link><guid isPermaLink="false">017cc972-97b5-4343-a39e-9f777602a504</guid><category>ucspython</category><category>ucsmsdk</category><dc:creator>vvb</dc:creator><pubDate>Tue, 24 Jan 2017 06:04:13 GMT</pubDate><content:encoded>&lt;p&gt;ucsmsdk 0.9.3.0 will add support for inventory APIs. &lt;br&gt;
+This allows for multi-host multi-component inventory in multiple formats(enough of multiple? :-D ).&lt;/p&gt;
+
+&lt;p&gt;The inventory APIs support inventorying,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;- fabric interconnects
+- cpus
+- disks
+- dimms
+- storage controller
+- VIC
+- vNICs
+- vHBAs
+- PSUs
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The supported output formats for the report are,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;- csv
+- html
+- json
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;we recommend using the html format, as it has inbuilt javascript based filtering. It can quickly help narrow down a certain component on a certain host.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;from ucsmsdk.utils.inventory import get_inventory
+
+# Gets inventory of all components in JSON format
+get_inventory(handle=handle)
+
+# Gets inventory for all servers all components in JSON format
+get_inventory(handle=[handle1, handle2, handle3])
+
+# Gets inventory of one server all components in JSON format
+get_inventory(handle=handle, component="all")
+
+# Gets disks inventory of one server in JSON format
+get_inventory(handle=handle, component="disks")
+
+# Gets cpu and disks inventory for one server in JSON format
+get_inventory(handle=handle, component=["cpu", "disks"])
+
+# Gets cpu and disks inventory for one server in JSON format and writes to inventory.json file
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="json", file_name="inventory.json")
+
+# Gets cpu and disks inventory for one server in CSV format and writes to inventory.csv fie
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="csv", file_name="inventory.csv")
+
+# Gets cpu and disks inventory for one server in HTML format and writes to inventory.html
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="html", file_name="inventory.html")  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This can be tried out today via the code available at &lt;a href="https://github.com/ciscoucs/ucsmsdk"&gt;https://github.com/ciscoucs/ucsmsdk&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title>debugging in an ansible environment</title><description>&lt;p&gt;I was looking for a PDB sort of debugger for debugging custom ansible modules written in Python. This is when i bumped into &lt;a href="http://michaeldehaan.net/post/35403909347/tips-on-using-debuggers-with-ansible"&gt;this&lt;/a&gt; blog.&lt;/p&gt;
 
 &lt;p&gt;As recommended on the blog, I tried out &lt;code&gt;epdb&lt;/code&gt; and it works great for debugging custom ansible modules written in python.&lt;/p&gt;
 
@@ -1124,33 +1192,4 @@ handle.commit(tag="trans_1")
 
 &lt;p&gt;use case: if we wanted to use the same handle object in different threads, the thread.name could be passed as the tag parameter. This would ensure that operations in one thread do not affect others.&lt;/p&gt;
 
-&lt;p&gt;Without the tag parameter the behaviour is as it was in 0.9.1.0&lt;/p&gt;</content:encoded></item><item><title>Polling for a specific event ucsmsdk.</title><description>&lt;p&gt;Optional poll mode is added to wait&lt;em&gt;for&lt;/em&gt;event API&lt;/p&gt;
-
-&lt;p&gt;The below code will wait for the &lt;code&gt;usr_lbl&lt;/code&gt; property of the service profile &lt;code&gt;org-root/ls-demo-sp&lt;/code&gt; to change to &lt;code&gt;demo_label&lt;/code&gt;. It will poll the server every poll_sec=10 here. It will timeout after 600 seconds.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;wait_for_event&lt;/code&gt;&lt;/p&gt;</description><link>http://localhost:2368/polling-for-a-specific-event-ucsmsdk/</link><guid isPermaLink="false">634fffee-771e-4689-86c5-a33ee4731ec8</guid><category>ucsmsdk</category><category>ucspython</category><dc:creator>vvb</dc:creator><pubDate>Mon, 07 Nov 2016 23:01:12 GMT</pubDate><content:encoded>&lt;p&gt;Optional poll mode is added to wait&lt;em&gt;for&lt;/em&gt;event API&lt;/p&gt;
-
-&lt;p&gt;The below code will wait for the &lt;code&gt;usr_lbl&lt;/code&gt; property of the service profile &lt;code&gt;org-root/ls-demo-sp&lt;/code&gt; to change to &lt;code&gt;demo_label&lt;/code&gt;. It will poll the server every poll_sec=10 here. It will timeout after 600 seconds.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;wait_for_event&lt;/code&gt; will keep the script alive until (i) either the condition is met or (ii) timeout is triggered&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;from ucsmsdk.ucshandle import UcsHandle
-
-def usr_label_changed(mce):  
-     print(mce.mo.usr_label)
-     handle.logout()
-
-handle = UcsHandle("192.168.1.1", "username", "password")  
-handle.login()
-
-sp_mo = handle.query_dn("org-root/ls-demo-sp")
-
-handle.wait_for_event(  
-    mo=sp_mo,
-    prop="usr_lbl",
-    value="demo_label",
-    cb=usr_label_changed,
-    timeout=600,
-    poll_sec=10
-    )
-&lt;/code&gt;&lt;/pre&gt;</content:encoded></item></channel></rss>
+&lt;p&gt;Without the tag parameter the behaviour is as it was in 0.9.1.0&lt;/p&gt;</content:encoded></item></channel></rss>

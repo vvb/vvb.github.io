@@ -2,7 +2,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Running multiple versions of python</title>
+    <title>Inventory Ucs Managed servers via ucsmsdk</title>
     <meta name="description" content="">
 
     <meta name="HandheldFriendly" content="True">
@@ -15,21 +15,22 @@
     
     <meta property="og:site_name" content="Servers | Containers | Management">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Running multiple versions of python">
-    <meta property="og:description" content="You can generally run multiple version of Python minor release 2.7 vs 2.6. These are symlinks created in /usr/bin/.  But how do you go about running multiple versions of the the same minor release - 2.7.9 vs 2.7.10. I wrote a small script">
-    <meta property="og:url" content="http://localhost:2368/running-multiple-versions-of-python/">
-    <meta property="article:published_time" content="2016-11-23T17:45:55.000Z">
-    <meta property="article:modified_time" content="2016-11-24T13:12:00.000Z">
+    <meta property="og:title" content="Inventory Ucs Managed servers via ucsmsdk">
+    <meta property="og:description" content="ucsmsdk 0.9.3.0 will add support for inventory APIs.  This allows for multi-host multi-component inventory in multiple formats(enough of multiple? :-D ). The inventory APIs support inventorying, - fabric interconnects - cpus - disks - dimms - storage controller - VIC - vNICs - vHBAs - PSUs The">
+    <meta property="og:url" content="http://localhost:2368/inventory-ucs-managed-servers-via-ucsmsdk/">
+    <meta property="article:published_time" content="2017-01-24T06:04:13.000Z">
+    <meta property="article:modified_time" content="2017-01-24T06:06:15.000Z">
     <meta property="article:tag" content="ucspython">
+    <meta property="article:tag" content="ucsmsdk">
     
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Running multiple versions of python">
-    <meta name="twitter:description" content="You can generally run multiple version of Python minor release 2.7 vs 2.6. These are symlinks created in /usr/bin/.  But how do you go about running multiple versions of the the same minor release - 2.7.9 vs 2.7.10. I wrote a small script">
-    <meta name="twitter:url" content="http://localhost:2368/running-multiple-versions-of-python/">
+    <meta name="twitter:title" content="Inventory Ucs Managed servers via ucsmsdk">
+    <meta name="twitter:description" content="ucsmsdk 0.9.3.0 will add support for inventory APIs.  This allows for multi-host multi-component inventory in multiple formats(enough of multiple? :-D ). The inventory APIs support inventorying, - fabric interconnects - cpus - disks - dimms - storage controller - VIC - vNICs - vHBAs - PSUs The">
+    <meta name="twitter:url" content="http://localhost:2368/inventory-ucs-managed-servers-via-ucsmsdk/">
     <meta name="twitter:label1" content="Written by">
     <meta name="twitter:data1" content="vvb">
     <meta name="twitter:label2" content="Filed under">
-    <meta name="twitter:data2" content="ucspython">
+    <meta name="twitter:data2" content="ucspython, ucsmsdk">
     
     <script type="application/ld+json">
 {
@@ -46,12 +47,12 @@
         "url": "http://localhost:2368/author/vvb/",
         "sameAs": []
     },
-    "headline": "Running multiple versions of python",
-    "url": "http://localhost:2368/running-multiple-versions-of-python/",
-    "datePublished": "2016-11-23T17:45:55.000Z",
-    "dateModified": "2016-11-24T13:12:00.000Z",
-    "keywords": "ucspython",
-    "description": "You can generally run multiple version of Python minor release 2.7 vs 2.6. These are symlinks created in /usr/bin/.  But how do you go about running multiple versions of the the same minor release - 2.7.9 vs 2.7.10. I wrote a small script",
+    "headline": "Inventory Ucs Managed servers via ucsmsdk",
+    "url": "http://localhost:2368/inventory-ucs-managed-servers-via-ucsmsdk/",
+    "datePublished": "2017-01-24T06:04:13.000Z",
+    "dateModified": "2017-01-24T06:06:15.000Z",
+    "keywords": "ucspython, ucsmsdk",
+    "description": "ucsmsdk 0.9.3.0 will add support for inventory APIs.  This allows for multi-host multi-component inventory in multiple formats(enough of multiple? :-D ). The inventory APIs support inventorying, - fabric interconnects - cpus - disks - dimms - storage controller - VIC - vNICs - vHBAs - PSUs The",
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "http://localhost:2368"
@@ -844,64 +845,67 @@
         <article class="post">
 
             <header class="post-header">
-                <h1 class="post-title">Running multiple versions of python</h1>
+                <h1 class="post-title">Inventory Ucs Managed servers via ucsmsdk</h1>
                 <section class="post-meta">
                     <p class="author">by <a href="../../author/vvb/">vvb</a></p>
-                    <time class="post-date" datetime="2016-11-23">2016-11-23</time>
+                    <time class="post-date" datetime="2017-01-24">2017-01-24</time>
                 </section>
             </header>
             <section class="post-content">
 
-                <p>You can generally run multiple version of Python minor release 2.7 vs 2.6. These are symlinks created in /usr/bin/. </p>
+                <p>ucsmsdk 0.9.3.0 will add support for inventory APIs. <br>
+This allows for multi-host multi-component inventory in multiple formats(enough of multiple? :-D ).</p>
 
-<p>But how do you go about running multiple versions of the the same minor release - 2.7.9 vs 2.7.10.</p>
+<p>The inventory APIs support inventorying,</p>
 
-<p>I wrote a small script that downloads, builds python from source and installs it in a path of its own. </p>
-
-<p>The below is to be run with the required version, for e.g.<code>2.7.9</code>. </p>
-
-<pre><code>#!/bin/bash
-version=$1  
-mkdir ~/python  
-wget http://www.python.org/ftp/python/$version/Python-$version.tgz  
-tar -zxvf Python-$version.tgz  
-cd Python-$version  
-mkdir ~/.localpython-$version  
-./configure --prefix=$HOME/.localpython-$version
-make  
-make install  
+<pre><code>- fabric interconnects
+- cpus
+- disks
+- dimms
+- storage controller
+- VIC
+- vNICs
+- vHBAs
+- PSUs
 </code></pre>
 
-<p>It can then be used from ~/.localpython-2.7.9/bin/python.</p>
+<p>The supported output formats for the report are,</p>
 
-<p>we can now set up a virtual environment specifically for each version of python we have installed.</p>
-
-<p>Install virtualenv</p>
-
-<pre><code>sudo apt-get install virtualenv  
+<pre><code>- csv
+- html
+- json
 </code></pre>
 
-<p>Add the following to <code>~/.bashrc</code> or <code>~/.zshrc</code>,</p>
+<p>we recommend using the html format, as it has inbuilt javascript based filtering. It can quickly help narrow down a certain component on a certain host.</p>
 
-<pre><code>source /usr/local/bin/virtualenvwrapper.sh  
-export WORKON_HOME="$HOME/virtual_env/"  
-export PIP_VIRTUALENV_BASE=$WORKON_HOME  
+<pre><code>from ucsmsdk.utils.inventory import get_inventory
+
+# Gets inventory of all components in JSON format
+get_inventory(handle=handle)
+
+# Gets inventory for all servers all components in JSON format
+get_inventory(handle=[handle1, handle2, handle3])
+
+# Gets inventory of one server all components in JSON format
+get_inventory(handle=handle, component="all")
+
+# Gets disks inventory of one server in JSON format
+get_inventory(handle=handle, component="disks")
+
+# Gets cpu and disks inventory for one server in JSON format
+get_inventory(handle=handle, component=["cpu", "disks"])
+
+# Gets cpu and disks inventory for one server in JSON format and writes to inventory.json file
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="json", file_name="inventory.json")
+
+# Gets cpu and disks inventory for one server in CSV format and writes to inventory.csv fie
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="csv", file_name="inventory.csv")
+
+# Gets cpu and disks inventory for one server in HTML format and writes to inventory.html
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="html", file_name="inventory.html")  
 </code></pre>
 
-<p>Now you can create a new environment using the below command. The <code>-p</code> option specifies the python version to use for this environment. <code>--no-site-packages</code> will restrict this environment from using the python libraries from the global environment.</p>
-
-<pre><code>mkvirtualenv --no-site-packages -p ~/.localpython-2.7.9/bin/python python279  
-</code></pre>
-
-<p>Here on, we call switch to this new environment using the below,</p>
-
-<pre><code>workon python279  
-</code></pre>
-
-<p>Can get out this environment by using</p>
-
-<pre><code>deactivate  
-</code></pre>
+<p>This can be tried out today via the code available at <a href="https://github.com/ciscoucs/ucsmsdk">https://github.com/ciscoucs/ucsmsdk</a></p>
 
             </section>
 

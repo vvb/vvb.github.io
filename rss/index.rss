@@ -1,4 +1,106 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Tue, 24 Jan 2017 15:21:59 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Inventory Ucs Managed servers via ucsmsdk</title><description>&lt;p&gt;ucsmsdk 0.9.3.0 will add support for inventory APIs. &lt;br&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Mon, 06 Feb 2017 22:55:32 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>ansible modules for Cisco UCS IMC server</title><description>&lt;h3 id="imcansible"&gt;imc-ansible&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;imc-ansible&lt;/code&gt; are a set of ansible modules for Cisco UCS standalone servers(IMC servers). &lt;/p&gt;
+
+&lt;h4 id="installation"&gt;installation&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;# Install ansible
+sudo pip install ansible
+
+# install imcsdk from github
+git clone https://github.com/ciscoucs/imcsdk  
+cd imcsdk  
+sudo make install
+
+# install imc-ansible from github
+git clone https://github.com/ciscoucs/imc-ansible  
+cd&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/ansible-modules-for-cisco-ucs-imc-server/</link><guid isPermaLink="false">53748709-f767-4c0b-b82b-d0e027b4f4be</guid><category>ansible</category><category>imcsdk</category><dc:creator>vvb</dc:creator><pubDate>Mon, 06 Feb 2017 22:55:04 GMT</pubDate><content:encoded>&lt;h3 id="imcansible"&gt;imc-ansible&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;imc-ansible&lt;/code&gt; are a set of ansible modules for Cisco UCS standalone servers(IMC servers). &lt;/p&gt;
+
+&lt;h4 id="installation"&gt;installation&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;# Install ansible
+sudo pip install ansible
+
+# install imcsdk from github
+git clone https://github.com/ciscoucs/imcsdk  
+cd imcsdk  
+sudo make install
+
+# install imc-ansible from github
+git clone https://github.com/ciscoucs/imc-ansible  
+cd imc-ansible  
+sudo python install.py  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id="samplerun"&gt;sample run&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;➔ ansible-playbook -i inventory site.yml
+
+PLAY [imc]  
+*********************************************************************
+
+TASK [common : check if imcsdk is installed]  
+***********************************
+ok: [fpmr1_192.168.1.1]
+
+TASK [common : install imcsdk]  
+*************************************************
+skipping: [fpmr1_192.168.1.1]
+
+TASK [admin : set password policy]  
+*********************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : create local user]  
+***********************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : delete local user]  
+***********************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : reset password policy]  
+*******************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : enable ntp]  
+******************************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : disable ntp]  
+*****************************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : enable LDAP]  
+*****************************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : disable LDAP]  
+****************************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [boot : set boot order]  
+***************************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [boot : set boot order alternate]  
+*****************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [storage : create virtual drive]  
+******************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [storage : delete virtual drive]  
+******************************************
+changed: [fpmr1_192.168.1.1]
+
+PLAY RECAP  
+*********************************************************************
+fpmr1_192.168.1.1       : ok=13   changed=12   unreachable=0    failed=0  
+&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title>Inventory Ucs Managed servers via ucsmsdk</title><description>&lt;p&gt;ucsmsdk 0.9.3.0 will add support for inventory APIs. &lt;br&gt;
 This allows for multi-host multi-component inventory in multiple formats(enough of multiple? :-D ).&lt;/p&gt;
 
 &lt;p&gt;The inventory APIs support inventorying,&lt;/p&gt;
@@ -1172,40 +1274,4 @@ max_length                      :None
 pattern                         :((defaultValue|unknown|lan|san|ipc),){0,4}(defaultValue|unknown|lan|san|ipc){0,1}  
 value_set                       :[]  
 range_val                       :[]
-&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title>Multiple parallel transactions - ucsmsdk 0.9.1.1</title><description>&lt;p&gt;Until &lt;code&gt;ucsmsdk&lt;/code&gt; 0.9.1.0 everything until a &lt;code&gt;handle.commit&lt;/code&gt; was a single transaction,&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;handle.add_mo(mo1)  
-handle.add_mo(mo2)  
-handle.remove_mo(mo3)  
-handle.commit()  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Starting 0.9.1.1 there is an optional &lt;code&gt;tag&lt;/code&gt; parameter added to &lt;code&gt;add_mo&lt;/code&gt;,&lt;code&gt;set_mo&lt;/code&gt;,&lt;code&gt;remove_mo&lt;/code&gt;,&lt;code&gt;commit&lt;/code&gt;. &lt;code&gt;tag&lt;/code&gt;&lt;/p&gt;</description><link>http://localhost:2368/multiple-parallel-transactions-ucsmsdk-0-9-1-1/</link><guid isPermaLink="false">1d7533c5-68a6-45e3-ab91-622692bd10a0</guid><category>ucsmsdk</category><category>ucspython</category><dc:creator>vvb</dc:creator><pubDate>Mon, 07 Nov 2016 23:03:23 GMT</pubDate><content:encoded>&lt;p&gt;Until &lt;code&gt;ucsmsdk&lt;/code&gt; 0.9.1.0 everything until a &lt;code&gt;handle.commit&lt;/code&gt; was a single transaction,&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;handle.add_mo(mo1)  
-handle.add_mo(mo2)  
-handle.remove_mo(mo3)  
-handle.commit()  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Starting 0.9.1.1 there is an optional &lt;code&gt;tag&lt;/code&gt; parameter added to &lt;code&gt;add_mo&lt;/code&gt;,&lt;code&gt;set_mo&lt;/code&gt;,&lt;code&gt;remove_mo&lt;/code&gt;,&lt;code&gt;commit&lt;/code&gt;. &lt;code&gt;tag&lt;/code&gt; is the scope of a transaction.&lt;/p&gt;
-
-&lt;p&gt;So, here is how two parallel transactions can be done.  &lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;handle.add_mo(mo1, tag="trans_1")  
-handle.add_mo(mo2, tag="trans_2")  
-handle.add_mo(mo3, tag="trans_1")  
-handle.remove_mo(mo4, tag="trans_2")
-
-# Commit transaction #2
-handle.commit(tag="trans_2")
-
-handle.add_mo(mo5, tag="trans_1")
-
-# Commit transaction #1
-handle.commit(tag="trans_1")  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;use case: if we wanted to use the same handle object in different threads, the thread.name could be passed as the tag parameter. This would ensure that operations in one thread do not affect others.&lt;/p&gt;
-
-&lt;p&gt;Without the tag parameter the behaviour is as it was in 0.9.1.0&lt;/p&gt;</content:encoded></item></channel></rss>
+&lt;/code&gt;&lt;/pre&gt;</content:encoded></item></channel></rss>

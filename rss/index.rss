@@ -1,4 +1,10 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Mon, 17 Apr 2017 18:59:13 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Reflection in go!</title><description>&lt;p&gt;Printing struct attributes and values using reflection.&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Mon, 17 Apr 2017 19:02:31 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Using http with pip</title><description>&lt;p&gt;Enforce using http with pip,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;pip install --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org &amp;lt;packageName&amp;gt;  
+&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/using-http-with-pip/</link><guid isPermaLink="false">7217758c-64c8-4fea-8c83-1fe62d32ec13</guid><category>ucspython</category><category>pip</category><dc:creator>vvb</dc:creator><pubDate>Mon, 17 Apr 2017 19:02:05 GMT</pubDate><content:encoded>&lt;p&gt;Enforce using http with pip,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;pip install --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org &amp;lt;packageName&amp;gt;  
+&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title>Reflection in go!</title><description>&lt;p&gt;Printing struct attributes and values using reflection.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;package main
 
@@ -753,76 +759,4 @@ $
 &lt;pre&gt;&lt;code&gt;from ucsmsdk.utils.converttopython import convert_to_ucs_python
 
 convert_to_ucs_python(gui_log=True, path=&amp;lt;path that was found above&amp;gt;)  
-&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title>watch for ucs server events - ucsmsdk</title><description>&lt;p&gt;Starting 0.9.1.1 we have simplified the code required to wait for an event.&lt;/p&gt;
-
-&lt;p&gt;The below code creates a Service Profile Mo &lt;code&gt;org-root/ls-eventhandle&lt;/code&gt; &lt;br&gt;
-We then create two threads each thread invokes a wait&lt;em&gt;for&lt;/em&gt;event method to wait for a specific condition &lt;br&gt;
-Here, we wait for the&lt;/p&gt;</description><link>http://localhost:2368/watch-for-ucs-server-events-ucsmsdk/</link><guid isPermaLink="false">93f6ab52-9442-41cb-a93f-b9073134c1b0</guid><category>ucsmsdk</category><category>ucspython</category><dc:creator>vvb</dc:creator><pubDate>Mon, 07 Nov 2016 23:08:02 GMT</pubDate><content:encoded>&lt;p&gt;Starting 0.9.1.1 we have simplified the code required to wait for an event.&lt;/p&gt;
-
-&lt;p&gt;The below code creates a Service Profile Mo &lt;code&gt;org-root/ls-eventhandle&lt;/code&gt; &lt;br&gt;
-We then create two threads each thread invokes a wait&lt;em&gt;for&lt;/em&gt;event method to wait for a specific condition &lt;br&gt;
-Here, we wait for the &lt;code&gt;descr&lt;/code&gt; property to change to specific values&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;import threading  
-from ucsmsdk.ucshandle import UcsHandle  
-from ucsmsdk.mometa.ls.LsServer import LsServer
-
-handle = UcsHandle(&amp;lt;ucsm_ip&amp;gt;, &amp;lt;username&amp;gt;, &amp;lt;password&amp;gt;)  
-handle.login()
-
-
-# remove is already exists
-sp = handle.query_dn("org-root/ls-eventhandle")  
-if sp:  
-    handle.remove_mo(sp)
-    handle.commit()
-
-
-# add
-org = handle.query_dn("org-root")  
-sp = LsServer(org, name="eventhandle", descr="")  
-handle.add_mo(sp, True)  
-handle.commit()
-
-
-def cb(mce):  
-    print mce.mo.descr
-
-
-def one():  
-    handle.wait_for_event(sp, "descr", "demo_one", cb)
-
-
-def two():  
-    handle.wait_for_event(sp, "descr", ["demo_two", "demo_three"], cb)
-
-t1 = threading.Thread(name="thread1", target=one)  
-t2 = threading.Thread(name="thread2", target=two)
-
-t1.start()  
-t2.start()
-
-t1.join()  
-t2.join()
-
-handle.logout()  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The above code when executed will wait, until both the threads finish waiting.&lt;/p&gt;
-
-&lt;p&gt;The below script changes the &lt;code&gt;descr&lt;/code&gt; property to match condition in thread1. Similarly, thread2's wait ends when either of the two values specified in thread2's &lt;code&gt;wait_for_event&lt;/code&gt; are seen.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;from ucsmsdk.ucshandle import UcsHandle
-
-handle = UcsHandle(&amp;lt;ucsm_ip&amp;gt;, &amp;lt;username&amp;gt;, &amp;lt;password&amp;gt;)  
-handle.login()
-
-sp = handle.query_dn("org-root/ls-eventhandle")
-
-# modify
-sp.descr = "demo_one"  
-handle.set_mo(sp)  
-handle.commit()
-
-handle.logout()  
 &lt;/code&gt;&lt;/pre&gt;</content:encoded></item></channel></rss>

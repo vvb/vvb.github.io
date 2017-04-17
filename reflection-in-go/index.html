@@ -21,7 +21,7 @@
 				<link rel="stylesheet" type="text/css" href="../assets/styles/rrssb.css?v=f0c1ec8245">
 	<meta property="og:title" content="Reflection in go!">
 	<meta property="og:type" content="article">
-	<meta property="og:description" content="package main import (       " fmt type user struct firstname string lastname age int func reflect v :="reflect.ValueOf(f).Elem()" for i v.numfield val t fmt.printf t.name val.interface func...>
+	<meta property="og:description" content="Printing struct attributes and values using reflection. package main import (       " fmt type user struct firstname string lastname age int func reflect v :="reflect.ValueOf(f).Elem()" for i v.numfield val t fmt.printf>
   
 	    <link rel="canonical" href="index.html">
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -30,15 +30,15 @@
     <meta property="og:site_name" content="Servers | Containers | Management">
     <meta property="og:type" content="article">
     <meta property="og:title" content="Reflection in go!">
-    <meta property="og:description" content='package main import (       "fmt"     "reflect" ) type User struct {       FirstName string     LastName  string     Age       int } func (f *User) reflect() {       v := reflect.ValueOf(f).Elem()     for i := 0; i &amp;lt; v.NumField(); i++ {         val := v.Field(i)         t := v.Type().Field(i)         fmt.Printf("%s %v \t", t.Name, val.Interface())     } } func'>
+    <meta property="og:description" content='Printing struct attributes and values using reflection. package main import (       "fmt"     "reflect" ) type User struct {       FirstName string     LastName  string     Age       int } func (f *User) reflect() {       v := reflect.ValueOf(f).Elem()     for i := 0; i &amp;lt; v.NumField(); i++ {         val := v.Field(i)         t := v.Type().Field(i)         fmt.Printf("%s'>
     <meta property="og:url" content="http://localhost:2368/reflection-in-go/">
     <meta property="article:published_time" content="2017-04-17T18:54:19.000Z">
-    <meta property="article:modified_time" content="2017-04-17T18:54:23.000Z">
+    <meta property="article:modified_time" content="2017-04-17T18:59:07.000Z">
     <meta property="article:tag" content="golang">
     
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Reflection in go!">
-    <meta name="twitter:description" content='package main import (       "fmt"     "reflect" ) type User struct {       FirstName string     LastName  string     Age       int } func (f *User) reflect() {       v := reflect.ValueOf(f).Elem()     for i := 0; i &amp;lt; v.NumField(); i++ {         val := v.Field(i)         t := v.Type().Field(i)         fmt.Printf("%s %v \t", t.Name, val.Interface())     } } func'>
+    <meta name="twitter:description" content='Printing struct attributes and values using reflection. package main import (       "fmt"     "reflect" ) type User struct {       FirstName string     LastName  string     Age       int } func (f *User) reflect() {       v := reflect.ValueOf(f).Elem()     for i := 0; i &amp;lt; v.NumField(); i++ {         val := v.Field(i)         t := v.Type().Field(i)         fmt.Printf("%s'>
     <meta name="twitter:url" content="http://localhost:2368/reflection-in-go/">
     <meta name="twitter:label1" content="Written by">
     <meta name="twitter:data1" content="vvb">
@@ -63,9 +63,9 @@
     "headline": "Reflection in go!",
     "url": "http://localhost:2368/reflection-in-go/",
     "datePublished": "2017-04-17T18:54:19.000Z",
-    "dateModified": "2017-04-17T18:54:23.000Z",
+    "dateModified": "2017-04-17T18:59:07.000Z",
     "keywords": "golang",
-    "description": "package main import (       &quot;fmt&quot;     &quot;reflect&quot; ) type User struct {       FirstName string     LastName  string     Age       int } func (f *User) reflect() {       v :&#x3D; reflect.ValueOf(f).Elem()     for i :&#x3D; 0; i &amp;lt; v.NumField(); i++ {         val :&#x3D; v.Field(i)         t :&#x3D; v.Type().Field(i)         fmt.Printf(&quot;%s %v \\t&quot;, t.Name, val.Interface())     } } func",
+    "description": "Printing struct attributes and values using reflection. package main import (       &quot;fmt&quot;     &quot;reflect&quot; ) type User struct {       FirstName string     LastName  string     Age       int } func (f *User) reflect() {       v :&#x3D; reflect.ValueOf(f).Elem()     for i :&#x3D; 0; i &amp;lt; v.NumField(); i++ {         val :&#x3D; v.Field(i)         t :&#x3D; v.Type().Field(i)         fmt.Printf(&quot;%s",
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "http://localhost:2368"
@@ -74,7 +74,7 @@
     </script>
 
     <meta name="generator" content="Ghost 0.11">
-    <link rel="alternate" type="application/rss+xml" title="Servers | Containers | Management" href="../rss.26">
+    <link rel="alternate" type="application/rss+xml" title="Servers | Containers | Management" href="../rss.27">
 	</head>
 	<body class="post-template tag-golang">
 		<header id="header">
@@ -86,7 +86,7 @@
 	<a href="http://linkedin.com/in/vijayvikrant"><i class="fa fa-linkedin-square fa-2x"></i></a>
     <a href="http://github.com/vvb"><i class="fa fa-github-square fa-2x"></i></a>
 	<a href="mailto:vvbtab@gmail.com"><i class="fa fa-envelope-square fa-2x"></i></a>
-	<a href="../rss.26"><i class="fa fa-rss-square fa-2x"></i></a>
+	<a href="../rss.27"><i class="fa fa-rss-square fa-2x"></i></a>
 </div>
 
 <!--
@@ -105,7 +105,9 @@
 			<article id="29" class="post tag-golang">
 	<div class="post-stamp">April 17, 2017<span class="taglist"> · <a href="../tag/golang/">golang</a></span></div>
 	<h1 class="post-title">Reflection in go!</h1>
-	<pre><code>package main
+	<p>Printing struct attributes and values using reflection.</p>
+
+<pre><code>package main
 
 import (  
     "fmt"
@@ -171,7 +173,7 @@ func main() {
           </a>
       </li>
 			<li class="linkedin">
-          <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:2368/reflection-in-go/&amp;title=Reflection%20in%20go!&amp;summary=package%20main%20import%20(%20%20%20%20%20%20%20" fmt type user struct firstname string lastname age int func reflect v :="reflect.ValueOf(f).Elem()" for i v.numfield val t fmt.printf t.name val.interface func... class="popup">
+          <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:2368/reflection-in-go/&amp;title=Reflection%20in%20go!&amp;summary=Printing%20struct%20attributes%20and%20values%20using%20reflection.%20package%20main%20import%20(%20%20%20%20%20%20%20" fmt type user struct firstname string lastname age int func reflect v :="reflect.ValueOf(f).Elem()" for i v.numfield val t fmt.printf class="popup">
               <span class="icon">
                   <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewbox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
                       <path d="M25.424,15.887v8.447h-4.896v-7.882c0-1.979-0.709-3.331-2.48-3.331c-1.354,0-2.158,0.911-2.514,1.803 c-0.129,0.315-0.162,0.753-0.162,1.194v8.216h-4.899c0,0,0.066-13.349,0-14.731h4.899v2.088c-0.01,0.016-0.023,0.032-0.033,0.048 h0.033V11.69c0.65-1.002,1.812-2.435,4.414-2.435C23.008,9.254,25.424,11.361,25.424,15.887z M5.348,2.501 c-1.676,0-2.772,1.092-2.772,2.539c0,1.421,1.066,2.538,2.717,2.546h0.032c1.709,0,2.771-1.132,2.771-2.546 C8.054,3.593,7.019,2.501,5.343,2.501H5.348z M2.867,24.334h4.897V9.603H2.867V24.334z"></path>

@@ -1,4 +1,59 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Mon, 06 Feb 2017 22:55:32 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>ansible modules for Cisco UCS IMC server</title><description>&lt;h3 id="imcansible"&gt;imc-ansible&lt;/h3&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Mon, 17 Apr 2017 18:55:46 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Reflection in go!</title><description>&lt;pre&gt;&lt;code&gt;package main
+
+import (  
+    "fmt"
+    "reflect"
+)
+
+type User struct {  
+    FirstName string
+    LastName  string
+    Age       int
+}
+
+func (f *User) reflect() {  
+    v := reflect.ValueOf(f).Elem()
+
+    for i := 0; i &amp;lt; v.NumField(); i++ {
+        val := v.Field(i)
+        t := v.Type().Field(i)
+        fmt.Printf("%s %v \t", t.Name, val.Interface())
+    }
+}
+
+func&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/reflection-in-go/</link><guid isPermaLink="false">81c31105-1037-4f65-99a5-967a31797cb9</guid><category>golang</category><dc:creator>vvb</dc:creator><pubDate>Mon, 17 Apr 2017 18:54:19 GMT</pubDate><content:encoded>&lt;pre&gt;&lt;code&gt;package main
+
+import (  
+    "fmt"
+    "reflect"
+)
+
+type User struct {  
+    FirstName string
+    LastName  string
+    Age       int
+}
+
+func (f *User) reflect() {  
+    v := reflect.ValueOf(f).Elem()
+
+    for i := 0; i &amp;lt; v.NumField(); i++ {
+        val := v.Field(i)
+        t := v.Type().Field(i)
+        fmt.Printf("%s %v \t", t.Name, val.Interface())
+    }
+}
+
+func main() {  
+    f := &amp;amp;User{
+        FirstName: "John",
+        LastName:  "Doe",
+        Age:       13,
+    }
+
+    f.reflect()
+}
+&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title>ansible modules for Cisco UCS IMC server</title><description>&lt;h3 id="imcansible"&gt;imc-ansible&lt;/h3&gt;
 
 &lt;p&gt;&lt;code&gt;imc-ansible&lt;/code&gt; are a set of ansible modules for Cisco UCS standalone servers(IMC servers). &lt;/p&gt;
 
@@ -770,508 +825,4 @@ handle.set_mo(sp)
 handle.commit()
 
 handle.logout()  
-&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title>metadata and MO information - ucsmsdk</title><description>&lt;p&gt;ucsmsdk now has helper methods to help figure out MO names and dig into the properties and other metadata provided by an object.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;from ucsmsdk.ucscoreutils import search_class_id  
-from ucsmsdk.ucscoreutils import get_meta_info  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;search_class_id&lt;/code&gt; is a case-insensitive grep method that searches all MO names.&lt;/p&gt;</description><link>http://localhost:2368/metadata-and-mo-information-ucsmsdk/</link><guid isPermaLink="false">fa58f6f5-1977-4ba9-9326-71ef4d005348</guid><category>ucsmsdk</category><category>ucspython</category><dc:creator>vvb</dc:creator><pubDate>Mon, 07 Nov 2016 23:06:21 GMT</pubDate><content:encoded>&lt;p&gt;ucsmsdk now has helper methods to help figure out MO names and dig into the properties and other metadata provided by an object.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;from ucsmsdk.ucscoreutils import search_class_id  
-from ucsmsdk.ucscoreutils import get_meta_info  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;search_class_id&lt;/code&gt; is a case-insensitive grep method that searches all MO names.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;In [6]: search_class_id("vlan")  
-2016-06-11 02:26:01,741 - ucs - INFO - "vlan" did not match any available Class Ids.  
-Related Class Ids are:  
-----------------------
-AdaptorVlan  
-FabricBHVlan  
-FabricEthVlanPc  
-FabricEthVlanPortEp  
-FabricOrgVlanPolicy  
-FabricPoolableVlan  
-FabricPooledVlan  
-FabricVlan  
-FabricVlanEp  
-FabricVlanGroupReq  
-FabricVlanPermit  
-FabricVlanReq  
-SwVlan  
-SwVlanGroup  
-SwVlanPortNs  
-SwVlanPortNsOverride  
-SwVlanRef  
-VmVlan  
-VnicLifVlan  
-VnicVlan  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Once you have figured the correct MO name, you can use get&lt;em&gt;meta&lt;/em&gt;info to dig further into the MO. &lt;br&gt;
-Below we get meta information for &lt;code&gt;FabricVlan&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;It starts with a tree view of where &lt;code&gt;FabricVlan&lt;/code&gt; fits, it parents and children. &lt;br&gt;
-Then it shows MO information &lt;br&gt;
-Finally, it shows information about properties of the MO. &lt;br&gt;
-Mo Property information: &lt;br&gt;
-&lt;code&gt;xml_attribute&lt;/code&gt; - the name of the property as expected by the server.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;field_type&lt;/code&gt; - type of the field&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;min_version&lt;/code&gt; - Ucs server release in which the property was first introduced&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;access&lt;/code&gt; - defines if a property is interal/user-readable/user-writable&lt;/p&gt;
-
-&lt;p&gt;property restrictions: &lt;br&gt;
-&lt;code&gt;min_length&lt;/code&gt; - minimum length for string property type&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;max_length&lt;/code&gt; - maximum length for string property type&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;pattern&lt;/code&gt; - allowed patterns, regexs&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;value_set&lt;/code&gt; - set of allowed values for this property&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;range_val&lt;/code&gt; - range for int/uint values&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;In [7]: class_meta = get_meta_info("FabricVlan")  
-In [8]: print class_meta  
-[FabricEthEstc]
-[FabricEthEstcCloud]
-[FabricEthLan]
-[FabricLanCloud]
-  |-FabricVlan
-     |-FabricEthMonFiltEp
-     |-FabricEthMonSrcEp
-     |-FabricEthVlanPc
-     |  |-FaultInst
-     |-FabricEthVlanPortEp
-     |  |-FaultInst
-     |-FabricPoolableVlan
-     |-FabricSwSubGroup
-     |  |-FabricEthVlanPortEp
-     |  |  |-FaultInst
-     |  |-FabricFcoeVsanPortEp
-     |     |-FaultInst
-     |-FaultInst
-
-ClassId                         FabricVlan  
--------                         ----------
-xml_attribute                   :fabricVlan  
-rn                              :net-[name]  
-min_version                     :1.0(1e)  
-access                          :InputOutput  
-access_privilege                :['admin', 'ext-lan-config', 'ext-lan-policy']  
-parents                         :[u'fabricEthEstc', u'fabricEthEstcCloud', u'fabricEthLan', u'fabricLanCloud']  
-children                        :[u'fabricEthMonFiltEp', u'fabricEthMonSrcEp', u'fabricEthVlanPc', u'fabricEthVlanPortEp', u'fabricPoolableVlan', u'fabricSwSubGroup', u'faultInst']
-
-Property                        assoc_primary_vlan_state  
---------                        ------------------------
-xml_attribute                   :assocPrimaryVlanState  
-field_type                      :string  
-min_version                     :2.2(2c)  
-access                          :READ_ONLY  
-min_length                      :None  
-max_length                      :None  
-pattern                         :None  
-value_set                       :['does-not-exists', 'is-empty', 'is-in-error-state', 'is-not-primary-type', 'ok']  
-range_val                       :[]
-
-Property                        assoc_primary_vlan_switch_id  
---------                        ----------------------------
-xml_attribute                   :assocPrimaryVlanSwitchId  
-field_type                      :string  
-min_version                     :2.2(2c)  
-access                          :READ_ONLY  
-min_length                      :None  
-max_length                      :None  
-pattern                         :None  
-value_set                       :['A', 'B', 'NONE']  
-range_val                       :[]
-
-Property                        child_action  
---------                        ------------
-xml_attribute                   :childAction  
-field_type                      :string  
-min_version                     :1.0(1e)  
-access                          :INTERNAL  
-min_length                      :None  
-max_length                      :None  
-pattern                         :((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}  
-value_set                       :[]  
-range_val                       :[]
-
-Property                        cloud  
---------                        -----
-xml_attribute                   :cloud  
-field_type                      :string  
-min_version                     :2.1(1a)  
-access                          :READ_ONLY  
-min_length                      :None  
-max_length                      :None  
-pattern                         :((defaultValue|unknown|fcsanmon|ethlan|ethestclan|fcestc|ethlanmon|fcsan),){0,7}(defaultValue|unknown|fcsanmon|ethlan|ethestclan|fcestc|ethlanmon|fcsan){0,1}  
-value_set                       :[]  
-range_val                       :[]
-
-Property                        compression_type  
---------                        ----------------
-xml_attribute                   :compressionType  
-field_type                      :string  
-min_version                     :2.1(1a)  
-access                          :READ_WRITE  
-min_length                      :None  
-max_length                      :None  
-pattern                         :None  
-value_set                       :['excluded', 'included']  
-range_val                       :[]
-
-Property                        config_issues  
---------                        -------------
-xml_attribute                   :configIssues  
-field_type                      :string  
-min_version                     :2.1(1a)  
-access                          :READ_ONLY  
-min_length                      :None  
-max_length                      :None  
-pattern                         :((defaultValue|not-applicable|conflicting-vlan-access|unsupported-multicast-policy),){0,3}(defaultValue|not-applicable|conflicting-vlan-access|unsupported-multicast-policy){0,1}  
-value_set                       :[]  
-range_val                       :[]
-
-Property                        default_net  
---------                        -----------
-xml_attribute                   :defaultNet  
-field_type                      :string  
-min_version                     :1.0(1e)  
-access                          :READ_WRITE  
-min_length                      :None  
-max_length                      :None  
-pattern                         :None  
-value_set                       :['false', 'no', 'true', 'yes']  
-range_val                       :[]
-
-Property                        dn  
---------                        --
-xml_attribute                   :dn  
-field_type                      :string  
-min_version                     :1.0(1e)  
-access                          :READ_ONLY  
-min_length                      :0  
-max_length                      :256  
-pattern                         :None  
-value_set                       :[]  
-range_val                       :[]
-
-Property                        ep_dn  
---------                        -----
-xml_attribute                   :epDn  
-field_type                      :string  
-min_version                     :1.0(1e)  
-access                          :READ_ONLY  
-min_length                      :0  
-max_length                      :256  
-pattern                         :None  
-value_set                       :[]  
-range_val                       :[]
-
-Property                        flt_aggr  
---------                        --------
-xml_attribute                   :fltAggr  
-field_type                      :ulong  
-min_version                     :2.1(1a)  
-access                          :INTERNAL  
-min_length                      :None  
-max_length                      :None  
-pattern                         :None  
-value_set                       :[]  
-range_val                       :[]
-
-Property                        id  
---------                        --
-xml_attribute                   :id  
-field_type                      :uint  
-min_version                     :1.0(1e)  
-access                          :READ_WRITE  
-min_length                      :None  
-max_length                      :None  
-pattern                         :None  
-value_set                       :[]  
-range_val                       :['1-4029', '4048-4093']
-
-Property                        if_role  
---------                        -------
-xml_attribute                   :ifRole  
-field_type                      :string  
-min_version                     :1.0(1e)  
-access                          :READ_ONLY  
-min_length                      :None  
-max_length                      :None  
-pattern                         :None  
-value_set                       :['diag', 'fcoe-nas-storage', 'fcoe-storage', 'fcoe-uplink', 'mgmt', 'monitor', 'nas-storage', 'network', 'network-fcoe-uplink', 'server', 'service', 'storage', 'unknown']  
-range_val                       :[]
-
-Property                        if_type  
---------                        -------
-xml_attribute                   :ifType  
-field_type                      :string  
-min_version                     :1.0(1e)  
-access                          :READ_ONLY  
-min_length                      :None  
-max_length                      :None  
-pattern                         :None  
-value_set                       :['aggregation', 'physical', 'unknown', 'virtual']  
-range_val                       :[]
-
-Property                        local  
---------                        -----
-xml_attribute                   :local  
-field_type                      :ulong  
-min_version                     :2.1(2a)  
-access                          :READ_ONLY  
-min_length                      :None  
-max_length                      :None  
-pattern                         :None  
-value_set                       :[]  
-range_val                       :[]
-
-Property                        locale  
---------                        ------
-xml_attribute                   :locale  
-field_type                      :string  
-min_version                     :1.0(1e)  
-access                          :READ_ONLY  
-min_length                      :None  
-max_length                      :None  
-pattern                         :((defaultValue|unknown|server|chassis|internal|external),){0,5}(defaultValue|unknown|server|chassis|internal|external){0,1}  
-value_set                       :[]  
-range_val                       :[]
-
-Property                        mcast_policy_name  
---------                        -----------------
-xml_attribute                   :mcastPolicyName  
-field_type                      :string  
-min_version                     :2.1(1a)  
-access                          :READ_WRITE  
-min_length                      :None  
-max_length                      :None  
-pattern                         :[\-\.:_a-zA-Z0-9]{0,16}  
-value_set                       :[]  
-range_val                       :[]
-
-Property                        name  
---------                        ----
-xml_attribute                   :name  
-field_type                      :string  
-min_version                     :1.0(1e)  
-access                          :NAMING  
-min_length                      :None  
-max_length                      :None  
-pattern                         :[\-\.:_a-zA-Z0-9]{1,32}  
-value_set                       :[]  
-range_val                       :[]
-
-Property                        oper_mcast_policy_name  
---------                        ----------------------
-xml_attribute                   :operMcastPolicyName  
-field_type                      :string  
-min_version                     :2.1(1a)  
-access                          :READ_ONLY  
-min_length                      :0  
-max_length                      :256  
-pattern                         :None  
-value_set                       :[]  
-range_val                       :[]
-
-Property                        oper_state  
---------                        ----------
-xml_attribute                   :operState  
-field_type                      :string  
-min_version                     :2.0(1m)  
-access                          :READ_ONLY  
-min_length                      :None  
-max_length                      :None  
-pattern                         :None  
-value_set                       :['error-misconfigured', 'ok']  
-range_val                       :[]
-
-Property                        overlap_state_for_a  
---------                        -------------------
-xml_attribute                   :overlapStateForA  
-field_type                      :string  
-min_version                     :2.2(2c)  
-access                          :READ_ONLY  
-min_length                      :None  
-max_length                      :None  
-pattern                         :None  
-value_set                       :['active', 'not-active', 'ok', 'primary-id-mismatch', 'sharing-type-mismatch']  
-range_val                       :[]
-
-Property                        overlap_state_for_b  
---------                        -------------------
-xml_attribute                   :overlapStateForB  
-field_type                      :string  
-min_version                     :2.2(2c)  
-access                          :READ_ONLY  
-min_length                      :None  
-max_length                      :None  
-pattern                         :None  
-value_set                       :['active', 'not-active', 'ok', 'primary-id-mismatch', 'sharing-type-mismatch']  
-range_val                       :[]
-
-Property                        peer_dn  
---------                        -------
-xml_attribute                   :peerDn  
-field_type                      :string  
-min_version                     :1.0(1e)  
-access                          :READ_ONLY  
-min_length                      :0  
-max_length                      :256  
-pattern                         :None  
-value_set                       :[]  
-range_val                       :[]
-
-Property                        policy_owner  
---------                        ------------
-xml_attribute                   :policyOwner  
-field_type                      :string  
-min_version                     :2.1(2a)  
-access                          :READ_WRITE  
-min_length                      :None  
-max_length                      :None  
-pattern                         :None  
-value_set                       :['local', 'pending-policy', 'policy']  
-range_val                       :[]
-
-Property                        pub_nw_dn  
---------                        ---------
-xml_attribute                   :pubNwDn  
-field_type                      :string  
-min_version                     :1.4(1i)  
-access                          :READ_ONLY  
-min_length                      :0  
-max_length                      :256  
-pattern                         :None  
-value_set                       :[]  
-range_val                       :[]
-
-Property                        pub_nw_id  
---------                        ---------
-xml_attribute                   :pubNwId  
-field_type                      :uint  
-min_version                     :1.4(1i)  
-access                          :READ_ONLY  
-min_length                      :None  
-max_length                      :None  
-pattern                         :None  
-value_set                       :[]  
-range_val                       :[]
-
-Property                        pub_nw_name  
---------                        -----------
-xml_attribute                   :pubNwName  
-field_type                      :string  
-min_version                     :1.4(1i)  
-access                          :READ_WRITE  
-min_length                      :0  
-max_length                      :510  
-pattern                         :None  
-value_set                       :[]  
-range_val                       :[]
-
-Property                        r_global  
---------                        --------
-xml_attribute                   :global  
-field_type                      :ulong  
-min_version                     :2.1(2a)  
-access                          :READ_ONLY  
-min_length                      :None  
-max_length                      :None  
-pattern                         :None  
-value_set                       :[]  
-range_val                       :[]
-
-Property                        rn  
---------                        --
-xml_attribute                   :rn  
-field_type                      :string  
-min_version                     :1.0(1e)  
-access                          :READ_ONLY  
-min_length                      :0  
-max_length                      :256  
-pattern                         :None  
-value_set                       :[]  
-range_val                       :[]
-
-Property                        sacl  
---------                        ----
-xml_attribute                   :sacl  
-field_type                      :string  
-min_version                     :3.0(2a)  
-access                          :READ_ONLY  
-min_length                      :None  
-max_length                      :None  
-pattern                         :((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}  
-value_set                       :[]  
-range_val                       :[]
-
-Property                        sharing  
---------                        -------
-xml_attribute                   :sharing  
-field_type                      :string  
-min_version                     :1.4(1i)  
-access                          :READ_WRITE  
-min_length                      :None  
-max_length                      :None  
-pattern                         :None  
-value_set                       :['community', 'isolated', 'none', 'primary']  
-range_val                       :[]
-
-Property                        status  
---------                        ------
-xml_attribute                   :status  
-field_type                      :string  
-min_version                     :1.0(1e)  
-access                          :READ_WRITE  
-min_length                      :None  
-max_length                      :None  
-pattern                         :((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}  
-value_set                       :[]  
-range_val                       :[]
-
-Property                        switch_id  
---------                        ---------
-xml_attribute                   :switchId  
-field_type                      :string  
-min_version                     :1.0(1e)  
-access                          :READ_ONLY  
-min_length                      :None  
-max_length                      :None  
-pattern                         :None  
-value_set                       :['A', 'B', 'NONE', 'dual']  
-range_val                       :[]
-
-Property                        transport  
---------                        ---------
-xml_attribute                   :transport  
-field_type                      :string  
-min_version                     :1.0(1e)  
-access                          :READ_ONLY  
-min_length                      :None  
-max_length                      :None  
-pattern                         :((defaultValue|unknown|ether|dce|fc),){0,4}(defaultValue|unknown|ether|dce|fc){0,1}  
-value_set                       :[]  
-range_val                       :[]
-
-Property                        type  
---------                        ----
-xml_attribute                   :type  
-field_type                      :string  
-min_version                     :1.0(1e)  
-access                          :READ_ONLY  
-min_length                      :None  
-max_length                      :None  
-pattern                         :((defaultValue|unknown|lan|san|ipc),){0,4}(defaultValue|unknown|lan|san|ipc){0,1}  
-value_set                       :[]  
-range_val                       :[]
 &lt;/code&gt;&lt;/pre&gt;</content:encoded></item></channel></rss>

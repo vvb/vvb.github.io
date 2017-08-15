@@ -1,4 +1,30 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Tue, 15 Aug 2017 13:40:33 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Using http with pip</title><description>&lt;p&gt;Enforce using http with pip,&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Tue, 15 Aug 2017 13:51:12 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>setting custom alerts on any device using pushbullet</title><description>&lt;p&gt;&lt;a href="http://localhost:2368/setting-custom-alerts-on-any-device-using-pushbullet/www.pushbullet.com"&gt;pushbullet.com&lt;/a&gt; lets you send API based notification/alerts.&lt;/p&gt;
+
+&lt;p&gt;Start with creating a Pushbullet account. Install the app on your phone. Go to the pushbullet website, head to "My Account" and then create an access token. Note this token.&lt;/p&gt;
+
+&lt;p&gt;The below python code can then be used to send a&lt;/p&gt;</description><link>http://localhost:2368/setting-custom-alerts-on-any-device-using-pushbullet/</link><guid isPermaLink="false">c518a189-609e-4936-ab67-2a8a632a14fb</guid><dc:creator>vvb</dc:creator><pubDate>Tue, 15 Aug 2017 13:51:05 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href="http://localhost:2368/setting-custom-alerts-on-any-device-using-pushbullet/www.pushbullet.com"&gt;pushbullet.com&lt;/a&gt; lets you send API based notification/alerts.&lt;/p&gt;
+
+&lt;p&gt;Start with creating a Pushbullet account. Install the app on your phone. Go to the pushbullet website, head to "My Account" and then create an access token. Note this token.&lt;/p&gt;
+
+&lt;p&gt;The below python code can then be used to send a notification to all your registered devices.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def send_message(title, msg):  
+    url = "https://api.pushbullet.com/v2/pushes"
+    headers = {'Content-Type': 'application/json',
+               "Access-Token": access_token}
+    data = json.dumps({
+        "type": "note",
+        "title": title,
+        "body": msg
+    })
+    requests.post(url, data=data, headers=headers)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;My use case was &lt;a href="https://github.com/vvb/stock_alerts/blob/master/portfolio_alerts.py"&gt;this&lt;/a&gt; python script that generates buy and sell alerts to my mobile phone based on pre-configred prices in a csv sheet.&lt;/p&gt;
+
+&lt;p&gt;But there is no reason this cannot be used to get datacenter alerts. I plan to include this as a library method in Cisco Ucs SDKs soon.&lt;/p&gt;
+
+&lt;p&gt;note: You might need to signout and sign back in one time after you install the app for the alerts to start showing up.&lt;/p&gt;</content:encoded></item><item><title>Using http with pip</title><description>&lt;p&gt;Enforce using http with pip,&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;pip install --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org &amp;lt;packageName&amp;gt;  
 &lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/using-http-with-pip/</link><guid isPermaLink="false">7217758c-64c8-4fea-8c83-1fe62d32ec13</guid><category>ucspython</category><category>pip</category><dc:creator>vvb</dc:creator><pubDate>Mon, 17 Apr 2017 19:02:05 GMT</pubDate><content:encoded>&lt;p&gt;Enforce using http with pip,&lt;/p&gt;
@@ -659,104 +685,4 @@ class TLSConnection(httplib.HTTPSConnection):
 &lt;p&gt;add the following to ~/.ctags&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;--python-kinds=-i
-&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title>Auto-generate python script for tasks done on UI</title><description>&lt;p&gt;Welcome the &lt;code&gt;convert_to_ucs_python&lt;/code&gt; API.&lt;/p&gt;
-
-&lt;p&gt;Assumption:&lt;/p&gt;
-
-&lt;p&gt;User knows to do an operation via the JAVA based UCSM GUI &lt;br&gt;
-UCSM UI and &lt;code&gt;convert_to_ucs_python&lt;/code&gt; should be launched on the same client machine.&lt;/p&gt;
-
-&lt;p&gt;Basic Idea:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;launch the JAVA based UCSM UI&lt;/li&gt;
-&lt;li&gt;launch the python shell and invoke &lt;code&gt;convert_&lt;/code&gt;&lt;/li&gt;&lt;/ul&gt;</description><link>http://localhost:2368/auto-generate-python-script-for-tasks-done-on-ui/</link><guid isPermaLink="false">fcf18feb-e505-4323-89bf-d51cd6ccb5f6</guid><category>ucsmsdk</category><category>ucspython</category><dc:creator>vvb</dc:creator><pubDate>Mon, 07 Nov 2016 23:22:28 GMT</pubDate><content:encoded>&lt;p&gt;Welcome the &lt;code&gt;convert_to_ucs_python&lt;/code&gt; API.&lt;/p&gt;
-
-&lt;p&gt;Assumption:&lt;/p&gt;
-
-&lt;p&gt;User knows to do an operation via the JAVA based UCSM GUI &lt;br&gt;
-UCSM UI and &lt;code&gt;convert_to_ucs_python&lt;/code&gt; should be launched on the same client machine.&lt;/p&gt;
-
-&lt;p&gt;Basic Idea:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;launch the JAVA based UCSM UI&lt;/li&gt;
-&lt;li&gt;launch the python shell and invoke &lt;code&gt;convert_to_ucs_python&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;perform the desired operation on the UI&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;convert_to_ucs_python&lt;/code&gt; monitors the operation and generates equivalent python script for the same.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;How it works:&lt;/p&gt;
-
-&lt;p&gt;UCSM GUI logs all the activities that are performed via it, and the python shell monitors that log to generate the equivalent python script. Since the logging is local to the machine where the UI is running, &lt;code&gt;convert_to_ucs_python&lt;/code&gt; also must run on the same machine. &lt;br&gt;
-Sample Usage:&lt;/p&gt;
-
-&lt;p&gt;Step 1 - Launch the UCSM GUI.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;from ucsmsdk.utils.ucsguilaunch import ucs_gui_launch  
-from ucsmsdk.ucshandle import UcsHandle
-
-# Login to the server
-handle = UcsHandle(&amp;lt;ip&amp;gt;, &amp;lt;username&amp;gt;, &amp;lt;password&amp;gt;)  
-handle.login()
-
-# launch the UCSM GUI
-ucs_gui_launch(handle)  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Step 2 - Run &lt;code&gt;convert_to_ucs_python&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;The CLI will go into a listen mode until Ctrl+C is pressed again. Until then it prints equivalent script for operations done on the UI.&lt;/p&gt;
-
-&lt;p&gt;Print the equivalent script to console&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;from ucsmsdk.utils.converttopython import convert_to_ucs_python
-
-convert_to_ucs_python()  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;br&gt;
-Print the equivalent script to console, also print the XMLs that the UI sends out&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;from ucsmsdk.utils.converttopython import convert_to_ucs_python
-
-convert_to_ucs_python(dump_xml=True)  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Output the script to a file&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;from ucsmsdk.utils.converttopython import convert_to_ucs_python
-
-file_path = r”/home/user/pythoncode.py”
-
-convert_to_ucs_python(dump_to_file=True, dump_file_path=file_path)  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;XML to python&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;xml_str=’‘’&amp;lt;configConfRename  
-                dn=”org-root/ls-ra1” 
-                inNewName=”ra2” 
-                inHierarchical=”false”&amp;gt; 
-                &amp;lt;/configConfRename&amp;gt;’‘’
-
-convert_to_ucs_python(xml=True, request=xml_str)  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;note:&lt;/p&gt;
-
-&lt;p&gt;The path of UCSM UI logs is differs based on the OS and so sometimes the &lt;code&gt;convert_to_ucs_python&lt;/code&gt; API may not be able to autodetect the logfiles that it needs to function. The following workaround can be applied in those cases,&lt;/p&gt;
-
-&lt;p&gt;Manually find the path to which UCSM UI logs&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ sudo find / -name '.ucsm' 
-./Library/Application Support/Oracle/Java/Deployment/log/.ucsm 
-$
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Run &lt;code&gt;convert_to_ucs_python&lt;/code&gt; by specifying the log_path&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;from ucsmsdk.utils.converttopython import convert_to_ucs_python
-
-convert_to_ucs_python(gui_log=True, path=&amp;lt;path that was found above&amp;gt;)  
 &lt;/code&gt;&lt;/pre&gt;</content:encoded></item></channel></rss>

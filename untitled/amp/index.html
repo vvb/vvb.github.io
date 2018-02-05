@@ -2,7 +2,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>debugging in an ansible environment</title>
+    <title>Two Egg Problem</title>
     <meta name="description" content="">
 
     <meta name="HandheldFriendly" content="True">
@@ -15,21 +15,21 @@
     
     <meta property="og:site_name" content="Servers | Containers | Management">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="debugging in an ansible environment">
-    <meta property="og:description" content="I was looking for a PDB sort of debugger for debugging custom ansible modules written in Python. This is when i bumped into this blog. As recommended on the blog, I tried out epdb and it works great for debugging custom ansible modules written in python. Installation: pip install epdb">
-    <meta property="og:url" content="http://localhost:2368/debugging-in-an-ansible-environment/">
-    <meta property="article:published_time" content="2017-01-10T20:18:27.000Z">
-    <meta property="article:modified_time" content="2017-01-11T02:44:50.000Z">
-    <meta property="article:tag" content="ansible">
+    <meta property="og:title" content="Two Egg Problem">
+    <meta property="og:description" content="Problem A building has 100 floors. One of the floors is the highest floor an egg can be dropped from without breaking. If an egg is dropped from above that floor, it will break. If it is dropped from that floor or below, it will be completely undamaged and you">
+    <meta property="og:url" content="http://localhost:2368/untitled/">
+    <meta property="article:published_time" content="2018-02-05T18:02:15.000Z">
+    <meta property="article:modified_time" content="2018-02-05T18:02:15.000Z">
+    <meta property="article:tag" content="#coding">
     
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="debugging in an ansible environment">
-    <meta name="twitter:description" content="I was looking for a PDB sort of debugger for debugging custom ansible modules written in Python. This is when i bumped into this blog. As recommended on the blog, I tried out epdb and it works great for debugging custom ansible modules written in python. Installation: pip install epdb">
-    <meta name="twitter:url" content="http://localhost:2368/debugging-in-an-ansible-environment/">
+    <meta name="twitter:title" content="Two Egg Problem">
+    <meta name="twitter:description" content="Problem A building has 100 floors. One of the floors is the highest floor an egg can be dropped from without breaking. If an egg is dropped from above that floor, it will break. If it is dropped from that floor or below, it will be completely undamaged and you">
+    <meta name="twitter:url" content="http://localhost:2368/untitled/">
     <meta name="twitter:label1" content="Written by">
     <meta name="twitter:data1" content="vvb">
     <meta name="twitter:label2" content="Filed under">
-    <meta name="twitter:data2" content="ansible">
+    <meta name="twitter:data2" content="#coding">
     
     <script type="application/ld+json">
 {
@@ -46,12 +46,12 @@
         "url": "http://localhost:2368/author/vvb/",
         "sameAs": []
     },
-    "headline": "debugging in an ansible environment",
-    "url": "http://localhost:2368/debugging-in-an-ansible-environment/",
-    "datePublished": "2017-01-10T20:18:27.000Z",
-    "dateModified": "2017-01-11T02:44:50.000Z",
-    "keywords": "ansible",
-    "description": "I was looking for a PDB sort of debugger for debugging custom ansible modules written in Python. This is when i bumped into this blog. As recommended on the blog, I tried out epdb and it works great for debugging custom ansible modules written in python. Installation: pip install epdb",
+    "headline": "Two Egg Problem",
+    "url": "http://localhost:2368/untitled/",
+    "datePublished": "2018-02-05T18:02:15.000Z",
+    "dateModified": "2018-02-05T18:02:15.000Z",
+    "keywords": "#coding",
+    "description": "Problem A building has 100 floors. One of the floors is the highest floor an egg can be dropped from without breaking. If an egg is dropped from above that floor, it will break. If it is dropped from that floor or below, it will be completely undamaged and you",
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "http://localhost:2368"
@@ -844,45 +844,63 @@
         <article class="post">
 
             <header class="post-header">
-                <h1 class="post-title">debugging in an ansible environment</h1>
+                <h1 class="post-title">Two Egg Problem</h1>
                 <section class="post-meta">
                     <p class="author">by <a href="../../author/vvb/">vvb</a></p>
-                    <time class="post-date" datetime="2017-01-10">2017-01-10</time>
+                    <time class="post-date" datetime="2018-02-05">2018-02-05</time>
                 </section>
             </header>
             <section class="post-content">
 
-                <p>I was looking for a PDB sort of debugger for debugging custom ansible modules written in Python. This is when i bumped into <a href="http://michaeldehaan.net/post/35403909347/tips-on-using-debuggers-with-ansible">this</a> blog.</p>
+                <h3 id="problem">Problem</h3>
 
-<p>As recommended on the blog, I tried out <code>epdb</code> and it works great for debugging custom ansible modules written in python.</p>
+<p>A building has 100 floors. One of the floors is the highest floor an egg can be dropped from without breaking.</p>
 
-<p><strong>Installation</strong>:</p>
+<p>If an egg is dropped from above that floor, it will break. If it is dropped from that floor or below, it will be completely undamaged and you can drop the egg again.</p>
 
-<pre><code>pip install epdb  
+<p>Given two eggs, find the highest floor an egg can be dropped from without breaking, with as few drops as possible.</p>
+
+<h3 id="solution">Solution</h3>
+
+<p>Assuming we had only 1 egg, then we cannot take any chances and the only way would be to start with Floor 1 and move up floor-by-floor. If the egg breaks on fall from floor <code>n</code>, then floor <code>n-1</code> is our answer. so, worst case 100 drops.</p>
+
+<p>Assuming we had infinite number of eggs, then we could use the binary tree stategy and start with floor 50, then floor 25 and that way we will be able to come to the solution in very few drops.</p>
+
+<p>In a 2 egg scenario, we could start with floor 50 and if the egg breaks, then we have no option but to go one floor at a time. so 1+49 chances.</p>
+
+<p>However, we could do better</p>
+
+<ul>
+<li>Start at floor-10 and drop the egg
+<ul><li>if the egg does not break, go to floor-20</li>
+<li>if the egg breaks, go floor-by-floor from floor-1</li></ul></li>
+</ul>
+
+<p>Repeat this until we find the answer. Worst case being floor 99. 10 + 9=19 drops</p>
+
+<p>Could we do better?</p>
+
+<pre><code>n + (n-1) + (n-2) + (n-3) + .... + 1 &gt;= 100  
 </code></pre>
 
-<p>epdb: <a href="https://pypi.python.org/pypi/epdb">https://pypi.python.org/pypi/epdb</a></p>
-
-<p><strong>Usage</strong>:</p>
-
-<p>Insert the below code works as a breakpoint. Insert this at the lines needing debug.</p>
-
-<pre><code>import epdb  
-epdb.serve()  
+<pre><code>n(n+1)/2 &gt;= 100  
 </code></pre>
 
-<p>Run ansible with <code>--forks 1</code> option to avoid parallel threads</p>
+<p>n ~ 14</p>
 
-<pre><code>ansible-playbook -i inventory site.yml --forks 1  
+<pre><code>14        1       13  
+27        2       12  
+39        3       11  
+50        4       10  
+60        5       9  
+69        6       8  
+77        7       7  
+84        8       6  
+90        9       5  
+95        10      4  
+99        11      3  
+100        12      0  
 </code></pre>
-
-<p>This run should hang when it hits the piece of code that has <code>epdb.serve()</code>. At this point run the below from another shell</p>
-
-<pre><code>python -c "import epdb; epdb.connect()"  
-</code></pre>
-
-<p>This should get you to the <code>epdb</code> shell. <br>
-here on, things should look familiar to <code>pdb</code>.</p>
 
             </section>
 

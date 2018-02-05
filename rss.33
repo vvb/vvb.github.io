@@ -1,0 +1,730 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:media="http://search.yahoo.com/mrss/"><channel><title><![CDATA[Servers | Containers | Management]]></title><description><![CDATA[Servers | Containers | Management]]></description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Mon, 05 Feb 2018 18:02:40 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Two Egg Problem]]></title><description><![CDATA[<h3 id="problem">Problem</h3>
+
+<p>A building has 100 floors. One of the floors is the highest floor an egg can be dropped from without breaking.</p>
+
+<p>If an egg is dropped from above that floor, it will break. If it is dropped from that floor or below, it will be completely undamaged and you</p>]]></description><link>http://localhost:2368/untitled/</link><guid isPermaLink="false">fa790a70-e893-4cd2-8dab-7ffab4c626b3</guid><category><![CDATA[#coding]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 05 Feb 2018 18:02:15 GMT</pubDate><content:encoded><![CDATA[<h3 id="problem">Problem</h3>
+
+<p>A building has 100 floors. One of the floors is the highest floor an egg can be dropped from without breaking.</p>
+
+<p>If an egg is dropped from above that floor, it will break. If it is dropped from that floor or below, it will be completely undamaged and you can drop the egg again.</p>
+
+<p>Given two eggs, find the highest floor an egg can be dropped from without breaking, with as few drops as possible.</p>
+
+<h3 id="solution">Solution</h3>
+
+<p>Assuming we had only 1 egg, then we cannot take any chances and the only way would be to start with Floor 1 and move up floor-by-floor. If the egg breaks on fall from floor <code>n</code>, then floor <code>n-1</code> is our answer. so, worst case 100 drops.</p>
+
+<p>Assuming we had infinite number of eggs, then we could use the binary tree stategy and start with floor 50, then floor 25 and that way we will be able to come to the solution in very few drops.</p>
+
+<p>In a 2 egg scenario, we could start with floor 50 and if the egg breaks, then we have no option but to go one floor at a time. so 1+49 chances.</p>
+
+<p>However, we could do better</p>
+
+<ul>
+<li>Start at floor-10 and drop the egg
+<ul><li>if the egg does not break, go to floor-20</li>
+<li>if the egg breaks, go floor-by-floor from floor-1</li></ul></li>
+</ul>
+
+<p>Repeat this until we find the answer. Worst case being floor 99. 10 + 9=19 drops</p>
+
+<p>Could we do better?</p>
+
+<pre><code>n + (n-1) + (n-2) + (n-3) + .... + 1 &gt;= 100  
+</code></pre>
+
+<pre><code>n(n+1)/2 &gt;= 100  
+</code></pre>
+
+<p>n ~ 14</p>
+
+<pre><code>14        1       13  
+27        2       12  
+39        3       11  
+50        4       10  
+60        5       9  
+69        6       8  
+77        7       7  
+84        8       6  
+90        9       5  
+95        10      4  
+99        11      3  
+100        12      0  
+</code></pre>]]></content:encoded></item><item><title><![CDATA[setting custom alerts on any device using pushbullet]]></title><description><![CDATA[<p><a href="http://localhost:2368/setting-custom-alerts-on-any-device-using-pushbullet/www.pushbullet.com">pushbullet.com</a> lets you send API based notification/alerts.</p>
+
+<p>Start with creating a Pushbullet account. Install the app on your phone. Go to the pushbullet website, head to "My Account" and then create an access token. Note this token.</p>
+
+<p>The below python code can then be used to send a</p>]]></description><link>http://localhost:2368/setting-custom-alerts-on-any-device-using-pushbullet/</link><guid isPermaLink="false">c518a189-609e-4936-ab67-2a8a632a14fb</guid><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Tue, 15 Aug 2017 13:51:05 GMT</pubDate><content:encoded><![CDATA[<p><a href="http://localhost:2368/setting-custom-alerts-on-any-device-using-pushbullet/www.pushbullet.com">pushbullet.com</a> lets you send API based notification/alerts.</p>
+
+<p>Start with creating a Pushbullet account. Install the app on your phone. Go to the pushbullet website, head to "My Account" and then create an access token. Note this token.</p>
+
+<p>The below python code can then be used to send a notification to all your registered devices.</p>
+
+<pre><code>def send_message(title, msg):  
+    url = "https://api.pushbullet.com/v2/pushes"
+    headers = {'Content-Type': 'application/json',
+               "Access-Token": access_token}
+    data = json.dumps({
+        "type": "note",
+        "title": title,
+        "body": msg
+    })
+    requests.post(url, data=data, headers=headers)
+</code></pre>
+
+<p>My use case was <a href="https://github.com/vvb/stock_alerts/blob/master/portfolio_alerts.py">this</a> python script that generates buy and sell alerts on my mobile phone based on pre-configred prices in a csv sheet.</p>
+
+<p>But there is no reason this cannot be used to get datacenter alerts. I plan to include this as a library method in Cisco Ucs SDKs soon.</p>
+
+<p>note: You might need to signout and sign back in one time after you install the app for the alerts to start showing up.</p>]]></content:encoded></item><item><title><![CDATA[Using http with pip]]></title><description><![CDATA[<p>Enforce using http with pip,</p>
+
+<pre><code>pip install --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org &lt;packageName&gt;  
+</code></pre>]]></description><link>http://localhost:2368/using-http-with-pip/</link><guid isPermaLink="false">7217758c-64c8-4fea-8c83-1fe62d32ec13</guid><category><![CDATA[ucspython]]></category><category><![CDATA[pip]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 17 Apr 2017 19:02:05 GMT</pubDate><content:encoded><![CDATA[<p>Enforce using http with pip,</p>
+
+<pre><code>pip install --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org &lt;packageName&gt;  
+</code></pre>]]></content:encoded></item><item><title><![CDATA[Reflection in go!]]></title><description><![CDATA[<p>Printing struct attributes and values using reflection.</p>
+
+<pre><code>package main
+
+import (  
+    "fmt"
+    "reflect"
+)
+
+type User struct {  
+    FirstName string
+    LastName  string
+    Age       int
+}
+
+func (f *User) reflect() {  
+    v := reflect.ValueOf(f).Elem()
+
+    for i := 0; i &lt; v.NumField(); i++ {
+        val := v.Field(i)
+        t := v.Type().Field(i)
+        fmt.Printf("%s</code></pre>]]></description><link>http://localhost:2368/reflection-in-go/</link><guid isPermaLink="false">81c31105-1037-4f65-99a5-967a31797cb9</guid><category><![CDATA[golang]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 17 Apr 2017 18:54:19 GMT</pubDate><content:encoded><![CDATA[<p>Printing struct attributes and values using reflection.</p>
+
+<pre><code>package main
+
+import (  
+    "fmt"
+    "reflect"
+)
+
+type User struct {  
+    FirstName string
+    LastName  string
+    Age       int
+}
+
+func (f *User) reflect() {  
+    v := reflect.ValueOf(f).Elem()
+
+    for i := 0; i &lt; v.NumField(); i++ {
+        val := v.Field(i)
+        t := v.Type().Field(i)
+        fmt.Printf("%s %v \t", t.Name, val.Interface())
+    }
+}
+
+func main() {  
+    f := &amp;User{
+        FirstName: "John",
+        LastName:  "Doe",
+        Age:       13,
+    }
+
+    f.reflect()
+}
+</code></pre>]]></content:encoded></item><item><title><![CDATA[ansible modules for Cisco UCS IMC server]]></title><description><![CDATA[<h3 id="imcansible">imc-ansible</h3>
+
+<p><code>imc-ansible</code> are a set of ansible modules for Cisco UCS standalone servers(IMC servers). </p>
+
+<h4 id="installation">installation</h4>
+
+<pre><code># Install ansible
+sudo pip install ansible
+
+# install imcsdk from github
+git clone https://github.com/ciscoucs/imcsdk  
+cd imcsdk  
+sudo make install
+
+# install imc-ansible from github
+git clone https://github.com/ciscoucs/imc-ansible  
+cd</code></pre>]]></description><link>http://localhost:2368/ansible-modules-for-cisco-ucs-imc-server/</link><guid isPermaLink="false">53748709-f767-4c0b-b82b-d0e027b4f4be</guid><category><![CDATA[ansible]]></category><category><![CDATA[imcsdk]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 06 Feb 2017 22:55:04 GMT</pubDate><content:encoded><![CDATA[<h3 id="imcansible">imc-ansible</h3>
+
+<p><code>imc-ansible</code> are a set of ansible modules for Cisco UCS standalone servers(IMC servers). </p>
+
+<h4 id="installation">installation</h4>
+
+<pre><code># Install ansible
+sudo pip install ansible
+
+# install imcsdk from github
+git clone https://github.com/ciscoucs/imcsdk  
+cd imcsdk  
+sudo make install
+
+# install imc-ansible from github
+git clone https://github.com/ciscoucs/imc-ansible  
+cd imc-ansible  
+sudo python install.py  
+</code></pre>
+
+<h4 id="samplerun">sample run</h4>
+
+<pre><code>➔ ansible-playbook -i inventory site.yml
+
+PLAY [imc]  
+*********************************************************************
+
+TASK [common : check if imcsdk is installed]  
+***********************************
+ok: [fpmr1_192.168.1.1]
+
+TASK [common : install imcsdk]  
+*************************************************
+skipping: [fpmr1_192.168.1.1]
+
+TASK [admin : set password policy]  
+*********************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : create local user]  
+***********************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : delete local user]  
+***********************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : reset password policy]  
+*******************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : enable ntp]  
+******************************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : disable ntp]  
+*****************************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : enable LDAP]  
+*****************************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : disable LDAP]  
+****************************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [boot : set boot order]  
+***************************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [boot : set boot order alternate]  
+*****************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [storage : create virtual drive]  
+******************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [storage : delete virtual drive]  
+******************************************
+changed: [fpmr1_192.168.1.1]
+
+PLAY RECAP  
+*********************************************************************
+fpmr1_192.168.1.1       : ok=13   changed=12   unreachable=0    failed=0  
+</code></pre>]]></content:encoded></item><item><title><![CDATA[Inventory Ucs Managed servers via ucsmsdk]]></title><description><![CDATA[<p>ucsmsdk 0.9.3.0 will add support for inventory APIs. <br>
+This allows for multi-host multi-component inventory in multiple formats(enough of multiple? :-D ).</p>
+
+<p>The inventory APIs support inventorying,</p>
+
+<pre><code>- fabric interconnects
+- cpus
+- disks
+- dimms
+- storage controller
+- VIC
+- vNICs
+- vHBAs
+- PSUs
+</code></pre>
+
+<p>The</p>]]></description><link>http://localhost:2368/inventory-ucs-managed-servers-via-ucsmsdk/</link><guid isPermaLink="false">017cc972-97b5-4343-a39e-9f777602a504</guid><category><![CDATA[ucspython]]></category><category><![CDATA[ucsmsdk]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Tue, 24 Jan 2017 06:04:13 GMT</pubDate><content:encoded><![CDATA[<p>ucsmsdk 0.9.3.0 will add support for inventory APIs. <br>
+This allows for multi-host multi-component inventory in multiple formats(enough of multiple? :-D ).</p>
+
+<p>The inventory APIs support inventorying,</p>
+
+<pre><code>- fabric interconnects
+- cpus
+- disks
+- dimms
+- storage controller
+- VIC
+- vNICs
+- vHBAs
+- PSUs
+</code></pre>
+
+<p>The supported output formats for the report are,</p>
+
+<pre><code>- csv
+- html
+- json
+</code></pre>
+
+<p>we recommend using the html format, as it has inbuilt javascript based filtering. It can quickly help narrow down a certain component on a certain host.</p>
+
+<pre><code>from ucsmsdk.utils.inventory import get_inventory
+
+# Gets inventory of all components in JSON format
+get_inventory(handle=handle)
+
+# Gets inventory for all servers all components in JSON format
+get_inventory(handle=[handle1, handle2, handle3])
+
+# Gets inventory of one server all components in JSON format
+get_inventory(handle=handle, component="all")
+
+# Gets disks inventory of one server in JSON format
+get_inventory(handle=handle, component="disks")
+
+# Gets cpu and disks inventory for one server in JSON format
+get_inventory(handle=handle, component=["cpu", "disks"])
+
+# Gets cpu and disks inventory for one server in JSON format and writes to inventory.json file
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="json", file_name="inventory.json")
+
+# Gets cpu and disks inventory for one server in CSV format and writes to inventory.csv fie
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="csv", file_name="inventory.csv")
+
+# Gets cpu and disks inventory for one server in HTML format and writes to inventory.html
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="html", file_name="inventory.html")  
+</code></pre>
+
+<p>This can be tried out today via the code available at <a href="https://github.com/ciscoucs/ucsmsdk">https://github.com/ciscoucs/ucsmsdk</a></p>
+
+<p>complete code to run it,  </p>
+
+<pre><code>#! /usr/bin/env python
+
+from ucsmsdk.ucshandle import UcsHandle  
+from ucsmsdk.utils.inventory import get_inventory
+
+handle = UcsHandle("192.168.1.1", "username", "password")  
+handle.login()
+
+# This would create inventory.html in the same directory where the script is run from
+get_inventory(handle=handle, component="all", file_format="html", file_name="inventory.html")
+
+handle.logout()  
+</code></pre>]]></content:encoded></item><item><title><![CDATA[debugging in an ansible environment]]></title><description><![CDATA[<p>I was looking for a PDB sort of debugger for debugging custom ansible modules written in Python. This is when i bumped into <a href="http://michaeldehaan.net/post/35403909347/tips-on-using-debuggers-with-ansible">this</a> blog.</p>
+
+<p>As recommended on the blog, I tried out <code>epdb</code> and it works great for debugging custom ansible modules written in python.</p>
+
+<p><strong>Installation</strong>:</p>
+
+<pre><code>pip install epdb</code></pre>]]></description><link>http://localhost:2368/debugging-in-an-ansible-environment/</link><guid isPermaLink="false">265e74b7-1b71-4d1b-a51c-65520d6f6deb</guid><category><![CDATA[ansible]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Tue, 10 Jan 2017 20:18:27 GMT</pubDate><content:encoded><![CDATA[<p>I was looking for a PDB sort of debugger for debugging custom ansible modules written in Python. This is when i bumped into <a href="http://michaeldehaan.net/post/35403909347/tips-on-using-debuggers-with-ansible">this</a> blog.</p>
+
+<p>As recommended on the blog, I tried out <code>epdb</code> and it works great for debugging custom ansible modules written in python.</p>
+
+<p><strong>Installation</strong>:</p>
+
+<pre><code>pip install epdb  
+</code></pre>
+
+<p>epdb: <a href="https://pypi.python.org/pypi/epdb">https://pypi.python.org/pypi/epdb</a></p>
+
+<p><strong>Usage</strong>:</p>
+
+<p>Insert the below code works as a breakpoint. Insert this at the lines needing debug.</p>
+
+<pre><code>import epdb  
+epdb.serve()  
+</code></pre>
+
+<p>Run ansible with <code>--forks 1</code> option to avoid parallel threads</p>
+
+<pre><code>ansible-playbook -i inventory site.yml --forks 1  
+</code></pre>
+
+<p>This run should hang when it hits the piece of code that has <code>epdb.serve()</code>. At this point run the below from another shell</p>
+
+<pre><code>python -c "import epdb; epdb.connect()"  
+</code></pre>
+
+<p>This should get you to the <code>epdb</code> shell. <br>
+here on, things should look familiar to <code>pdb</code>.</p>]]></content:encoded></item><item><title><![CDATA[imcsdk storage APIs]]></title><description><![CDATA[<p>0.9.2.0 release of imcsdk will add support for <code>imcsdk.apis.server.storage</code> to manage virtual drives.</p>
+
+<ul>
+<li><code>virtual_drive_create</code> <br></li>
+<li><code>virtual_drive_delete</code></li>
+</ul>
+
+<p>Basic usage,  </p>
+
+<pre><code>vd = virtual_drive_create(handle=handle,  
+                          drive_group=[[1]],
+                          controller_slot="MEZZ",
+                          raid_level=0)
+virtual_drive_delete(handle=handle,  
+                     controller_slot="MEZZ"</code></pre>]]></description><link>http://localhost:2368/imcsdk-storage-apis/</link><guid isPermaLink="false">9031319e-31c8-44d7-a324-775ceda5c4a8</guid><category><![CDATA[imcsdk]]></category><category><![CDATA[ucspython]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Sat, 07 Jan 2017 19:04:54 GMT</pubDate><content:encoded><![CDATA[<p>0.9.2.0 release of imcsdk will add support for <code>imcsdk.apis.server.storage</code> to manage virtual drives.</p>
+
+<ul>
+<li><code>virtual_drive_create</code> <br></li>
+<li><code>virtual_drive_delete</code></li>
+</ul>
+
+<p>Basic usage,  </p>
+
+<pre><code>vd = virtual_drive_create(handle=handle,  
+                          drive_group=[[1]],
+                          controller_slot="MEZZ",
+                          raid_level=0)
+virtual_drive_delete(handle=handle,  
+                     controller_slot="MEZZ",
+                     name=vd.virtual_drive_name)
+</code></pre>
+
+<p>Somethings to note about the arguments that <code>virtual_drive_create</code> takes,</p>
+
+<ul>
+<li><code>drive_group</code> needs to be array of an array(s) - <code>[[]]</code>
+The below shows sample inputs for <code>drive_group</code>,  </li>
+</ul>
+
+<pre><code>        For Raid 0  - [[1, 2, 3]]
+        For Raid 10 - [[1, 2], [3, 4], [5, 6]]
+        For Raid 50 - [[1, 2, 3], [4, 5, 6]]
+</code></pre>
+
+<p>Where the numbers are physical drive slots.</p>
+
+<ul>
+<li><p><code>controller_slot</code> is the name/id of the Storage controller. 
+This could be <code>MEZZ</code> in some cases. or could be a number <code>0-9</code> is some.</p></li>
+<li><p><code>raid_level</code> - refer to the raid levels supported by the platform</p></li>
+</ul>]]></content:encoded></item><item><title><![CDATA[Inventorying IMC servers via imcsdk]]></title><description><![CDATA[<p>The <code>0.9.2.0</code> release of <code>imcsdk</code> will add support for <code>inventory</code> APIs. </p>
+
+<p>The following output formats are supported -</p>
+
+<ul>
+<li>JSON (default)</li>
+<li>HTML</li>
+<li>CSV</li>
+</ul>
+
+<p>Refer the API documentation for a list of components that can be inventoried. <code>all</code> fetches inventory for all components.</p>
+
+<p>Usage is shown below,</p>
+
+<pre><code>from imcsdk.</code></pre>]]></description><link>http://localhost:2368/inventorying-imc-servers-via-imcsdk/</link><guid isPermaLink="false">8262e689-c3a1-49c9-b6ca-b0e1b703f4d1</guid><category><![CDATA[ucspython]]></category><category><![CDATA[imcsdk]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Tue, 03 Jan 2017 06:41:48 GMT</pubDate><content:encoded><![CDATA[<p>The <code>0.9.2.0</code> release of <code>imcsdk</code> will add support for <code>inventory</code> APIs. </p>
+
+<p>The following output formats are supported -</p>
+
+<ul>
+<li>JSON (default)</li>
+<li>HTML</li>
+<li>CSV</li>
+</ul>
+
+<p>Refer the API documentation for a list of components that can be inventoried. <code>all</code> fetches inventory for all components.</p>
+
+<p>Usage is shown below,</p>
+
+<pre><code>from imcsdk.apis.server.inventory import get_inventory
+
+# Gets inventory of all components in JSON format
+get_inventory(handle=handle)
+
+# Gets inventory for all servers all components in JSON format
+get_inventory(handle=[handle1, handle2, handle3])
+
+# Gets inventory of one server all components in JSON format
+get_inventory(handle=handle, component="all")
+
+# Gets disks inventory of one server in JSON format
+get_inventory(handle=handle, component="disks")
+
+# Gets cpu and disks inventory for one server in JSON format
+get_inventory(handle=handle, component=["cpu", "disks"])
+
+# Gets cpu and disks inventory for one server in JSON format and writes to inventory.json file
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="json", file_name="inventory.json")
+
+# Gets cpu and disks inventory for one server in CSV format and writes to inventory.csv fie
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="csv", file_name="inventory.csv")
+
+# Gets cpu and disks inventory for one server in HTML format and writes to inventory.html
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="html", file_name="inventory.html")  
+</code></pre>]]></content:encoded></item><item><title><![CDATA[html table search with pure javascript]]></title><description><![CDATA[<p>The below javascript method searches through all the <code>&lt;td&gt;</code> elements and hides <code>&lt;tr&gt;</code> that do not have it.</p>
+
+<pre><code>    function search() {
+    // Declare variables
+    var input, filter, table, tr, td, i, j, tds, ths, matched;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    tr = document.getElementsByTagName("tr");
+
+    // Loop</code></pre>]]></description><link>http://localhost:2368/html-table-search-with-pure-javascript/</link><guid isPermaLink="false">f4922a20-0954-4e6e-a0ca-493230cf8fc0</guid><category><![CDATA[javascript]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Thu, 22 Dec 2016 17:55:35 GMT</pubDate><content:encoded><![CDATA[<p>The below javascript method searches through all the <code>&lt;td&gt;</code> elements and hides <code>&lt;tr&gt;</code> that do not have it.</p>
+
+<pre><code>    function search() {
+    // Declare variables
+    var input, filter, table, tr, td, i, j, tds, ths, matched;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    tr = document.getElementsByTagName("tr");
+
+    // Loop through all table rows, and hide
+    // those who don't match the search query
+    for (i = 0; i &lt; tr.length; i++) {
+        tds = tr[i].getElementsByTagName("td");
+        ths = tr[i].getElementsByTagName("th");
+        matched = false;
+
+        // leave the row header 
+        if (ths.length &gt; 0) {
+            matched = true;
+        }
+        else {
+            for (j = 0; j &lt; tds.length; j++) {
+                td = tds[j];
+                if (td.innerHTML.toUpperCase().indexOf(filter) &gt; -1) {
+                    matched = true;
+                    break;
+                }
+
+            }
+        }
+        if (matched == true) {
+            tr[i].style.display = "";
+        }
+        else {
+            tr[i].style.display = "none";
+        }
+        }
+    }
+</code></pre>
+
+<p>And the below adds the search input box to the webpage and maps it to our <code>search</code> method</p>
+
+<pre><code>    &lt;input type="text" id="searchInput" onkeyup="search()" placeholder="Search.."&gt;
+</code></pre>]]></content:encoded></item><item><title><![CDATA[configuring a secure front-end for a non-secure service]]></title><description><![CDATA[<p>The goal is to enable <code>https</code> only access for a pre-existing <code>http</code> service.</p>
+
+<p>Let us assume that a service is running on <code>http://myserver.com:8000/service</code>. The goal is to make no changes to the pre-existing service and still allow <code>https</code> only access to it.</p>
+
+<p>One way this can</p>]]></description><link>http://localhost:2368/configuring-a-secure-front-end-for-a-non-secure-service/</link><guid isPermaLink="false">90ab218f-6208-452b-91f6-be39f893d871</guid><category><![CDATA[apache]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Tue, 06 Dec 2016 12:24:01 GMT</pubDate><content:encoded><![CDATA[<p>The goal is to enable <code>https</code> only access for a pre-existing <code>http</code> service.</p>
+
+<p>Let us assume that a service is running on <code>http://myserver.com:8000/service</code>. The goal is to make no changes to the pre-existing service and still allow <code>https</code> only access to it.</p>
+
+<p>One way this can be accomplished, is using apache redirects. We are going to use <code>ProxyPass</code> and <code>ProxyPassReverse</code> directives.</p>
+
+<p>Add the following to <code>httpd.conf</code></p>
+
+<pre><code>&lt;VirtualHost myserver.com:443&gt;
+
+# set the SSL options
+
+
+# Enable ProxyPass
+SSLProxyEngine On  
+RewriteEngine On  
+#ProxyPreserveHost On        #Important to comment this
+ProxyPass /service http://myserver.com:8000/service/ nocanon  
+ProxyPassReverse /service http://myserver.com:8000/service/
+
+&lt;/VirtualHost&gt;  
+</code></pre>
+
+<p>The above would expose <code>https://myserver.com/service</code> and internally redirect it to <code>http://myserver.com:8000/service</code>. The <code>ProxyPass</code> directive does that. <code>ProxyPassReverse</code> makes sure that what is sent back to the browser is again converted back to <code>https://msyserver.com/service</code> format.</p>
+
+<p>Now, <code>https</code> access should be working. But we still need to disable the <code>http</code> access. The below allows all access between internal services (<code>https</code> to <code>http</code> in this case), but disables access to port <code>8000</code> from outside.</p>
+
+<pre><code>sudo /sbin/iptables -A INPUT -p tcp -i lo -j ACCEPT  
+sudo /sbin/iptables -A INPUT -p tcp --dport 8000 -j DROP  
+</code></pre>
+
+<p>Done!</p>]]></content:encoded></item><item><title><![CDATA[ansible - pretty printing errors]]></title><description><![CDATA[<p>Ansible does not do a great job at pretty printing exceptions/errors. There are plugins available that make this easy.</p>
+
+<pre><code>mkdir -p ~/ansible/plugins/callback  
+cd ~/ansible/plugins/callback  
+wget https://raw.githubusercontent.com/marcosdiez/ansible_human_log.py/master/human_log.py  
+</code></pre>
+
+<p>create/edit <code>~/.ansible.cfg</code> and add the</p>]]></description><link>http://localhost:2368/ansible-pretty-printing-errors/</link><guid isPermaLink="false">fd95c5bb-4ed0-4c39-899b-6bb2c8cdaa30</guid><category><![CDATA[ansible]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 05 Dec 2016 04:25:34 GMT</pubDate><content:encoded><![CDATA[<p>Ansible does not do a great job at pretty printing exceptions/errors. There are plugins available that make this easy.</p>
+
+<pre><code>mkdir -p ~/ansible/plugins/callback  
+cd ~/ansible/plugins/callback  
+wget https://raw.githubusercontent.com/marcosdiez/ansible_human_log.py/master/human_log.py  
+</code></pre>
+
+<p>create/edit <code>~/.ansible.cfg</code> and add the following to the <code>defaults</code> section,  </p>
+
+<pre><code>[defaults]
+callback_plugins = ~/ansible_plugins/callback  
+</code></pre>
+
+<p>Done!</p>]]></content:encoded></item><item><title><![CDATA[Using Yum on RHEL without RHN subscription]]></title><description><![CDATA[<p>Disable the rhn yum plugin, <code>/etc/yum/pluginconf.d/rhnplugin.conf</code></p>
+
+<pre><code>[main]
+enabled = 0  
+gpgcheck = 1  
+</code></pre>
+
+<p>Install the epel-repo for the version of redhat you have,</p>
+
+<p>RHEL 5.x  </p>
+
+<pre><code>wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-5.noarch.rpm  
+sudo rpm -Uvh epel-release-5*.rpm  
+</code></pre>
+
+<p>RHEL 6.x  </p>
+
+<pre><code>wget https://dl.</code></pre>]]></description><link>http://localhost:2368/using-yum-on-rhel-without-rhn-subscription/</link><guid isPermaLink="false">01d29217-e20d-4ec3-ae0c-0acf7d9f91db</guid><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Tue, 29 Nov 2016 05:13:00 GMT</pubDate><content:encoded><![CDATA[<p>Disable the rhn yum plugin, <code>/etc/yum/pluginconf.d/rhnplugin.conf</code></p>
+
+<pre><code>[main]
+enabled = 0  
+gpgcheck = 1  
+</code></pre>
+
+<p>Install the epel-repo for the version of redhat you have,</p>
+
+<p>RHEL 5.x  </p>
+
+<pre><code>wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-5.noarch.rpm  
+sudo rpm -Uvh epel-release-5*.rpm  
+</code></pre>
+
+<p>RHEL 6.x  </p>
+
+<pre><code>wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm  
+sudo rpm -Uvh epel-release-6*.rpm  
+</code></pre>
+
+<p>RHEL 7.x  </p>
+
+<pre><code>wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm  
+sudo rpm -Uvh epel-release-latest-7*.rpm  
+</code></pre>
+
+<p>Now, you can start using yum, with the install epel repos,</p>
+
+<pre><code>sudo yum update  
+</code></pre>]]></content:encoded></item><item><title><![CDATA[Running multiple versions of python]]></title><description><![CDATA[<p>You can generally run multiple version of Python minor release 2.7 vs 2.6. These are symlinks created in /usr/bin/. </p>
+
+<p>But how do you go about running multiple versions of the the same minor release - 2.7.9 vs 2.7.10.</p>
+
+<p>I wrote a small script</p>]]></description><link>http://localhost:2368/running-multiple-versions-of-python/</link><guid isPermaLink="false">56cfa77e-6fb8-4bcd-b05b-2754f21513b4</guid><category><![CDATA[ucspython]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Wed, 23 Nov 2016 17:45:55 GMT</pubDate><content:encoded><![CDATA[<p>You can generally run multiple version of Python minor release 2.7 vs 2.6. These are symlinks created in /usr/bin/. </p>
+
+<p>But how do you go about running multiple versions of the the same minor release - 2.7.9 vs 2.7.10.</p>
+
+<p>I wrote a small script that downloads, builds python from source and installs it in a path of its own. </p>
+
+<p>The below is to be run with the required version, for e.g.<code>2.7.9</code>. </p>
+
+<pre><code>#!/bin/bash
+version=$1  
+mkdir ~/python  
+wget http://www.python.org/ftp/python/$version/Python-$version.tgz  
+tar -zxvf Python-$version.tgz  
+cd Python-$version  
+mkdir ~/.localpython-$version  
+./configure --prefix=$HOME/.localpython-$version
+make  
+make install  
+</code></pre>
+
+<p>It can then be used from ~/.localpython-2.7.9/bin/python.</p>
+
+<p>we can now set up a virtual environment specifically for each version of python we have installed.</p>
+
+<p>Install virtualenv</p>
+
+<pre><code>sudo apt-get install virtualenv  
+</code></pre>
+
+<p>Add the following to <code>~/.bashrc</code> or <code>~/.zshrc</code>,</p>
+
+<pre><code>source /usr/local/bin/virtualenvwrapper.sh  
+export WORKON_HOME="$HOME/virtual_env/"  
+export PIP_VIRTUALENV_BASE=$WORKON_HOME  
+</code></pre>
+
+<p>Now you can create a new environment using the below command. The <code>-p</code> option specifies the python version to use for this environment. <code>--no-site-packages</code> will restrict this environment from using the python libraries from the global environment.</p>
+
+<pre><code>mkvirtualenv --no-site-packages -p ~/.localpython-2.7.9/bin/python python279  
+</code></pre>
+
+<p>Here on, we call switch to this new environment using the below,</p>
+
+<pre><code>workon python279  
+</code></pre>
+
+<p>Can get out this environment by using</p>
+
+<pre><code>deactivate  
+</code></pre>]]></content:encoded></item><item><title><![CDATA[Python and state of SSL/TLS]]></title><description><![CDATA[<p>Python 2.7.9 introduces a <code>ssl.SSLContext</code> object to make selecting SSL version easier.</p>
+
+<p>Since using SSLv2 or SSLv3 is a crime, most systems rely on TLSv1, TLSv1.1 or TLSv1.2. The SSLContext obect makes it easier to define the generic subset of protocol one desires and then</p>]]></description><link>http://localhost:2368/python-and-state-of-ssl-tls/</link><guid isPermaLink="false">2d44fda1-fd55-4c61-a564-997611a5cefc</guid><category><![CDATA[ucspython]]></category><category><![CDATA[ucsmsdk]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Wed, 23 Nov 2016 15:37:47 GMT</pubDate><content:encoded><![CDATA[<p>Python 2.7.9 introduces a <code>ssl.SSLContext</code> object to make selecting SSL version easier.</p>
+
+<p>Since using SSLv2 or SSLv3 is a crime, most systems rely on TLSv1, TLSv1.1 or TLSv1.2. The SSLContext obect makes it easier to define the generic subset of protocol one desires and then individually turnoff some of them.</p>
+
+<p>The below code relies only on TLSv1, TLSv1.1, TLSv1.2 and not use SSLv2 or SSLv3</p>
+
+<pre><code>ssl_context = ssl.SSLContext(ssl.PROTOCOL_SSLv23)  
+ssl_context.options |= ssl.OP_NO_SSLv2  
+ssl_context.options |= ssl.OP_NO_SSLv3  
+</code></pre>
+
+<p>So, How can this be used in the larger context. <br>
+We use <code>urllib2</code> and so the above needs to fit into one of the handlers.</p>
+
+<pre><code>opener = urllib2.build_opener(TLSHandler)  
+response = opener.open(url)
+
+class TLSHandler(urllib2.HTTPSHandler):  
+    """Like HTTPSHandler but more specific"""                                   
+
+    def __init__(self):                                                         
+    ¦   urllib2.HTTPSHandler.__init__(self)                                     
+
+    def https_open(self, req):                                                  
+    ¦   return self.do_open(TLSConnection, req) 
+
+class TLSConnection(httplib.HTTPSConnection):  
+    """Like HTTPSConnection but more specific"""                                
+
+    def __init__(self, host, **kwargs):                                         
+    ¦   httplib.HTTPSConnection.__init__(self, host, **kwargs)                  
+
+    def connect(self):                                                          
+    ¦   """Overrides HTTPSConnection.connect to specify TLS version"""          
+    ¦   # Standard implementation from HTTPSConnection, which is not            
+    ¦   # designed for extension, unfortunately                                 
+    ¦   sock = socket.create_connection((self.host, self.port),             
+    ¦   ¦   ¦   self.timeout, self.source_address)  
+
+    ¦   if getattr(self, '_tunnel_host', None):                                 
+    ¦   ¦   self.sock = sock                                                    
+    ¦   ¦   self._tunnel()                                                      
+
+    ¦   # Since python 2.7.9, tls 1.1 and 1.2 are supported via 
+    ¦   # SSLContext                                                        
+    ¦   ssl_context = ssl.SSLContext(ssl.PROTOCOL_SSLv23)                   
+    ¦   ssl_context.options |= ssl.OP_NO_SSLv2                              
+    ¦   ssl_context.options |= ssl.OP_NO_SSLv3                              
+    ¦   ssl_context.load_cert_chain(keyfile, certfile)            
+    ¦   self.sock = ssl_context.wrap_socket(sock)  
+</code></pre>
+
+<p>This would produce a <code>SSL_UNSUPPORTED_VERSION</code> error when the server does not support TLSv1/1.1/1.2</p>
+
+<p>note: TLSv1.1 and TLSv1.2 are supported only since Openssl version 1.0.1. And so, you might have Python >= 2.7.9 and still not see <code>PROTOCOL_TLSv1_1</code> and <code>PROTOCOL_TLSv1_2</code> unless the openssl version is correct.</p>
+
+<p>TLS 1.2 handshake fails in some clients, because of a TLV length padding issue. In such cases, we should fallback to TLSv1.</p>]]></content:encoded></item></channel></rss>

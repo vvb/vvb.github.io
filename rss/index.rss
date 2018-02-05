@@ -1,4 +1,56 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Mon, 05 Feb 2018 17:13:40 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>setting custom alerts on any device using pushbullet</title><description>&lt;p&gt;&lt;a href="http://localhost:2368/setting-custom-alerts-on-any-device-using-pushbullet/www.pushbullet.com"&gt;pushbullet.com&lt;/a&gt; lets you send API based notification/alerts.&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Mon, 05 Feb 2018 18:02:40 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Two Egg Problem</title><description>&lt;h3 id="problem"&gt;Problem&lt;/h3&gt;
+
+&lt;p&gt;A building has 100 floors. One of the floors is the highest floor an egg can be dropped from without breaking.&lt;/p&gt;
+
+&lt;p&gt;If an egg is dropped from above that floor, it will break. If it is dropped from that floor or below, it will be completely undamaged and you&lt;/p&gt;</description><link>http://localhost:2368/untitled/</link><guid isPermaLink="false">fa790a70-e893-4cd2-8dab-7ffab4c626b3</guid><category>#coding</category><dc:creator>vvb</dc:creator><pubDate>Mon, 05 Feb 2018 18:02:15 GMT</pubDate><content:encoded>&lt;h3 id="problem"&gt;Problem&lt;/h3&gt;
+
+&lt;p&gt;A building has 100 floors. One of the floors is the highest floor an egg can be dropped from without breaking.&lt;/p&gt;
+
+&lt;p&gt;If an egg is dropped from above that floor, it will break. If it is dropped from that floor or below, it will be completely undamaged and you can drop the egg again.&lt;/p&gt;
+
+&lt;p&gt;Given two eggs, find the highest floor an egg can be dropped from without breaking, with as few drops as possible.&lt;/p&gt;
+
+&lt;h3 id="solution"&gt;Solution&lt;/h3&gt;
+
+&lt;p&gt;Assuming we had only 1 egg, then we cannot take any chances and the only way would be to start with Floor 1 and move up floor-by-floor. If the egg breaks on fall from floor &lt;code&gt;n&lt;/code&gt;, then floor &lt;code&gt;n-1&lt;/code&gt; is our answer. so, worst case 100 drops.&lt;/p&gt;
+
+&lt;p&gt;Assuming we had infinite number of eggs, then we could use the binary tree stategy and start with floor 50, then floor 25 and that way we will be able to come to the solution in very few drops.&lt;/p&gt;
+
+&lt;p&gt;In a 2 egg scenario, we could start with floor 50 and if the egg breaks, then we have no option but to go one floor at a time. so 1+49 chances.&lt;/p&gt;
+
+&lt;p&gt;However, we could do better&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Start at floor-10 and drop the egg
+&lt;ul&gt;&lt;li&gt;if the egg does not break, go to floor-20&lt;/li&gt;
+&lt;li&gt;if the egg breaks, go floor-by-floor from floor-1&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Repeat this until we find the answer. Worst case being floor 99. 10 + 9=19 drops&lt;/p&gt;
+
+&lt;p&gt;Could we do better?&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;n + (n-1) + (n-2) + (n-3) + .... + 1 &amp;gt;= 100  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;n(n+1)/2 &amp;gt;= 100  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;n ~ 14&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;14        1       13  
+27        2       12  
+39        3       11  
+50        4       10  
+60        5       9  
+69        6       8  
+77        7       7  
+84        8       6  
+90        9       5  
+95        10      4  
+99        11      3  
+100        12      0  
+&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title>setting custom alerts on any device using pushbullet</title><description>&lt;p&gt;&lt;a href="http://localhost:2368/setting-custom-alerts-on-any-device-using-pushbullet/www.pushbullet.com"&gt;pushbullet.com&lt;/a&gt; lets you send API based notification/alerts.&lt;/p&gt;
 
 &lt;p&gt;Start with creating a Pushbullet account. Install the app on your phone. Go to the pushbullet website, head to "My Account" and then create an access token. Note this token.&lt;/p&gt;
 
@@ -675,14 +727,4 @@ class TLSConnection(httplib.HTTPSConnection):
 
 &lt;p&gt;note: TLSv1.1 and TLSv1.2 are supported only since Openssl version 1.0.1. And so, you might have Python &gt;= 2.7.9 and still not see &lt;code&gt;PROTOCOL_TLSv1_1&lt;/code&gt; and &lt;code&gt;PROTOCOL_TLSv1_2&lt;/code&gt; unless the openssl version is correct.&lt;/p&gt;
 
-&lt;p&gt;TLS 1.2 handshake fails in some clients, because of a TLV length padding issue. In such cases, we should fallback to TLSv1.&lt;/p&gt;</content:encoded></item><item><title>Python and Ctags</title><description>&lt;p&gt;You want to jump to definition of a method, but ctags keep taking you to the import line of that method?&lt;/p&gt;
-
-&lt;p&gt;add the following to ~/.ctags&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;--python-kinds=-i
-&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/python-and-ctags/</link><guid isPermaLink="false">cf40fe70-bc98-4dd9-8c69-1ab17f7456ff</guid><category>ucspython</category><dc:creator>vvb</dc:creator><pubDate>Mon, 07 Nov 2016 23:30:58 GMT</pubDate><content:encoded>&lt;p&gt;You want to jump to definition of a method, but ctags keep taking you to the import line of that method?&lt;/p&gt;
-
-&lt;p&gt;add the following to ~/.ctags&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;--python-kinds=-i
-&lt;/code&gt;&lt;/pre&gt;</content:encoded></item></channel></rss>
+&lt;p&gt;TLS 1.2 handshake fails in some clients, because of a TLV length padding issue. In such cases, we should fallback to TLSv1.&lt;/p&gt;</content:encoded></item></channel></rss>

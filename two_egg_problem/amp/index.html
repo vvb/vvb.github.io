@@ -2,7 +2,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Inventorying IMC servers via imcsdk</title>
+    <title>Two Egg Problem</title>
     <meta name="description" content="">
 
     <meta name="HandheldFriendly" content="True">
@@ -15,22 +15,21 @@
     
     <meta property="og:site_name" content="Servers | Containers | Management">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Inventorying IMC servers via imcsdk">
-    <meta property="og:description" content="The 0.9.2.0 release of imcsdk will add support for inventory APIs.  The following output formats are supported - JSON (default) HTML CSV Refer the API documentation for a list of components that can be inventoried. all fetches inventory for all components. Usage is shown below, from imcsdk.">
-    <meta property="og:url" content="http://localhost:2368/inventorying-imc-servers-via-imcsdk/">
-    <meta property="article:published_time" content="2017-01-03T06:41:48.000Z">
-    <meta property="article:modified_time" content="2017-01-03T06:44:06.000Z">
-    <meta property="article:tag" content="ucspython">
-    <meta property="article:tag" content="imcsdk">
+    <meta property="og:title" content="Two Egg Problem">
+    <meta property="og:description" content="Problem A building has 100 floors. One of the floors is the highest floor an egg can be dropped from without breaking. If an egg is dropped from above that floor, it will break. If it is dropped from that floor or below, it will be completely undamaged and you">
+    <meta property="og:url" content="http://localhost:2368/two_egg_problem/">
+    <meta property="article:published_time" content="2018-02-05T18:02:15.000Z">
+    <meta property="article:modified_time" content="2018-02-05T18:06:04.000Z">
+    <meta property="article:tag" content="#coding">
     
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Inventorying IMC servers via imcsdk">
-    <meta name="twitter:description" content="The 0.9.2.0 release of imcsdk will add support for inventory APIs.  The following output formats are supported - JSON (default) HTML CSV Refer the API documentation for a list of components that can be inventoried. all fetches inventory for all components. Usage is shown below, from imcsdk.">
-    <meta name="twitter:url" content="http://localhost:2368/inventorying-imc-servers-via-imcsdk/">
+    <meta name="twitter:title" content="Two Egg Problem">
+    <meta name="twitter:description" content="Problem A building has 100 floors. One of the floors is the highest floor an egg can be dropped from without breaking. If an egg is dropped from above that floor, it will break. If it is dropped from that floor or below, it will be completely undamaged and you">
+    <meta name="twitter:url" content="http://localhost:2368/two_egg_problem/">
     <meta name="twitter:label1" content="Written by">
     <meta name="twitter:data1" content="vvb">
     <meta name="twitter:label2" content="Filed under">
-    <meta name="twitter:data2" content="ucspython, imcsdk">
+    <meta name="twitter:data2" content="#coding">
     <meta name="twitter:site" content="@vvb__">
     
     <script type="application/ld+json">
@@ -48,12 +47,12 @@
         "url": "http://localhost:2368/author/vvb/",
         "sameAs": []
     },
-    "headline": "Inventorying IMC servers via imcsdk",
-    "url": "http://localhost:2368/inventorying-imc-servers-via-imcsdk/",
-    "datePublished": "2017-01-03T06:41:48.000Z",
-    "dateModified": "2017-01-03T06:44:06.000Z",
-    "keywords": "ucspython, imcsdk",
-    "description": "The 0.9.2.0 release of imcsdk will add support for inventory APIs.  The following output formats are supported - JSON (default) HTML CSV Refer the API documentation for a list of components that can be inventoried. all fetches inventory for all components. Usage is shown below, from imcsdk.",
+    "headline": "Two Egg Problem",
+    "url": "http://localhost:2368/two_egg_problem/",
+    "datePublished": "2018-02-05T18:02:15.000Z",
+    "dateModified": "2018-02-05T18:06:04.000Z",
+    "keywords": "#coding",
+    "description": "Problem A building has 100 floors. One of the floors is the highest floor an egg can be dropped from without breaking. If an egg is dropped from above that floor, it will break. If it is dropped from that floor or below, it will be completely undamaged and you",
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "http://localhost:2368"
@@ -846,53 +845,62 @@
         <article class="post">
 
             <header class="post-header">
-                <h1 class="post-title">Inventorying IMC servers via imcsdk</h1>
+                <h1 class="post-title">Two Egg Problem</h1>
                 <section class="post-meta">
                     <p class="author">by <a href="../../author/vvb/">vvb</a></p>
-                    <time class="post-date" datetime="2017-01-03">2017-01-03</time>
+                    <time class="post-date" datetime="2018-02-05">2018-02-05</time>
                 </section>
             </header>
             <section class="post-content">
 
-                <p>The <code>0.9.2.0</code> release of <code>imcsdk</code> will add support for <code>inventory</code> APIs. </p>
+                <h3 id="problem">Problem</h3>
 
-<p>The following output formats are supported -</p>
+<p>A building has 100 floors. One of the floors is the highest floor an egg can be dropped from without breaking.</p>
+
+<p>If an egg is dropped from above that floor, it will break. If it is dropped from that floor or below, it will be completely undamaged and you can drop the egg again.</p>
+
+<p>Given two eggs, find the highest floor an egg can be dropped from without breaking, with as few drops as possible.</p>
+
+<h3 id="solution">Solution</h3>
+
+<p>Assuming we had only 1 egg, then we cannot take any chances and the only way would be to start with Floor 1 and move up floor-by-floor. If the egg breaks on fall from floor <code>n</code>, then floor <code>n-1</code> is our answer. so, worst case 100 drops.</p>
+
+<p>Assuming we had infinite number of eggs, then we could use the binary tree stategy and start with floor 50, then floor 25 and that way we will be able to come to the solution in very few drops.</p>
+
+<p>In a 2 egg scenario, we could start with floor 50 and if the egg breaks, then we have no option but to go one floor at a time. so 1+49 chances.</p>
+
+<p>However, we could do better</p>
 
 <ul>
-<li>JSON (default)</li>
-<li>HTML</li>
-<li>CSV</li>
+<li>Start at floor-10 and drop the egg
+<ul><li>if the egg does not break, go to floor-20</li>
+<li>if the egg breaks, go floor-by-floor from floor-1</li></ul></li>
 </ul>
 
-<p>Refer the API documentation for a list of components that can be inventoried. <code>all</code> fetches inventory for all components.</p>
+<p>Repeat this until we find the answer. Worst case being floor 99. 10 + 9=19 drops</p>
 
-<p>Usage is shown below,</p>
+<p>Could we do better?</p>
 
-<pre><code>from imcsdk.apis.server.inventory import get_inventory
+<pre><code>n + (n-1) + (n-2) + (n-3) + .... + 1 &gt;= 100  
+</code></pre>
 
-# Gets inventory of all components in JSON format
-get_inventory(handle=handle)
+<pre><code>n(n+1)/2 &gt;= 100  
+</code></pre>
 
-# Gets inventory for all servers all components in JSON format
-get_inventory(handle=[handle1, handle2, handle3])
+<p>n ~ 14</p>
 
-# Gets inventory of one server all components in JSON format
-get_inventory(handle=handle, component="all")
-
-# Gets disks inventory of one server in JSON format
-get_inventory(handle=handle, component="disks")
-
-# Gets cpu and disks inventory for one server in JSON format
-get_inventory(handle=handle, component=["cpu", "disks"])
-
-# Gets cpu and disks inventory for one server in JSON format and writes to inventory.json file
-get_inventory(handle=handle, component=["cpu", "disks"], file_format="json", file_name="inventory.json")
-
-# Gets cpu and disks inventory for one server in CSV format and writes to inventory.csv fie
-get_inventory(handle=handle, component=["cpu", "disks"], file_format="csv", file_name="inventory.csv")
-
-# Gets cpu and disks inventory for one server in HTML format and writes to inventory.html
-get_inventory(handle=handle, component=["cpu", "disks"], file_format="html", file_name="inventory.html")  
+<pre><code>14        1       13  
+27        2       12  
+39        3       11  
+50        4       10  
+60        5       9  
+69        6       8  
+77        7       7  
+84        8       6  
+90        9       5  
+95        10      4  
+99        11      3  
+100        12      0  
 </code></pre>
 
             </section>

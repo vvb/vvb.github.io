@@ -1,4 +1,286 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Mon, 05 Feb 2018 18:06:13 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Two Egg Problem</title><description>&lt;h3 id="problem"&gt;Problem&lt;/h3&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Tue, 06 Feb 2018 06:46:23 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>A Day With R</title><description>&lt;h3 id="datatypes"&gt;Datatypes&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;A &lt;code&gt;vector&lt;/code&gt; is always homogenous&lt;/li&gt;
+&lt;li&gt;A &lt;code&gt;list&lt;/code&gt; can be heterogenous&lt;/li&gt;
+&lt;li&gt;A &lt;code&gt;matrix&lt;/code&gt; is a list of vectors&lt;/li&gt;
+&lt;li&gt;A &lt;code&gt;dataframe&lt;/code&gt; is a list of lists.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;stockprice &amp;lt;- 1900L  
+class(stockprice)
+
+stocks &amp;lt;- c("HEG", "Graphite", "Bajaj", "L&amp;amp;T")  
+prices &amp;lt;- c(1900L, 650L, 500L, 1380L)  
+names(&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/a-day-with-r/</link><guid isPermaLink="false">e04e9fd9-f70e-47b4-bff8-32d7be2ea0a3</guid><category>R</category><dc:creator>vvb</dc:creator><pubDate>Tue, 06 Feb 2018 06:43:33 GMT</pubDate><content:encoded>&lt;h3 id="datatypes"&gt;Datatypes&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;A &lt;code&gt;vector&lt;/code&gt; is always homogenous&lt;/li&gt;
+&lt;li&gt;A &lt;code&gt;list&lt;/code&gt; can be heterogenous&lt;/li&gt;
+&lt;li&gt;A &lt;code&gt;matrix&lt;/code&gt; is a list of vectors&lt;/li&gt;
+&lt;li&gt;A &lt;code&gt;dataframe&lt;/code&gt; is a list of lists.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;stockprice &amp;lt;- 1900L  
+class(stockprice)
+
+stocks &amp;lt;- c("HEG", "Graphite", "Bajaj", "L&amp;amp;T")  
+prices &amp;lt;- c(1900L, 650L, 500L, 1380L)  
+names(stocks) &amp;lt;- c("Carbon", "Carbon", "Auto", "Infra")
+
+isAuto &amp;lt;- TRUE  
+isAuto &amp;lt;- FALSE
+
+data = factor(names(stocks))
+
+mat1 &amp;lt;- matrix(c(1:10), nrow=2)  
+mat1 &amp;lt;- matrix(c(1:40), nrow=4)
+
+p &amp;lt;- c(6,8,10)  
+p1 &amp;lt;- list(6,8,10)  
+p2 &amp;lt;- list(c(6,8,10))  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id="vectorofnumericvalues"&gt;Vector of numeric values&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;p &amp;lt;- c(6,8,10)
+
+&amp;gt; p
+[1]  6  8 10
+&amp;gt;
+&amp;gt; for (i in 1:length(p)) {
++   print(p[[i]]*2)
++ }
+[1] 12
+[1] 16
+[1] 20
+&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id="listofvectorof3elems"&gt;List of vector of 3 elems&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;p1 &amp;lt;- list(6,8,10)  
+&amp;gt; p1
+[[1]]
+[1] 6
+
+[[2]]
+[1] 8
+
+[[3]]
+[1] 10
+
+&amp;gt; for (each in p1) {
++   print(each*2)
++ }
+[1] 12
+[1] 16
+[1] 20
+&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id="listofvectorofoneelemwhichisalsoalist"&gt;List of vector of one elem which is also a list&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;p2 &amp;lt;- list(c(6,8,10))  
+&amp;gt; p2
+[[1]]
+[1]  6  8 10
+
+&amp;gt; for (i in 1:length(p2[[1]])) {
++   print(p2[[1]][i]*2)
++ }
+[1] 12
+[1] 16
+[1] 20
+&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id="lapply"&gt;lapply&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;output is always a list&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;gt; mul &amp;lt;- function(x){x*2}
+&amp;gt; p
+[1]  6  8 10
+&amp;gt; lapply(p, mul)
+[[1]]
+[1] 12
+
+[[2]]
+[1] 16
+
+[[3]]
+[1] 20
+
+&amp;gt; p1
+[[1]]
+[1] 6
+
+[[2]]
+[1] 8
+
+[[3]]
+[1] 10
+
+&amp;gt; lapply(p1, mul)
+[[1]]
+[1] 12
+
+[[2]]
+[1] 16
+
+[[3]]
+[1] 20
+
+&amp;gt; unlist(lapply(p1, mul))
+[1] 12 16 20
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id="sapply"&gt;sapply&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Good for reporting. &lt;/li&gt;
+&lt;li&gt;Needs high level of confidence in data structures used. &lt;/li&gt;
+&lt;li&gt;Output can be vector or matrix or list&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;gt; mul &amp;lt;- function(x){x*2}
+&amp;gt; p
+[1]  6  8 10
+&amp;gt; sapply(p, mul)
+[1] 12 16 20
+&amp;gt; p1
+[[1]]
+[1] 6
+
+[[2]]
+[1] 8
+
+[[3]]
+[1] 10
+
+&amp;gt; sapply(p1, mul)
+[1] 12 16 20
+&amp;gt; p2
+[[1]]
+[1]  6  8 10
+
+&amp;gt; sapply(p2, mul)
+     [,1]
+[1,]   12
+[2,]   16
+[3,]   20
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id="vapply"&gt;vapply&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Verify apply&lt;/li&gt;
+&lt;li&gt;Verifies if the return type of the function matches with the last arg&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;gt; mul &amp;lt;- function(x){x*2}
+&amp;gt; p
+[1]  6  8 10
+&amp;gt; vapply(p, mul, numeric(1))
+[1] 12 16 20
+&amp;gt; p
+[1]  6  8 10
+&amp;gt; vapply(p, mul, numeric(2))
+Error in vapply(p, mul, numeric(2)) : values must be length 2,  
+ but FUN(X[[1]]) result is length 1
+&amp;gt; p
+[1]  6  8 10
+&amp;gt; vapply(p, mul, character(1))
+Error in vapply(p, mul, character(1)) : values must be type 'character',  
+ but FUN(X[[1]]) result is type 'double'
+&amp;gt; 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id="exercise1"&gt;Exercise #1&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Q - From a given list of names print the min and max char in every name in a report format.&lt;/li&gt;
+&lt;li&gt;The below also demonstrates the difference between lapply and sapply.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;gt; names &amp;lt;- c("Ankur", "Ganesan", "Bhargavi", "pankaj", "Vivek", "Srikrishnan")
+&amp;gt; firstlast &amp;lt;- function(x) {
++   s &amp;lt;- strsplit(x, "")[[1]]
++   return(c(first=min(s), last=max(s)))
++   
++ }
+&amp;gt; lapply(names, firstlast)
+[[1]]
+first  last  
+  "A"   "u" 
+
+[[2]]
+first  last  
+  "G"   "s" 
+
+[[3]]
+first  last  
+  "B"   "v" 
+
+[[4]]
+first  last  
+  "a"   "p" 
+
+[[5]]
+first  last  
+  "V"   "v" 
+
+[[6]]
+first  last  
+  "S"   "s" 
+&amp;gt; class(lapply(names, firstlast))
+[1] "list"
+&amp;gt;
+&amp;gt; sapply(names, firstlast)
+      Ankur Ganesan Bhargavi pankaj Vivek Srikrishnan
+first "A"   "G"     "B"      "a"    "V"   "S"  
+last  "u"   "s"     "v"      "p"    "v"   "s"  
+&amp;gt;
+&amp;gt; class(sapply(names, firstlast))
+[1] "matrix"
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id="exercise2"&gt;Exercise #2&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Q - from a given list of names print only the unique characters per name&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;gt; names &amp;lt;- c("ankur", "ganesan", "bhargavi", "pankaj", "vivek", "srikrishnan")
+&amp;gt; uniquenames &amp;lt;- function(x) {
++   s &amp;lt;- strsplit(x, "")[[1]]
++   return(unique(s))
++ }
+
+&amp;gt; sapply(names, uniquenames)
+$ankur
+[1] "a" "n" "k" "u" "r"
+
+$ganesan
+[1] "g" "a" "n" "e" "s"
+
+$bhargavi
+[1] "b" "h" "a" "r" "g" "v" "i"
+
+$pankaj
+[1] "p" "a" "n" "k" "j"
+
+$vivek
+[1] "v" "i" "e" "k"
+
+$srikrishnan
+[1] "s" "r" "i" "k" "h" "n" "a"
+
+&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title>Two Egg Problem</title><description>&lt;h3 id="problem"&gt;Problem&lt;/h3&gt;
 
 &lt;p&gt;A building has 100 floors. One of the floors is the highest floor an egg can be dropped from without breaking.&lt;/p&gt;
 
@@ -669,62 +951,4 @@ export PIP_VIRTUALENV_BASE=$WORKON_HOME
 &lt;p&gt;Can get out this environment by using&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;deactivate  
-&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title>Python and state of SSL/TLS</title><description>&lt;p&gt;Python 2.7.9 introduces a &lt;code&gt;ssl.SSLContext&lt;/code&gt; object to make selecting SSL version easier.&lt;/p&gt;
-
-&lt;p&gt;Since using SSLv2 or SSLv3 is a crime, most systems rely on TLSv1, TLSv1.1 or TLSv1.2. The SSLContext obect makes it easier to define the generic subset of protocol one desires and then&lt;/p&gt;</description><link>http://localhost:2368/python-and-state-of-ssl-tls/</link><guid isPermaLink="false">2d44fda1-fd55-4c61-a564-997611a5cefc</guid><category>ucspython</category><category>ucsmsdk</category><dc:creator>vvb</dc:creator><pubDate>Wed, 23 Nov 2016 15:37:47 GMT</pubDate><content:encoded>&lt;p&gt;Python 2.7.9 introduces a &lt;code&gt;ssl.SSLContext&lt;/code&gt; object to make selecting SSL version easier.&lt;/p&gt;
-
-&lt;p&gt;Since using SSLv2 or SSLv3 is a crime, most systems rely on TLSv1, TLSv1.1 or TLSv1.2. The SSLContext obect makes it easier to define the generic subset of protocol one desires and then individually turnoff some of them.&lt;/p&gt;
-
-&lt;p&gt;The below code relies only on TLSv1, TLSv1.1, TLSv1.2 and not use SSLv2 or SSLv3&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ssl_context = ssl.SSLContext(ssl.PROTOCOL_SSLv23)  
-ssl_context.options |= ssl.OP_NO_SSLv2  
-ssl_context.options |= ssl.OP_NO_SSLv3  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;So, How can this be used in the larger context. &lt;br&gt;
-We use &lt;code&gt;urllib2&lt;/code&gt; and so the above needs to fit into one of the handlers.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;opener = urllib2.build_opener(TLSHandler)  
-response = opener.open(url)
-
-class TLSHandler(urllib2.HTTPSHandler):  
-    """Like HTTPSHandler but more specific"""                                   
-
-    def __init__(self):                                                         
-    ¦   urllib2.HTTPSHandler.__init__(self)                                     
-
-    def https_open(self, req):                                                  
-    ¦   return self.do_open(TLSConnection, req) 
-
-class TLSConnection(httplib.HTTPSConnection):  
-    """Like HTTPSConnection but more specific"""                                
-
-    def __init__(self, host, **kwargs):                                         
-    ¦   httplib.HTTPSConnection.__init__(self, host, **kwargs)                  
-
-    def connect(self):                                                          
-    ¦   """Overrides HTTPSConnection.connect to specify TLS version"""          
-    ¦   # Standard implementation from HTTPSConnection, which is not            
-    ¦   # designed for extension, unfortunately                                 
-    ¦   sock = socket.create_connection((self.host, self.port),             
-    ¦   ¦   ¦   self.timeout, self.source_address)  
-
-    ¦   if getattr(self, '_tunnel_host', None):                                 
-    ¦   ¦   self.sock = sock                                                    
-    ¦   ¦   self._tunnel()                                                      
-
-    ¦   # Since python 2.7.9, tls 1.1 and 1.2 are supported via 
-    ¦   # SSLContext                                                        
-    ¦   ssl_context = ssl.SSLContext(ssl.PROTOCOL_SSLv23)                   
-    ¦   ssl_context.options |= ssl.OP_NO_SSLv2                              
-    ¦   ssl_context.options |= ssl.OP_NO_SSLv3                              
-    ¦   ssl_context.load_cert_chain(keyfile, certfile)            
-    ¦   self.sock = ssl_context.wrap_socket(sock)  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This would produce a &lt;code&gt;SSL_UNSUPPORTED_VERSION&lt;/code&gt; error when the server does not support TLSv1/1.1/1.2&lt;/p&gt;
-
-&lt;p&gt;note: TLSv1.1 and TLSv1.2 are supported only since Openssl version 1.0.1. And so, you might have Python &gt;= 2.7.9 and still not see &lt;code&gt;PROTOCOL_TLSv1_1&lt;/code&gt; and &lt;code&gt;PROTOCOL_TLSv1_2&lt;/code&gt; unless the openssl version is correct.&lt;/p&gt;
-
-&lt;p&gt;TLS 1.2 handshake fails in some clients, because of a TLV length padding issue. In such cases, we should fallback to TLSv1.&lt;/p&gt;</content:encoded></item></channel></rss>
+&lt;/code&gt;&lt;/pre&gt;</content:encoded></item></channel></rss>

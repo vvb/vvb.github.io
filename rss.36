@@ -1,0 +1,1245 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:media="http://search.yahoo.com/mrss/"><channel><title><![CDATA[Servers | Containers | Management]]></title><description><![CDATA[Servers | Containers | Management]]></description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Tue, 06 Feb 2018 09:32:38 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[A Day With R]]></title><description><![CDATA[<h3 id="datatypes">Datatypes</h3>
+
+<ul>
+<li>A <code>vector</code> is always homogenous</li>
+<li>A <code>list</code> can be heterogenous</li>
+<li>A <code>matrix</code> is a list of vectors</li>
+<li>A <code>dataframe</code> is a list of lists.</li>
+</ul>
+
+<pre><code>stockprice &lt;- 1900L  
+class(stockprice)
+
+stocks &lt;- c("HEG", "Graphite", "Bajaj", "L&amp;T")  
+prices &lt;- c(1900L, 650L, 500L, 1380L)  
+names(</code></pre>]]></description><link>http://localhost:2368/a-day-with-r/</link><guid isPermaLink="false">e04e9fd9-f70e-47b4-bff8-32d7be2ea0a3</guid><category><![CDATA[R]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Tue, 06 Feb 2018 06:43:33 GMT</pubDate><content:encoded><![CDATA[<h3 id="datatypes">Datatypes</h3>
+
+<ul>
+<li>A <code>vector</code> is always homogenous</li>
+<li>A <code>list</code> can be heterogenous</li>
+<li>A <code>matrix</code> is a list of vectors</li>
+<li>A <code>dataframe</code> is a list of lists.</li>
+</ul>
+
+<pre><code>stockprice &lt;- 1900L  
+class(stockprice)
+
+stocks &lt;- c("HEG", "Graphite", "Bajaj", "L&amp;T")  
+prices &lt;- c(1900L, 650L, 500L, 1380L)  
+names(stocks) &lt;- c("Carbon", "Carbon", "Auto", "Infra")
+
+isAuto &lt;- TRUE  
+isAuto &lt;- FALSE
+
+data = factor(names(stocks))
+
+mat1 &lt;- matrix(c(1:10), nrow=2)  
+mat1 &lt;- matrix(c(1:40), nrow=4)
+
+p &lt;- c(6,8,10)  
+p1 &lt;- list(6,8,10)  
+p2 &lt;- list(c(6,8,10))  
+</code></pre>
+
+<h3 id="vectorofnumericvalues">Vector of numeric values</h3>
+
+<pre><code>p &lt;- c(6,8,10)
+
+&gt; p
+[1]  6  8 10
+&gt;
+&gt; for (i in 1:length(p)) {
++   print(p[[i]]*2)
++ }
+[1] 12
+[1] 16
+[1] 20
+&gt;
+</code></pre>
+
+<h3 id="listofvectorof3elems">List of vector of 3 elems</h3>
+
+<pre><code>p1 &lt;- list(6,8,10)  
+&gt; p1
+[[1]]
+[1] 6
+
+[[2]]
+[1] 8
+
+[[3]]
+[1] 10
+
+&gt; for (each in p1) {
++   print(each*2)
++ }
+[1] 12
+[1] 16
+[1] 20
+&gt;
+</code></pre>
+
+<h3 id="listofvectorofoneelemwhichisalsoalist">List of vector of one elem which is also a list</h3>
+
+<pre><code>p2 &lt;- list(c(6,8,10))  
+&gt; p2
+[[1]]
+[1]  6  8 10
+
+&gt; for (i in 1:length(p2[[1]])) {
++   print(p2[[1]][i]*2)
++ }
+[1] 12
+[1] 16
+[1] 20
+&gt;
+</code></pre>
+
+<h3 id="lapply">lapply</h3>
+
+<ul>
+<li>output is always a list</li>
+</ul>
+
+<pre><code>&gt; mul &lt;- function(x){x*2}
+&gt; p
+[1]  6  8 10
+&gt; lapply(p, mul)
+[[1]]
+[1] 12
+
+[[2]]
+[1] 16
+
+[[3]]
+[1] 20
+
+&gt; p1
+[[1]]
+[1] 6
+
+[[2]]
+[1] 8
+
+[[3]]
+[1] 10
+
+&gt; lapply(p1, mul)
+[[1]]
+[1] 12
+
+[[2]]
+[1] 16
+
+[[3]]
+[1] 20
+
+&gt; unlist(lapply(p1, mul))
+[1] 12 16 20
+</code></pre>
+
+<h3 id="sapply">sapply</h3>
+
+<ul>
+<li>Good for reporting. </li>
+<li>Needs high level of confidence in data structures used. </li>
+<li>Output can be vector or matrix or list</li>
+</ul>
+
+<pre><code>&gt; mul &lt;- function(x){x*2}
+&gt; p
+[1]  6  8 10
+&gt; sapply(p, mul)
+[1] 12 16 20
+&gt; p1
+[[1]]
+[1] 6
+
+[[2]]
+[1] 8
+
+[[3]]
+[1] 10
+
+&gt; sapply(p1, mul)
+[1] 12 16 20
+&gt; p2
+[[1]]
+[1]  6  8 10
+
+&gt; sapply(p2, mul)
+     [,1]
+[1,]   12
+[2,]   16
+[3,]   20
+</code></pre>
+
+<h3 id="vapply">vapply</h3>
+
+<ul>
+<li>Verify apply</li>
+<li>Verifies if the return type of the function matches with the last arg</li>
+</ul>
+
+<pre><code>&gt; mul &lt;- function(x){x*2}
+&gt; p
+[1]  6  8 10
+&gt; vapply(p, mul, numeric(1))
+[1] 12 16 20
+&gt; p
+[1]  6  8 10
+&gt; vapply(p, mul, numeric(2))
+Error in vapply(p, mul, numeric(2)) : values must be length 2,  
+ but FUN(X[[1]]) result is length 1
+&gt; p
+[1]  6  8 10
+&gt; vapply(p, mul, character(1))
+Error in vapply(p, mul, character(1)) : values must be type 'character',  
+ but FUN(X[[1]]) result is type 'double'
+&gt; 
+</code></pre>
+
+<h3 id="exercise1">Exercise #1</h3>
+
+<ul>
+<li>Q - From a given list of names print the min and max char in every name in a report format.</li>
+<li>The below also demonstrates the difference between lapply and sapply.</li>
+</ul>
+
+<pre><code>&gt; names &lt;- c("Ankur", "Ganesan", "Bhargavi", "pankaj", "Vivek", "Srikrishnan")
+&gt; firstlast &lt;- function(x) {
++   s &lt;- strsplit(x, "")[[1]]
++   return(c(first=min(s), last=max(s)))
++   
++ }
+&gt; lapply(names, firstlast)
+[[1]]
+first  last  
+  "A"   "u" 
+
+[[2]]
+first  last  
+  "G"   "s" 
+
+[[3]]
+first  last  
+  "B"   "v" 
+
+[[4]]
+first  last  
+  "a"   "p" 
+
+[[5]]
+first  last  
+  "V"   "v" 
+
+[[6]]
+first  last  
+  "S"   "s" 
+&gt; class(lapply(names, firstlast))
+[1] "list"
+&gt;
+&gt; sapply(names, firstlast)
+      Ankur Ganesan Bhargavi pankaj Vivek Srikrishnan
+first "A"   "G"     "B"      "a"    "V"   "S"  
+last  "u"   "s"     "v"      "p"    "v"   "s"  
+&gt;
+&gt; class(sapply(names, firstlast))
+[1] "matrix"
+</code></pre>
+
+<h3 id="exercise2">Exercise #2</h3>
+
+<ul>
+<li>Q - from a given list of names print only the unique characters per name</li>
+</ul>
+
+<pre><code>&gt; names &lt;- c("ankur", "ganesan", "bhargavi", "pankaj", "vivek", "srikrishnan")
+&gt; uniquenames &lt;- function(x) {
++   s &lt;- strsplit(x, "")[[1]]
++   return(unique(s))
++ }
+
+&gt; sapply(names, uniquenames)
+$ankur
+[1] "a" "n" "k" "u" "r"
+
+$ganesan
+[1] "g" "a" "n" "e" "s"
+
+$bhargavi
+[1] "b" "h" "a" "r" "g" "v" "i"
+
+$pankaj
+[1] "p" "a" "n" "k" "j"
+
+$vivek
+[1] "v" "i" "e" "k"
+
+$srikrishnan
+[1] "s" "r" "i" "k" "h" "n" "a"
+
+&gt;
+</code></pre>
+
+<h2 id="tidythedata">Tidy the data</h2>
+
+<ul>
+<li>We use <code>reshape2</code> and <code>tidyr</code> libraries here.</li>
+<li><code>reshape2</code> provides us the <code>melt</code> method that will help us convert data from report format to a more program friendly format.</li>
+<li><code>tidyr</code> provides us with the <code>gather</code> API, this does exactly the same thing as <code>melt</code></li>
+<li>In the below example we hav religions as rows and salary ranges as columns.</li>
+<li>To convert it to tidy data we need to stack religion:salary_range as rows.</li>
+<li>Tidy data allows for easy operation on the dataset - like groupby, filter etc.</li>
+</ul>
+
+<pre><code>&gt; setwd("/Users/vvb/work/projects/datascience")
+&gt; getwd()
+[1] "/Users/vvb/work/projects/datascience"
+
+&gt; rawdata &lt;- read.csv("pew.csv", check.names = F, encoding = "UTF-8")
+&gt; head(rawdata)
+                   religion &lt;$10k $10-20k $20-30k $30-40k $40-50k $50-75k $75-100k $100-150k &gt;150k Don't know/refused
+1                  Agnostic    27      34      60      81      76     137      122       109    84                 96  
+2                   Atheist    12      27      37      52      35      70       73        59    74                 76  
+3                  Buddhist    27      21      30      34      33      58       62        39    53                 54  
+4                  Catholic   418     617     732     670     638    1116      949       792   633               1489  
+5 Don&lt;U+2019&gt;t know/refused    15      14      15      11      10      35       21        17    18                116  
+6          Evangelical Prot   575     869    1064     982     881    1486      949       723   414               1529
+
+&gt; library(reshape2)
+&gt; library(tidyr)
+&gt; tidydata &lt;- rawdata %&gt;%
++               melt(id= "religion",
++                    variable.name = "salary",
++                    value.name = "count")
+
+&gt; head(tidydata)
+                   religion salary count
+1                  Agnostic  &lt;$10k    27  
+2                   Atheist  &lt;$10k    12  
+3                  Buddhist  &lt;$10k    27  
+4                  Catholic  &lt;$10k   418  
+5 Don&lt;U+2019&gt;t know/refused  &lt;$10k    15  
+6          Evangelical Prot  &lt;$10k   575
+
+&gt; tidydata2 &lt;- rawdata %&gt;%
++                 gather(2:11,
++                        key = "salary",
++                        value = "count")
+
+&gt; head(tidydata2)
+                   religion salary count
+1                  Agnostic  &lt;$10k    27  
+2                   Atheist  &lt;$10k    12  
+3                  Buddhist  &lt;$10k    27  
+4                  Catholic  &lt;$10k   418  
+5 Don&lt;U+2019&gt;t know/refused  &lt;$10k    15  
+6          Evangelical Prot  &lt;$10k   575  
+&gt; 
+</code></pre>
+
+<ul>
+<li>Below is the min and max temperature data for various (year, month, day) pairs.</li>
+<li>We need to transform this to a <code>year:month:day</code> as row format.</li>
+<li>Note that id can be a list of columns - <code>c("year", "month", "element")</code> where element is <code>temp_max/temp_min</code></li>
+</ul>
+
+<pre><code>&gt; rawdata1 &lt;- read.delim("weather.txt", check.names = F, na.strings = '.')
+&gt; head(rawdata1)
+  year month element  1   2   3  4   5  6  7  8  9  10  11 12 13 14 15  16 17 18 19 20 21 22  23 24 25 26 27 28 29  30 31
+1 2010     1    tmax NA  NA  NA NA  NA NA NA NA NA  NA  NA NA NA NA NA  NA NA NA NA NA NA NA  NA NA NA NA NA NA NA 278 NA  
+2 2010     1    tmin NA  NA  NA NA  NA NA NA NA NA  NA  NA NA NA NA NA  NA NA NA NA NA NA NA  NA NA NA NA NA NA NA 145 NA  
+3 2010     2    tmax NA 273 241 NA  NA NA NA NA NA  NA 297 NA NA NA NA  NA NA NA NA NA NA NA 299 NA NA NA NA NA NA  NA NA  
+4 2010     2    tmin NA 144 144 NA  NA NA NA NA NA  NA 134 NA NA NA NA  NA NA NA NA NA NA NA 107 NA NA NA NA NA NA  NA NA  
+5 2010     3    tmax NA  NA  NA NA 321 NA NA NA NA 345  NA NA NA NA NA 311 NA NA NA NA NA NA  NA NA NA NA NA NA NA  NA NA  
+6 2010     3    tmin NA  NA  NA NA 142 NA NA NA NA 168  NA NA NA NA NA 176 NA NA NA NA NA NA  NA NA NA NA NA NA NA  NA NA  
+&gt; str(rawdata1)
+'data.frame':    22 obs. of  34 variables:  
+ $ year   : int  2010 2010 2010 2010 2010 2010 2010 2010 2010 2010 ...
+ $ month  : int  1 1 2 2 3 3 4 4 5 5 ...
+ $ element: Factor w/ 2 levels "tmax","tmin": 1 2 1 2 1 2 1 2 1 2 ...
+ $ 1      : int  NA NA NA NA NA NA NA NA NA NA ...
+ $ 2      : int  NA NA 273 144 NA NA NA NA NA NA ...
+ $ 3      : int  NA NA 241 144 NA NA NA NA NA NA ...
+ $ 4      : int  NA NA NA NA NA NA NA NA NA NA ...
+ $ 5      : int  NA NA NA NA 321 142 NA NA NA NA ...
+ $ 6      : int  NA NA NA NA NA NA NA NA NA NA ...
+ $ 7      : int  NA NA NA NA NA NA NA NA NA NA ...
+ $ 8      : int  NA NA NA NA NA NA NA NA NA NA ...
+ $ 9      : logi  NA NA NA NA NA NA ...
+ $ 10     : int  NA NA NA NA 345 168 NA NA NA NA ...
+ $ 11     : int  NA NA 297 134 NA NA NA NA NA NA ...
+ $ 12     : logi  NA NA NA NA NA NA ...
+ $ 13     : int  NA NA NA NA NA NA NA NA NA NA ...
+ $ 14     : int  NA NA NA NA NA NA NA NA NA NA ...
+ $ 15     : int  NA NA NA NA NA NA NA NA NA NA ...
+ $ 16     : int  NA NA NA NA 311 176 NA NA NA NA ...
+ $ 17     : int  NA NA NA NA NA NA NA NA NA NA ...
+ $ 18     : logi  NA NA NA NA NA NA ...
+ $ 19     : logi  NA NA NA NA NA NA ...
+ $ 20     : logi  NA NA NA NA NA NA ...
+ $ 21     : logi  NA NA NA NA NA NA ...
+ $ 22     : logi  NA NA NA NA NA NA ...
+ $ 23     : int  NA NA 299 107 NA NA NA NA NA NA ...
+ $ 24     : logi  NA NA NA NA NA NA ...
+ $ 25     : int  NA NA NA NA NA NA NA NA NA NA ...
+ $ 26     : int  NA NA NA NA NA NA NA NA NA NA ...
+ $ 27     : int  NA NA NA NA NA NA 363 167 332 182 ...
+ $ 28     : int  NA NA NA NA NA NA NA NA NA NA ...
+ $ 29     : int  NA NA NA NA NA NA NA NA NA NA ...
+ $ 30     : int  278 145 NA NA NA NA NA NA NA NA ...
+ $ 31     : int  NA NA NA NA NA NA NA NA NA NA ...
+&gt; tidydata3 &lt;- rawdata1 %&gt;% melt(id = c("year", "month", "element"),
++                                variable.name = "day",
++                                value.name = "temp")
+&gt; head(tidydata3)
+  year month element day temp
+1 2010     1    tmax   1   NA  
+2 2010     1    tmin   1   NA  
+3 2010     2    tmax   1   NA  
+4 2010     2    tmin   1   NA  
+5 2010     3    tmax   1   NA  
+6 2010     3    tmin   1   NA  
+&gt; tidydata4 &lt;- rawdata1 %&gt;% melt(id = c("year", "month", "element"),
++                                variable.name = "day",
++                                value.name = "temp",
++                                na.rm = TRUE)
+&gt; head(tidydata4)
+   year month element day temp
+21 2010    12    tmax   1  299  
+22 2010    12    tmin   1  138  
+25 2010     2    tmax   2  273  
+26 2010     2    tmin   2  144  
+41 2010    11    tmax   2  313  
+42 2010    11    tmin   2  163  
+&gt; tidydata5 &lt;- rawdata1 %&gt;% gather(4:34, 
++                                  key = "day",
++                                  value = "temp")
+&gt; head(tidydata5)
+  year month element day temp
+1 2010     1    tmax   1   NA  
+2 2010     1    tmin   1   NA  
+3 2010     2    tmax   1   NA  
+4 2010     2    tmin   1   NA  
+5 2010     3    tmax   1   NA  
+6 2010     3    tmin   1   NA  
+&gt; tidydata6 &lt;- rawdata1 %&gt;% gather(4:34, 
++                                  key = "day",
++                                  value = "temp",
++                                  na.rm = TRUE)
+&gt; head(tidydata6)
+   year month element day temp
+21 2010    12    tmax   1  299  
+22 2010    12    tmin   1  138  
+25 2010     2    tmax   2  273  
+26 2010     2    tmin   2  144  
+41 2010    11    tmax   2  313  
+42 2010    11    tmin   2  163  
+&gt;
+</code></pre>
+
+<h3 id="dcastandspread">dcast and spread</h3>
+
+<pre><code>&gt; # transform the data to a format that dcast can use
+&gt; tidydata7 &lt;- tidydata6[,c("year", "month", "day", "element", "temp")]
+&gt; head(tidydata7)
+   year month day element temp
+21 2010    12   1    tmax  299  
+22 2010    12   1    tmin  138  
+25 2010     2   2    tmax  273  
+26 2010     2   2    tmin  144  
+41 2010    11   2    tmax  313  
+42 2010    11   2    tmin  163  
+&gt; # use element values as column names, pick the values from "temp"
+&gt; tidydata8 &lt;- dcast(year + month + day ~ element, data = tidydata7, value.var = "temp")
+&gt; head(tidydata8)
+  year month day tmax tmin
+1 2010     1  30  278  145  
+2 2010     2  11  297  134  
+3 2010     2   2  273  144  
+4 2010     2  23  299  107  
+5 2010     2   3  241  144  
+6 2010     3  10  345  168  
+&gt; # do the same using spread - spread element as columns and use values from temp
+&gt; tidydata9 &lt;- spread(tidydata6, element, temp)
+&gt; head(tidydata9)
+  year month day tmax tmin
+1 2010     1  30  278  145  
+2 2010     2  11  297  134  
+3 2010     2   2  273  144  
+4 2010     2  23  299  107  
+5 2010     2   3  241  144  
+6 2010     3  10  345  168  
+&gt; # adding a new column which shows difference in temperature
+&gt; tidydata8$tdiff &lt;- tidydata8$tmax - tidydata8$tmin
+&gt; head(tidydata8)
+  year month day tmax tmin tdiff
+1 2010     1  30  278  145   133  
+2 2010     2  11  297  134   163  
+3 2010     2   2  273  144   129  
+4 2010     2  23  299  107   192  
+5 2010     2   3  241  144    97  
+6 2010     3  10  345  168   177  
+&gt;
+&gt;
+</code></pre>
+
+<h3 id="analyzethetitanicshipwreckdatatoanswerthefollowing">Analyze the titanic shipwreck data to answer the following,</h3>
+
+<ul>
+<li>For each group of Class+Age+Gender what is the survival rate?</li>
+<li>To answer this question, we need to transform the given data</li>
+</ul>
+
+<pre><code>&gt; rawdata2 &lt;- read.csv("shipwreck.csv", check.names = F, encoding = "UTF-8")
+&gt; rawdata2
+   class   age     fate male female
+1    1st adult perished  118      4  
+2    1st adult survived   57    140  
+3    1st child perished    0      0  
+4    1st child survived    5      1  
+5    2nd adult perished  154     13  
+6    2nd adult survived   14     80  
+7    2nd child perished    0      0  
+8    2nd child survived   11     13  
+9    3rd adult perished  387     89  
+10   3rd adult survived   75     76  
+11   3rd child perished   35     17  
+12   3rd child survived   13     14  
+13  Crew adult perished  670      3  
+14  Crew adult survived  192     20  
+15  Crew child perished    0      0  
+16  Crew child survived    0      0
+
+&gt; # Q - For each group of Class+Age+Gender what is the survival rate?
+&gt; tidydata10 &lt;- rawdata2 %&gt;% gather(4:5,
++                                   key = "gender",
++                                   value = "count")
+&gt; tidydata10
+   class   age     fate gender count
+1    1st adult perished   male   118  
+2    1st adult survived   male    57  
+3    1st child perished   male     0  
+4    1st child survived   male     5  
+5    2nd adult perished   male   154  
+6    2nd adult survived   male    14  
+7    2nd child perished   male     0  
+8    2nd child survived   male    11  
+9    3rd adult perished   male   387  
+10   3rd adult survived   male    75  
+11   3rd child perished   male    35  
+12   3rd child survived   male    13  
+13  Crew adult perished   male   670  
+14  Crew adult survived   male   192  
+15  Crew child perished   male     0  
+16  Crew child survived   male     0  
+17   1st adult perished female     4  
+18   1st adult survived female   140  
+19   1st child perished female     0  
+20   1st child survived female     1  
+21   2nd adult perished female    13  
+22   2nd adult survived female    80  
+23   2nd child perished female     0  
+24   2nd child survived female    13  
+25   3rd adult perished female    89  
+26   3rd adult survived female    76  
+27   3rd child perished female    17  
+28   3rd child survived female    14  
+29  Crew adult perished female     3  
+30  Crew adult survived female    20  
+31  Crew child perished female     0  
+32  Crew child survived female     0
+
+&gt; tidydata10 &lt;- tidydata10 %&gt;% spread(fate, count)
+&gt; tidydata10
+   class   age gender perished survived
+1    1st adult female        4      140  
+2    1st adult   male      118       57  
+3    1st child female        0        1  
+4    1st child   male        0        5  
+5    2nd adult female       13       80  
+6    2nd adult   male      154       14  
+7    2nd child female        0       13  
+8    2nd child   male        0       11  
+9    3rd adult female       89       76  
+10   3rd adult   male      387       75  
+11   3rd child female       17       14  
+12   3rd child   male       35       13  
+13  Crew adult female        3       20  
+14  Crew adult   male      670      192  
+15  Crew child female        0        0  
+16  Crew child   male        0        0  
+&gt;
+</code></pre>]]></content:encoded></item><item><title><![CDATA[Two Egg Problem]]></title><description><![CDATA[<h3 id="problem">Problem</h3>
+
+<p>A building has 100 floors. One of the floors is the highest floor an egg can be dropped from without breaking.</p>
+
+<p>If an egg is dropped from above that floor, it will break. If it is dropped from that floor or below, it will be completely undamaged and you</p>]]></description><link>http://localhost:2368/two_egg_problem/</link><guid isPermaLink="false">fa790a70-e893-4cd2-8dab-7ffab4c626b3</guid><category><![CDATA[#coding]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 05 Feb 2018 18:02:15 GMT</pubDate><content:encoded><![CDATA[<h3 id="problem">Problem</h3>
+
+<p>A building has 100 floors. One of the floors is the highest floor an egg can be dropped from without breaking.</p>
+
+<p>If an egg is dropped from above that floor, it will break. If it is dropped from that floor or below, it will be completely undamaged and you can drop the egg again.</p>
+
+<p>Given two eggs, find the highest floor an egg can be dropped from without breaking, with as few drops as possible.</p>
+
+<h3 id="solution">Solution</h3>
+
+<p>Assuming we had only 1 egg, then we cannot take any chances and the only way would be to start with Floor 1 and move up floor-by-floor. If the egg breaks on fall from floor <code>n</code>, then floor <code>n-1</code> is our answer. so, worst case 100 drops.</p>
+
+<p>Assuming we had infinite number of eggs, then we could use the binary tree stategy and start with floor 50, then floor 25 and that way we will be able to come to the solution in very few drops.</p>
+
+<p>In a 2 egg scenario, we could start with floor 50 and if the egg breaks, then we have no option but to go one floor at a time. so 1+49 chances.</p>
+
+<p>However, we could do better</p>
+
+<ul>
+<li>Start at floor-10 and drop the egg
+<ul><li>if the egg does not break, go to floor-20</li>
+<li>if the egg breaks, go floor-by-floor from floor-1</li></ul></li>
+</ul>
+
+<p>Repeat this until we find the answer. Worst case being floor 99. 10 + 9=19 drops</p>
+
+<p>Could we do better?</p>
+
+<pre><code>n + (n-1) + (n-2) + (n-3) + .... + 1 &gt;= 100  
+</code></pre>
+
+<pre><code>n(n+1)/2 &gt;= 100  
+</code></pre>
+
+<p>n ~ 14</p>
+
+<pre><code>14        1       13  
+27        2       12  
+39        3       11  
+50        4       10  
+60        5       9  
+69        6       8  
+77        7       7  
+84        8       6  
+90        9       5  
+95        10      4  
+99        11      3  
+100        12      0  
+</code></pre>]]></content:encoded></item><item><title><![CDATA[setting custom alerts on any device using pushbullet]]></title><description><![CDATA[<p><a href="http://localhost:2368/setting-custom-alerts-on-any-device-using-pushbullet/www.pushbullet.com">pushbullet.com</a> lets you send API based notification/alerts.</p>
+
+<p>Start with creating a Pushbullet account. Install the app on your phone. Go to the pushbullet website, head to "My Account" and then create an access token. Note this token.</p>
+
+<p>The below python code can then be used to send a</p>]]></description><link>http://localhost:2368/setting-custom-alerts-on-any-device-using-pushbullet/</link><guid isPermaLink="false">c518a189-609e-4936-ab67-2a8a632a14fb</guid><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Tue, 15 Aug 2017 13:51:05 GMT</pubDate><content:encoded><![CDATA[<p><a href="http://localhost:2368/setting-custom-alerts-on-any-device-using-pushbullet/www.pushbullet.com">pushbullet.com</a> lets you send API based notification/alerts.</p>
+
+<p>Start with creating a Pushbullet account. Install the app on your phone. Go to the pushbullet website, head to "My Account" and then create an access token. Note this token.</p>
+
+<p>The below python code can then be used to send a notification to all your registered devices.</p>
+
+<pre><code>def send_message(title, msg):  
+    url = "https://api.pushbullet.com/v2/pushes"
+    headers = {'Content-Type': 'application/json',
+               "Access-Token": access_token}
+    data = json.dumps({
+        "type": "note",
+        "title": title,
+        "body": msg
+    })
+    requests.post(url, data=data, headers=headers)
+</code></pre>
+
+<p>My use case was <a href="https://github.com/vvb/stock_alerts/blob/master/portfolio_alerts.py">this</a> python script that generates buy and sell alerts on my mobile phone based on pre-configred prices in a csv sheet.</p>
+
+<p>But there is no reason this cannot be used to get datacenter alerts. I plan to include this as a library method in Cisco Ucs SDKs soon.</p>
+
+<p>note: You might need to signout and sign back in one time after you install the app for the alerts to start showing up.</p>]]></content:encoded></item><item><title><![CDATA[Using http with pip]]></title><description><![CDATA[<p>Enforce using http with pip,</p>
+
+<pre><code>pip install --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org &lt;packageName&gt;  
+</code></pre>]]></description><link>http://localhost:2368/using-http-with-pip/</link><guid isPermaLink="false">7217758c-64c8-4fea-8c83-1fe62d32ec13</guid><category><![CDATA[ucspython]]></category><category><![CDATA[pip]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 17 Apr 2017 19:02:05 GMT</pubDate><content:encoded><![CDATA[<p>Enforce using http with pip,</p>
+
+<pre><code>pip install --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org &lt;packageName&gt;  
+</code></pre>]]></content:encoded></item><item><title><![CDATA[Reflection in go!]]></title><description><![CDATA[<p>Printing struct attributes and values using reflection.</p>
+
+<pre><code>package main
+
+import (  
+    "fmt"
+    "reflect"
+)
+
+type User struct {  
+    FirstName string
+    LastName  string
+    Age       int
+}
+
+func (f *User) reflect() {  
+    v := reflect.ValueOf(f).Elem()
+
+    for i := 0; i &lt; v.NumField(); i++ {
+        val := v.Field(i)
+        t := v.Type().Field(i)
+        fmt.Printf("%s</code></pre>]]></description><link>http://localhost:2368/reflection-in-go/</link><guid isPermaLink="false">81c31105-1037-4f65-99a5-967a31797cb9</guid><category><![CDATA[golang]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 17 Apr 2017 18:54:19 GMT</pubDate><content:encoded><![CDATA[<p>Printing struct attributes and values using reflection.</p>
+
+<pre><code>package main
+
+import (  
+    "fmt"
+    "reflect"
+)
+
+type User struct {  
+    FirstName string
+    LastName  string
+    Age       int
+}
+
+func (f *User) reflect() {  
+    v := reflect.ValueOf(f).Elem()
+
+    for i := 0; i &lt; v.NumField(); i++ {
+        val := v.Field(i)
+        t := v.Type().Field(i)
+        fmt.Printf("%s %v \t", t.Name, val.Interface())
+    }
+}
+
+func main() {  
+    f := &amp;User{
+        FirstName: "John",
+        LastName:  "Doe",
+        Age:       13,
+    }
+
+    f.reflect()
+}
+</code></pre>]]></content:encoded></item><item><title><![CDATA[ansible modules for Cisco UCS IMC server]]></title><description><![CDATA[<h3 id="imcansible">imc-ansible</h3>
+
+<p><code>imc-ansible</code> are a set of ansible modules for Cisco UCS standalone servers(IMC servers). </p>
+
+<h4 id="installation">installation</h4>
+
+<pre><code># Install ansible
+sudo pip install ansible
+
+# install imcsdk from github
+git clone https://github.com/ciscoucs/imcsdk  
+cd imcsdk  
+sudo make install
+
+# install imc-ansible from github
+git clone https://github.com/ciscoucs/imc-ansible  
+cd</code></pre>]]></description><link>http://localhost:2368/ansible-modules-for-cisco-ucs-imc-server/</link><guid isPermaLink="false">53748709-f767-4c0b-b82b-d0e027b4f4be</guid><category><![CDATA[ansible]]></category><category><![CDATA[imcsdk]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 06 Feb 2017 22:55:04 GMT</pubDate><content:encoded><![CDATA[<h3 id="imcansible">imc-ansible</h3>
+
+<p><code>imc-ansible</code> are a set of ansible modules for Cisco UCS standalone servers(IMC servers). </p>
+
+<h4 id="installation">installation</h4>
+
+<pre><code># Install ansible
+sudo pip install ansible
+
+# install imcsdk from github
+git clone https://github.com/ciscoucs/imcsdk  
+cd imcsdk  
+sudo make install
+
+# install imc-ansible from github
+git clone https://github.com/ciscoucs/imc-ansible  
+cd imc-ansible  
+sudo python install.py  
+</code></pre>
+
+<h4 id="samplerun">sample run</h4>
+
+<pre><code>➔ ansible-playbook -i inventory site.yml
+
+PLAY [imc]  
+*********************************************************************
+
+TASK [common : check if imcsdk is installed]  
+***********************************
+ok: [fpmr1_192.168.1.1]
+
+TASK [common : install imcsdk]  
+*************************************************
+skipping: [fpmr1_192.168.1.1]
+
+TASK [admin : set password policy]  
+*********************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : create local user]  
+***********************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : delete local user]  
+***********************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : reset password policy]  
+*******************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : enable ntp]  
+******************************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : disable ntp]  
+*****************************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : enable LDAP]  
+*****************************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : disable LDAP]  
+****************************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [boot : set boot order]  
+***************************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [boot : set boot order alternate]  
+*****************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [storage : create virtual drive]  
+******************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [storage : delete virtual drive]  
+******************************************
+changed: [fpmr1_192.168.1.1]
+
+PLAY RECAP  
+*********************************************************************
+fpmr1_192.168.1.1       : ok=13   changed=12   unreachable=0    failed=0  
+</code></pre>]]></content:encoded></item><item><title><![CDATA[Inventory Ucs Managed servers via ucsmsdk]]></title><description><![CDATA[<p>ucsmsdk 0.9.3.0 will add support for inventory APIs. <br>
+This allows for multi-host multi-component inventory in multiple formats(enough of multiple? :-D ).</p>
+
+<p>The inventory APIs support inventorying,</p>
+
+<pre><code>- fabric interconnects
+- cpus
+- disks
+- dimms
+- storage controller
+- VIC
+- vNICs
+- vHBAs
+- PSUs
+</code></pre>
+
+<p>The</p>]]></description><link>http://localhost:2368/inventory-ucs-managed-servers-via-ucsmsdk/</link><guid isPermaLink="false">017cc972-97b5-4343-a39e-9f777602a504</guid><category><![CDATA[ucspython]]></category><category><![CDATA[ucsmsdk]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Tue, 24 Jan 2017 06:04:13 GMT</pubDate><content:encoded><![CDATA[<p>ucsmsdk 0.9.3.0 will add support for inventory APIs. <br>
+This allows for multi-host multi-component inventory in multiple formats(enough of multiple? :-D ).</p>
+
+<p>The inventory APIs support inventorying,</p>
+
+<pre><code>- fabric interconnects
+- cpus
+- disks
+- dimms
+- storage controller
+- VIC
+- vNICs
+- vHBAs
+- PSUs
+</code></pre>
+
+<p>The supported output formats for the report are,</p>
+
+<pre><code>- csv
+- html
+- json
+</code></pre>
+
+<p>we recommend using the html format, as it has inbuilt javascript based filtering. It can quickly help narrow down a certain component on a certain host.</p>
+
+<pre><code>from ucsmsdk.utils.inventory import get_inventory
+
+# Gets inventory of all components in JSON format
+get_inventory(handle=handle)
+
+# Gets inventory for all servers all components in JSON format
+get_inventory(handle=[handle1, handle2, handle3])
+
+# Gets inventory of one server all components in JSON format
+get_inventory(handle=handle, component="all")
+
+# Gets disks inventory of one server in JSON format
+get_inventory(handle=handle, component="disks")
+
+# Gets cpu and disks inventory for one server in JSON format
+get_inventory(handle=handle, component=["cpu", "disks"])
+
+# Gets cpu and disks inventory for one server in JSON format and writes to inventory.json file
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="json", file_name="inventory.json")
+
+# Gets cpu and disks inventory for one server in CSV format and writes to inventory.csv fie
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="csv", file_name="inventory.csv")
+
+# Gets cpu and disks inventory for one server in HTML format and writes to inventory.html
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="html", file_name="inventory.html")  
+</code></pre>
+
+<p>This can be tried out today via the code available at <a href="https://github.com/ciscoucs/ucsmsdk">https://github.com/ciscoucs/ucsmsdk</a></p>
+
+<p>complete code to run it,  </p>
+
+<pre><code>#! /usr/bin/env python
+
+from ucsmsdk.ucshandle import UcsHandle  
+from ucsmsdk.utils.inventory import get_inventory
+
+handle = UcsHandle("192.168.1.1", "username", "password")  
+handle.login()
+
+# This would create inventory.html in the same directory where the script is run from
+get_inventory(handle=handle, component="all", file_format="html", file_name="inventory.html")
+
+handle.logout()  
+</code></pre>]]></content:encoded></item><item><title><![CDATA[debugging in an ansible environment]]></title><description><![CDATA[<p>I was looking for a PDB sort of debugger for debugging custom ansible modules written in Python. This is when i bumped into <a href="http://michaeldehaan.net/post/35403909347/tips-on-using-debuggers-with-ansible">this</a> blog.</p>
+
+<p>As recommended on the blog, I tried out <code>epdb</code> and it works great for debugging custom ansible modules written in python.</p>
+
+<p><strong>Installation</strong>:</p>
+
+<pre><code>pip install epdb</code></pre>]]></description><link>http://localhost:2368/debugging-in-an-ansible-environment/</link><guid isPermaLink="false">265e74b7-1b71-4d1b-a51c-65520d6f6deb</guid><category><![CDATA[ansible]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Tue, 10 Jan 2017 20:18:27 GMT</pubDate><content:encoded><![CDATA[<p>I was looking for a PDB sort of debugger for debugging custom ansible modules written in Python. This is when i bumped into <a href="http://michaeldehaan.net/post/35403909347/tips-on-using-debuggers-with-ansible">this</a> blog.</p>
+
+<p>As recommended on the blog, I tried out <code>epdb</code> and it works great for debugging custom ansible modules written in python.</p>
+
+<p><strong>Installation</strong>:</p>
+
+<pre><code>pip install epdb  
+</code></pre>
+
+<p>epdb: <a href="https://pypi.python.org/pypi/epdb">https://pypi.python.org/pypi/epdb</a></p>
+
+<p><strong>Usage</strong>:</p>
+
+<p>Insert the below code works as a breakpoint. Insert this at the lines needing debug.</p>
+
+<pre><code>import epdb  
+epdb.serve()  
+</code></pre>
+
+<p>Run ansible with <code>--forks 1</code> option to avoid parallel threads</p>
+
+<pre><code>ansible-playbook -i inventory site.yml --forks 1  
+</code></pre>
+
+<p>This run should hang when it hits the piece of code that has <code>epdb.serve()</code>. At this point run the below from another shell</p>
+
+<pre><code>python -c "import epdb; epdb.connect()"  
+</code></pre>
+
+<p>This should get you to the <code>epdb</code> shell. <br>
+here on, things should look familiar to <code>pdb</code>.</p>]]></content:encoded></item><item><title><![CDATA[imcsdk storage APIs]]></title><description><![CDATA[<p>0.9.2.0 release of imcsdk will add support for <code>imcsdk.apis.server.storage</code> to manage virtual drives.</p>
+
+<ul>
+<li><code>virtual_drive_create</code> <br></li>
+<li><code>virtual_drive_delete</code></li>
+</ul>
+
+<p>Basic usage,  </p>
+
+<pre><code>vd = virtual_drive_create(handle=handle,  
+                          drive_group=[[1]],
+                          controller_slot="MEZZ",
+                          raid_level=0)
+virtual_drive_delete(handle=handle,  
+                     controller_slot="MEZZ"</code></pre>]]></description><link>http://localhost:2368/imcsdk-storage-apis/</link><guid isPermaLink="false">9031319e-31c8-44d7-a324-775ceda5c4a8</guid><category><![CDATA[imcsdk]]></category><category><![CDATA[ucspython]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Sat, 07 Jan 2017 19:04:54 GMT</pubDate><content:encoded><![CDATA[<p>0.9.2.0 release of imcsdk will add support for <code>imcsdk.apis.server.storage</code> to manage virtual drives.</p>
+
+<ul>
+<li><code>virtual_drive_create</code> <br></li>
+<li><code>virtual_drive_delete</code></li>
+</ul>
+
+<p>Basic usage,  </p>
+
+<pre><code>vd = virtual_drive_create(handle=handle,  
+                          drive_group=[[1]],
+                          controller_slot="MEZZ",
+                          raid_level=0)
+virtual_drive_delete(handle=handle,  
+                     controller_slot="MEZZ",
+                     name=vd.virtual_drive_name)
+</code></pre>
+
+<p>Somethings to note about the arguments that <code>virtual_drive_create</code> takes,</p>
+
+<ul>
+<li><code>drive_group</code> needs to be array of an array(s) - <code>[[]]</code>
+The below shows sample inputs for <code>drive_group</code>,  </li>
+</ul>
+
+<pre><code>        For Raid 0  - [[1, 2, 3]]
+        For Raid 10 - [[1, 2], [3, 4], [5, 6]]
+        For Raid 50 - [[1, 2, 3], [4, 5, 6]]
+</code></pre>
+
+<p>Where the numbers are physical drive slots.</p>
+
+<ul>
+<li><p><code>controller_slot</code> is the name/id of the Storage controller. 
+This could be <code>MEZZ</code> in some cases. or could be a number <code>0-9</code> is some.</p></li>
+<li><p><code>raid_level</code> - refer to the raid levels supported by the platform</p></li>
+</ul>]]></content:encoded></item><item><title><![CDATA[Inventorying IMC servers via imcsdk]]></title><description><![CDATA[<p>The <code>0.9.2.0</code> release of <code>imcsdk</code> will add support for <code>inventory</code> APIs. </p>
+
+<p>The following output formats are supported -</p>
+
+<ul>
+<li>JSON (default)</li>
+<li>HTML</li>
+<li>CSV</li>
+</ul>
+
+<p>Refer the API documentation for a list of components that can be inventoried. <code>all</code> fetches inventory for all components.</p>
+
+<p>Usage is shown below,</p>
+
+<pre><code>from imcsdk.</code></pre>]]></description><link>http://localhost:2368/inventorying-imc-servers-via-imcsdk/</link><guid isPermaLink="false">8262e689-c3a1-49c9-b6ca-b0e1b703f4d1</guid><category><![CDATA[ucspython]]></category><category><![CDATA[imcsdk]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Tue, 03 Jan 2017 06:41:48 GMT</pubDate><content:encoded><![CDATA[<p>The <code>0.9.2.0</code> release of <code>imcsdk</code> will add support for <code>inventory</code> APIs. </p>
+
+<p>The following output formats are supported -</p>
+
+<ul>
+<li>JSON (default)</li>
+<li>HTML</li>
+<li>CSV</li>
+</ul>
+
+<p>Refer the API documentation for a list of components that can be inventoried. <code>all</code> fetches inventory for all components.</p>
+
+<p>Usage is shown below,</p>
+
+<pre><code>from imcsdk.apis.server.inventory import get_inventory
+
+# Gets inventory of all components in JSON format
+get_inventory(handle=handle)
+
+# Gets inventory for all servers all components in JSON format
+get_inventory(handle=[handle1, handle2, handle3])
+
+# Gets inventory of one server all components in JSON format
+get_inventory(handle=handle, component="all")
+
+# Gets disks inventory of one server in JSON format
+get_inventory(handle=handle, component="disks")
+
+# Gets cpu and disks inventory for one server in JSON format
+get_inventory(handle=handle, component=["cpu", "disks"])
+
+# Gets cpu and disks inventory for one server in JSON format and writes to inventory.json file
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="json", file_name="inventory.json")
+
+# Gets cpu and disks inventory for one server in CSV format and writes to inventory.csv fie
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="csv", file_name="inventory.csv")
+
+# Gets cpu and disks inventory for one server in HTML format and writes to inventory.html
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="html", file_name="inventory.html")  
+</code></pre>]]></content:encoded></item><item><title><![CDATA[html table search with pure javascript]]></title><description><![CDATA[<p>The below javascript method searches through all the <code>&lt;td&gt;</code> elements and hides <code>&lt;tr&gt;</code> that do not have it.</p>
+
+<pre><code>    function search() {
+    // Declare variables
+    var input, filter, table, tr, td, i, j, tds, ths, matched;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    tr = document.getElementsByTagName("tr");
+
+    // Loop</code></pre>]]></description><link>http://localhost:2368/html-table-search-with-pure-javascript/</link><guid isPermaLink="false">f4922a20-0954-4e6e-a0ca-493230cf8fc0</guid><category><![CDATA[javascript]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Thu, 22 Dec 2016 17:55:35 GMT</pubDate><content:encoded><![CDATA[<p>The below javascript method searches through all the <code>&lt;td&gt;</code> elements and hides <code>&lt;tr&gt;</code> that do not have it.</p>
+
+<pre><code>    function search() {
+    // Declare variables
+    var input, filter, table, tr, td, i, j, tds, ths, matched;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    tr = document.getElementsByTagName("tr");
+
+    // Loop through all table rows, and hide
+    // those who don't match the search query
+    for (i = 0; i &lt; tr.length; i++) {
+        tds = tr[i].getElementsByTagName("td");
+        ths = tr[i].getElementsByTagName("th");
+        matched = false;
+
+        // leave the row header 
+        if (ths.length &gt; 0) {
+            matched = true;
+        }
+        else {
+            for (j = 0; j &lt; tds.length; j++) {
+                td = tds[j];
+                if (td.innerHTML.toUpperCase().indexOf(filter) &gt; -1) {
+                    matched = true;
+                    break;
+                }
+
+            }
+        }
+        if (matched == true) {
+            tr[i].style.display = "";
+        }
+        else {
+            tr[i].style.display = "none";
+        }
+        }
+    }
+</code></pre>
+
+<p>And the below adds the search input box to the webpage and maps it to our <code>search</code> method</p>
+
+<pre><code>    &lt;input type="text" id="searchInput" onkeyup="search()" placeholder="Search.."&gt;
+</code></pre>]]></content:encoded></item><item><title><![CDATA[configuring a secure front-end for a non-secure service]]></title><description><![CDATA[<p>The goal is to enable <code>https</code> only access for a pre-existing <code>http</code> service.</p>
+
+<p>Let us assume that a service is running on <code>http://myserver.com:8000/service</code>. The goal is to make no changes to the pre-existing service and still allow <code>https</code> only access to it.</p>
+
+<p>One way this can</p>]]></description><link>http://localhost:2368/configuring-a-secure-front-end-for-a-non-secure-service/</link><guid isPermaLink="false">90ab218f-6208-452b-91f6-be39f893d871</guid><category><![CDATA[apache]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Tue, 06 Dec 2016 12:24:01 GMT</pubDate><content:encoded><![CDATA[<p>The goal is to enable <code>https</code> only access for a pre-existing <code>http</code> service.</p>
+
+<p>Let us assume that a service is running on <code>http://myserver.com:8000/service</code>. The goal is to make no changes to the pre-existing service and still allow <code>https</code> only access to it.</p>
+
+<p>One way this can be accomplished, is using apache redirects. We are going to use <code>ProxyPass</code> and <code>ProxyPassReverse</code> directives.</p>
+
+<p>Add the following to <code>httpd.conf</code></p>
+
+<pre><code>&lt;VirtualHost myserver.com:443&gt;
+
+# set the SSL options
+
+
+# Enable ProxyPass
+SSLProxyEngine On  
+RewriteEngine On  
+#ProxyPreserveHost On        #Important to comment this
+ProxyPass /service http://myserver.com:8000/service/ nocanon  
+ProxyPassReverse /service http://myserver.com:8000/service/
+
+&lt;/VirtualHost&gt;  
+</code></pre>
+
+<p>The above would expose <code>https://myserver.com/service</code> and internally redirect it to <code>http://myserver.com:8000/service</code>. The <code>ProxyPass</code> directive does that. <code>ProxyPassReverse</code> makes sure that what is sent back to the browser is again converted back to <code>https://msyserver.com/service</code> format.</p>
+
+<p>Now, <code>https</code> access should be working. But we still need to disable the <code>http</code> access. The below allows all access between internal services (<code>https</code> to <code>http</code> in this case), but disables access to port <code>8000</code> from outside.</p>
+
+<pre><code>sudo /sbin/iptables -A INPUT -p tcp -i lo -j ACCEPT  
+sudo /sbin/iptables -A INPUT -p tcp --dport 8000 -j DROP  
+</code></pre>
+
+<p>Done!</p>]]></content:encoded></item><item><title><![CDATA[ansible - pretty printing errors]]></title><description><![CDATA[<p>Ansible does not do a great job at pretty printing exceptions/errors. There are plugins available that make this easy.</p>
+
+<pre><code>mkdir -p ~/ansible/plugins/callback  
+cd ~/ansible/plugins/callback  
+wget https://raw.githubusercontent.com/marcosdiez/ansible_human_log.py/master/human_log.py  
+</code></pre>
+
+<p>create/edit <code>~/.ansible.cfg</code> and add the</p>]]></description><link>http://localhost:2368/ansible-pretty-printing-errors/</link><guid isPermaLink="false">fd95c5bb-4ed0-4c39-899b-6bb2c8cdaa30</guid><category><![CDATA[ansible]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 05 Dec 2016 04:25:34 GMT</pubDate><content:encoded><![CDATA[<p>Ansible does not do a great job at pretty printing exceptions/errors. There are plugins available that make this easy.</p>
+
+<pre><code>mkdir -p ~/ansible/plugins/callback  
+cd ~/ansible/plugins/callback  
+wget https://raw.githubusercontent.com/marcosdiez/ansible_human_log.py/master/human_log.py  
+</code></pre>
+
+<p>create/edit <code>~/.ansible.cfg</code> and add the following to the <code>defaults</code> section,  </p>
+
+<pre><code>[defaults]
+callback_plugins = ~/ansible_plugins/callback  
+</code></pre>
+
+<p>Done!</p>]]></content:encoded></item><item><title><![CDATA[Using Yum on RHEL without RHN subscription]]></title><description><![CDATA[<p>Disable the rhn yum plugin, <code>/etc/yum/pluginconf.d/rhnplugin.conf</code></p>
+
+<pre><code>[main]
+enabled = 0  
+gpgcheck = 1  
+</code></pre>
+
+<p>Install the epel-repo for the version of redhat you have,</p>
+
+<p>RHEL 5.x  </p>
+
+<pre><code>wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-5.noarch.rpm  
+sudo rpm -Uvh epel-release-5*.rpm  
+</code></pre>
+
+<p>RHEL 6.x  </p>
+
+<pre><code>wget https://dl.</code></pre>]]></description><link>http://localhost:2368/using-yum-on-rhel-without-rhn-subscription/</link><guid isPermaLink="false">01d29217-e20d-4ec3-ae0c-0acf7d9f91db</guid><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Tue, 29 Nov 2016 05:13:00 GMT</pubDate><content:encoded><![CDATA[<p>Disable the rhn yum plugin, <code>/etc/yum/pluginconf.d/rhnplugin.conf</code></p>
+
+<pre><code>[main]
+enabled = 0  
+gpgcheck = 1  
+</code></pre>
+
+<p>Install the epel-repo for the version of redhat you have,</p>
+
+<p>RHEL 5.x  </p>
+
+<pre><code>wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-5.noarch.rpm  
+sudo rpm -Uvh epel-release-5*.rpm  
+</code></pre>
+
+<p>RHEL 6.x  </p>
+
+<pre><code>wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm  
+sudo rpm -Uvh epel-release-6*.rpm  
+</code></pre>
+
+<p>RHEL 7.x  </p>
+
+<pre><code>wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm  
+sudo rpm -Uvh epel-release-latest-7*.rpm  
+</code></pre>
+
+<p>Now, you can start using yum, with the install epel repos,</p>
+
+<pre><code>sudo yum update  
+</code></pre>]]></content:encoded></item><item><title><![CDATA[Running multiple versions of python]]></title><description><![CDATA[<p>You can generally run multiple version of Python minor release 2.7 vs 2.6. These are symlinks created in /usr/bin/. </p>
+
+<p>But how do you go about running multiple versions of the the same minor release - 2.7.9 vs 2.7.10.</p>
+
+<p>I wrote a small script</p>]]></description><link>http://localhost:2368/running-multiple-versions-of-python/</link><guid isPermaLink="false">56cfa77e-6fb8-4bcd-b05b-2754f21513b4</guid><category><![CDATA[ucspython]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Wed, 23 Nov 2016 17:45:55 GMT</pubDate><content:encoded><![CDATA[<p>You can generally run multiple version of Python minor release 2.7 vs 2.6. These are symlinks created in /usr/bin/. </p>
+
+<p>But how do you go about running multiple versions of the the same minor release - 2.7.9 vs 2.7.10.</p>
+
+<p>I wrote a small script that downloads, builds python from source and installs it in a path of its own. </p>
+
+<p>The below is to be run with the required version, for e.g.<code>2.7.9</code>. </p>
+
+<pre><code>#!/bin/bash
+version=$1  
+mkdir ~/python  
+wget http://www.python.org/ftp/python/$version/Python-$version.tgz  
+tar -zxvf Python-$version.tgz  
+cd Python-$version  
+mkdir ~/.localpython-$version  
+./configure --prefix=$HOME/.localpython-$version
+make  
+make install  
+</code></pre>
+
+<p>It can then be used from ~/.localpython-2.7.9/bin/python.</p>
+
+<p>we can now set up a virtual environment specifically for each version of python we have installed.</p>
+
+<p>Install virtualenv</p>
+
+<pre><code>sudo apt-get install virtualenv  
+</code></pre>
+
+<p>Add the following to <code>~/.bashrc</code> or <code>~/.zshrc</code>,</p>
+
+<pre><code>source /usr/local/bin/virtualenvwrapper.sh  
+export WORKON_HOME="$HOME/virtual_env/"  
+export PIP_VIRTUALENV_BASE=$WORKON_HOME  
+</code></pre>
+
+<p>Now you can create a new environment using the below command. The <code>-p</code> option specifies the python version to use for this environment. <code>--no-site-packages</code> will restrict this environment from using the python libraries from the global environment.</p>
+
+<pre><code>mkvirtualenv --no-site-packages -p ~/.localpython-2.7.9/bin/python python279  
+</code></pre>
+
+<p>Here on, we call switch to this new environment using the below,</p>
+
+<pre><code>workon python279  
+</code></pre>
+
+<p>Can get out this environment by using</p>
+
+<pre><code>deactivate  
+</code></pre>]]></content:encoded></item></channel></rss>

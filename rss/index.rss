@@ -1,4 +1,73 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Thu, 08 Feb 2018 17:30:53 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>A Day With R</title><description>&lt;h3 id="datatypes"&gt;Datatypes&lt;/h3&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Mon, 12 Feb 2018 03:13:48 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Analyzing Stock Tradebook With R</title><description>&lt;p&gt;Given a year worth of trades, the following R script detects the stocks that were not directly bought. They were either acquired as a part of a bonus, split or IPO.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;setwd("/Users/vvb/work/projects/trades")  
+getwd()
+
+library(data.table)  
+library(readxl)
+
+trades &amp;lt;- readxl::read_excel("tradebook.&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/untitled/</link><guid isPermaLink="false">7a58f72d-e02b-4598-9f31-49532bad7861</guid><category>R</category><dc:creator>vvb</dc:creator><pubDate>Sun, 11 Feb 2018 18:45:54 GMT</pubDate><content:encoded>&lt;p&gt;Given a year worth of trades, the following R script detects the stocks that were not directly bought. They were either acquired as a part of a bonus, split or IPO.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;setwd("/Users/vvb/work/projects/trades")  
+getwd()
+
+library(data.table)  
+library(readxl)
+
+trades &amp;lt;- readxl::read_excel("tradebook.xlsx", sheet = "TRADEBOOK")  
+trades &amp;lt;- trades %&amp;gt;% as.data.table()  
+head(trades)
+
+findUnbalancedTrades &amp;lt;- function(trades) {  
+  trades1 &amp;lt;- trades[Type=="S",Qty:=-Qty]
+  trades2 &amp;lt;- trades1 %&amp;gt;% group_by(Symbol) %&amp;gt;% summarise(Balance = sum(Qty)) %&amp;gt;% as.data.table()
+  noBuyTrades &amp;lt;- trades2[Balance &amp;lt; 0]
+  if (nrow(noBuyTrades) == 0) {
+    print("Trades are balanced")
+  } else {
+    print("The following trades are not balanced")
+    print(noBuyTrades)
+  }
+}
+
+findUnbalancedTrades(trades)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Output  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;gt; setwd("/Users/vvb/work/projects/trades")
+&amp;gt; getwd()
+[1] "/Users/vvb/work/projects/trades"
+&amp;gt; library(data.table)
+&amp;gt; library(readxl)
+&amp;gt; trades &amp;lt;- readxl::read_excel("tradebook.xlsx", sheet = "TRADEBOOK")
+&amp;gt; trades &amp;lt;- trades %&amp;gt;% as.data.table()
+&amp;gt; head(trades)
+   Trade date          Trade time Exchange    Symbol Type Qty   Rate         Order no Trade no
+1: 23-06-2017 1899-12-31 10:07:37      NSE SUNPHARMA    B   2 542.75 1300000000966218 75365300  
+2: 23-06-2017 1899-12-31 10:07:37      NSE SUNPHARMA    B  30 542.75 1300000000966218 75365299  
+3: 23-06-2017 1899-12-31 10:07:37      NSE SUNPHARMA    B  28 542.75 1300000000966218 75365303  
+4: 23-06-2017 1899-12-31 10:07:37      NSE SUNPHARMA    B   2 542.75 1300000000966218 75365302  
+5: 23-06-2017 1899-12-31 10:07:37      NSE SUNPHARMA    B  30 542.75 1300000000966218 75365301  
+6: 27-06-2017 1899-12-31 15:12:07      NSE       TWL    B 500 114.90 1300000003434722 76788334  
+&amp;gt; findUnbalancedTrades &amp;lt;- function(trades) {
++   trades1 &amp;lt;- trades[Type=="S",Qty:=-Qty]
++   trades2 &amp;lt;- trades1 %&amp;gt;% group_by(Symbol) %&amp;gt;% summarise(Balance = sum(Qty)) %&amp;gt;% as.data.table()
++   noBuyTrades &amp;lt;- trades2[Balance &amp;lt; 0]
++   if (nrow(noBuyTrades) == 0) {
++     print("Trades are balanced")
++   } else {
++     print("The following trades are not balanced")
++     print(noBuyTrades)
++   }
++ }
+&amp;gt; findUnbalancedTrades(trades)
+[1] "The following trades are not balanced"
+       Symbol Balance
+1: GODREJAGRO     -32  
+2:   RELIANCE    -200  
+&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title>A Day With R</title><description>&lt;h3 id="datatypes"&gt;Datatypes&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;A &lt;code&gt;vector&lt;/code&gt; is always homogenous&lt;/li&gt;
@@ -1382,57 +1451,4 @@ sudo rpm -Uvh epel-release-latest-7*.rpm
 &lt;p&gt;Now, you can start using yum, with the install epel repos,&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;sudo yum update  
-&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title>Running multiple versions of python</title><description>&lt;p&gt;You can generally run multiple version of Python minor release 2.7 vs 2.6. These are symlinks created in /usr/bin/. &lt;/p&gt;
-
-&lt;p&gt;But how do you go about running multiple versions of the the same minor release - 2.7.9 vs 2.7.10.&lt;/p&gt;
-
-&lt;p&gt;I wrote a small script&lt;/p&gt;</description><link>http://localhost:2368/running-multiple-versions-of-python/</link><guid isPermaLink="false">56cfa77e-6fb8-4bcd-b05b-2754f21513b4</guid><category>ucspython</category><dc:creator>vvb</dc:creator><pubDate>Wed, 23 Nov 2016 17:45:55 GMT</pubDate><content:encoded>&lt;p&gt;You can generally run multiple version of Python minor release 2.7 vs 2.6. These are symlinks created in /usr/bin/. &lt;/p&gt;
-
-&lt;p&gt;But how do you go about running multiple versions of the the same minor release - 2.7.9 vs 2.7.10.&lt;/p&gt;
-
-&lt;p&gt;I wrote a small script that downloads, builds python from source and installs it in a path of its own. &lt;/p&gt;
-
-&lt;p&gt;The below is to be run with the required version, for e.g.&lt;code&gt;2.7.9&lt;/code&gt;. &lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#!/bin/bash
-version=$1  
-mkdir ~/python  
-wget http://www.python.org/ftp/python/$version/Python-$version.tgz  
-tar -zxvf Python-$version.tgz  
-cd Python-$version  
-mkdir ~/.localpython-$version  
-./configure --prefix=$HOME/.localpython-$version
-make  
-make install  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;It can then be used from ~/.localpython-2.7.9/bin/python.&lt;/p&gt;
-
-&lt;p&gt;we can now set up a virtual environment specifically for each version of python we have installed.&lt;/p&gt;
-
-&lt;p&gt;Install virtualenv&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo apt-get install virtualenv  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Add the following to &lt;code&gt;~/.bashrc&lt;/code&gt; or &lt;code&gt;~/.zshrc&lt;/code&gt;,&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;source /usr/local/bin/virtualenvwrapper.sh  
-export WORKON_HOME="$HOME/virtual_env/"  
-export PIP_VIRTUALENV_BASE=$WORKON_HOME  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now you can create a new environment using the below command. The &lt;code&gt;-p&lt;/code&gt; option specifies the python version to use for this environment. &lt;code&gt;--no-site-packages&lt;/code&gt; will restrict this environment from using the python libraries from the global environment.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;mkvirtualenv --no-site-packages -p ~/.localpython-2.7.9/bin/python python279  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Here on, we call switch to this new environment using the below,&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;workon python279  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Can get out this environment by using&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;deactivate  
 &lt;/code&gt;&lt;/pre&gt;</content:encoded></item></channel></rss>

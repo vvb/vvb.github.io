@@ -2,7 +2,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Two Eggs Problem</title>
+    <title>Analyzing Stock Tradebook With R</title>
     <meta name="description" content="">
 
     <meta name="HandheldFriendly" content="True">
@@ -15,21 +15,21 @@
     
     <meta property="og:site_name" content="Servers | Containers | Management">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Two Eggs Problem">
-    <meta property="og:description" content="Problem A building has 100 floors. One of the floors is the highest floor an egg can be dropped from without breaking. If an egg is dropped from above that floor, it will break. If it is dropped from that floor or below, it will be completely undamaged and you">
-    <meta property="og:url" content="http://localhost:2368/two_egg_problem/">
-    <meta property="article:published_time" content="2018-02-05T18:02:15.000Z">
-    <meta property="article:modified_time" content="2018-02-12T03:21:08.000Z">
-    <meta property="article:tag" content="coding">
+    <meta property="og:title" content="Analyzing Stock Tradebook With R">
+    <meta property="og:description" content='Given a year worth of trades, the following R script detects the stocks that were not directly bought. They were either acquired as a part of a bonus, split or IPO. setwd("/Users/vvb/work/projects/trades")   getwd() library(data.table)   library(readxl) trades &amp;lt;- readxl::read_excel("tradebook.'>
+    <meta property="og:url" content="http://localhost:2368/analyzing_stock_tradebook_with_r/">
+    <meta property="article:published_time" content="2018-02-11T18:45:54.000Z">
+    <meta property="article:modified_time" content="2018-02-12T03:21:35.000Z">
+    <meta property="article:tag" content="R">
     
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Two Eggs Problem">
-    <meta name="twitter:description" content="Problem A building has 100 floors. One of the floors is the highest floor an egg can be dropped from without breaking. If an egg is dropped from above that floor, it will break. If it is dropped from that floor or below, it will be completely undamaged and you">
-    <meta name="twitter:url" content="http://localhost:2368/two_egg_problem/">
+    <meta name="twitter:title" content="Analyzing Stock Tradebook With R">
+    <meta name="twitter:description" content='Given a year worth of trades, the following R script detects the stocks that were not directly bought. They were either acquired as a part of a bonus, split or IPO. setwd("/Users/vvb/work/projects/trades")   getwd() library(data.table)   library(readxl) trades &amp;lt;- readxl::read_excel("tradebook.'>
+    <meta name="twitter:url" content="http://localhost:2368/analyzing_stock_tradebook_with_r/">
     <meta name="twitter:label1" content="Written by">
     <meta name="twitter:data1" content="vvb">
     <meta name="twitter:label2" content="Filed under">
-    <meta name="twitter:data2" content="coding">
+    <meta name="twitter:data2" content="R">
     <meta name="twitter:site" content="@vvb__">
     
     <script type="application/ld+json">
@@ -47,12 +47,12 @@
         "url": "http://localhost:2368/author/vvb/",
         "sameAs": []
     },
-    "headline": "Two Eggs Problem",
-    "url": "http://localhost:2368/two_egg_problem/",
-    "datePublished": "2018-02-05T18:02:15.000Z",
-    "dateModified": "2018-02-12T03:21:08.000Z",
-    "keywords": "coding",
-    "description": "Problem A building has 100 floors. One of the floors is the highest floor an egg can be dropped from without breaking. If an egg is dropped from above that floor, it will break. If it is dropped from that floor or below, it will be completely undamaged and you",
+    "headline": "Analyzing Stock Tradebook With R",
+    "url": "http://localhost:2368/analyzing_stock_tradebook_with_r/",
+    "datePublished": "2018-02-11T18:45:54.000Z",
+    "dateModified": "2018-02-12T03:21:35.000Z",
+    "keywords": "R",
+    "description": "Given a year worth of trades, the following R script detects the stocks that were not directly bought. They were either acquired as a part of a bonus, split or IPO. setwd(&quot;/Users/vvb/work/projects/trades&quot;)   getwd() library(data.table)   library(readxl) trades &amp;lt;- readxl::read_excel(&quot;tradebook.",
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "http://localhost:2368"
@@ -845,62 +845,75 @@
         <article class="post">
 
             <header class="post-header">
-                <h1 class="post-title">Two Eggs Problem</h1>
+                <h1 class="post-title">Analyzing Stock Tradebook With R</h1>
                 <section class="post-meta">
                     <p class="author">by <a href="../../author/vvb/">vvb</a></p>
-                    <time class="post-date" datetime="2018-02-05">2018-02-05</time>
+                    <time class="post-date" datetime="2018-02-12">2018-02-12</time>
                 </section>
             </header>
             <section class="post-content">
 
-                <h3 id="problem">Problem</h3>
+                <p>Given a year worth of trades, the following R script detects the stocks that were not directly bought. They were either acquired as a part of a bonus, split or IPO.</p>
 
-<p>A building has 100 floors. One of the floors is the highest floor an egg can be dropped from without breaking.</p>
+<pre><code>setwd("/Users/vvb/work/projects/trades")  
+getwd()
 
-<p>If an egg is dropped from above that floor, it will break. If it is dropped from that floor or below, it will be completely undamaged and you can drop the egg again.</p>
+library(data.table)  
+library(readxl)
 
-<p>Given two eggs, find the highest floor an egg can be dropped from without breaking, with as few drops as possible.</p>
+trades &lt;- readxl::read_excel("tradebook.xlsx", sheet = "TRADEBOOK")  
+trades &lt;- trades %&gt;% as.data.table()  
+head(trades)
 
-<h3 id="solution">Solution</h3>
+findUnbalancedTrades &lt;- function(trades) {  
+  trades1 &lt;- trades[Type=="S",Qty:=-Qty]
+  trades2 &lt;- trades1 %&gt;% group_by(Symbol) %&gt;% summarise(Balance = sum(Qty)) %&gt;% as.data.table()
+  noBuyTrades &lt;- trades2[Balance &lt; 0]
+  if (nrow(noBuyTrades) == 0) {
+    print("Trades are balanced")
+  } else {
+    print("The following trades are not balanced")
+    print(noBuyTrades)
+  }
+}
 
-<p>Assuming we had only 1 egg, then we cannot take any chances and the only way would be to start with Floor 1 and move up floor-by-floor. If the egg breaks on fall from floor <code>n</code>, then floor <code>n-1</code> is our answer. so, worst case 100 drops.</p>
-
-<p>Assuming we had infinite number of eggs, then we could use the binary tree stategy and start with floor 50, then floor 25 and that way we will be able to come to the solution in very few drops.</p>
-
-<p>In a 2 egg scenario, we could start with floor 50 and if the egg breaks, then we have no option but to go one floor at a time. so 1+49 chances.</p>
-
-<p>However, we could do better</p>
-
-<ul>
-<li>Start at floor-10 and drop the egg
-<ul><li>if the egg does not break, go to floor-20</li>
-<li>if the egg breaks, go floor-by-floor from floor-1</li></ul></li>
-</ul>
-
-<p>Repeat this until we find the answer. Worst case being floor 99. 10 + 9=19 drops</p>
-
-<p>Could we do better?</p>
-
-<pre><code>n + (n-1) + (n-2) + (n-3) + .... + 1 &gt;= 100  
+findUnbalancedTrades(trades)
 </code></pre>
 
-<pre><code>n(n+1)/2 &gt;= 100  
-</code></pre>
+<p>Output  </p>
 
-<p>n ~ 14</p>
-
-<pre><code>14        1       13  
-27        2       12  
-39        3       11  
-50        4       10  
-60        5       9  
-69        6       8  
-77        7       7  
-84        8       6  
-90        9       5  
-95        10      4  
-99        11      3  
-100        12      0  
+<pre><code>&gt; setwd("/Users/vvb/work/projects/trades")
+&gt; getwd()
+[1] "/Users/vvb/work/projects/trades"
+&gt; library(data.table)
+&gt; library(readxl)
+&gt; trades &lt;- readxl::read_excel("tradebook.xlsx", sheet = "TRADEBOOK")
+&gt; trades &lt;- trades %&gt;% as.data.table()
+&gt; head(trades)
+   Trade date          Trade time Exchange    Symbol Type Qty   Rate         Order no Trade no
+1: 23-06-2017 1899-12-31 10:07:37      NSE SUNPHARMA    B   2 542.75 1300000000966218 75365300  
+2: 23-06-2017 1899-12-31 10:07:37      NSE SUNPHARMA    B  30 542.75 1300000000966218 75365299  
+3: 23-06-2017 1899-12-31 10:07:37      NSE SUNPHARMA    B  28 542.75 1300000000966218 75365303  
+4: 23-06-2017 1899-12-31 10:07:37      NSE SUNPHARMA    B   2 542.75 1300000000966218 75365302  
+5: 23-06-2017 1899-12-31 10:07:37      NSE SUNPHARMA    B  30 542.75 1300000000966218 75365301  
+6: 27-06-2017 1899-12-31 15:12:07      NSE       TWL    B 500 114.90 1300000003434722 76788334  
+&gt; findUnbalancedTrades &lt;- function(trades) {
++   trades1 &lt;- trades[Type=="S",Qty:=-Qty]
++   trades2 &lt;- trades1 %&gt;% group_by(Symbol) %&gt;% summarise(Balance = sum(Qty)) %&gt;% as.data.table()
++   noBuyTrades &lt;- trades2[Balance &lt; 0]
++   if (nrow(noBuyTrades) == 0) {
++     print("Trades are balanced")
++   } else {
++     print("The following trades are not balanced")
++     print(noBuyTrades)
++   }
++ }
+&gt; findUnbalancedTrades(trades)
+[1] "The following trades are not balanced"
+       Symbol Balance
+1: GODREJAGRO     -32  
+2:   RELIANCE    -200  
+&gt;
 </code></pre>
 
             </section>

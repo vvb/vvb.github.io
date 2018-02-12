@@ -1,4 +1,4 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Mon, 12 Feb 2018 03:13:48 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Analyzing Stock Tradebook With R</title><description>&lt;p&gt;Given a year worth of trades, the following R script detects the stocks that were not directly bought. They were either acquired as a part of a bonus, split or IPO.&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Mon, 12 Feb 2018 03:21:45 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Analyzing Stock Tradebook With R</title><description>&lt;p&gt;Given a year worth of trades, the following R script detects the stocks that were not directly bought. They were either acquired as a part of a bonus, split or IPO.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;setwd("/Users/vvb/work/projects/trades")  
 getwd()
@@ -6,7 +6,7 @@ getwd()
 library(data.table)  
 library(readxl)
 
-trades &amp;lt;- readxl::read_excel("tradebook.&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/untitled/</link><guid isPermaLink="false">7a58f72d-e02b-4598-9f31-49532bad7861</guid><category>R</category><dc:creator>vvb</dc:creator><pubDate>Sun, 11 Feb 2018 18:45:54 GMT</pubDate><content:encoded>&lt;p&gt;Given a year worth of trades, the following R script detects the stocks that were not directly bought. They were either acquired as a part of a bonus, split or IPO.&lt;/p&gt;
+trades &amp;lt;- readxl::read_excel("tradebook.&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/analyzing_stock_tradebook_with_r/</link><guid isPermaLink="false">7a58f72d-e02b-4598-9f31-49532bad7861</guid><category>R</category><dc:creator>vvb</dc:creator><pubDate>Sun, 11 Feb 2018 18:45:54 GMT</pubDate><content:encoded>&lt;p&gt;Given a year worth of trades, the following R script detects the stocks that were not directly bought. They were either acquired as a part of a bonus, split or IPO.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;setwd("/Users/vvb/work/projects/trades")  
 getwd()
@@ -837,7 +837,7 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
 
 &lt;p&gt;A building has 100 floors. One of the floors is the highest floor an egg can be dropped from without breaking.&lt;/p&gt;
 
-&lt;p&gt;If an egg is dropped from above that floor, it will break. If it is dropped from that floor or below, it will be completely undamaged and you&lt;/p&gt;</description><link>http://localhost:2368/two_egg_problem/</link><guid isPermaLink="false">fa790a70-e893-4cd2-8dab-7ffab4c626b3</guid><category>#coding</category><dc:creator>vvb</dc:creator><pubDate>Mon, 05 Feb 2018 18:02:15 GMT</pubDate><content:encoded>&lt;h3 id="problem"&gt;Problem&lt;/h3&gt;
+&lt;p&gt;If an egg is dropped from above that floor, it will break. If it is dropped from that floor or below, it will be completely undamaged and you&lt;/p&gt;</description><link>http://localhost:2368/two_egg_problem/</link><guid isPermaLink="false">fa790a70-e893-4cd2-8dab-7ffab4c626b3</guid><category>coding</category><dc:creator>vvb</dc:creator><pubDate>Mon, 05 Feb 2018 18:02:15 GMT</pubDate><content:encoded>&lt;h3 id="problem"&gt;Problem&lt;/h3&gt;
 
 &lt;p&gt;A building has 100 floors. One of the floors is the highest floor an egg can be dropped from without breaking.&lt;/p&gt;
 

@@ -2,7 +2,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Multiple parallel transactions - ucsmsdk 0.9.1.1</title>
+    <title>Running Commands As Apache User</title>
     <meta name="description" content="">
 
     <meta name="HandheldFriendly" content="True">
@@ -15,22 +15,17 @@
     
     <meta property="og:site_name" content="Servers | Containers | Management">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Multiple parallel transactions - ucsmsdk 0.9.1.1">
-    <meta property="og:description" content="Until ucsmsdk 0.9.1.0 everything until a handle.commit was a single transaction, handle.add_mo(mo1)   handle.add_mo(mo2)   handle.remove_mo(mo3)   handle.commit()   Starting 0.9.1.1 there is an optional tag parameter added to add_mo,set_mo,remove_mo,commit. tag">
-    <meta property="og:url" content="http://localhost:2368/multiple-parallel-transactions-ucsmsdk-0-9-1-1/">
-    <meta property="article:published_time" content="2016-11-07T23:03:23.000Z">
-    <meta property="article:modified_time" content="2016-11-07T23:03:23.000Z">
-    <meta property="article:tag" content="ucsmsdk">
-    <meta property="article:tag" content="ucspython">
-    
+    <meta property="og:title" content="Running Commands As Apache User">
+    <meta property="og:description" content='I have some django apps that run as apache user.  And I frequently need to run some commands as an apache user from my regular user shell. The following function in ~/.bashrc is awesome for such use cases run_as_apache_user() {       su -s "/bin/bash" -c "$1" apache } Usage:'>
+    <meta property="og:url" content="http://localhost:2368/running-commands-as-apache-user/">
+    <meta property="article:published_time" content="2018-02-22T18:41:13.000Z">
+    <meta property="article:modified_time" content="2018-02-22T18:41:13.000Z">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Multiple parallel transactions - ucsmsdk 0.9.1.1">
-    <meta name="twitter:description" content="Until ucsmsdk 0.9.1.0 everything until a handle.commit was a single transaction, handle.add_mo(mo1)   handle.add_mo(mo2)   handle.remove_mo(mo3)   handle.commit()   Starting 0.9.1.1 there is an optional tag parameter added to add_mo,set_mo,remove_mo,commit. tag">
-    <meta name="twitter:url" content="http://localhost:2368/multiple-parallel-transactions-ucsmsdk-0-9-1-1/">
+    <meta name="twitter:title" content="Running Commands As Apache User">
+    <meta name="twitter:description" content='I have some django apps that run as apache user.  And I frequently need to run some commands as an apache user from my regular user shell. The following function in ~/.bashrc is awesome for such use cases run_as_apache_user() {       su -s "/bin/bash" -c "$1" apache } Usage:'>
+    <meta name="twitter:url" content="http://localhost:2368/running-commands-as-apache-user/">
     <meta name="twitter:label1" content="Written by">
     <meta name="twitter:data1" content="vvb">
-    <meta name="twitter:label2" content="Filed under">
-    <meta name="twitter:data2" content="ucsmsdk, ucspython">
     <meta name="twitter:site" content="@vvb__">
     
     <script type="application/ld+json">
@@ -48,12 +43,11 @@
         "url": "http://localhost:2368/author/vvb/",
         "sameAs": []
     },
-    "headline": "Multiple parallel transactions - ucsmsdk 0.9.1.1",
-    "url": "http://localhost:2368/multiple-parallel-transactions-ucsmsdk-0-9-1-1/",
-    "datePublished": "2016-11-07T23:03:23.000Z",
-    "dateModified": "2016-11-07T23:03:23.000Z",
-    "keywords": "ucsmsdk, ucspython",
-    "description": "Until ucsmsdk 0.9.1.0 everything until a handle.commit was a single transaction, handle.add_mo(mo1)   handle.add_mo(mo2)   handle.remove_mo(mo3)   handle.commit()   Starting 0.9.1.1 there is an optional tag parameter added to add_mo,set_mo,remove_mo,commit. tag",
+    "headline": "Running Commands As Apache User",
+    "url": "http://localhost:2368/running-commands-as-apache-user/",
+    "datePublished": "2018-02-22T18:41:13.000Z",
+    "dateModified": "2018-02-22T18:41:13.000Z",
+    "description": "I have some django apps that run as apache user.  And I frequently need to run some commands as an apache user from my regular user shell. The following function in ~/.bashrc is awesome for such use cases run_as_apache_user() {       su -s &quot;/bin/bash&quot; -c &quot;$1&quot; apache } Usage:",
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "http://localhost:2368"
@@ -846,43 +840,29 @@
         <article class="post">
 
             <header class="post-header">
-                <h1 class="post-title">Multiple parallel transactions - ucsmsdk 0.9.1.1</h1>
+                <h1 class="post-title">Running Commands As Apache User</h1>
                 <section class="post-meta">
                     <p class="author">by <a href="../../author/vvb/">vvb</a></p>
-                    <time class="post-date" datetime="2016-11-08">2016-11-08</time>
+                    <time class="post-date" datetime="2018-02-23">2018-02-23</time>
                 </section>
             </header>
             <section class="post-content">
 
-                <p>Until <code>ucsmsdk</code> 0.9.1.0 everything until a <code>handle.commit</code> was a single transaction,</p>
+                <p>I have some django apps that run as apache user. <br>
+And I frequently need to run some commands as an apache user from my regular user shell.</p>
 
-<pre><code>handle.add_mo(mo1)  
-handle.add_mo(mo2)  
-handle.remove_mo(mo3)  
-handle.commit()  
+<p>The following function in <code>~/.bashrc</code> is awesome for such use cases</p>
+
+<pre><code>run_as_apache_user() {  
+    su -s "/bin/bash" -c "$1" apache
+}
 </code></pre>
 
-<p>Starting 0.9.1.1 there is an optional <code>tag</code> parameter added to <code>add_mo</code>,<code>set_mo</code>,<code>remove_mo</code>,<code>commit</code>. <code>tag</code> is the scope of a transaction.</p>
+<p>Usage:</p>
 
-<p>So, here is how two parallel transactions can be done.  </p>
-
-<pre><code>handle.add_mo(mo1, tag="trans_1")  
-handle.add_mo(mo2, tag="trans_2")  
-handle.add_mo(mo3, tag="trans_1")  
-handle.remove_mo(mo4, tag="trans_2")
-
-# Commit transaction #2
-handle.commit(tag="trans_2")
-
-handle.add_mo(mo5, tag="trans_1")
-
-# Commit transaction #1
-handle.commit(tag="trans_1")  
+<pre><code>$ run_as_apache_user 'svn up'
+$ run_as_apache_user 'ls'
 </code></pre>
-
-<p>use case: if we wanted to use the same handle object in different threads, the thread.name could be passed as the tag parameter. This would ensure that operations in one thread do not affect others.</p>
-
-<p>Without the tag parameter the behaviour is as it was in 0.9.1.0</p>
 
             </section>
 

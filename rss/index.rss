@@ -1,4 +1,28 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Mon, 12 Feb 2018 03:21:45 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Analyzing Stock Tradebook With R</title><description>&lt;p&gt;Given a year worth of trades, the following R script detects the stocks that were not directly bought. They were either acquired as a part of a bonus, split or IPO.&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Thu, 22 Feb 2018 18:41:33 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Running Commands As Apache User</title><description>&lt;p&gt;I have some django apps that run as apache user. &lt;br&gt;
+And I frequently need to run some commands as an apache user from my regular user shell.&lt;/p&gt;
+
+&lt;p&gt;The following function in &lt;code&gt;~/.bashrc&lt;/code&gt; is awesome for such use cases&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;run_as_apache_user() {  
+    su -s "/bin/bash" -c "$1" apache
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Usage:&lt;/p&gt;</description><link>http://localhost:2368/running-commands-as-apache-user/</link><guid isPermaLink="false">94690a3d-acf6-412f-9a2a-9b5d130b3d00</guid><dc:creator>vvb</dc:creator><pubDate>Thu, 22 Feb 2018 18:41:13 GMT</pubDate><content:encoded>&lt;p&gt;I have some django apps that run as apache user. &lt;br&gt;
+And I frequently need to run some commands as an apache user from my regular user shell.&lt;/p&gt;
+
+&lt;p&gt;The following function in &lt;code&gt;~/.bashrc&lt;/code&gt; is awesome for such use cases&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;run_as_apache_user() {  
+    su -s "/bin/bash" -c "$1" apache
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Usage:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ run_as_apache_user 'svn up'
+$ run_as_apache_user 'ls'
+&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title>Analyzing Stock Tradebook With R</title><description>&lt;p&gt;Given a year worth of trades, the following R script detects the stocks that were not directly bought. They were either acquired as a part of a bonus, split or IPO.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;setwd("/Users/vvb/work/projects/trades")  
 getwd()
@@ -1404,51 +1428,4 @@ wget https://raw.githubusercontent.com/marcosdiez/ansible_human_log.py/master/hu
 callback_plugins = ~/ansible_plugins/callback  
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Done!&lt;/p&gt;</content:encoded></item><item><title>Using Yum on RHEL without RHN subscription</title><description>&lt;p&gt;Disable the rhn yum plugin, &lt;code&gt;/etc/yum/pluginconf.d/rhnplugin.conf&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;[main]
-enabled = 0  
-gpgcheck = 1  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Install the epel-repo for the version of redhat you have,&lt;/p&gt;
-
-&lt;p&gt;RHEL 5.x  &lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-5.noarch.rpm  
-sudo rpm -Uvh epel-release-5*.rpm  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;RHEL 6.x  &lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;wget https://dl.&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/using-yum-on-rhel-without-rhn-subscription/</link><guid isPermaLink="false">01d29217-e20d-4ec3-ae0c-0acf7d9f91db</guid><dc:creator>vvb</dc:creator><pubDate>Tue, 29 Nov 2016 05:13:00 GMT</pubDate><content:encoded>&lt;p&gt;Disable the rhn yum plugin, &lt;code&gt;/etc/yum/pluginconf.d/rhnplugin.conf&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;[main]
-enabled = 0  
-gpgcheck = 1  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Install the epel-repo for the version of redhat you have,&lt;/p&gt;
-
-&lt;p&gt;RHEL 5.x  &lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-5.noarch.rpm  
-sudo rpm -Uvh epel-release-5*.rpm  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;RHEL 6.x  &lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm  
-sudo rpm -Uvh epel-release-6*.rpm  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;RHEL 7.x  &lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm  
-sudo rpm -Uvh epel-release-latest-7*.rpm  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now, you can start using yum, with the install epel repos,&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo yum update  
-&lt;/code&gt;&lt;/pre&gt;</content:encoded></item></channel></rss>
+&lt;p&gt;Done!&lt;/p&gt;</content:encoded></item></channel></rss>

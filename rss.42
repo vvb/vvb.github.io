@@ -1,112 +1,111 @@
-	
-	<head>
-	    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
-	    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	    <title>A Day With R</title>
-	    <meta name="description" content="">
-	    <link rel="shortcut icon" href="index.html">
-	    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,700italic,300,700" rel="stylesheet" type="text/css">
-			<link href="http://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet" type="text/css">
-			<link href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet">
-			<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
-			<link rel="stylesheet" type="text/css" href="../assets/styles/crisp.css?v=569568ca56">
-	    <meta name="HandheldFriendly" content="True">
-	    <meta name="MobileOptimized" content="320">
-	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-			<!--[if lt IE 9]>
-				<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-				<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-			<![endif]-->  
-				<link rel="stylesheet" type="text/css" href="../assets/styles/rrssb.css?v=569568ca56">
-	<meta property="og:title" content="A Day With R">
-	<meta property="og:type" content="article">
-	<meta property="og:description" content="Datatypes A vector is always homogenous A list can be heterogenous A matrix is a list of vectors A dataframe is a list of lists. stockprice &lt;- 1900L   class(stockprice) stocks &lt;- c(" heg prices c names>
-  
-	    <link rel="canonical" href="index.html">
-    <meta name="referrer" content="no-referrer-when-downgrade">
-    <link rel="amphtml" href="amp/index.html">
-    
-    <meta property="og:site_name" content="Servers | Containers | Management">
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="A Day With R">
-    <meta property="og:description" content='Datatypes A vector is always homogenous A list can be heterogenous A matrix is a list of vectors A dataframe is a list of lists. stockprice &amp;lt;- 1900L   class(stockprice) stocks &amp;lt;- c("HEG", "Graphite", "Bajaj", "L&amp;amp;T")   prices &amp;lt;- c(1900L, 650L, 500L, 1380L)   names('>
-    <meta property="og:url" content="http://localhost:2368/a-day-with-r/">
-    <meta property="article:published_time" content="2018-02-06T06:43:33.000Z">
-    <meta property="article:modified_time" content="2018-02-06T10:13:10.000Z">
-    <meta property="article:tag" content="R">
-    
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="A Day With R">
-    <meta name="twitter:description" content='Datatypes A vector is always homogenous A list can be heterogenous A matrix is a list of vectors A dataframe is a list of lists. stockprice &amp;lt;- 1900L   class(stockprice) stocks &amp;lt;- c("HEG", "Graphite", "Bajaj", "L&amp;amp;T")   prices &amp;lt;- c(1900L, 650L, 500L, 1380L)   names('>
-    <meta name="twitter:url" content="http://localhost:2368/a-day-with-r/">
-    <meta name="twitter:label1" content="Written by">
-    <meta name="twitter:data1" content="vvb">
-    <meta name="twitter:label2" content="Filed under">
-    <meta name="twitter:data2" content="R">
-    <meta name="twitter:site" content="@vvb__">
-    
-    <script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "publisher": {
-        "@type": "Organization",
-        "name": "Servers | Containers | Management",
-        "logo": "http://localhost:2368/ghost/img/ghosticon.jpg"
-    },
-    "author": {
-        "@type": "Person",
-        "name": "vvb",
-        "url": "http://localhost:2368/author/vvb/",
-        "sameAs": []
-    },
-    "headline": "A Day With R",
-    "url": "http://localhost:2368/a-day-with-r/",
-    "datePublished": "2018-02-06T06:43:33.000Z",
-    "dateModified": "2018-02-06T10:13:10.000Z",
-    "keywords": "R",
-    "description": "Datatypes A vector is always homogenous A list can be heterogenous A matrix is a list of vectors A dataframe is a list of lists. stockprice &amp;lt;- 1900L   class(stockprice) stocks &amp;lt;- c(&quot;HEG&quot;, &quot;Graphite&quot;, &quot;Bajaj&quot;, &quot;L&amp;amp;T&quot;)   prices &amp;lt;- c(1900L, 650L, 500L, 1380L)   names(",
-    "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "http://localhost:2368"
-    }
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:media="http://search.yahoo.com/mrss/"><channel><title><![CDATA[Servers | Containers | Management]]></title><description><![CDATA[Servers | Containers | Management]]></description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Thu, 22 Feb 2018 18:41:33 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Running Commands As Apache User]]></title><description><![CDATA[<p>I have some django apps that run as apache user. <br>
+And I frequently need to run some commands as an apache user from my regular user shell.</p>
+
+<p>The following function in <code>~/.bashrc</code> is awesome for such use cases</p>
+
+<pre><code>run_as_apache_user() {  
+    su -s "/bin/bash" -c "$1" apache
 }
-    </script>
+</code></pre>
 
-    <meta name="generator" content="Ghost 0.11">
-    <link rel="alternate" type="application/rss+xml" title="Servers | Containers | Management" href="../rss.42">
-	</head>
-	<body class="post-template tag-r">
-		<header id="header">
-			
-			<h1><a href="../">Servers | Containers | Management</a></h1>
-			<p></p>
-			<div id="follow-icons">
-	<a href="http://twitter.com/vvb__"><i class="fa fa-twitter-square fa-2x"></i></a>
-	<a href="http://linkedin.com/in/vijayvikrant"><i class="fa fa-linkedin-square fa-2x"></i></a>
-    <a href="http://github.com/vvb"><i class="fa fa-github-square fa-2x"></i></a>
-	<a href="mailto:vvbtab@gmail.com"><i class="fa fa-envelope-square fa-2x"></i></a>
-	<a href="../rss.42"><i class="fa fa-rss-square fa-2x"></i></a>
-</div>
+<p>Usage:</p>]]></description><link>http://localhost:2368/running-commands-as-apache-user/</link><guid isPermaLink="false">94690a3d-acf6-412f-9a2a-9b5d130b3d00</guid><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Thu, 22 Feb 2018 18:41:13 GMT</pubDate><content:encoded><![CDATA[<p>I have some django apps that run as apache user. <br>
+And I frequently need to run some commands as an apache user from my regular user shell.</p>
 
-<!--
-<a href="http://plus.google.com/+username"><i class="fa fa-google-plus-square fa-2x"></i></a>
-<a href="http://instagram.com/username"><i class="fa fa-instagram fa-2x"></i></a>
-<a href="http://vimeo.com/username"><i class="fa fa-vimeo-square fa-2x"></i></a>
-<a href="http://youtube.com/username"><i class="fa fa-youtube-square fa-2x"></i></a>
-<a href="http://flickr.com/username"><i class="fa fa-flickr fa-2x"></i></a>
-<a href="http://pinterest.com/username"><i class="fa fa-pinterest-square fa-2x"></i></a>
-<a href="http://username.tumblr.com"><i class="fa fa-tumblr-square fa-2x"></i></a>
--->
-			  <h6><a href="../">Home</a></h6>
+<p>The following function in <code>~/.bashrc</code> is awesome for such use cases</p>
 
-		</header>
-		<main id="content">
-			<article id="33" class="post tag-r">
-	<div class="post-stamp">February 6, 2018<span class="taglist"> · <a href="../tag/r/">R</a></span></div>
-	<h1 class="post-title">A Day With R</h1>
-	<h3 id="datatypes">Datatypes</h3>
+<pre><code>run_as_apache_user() {  
+    su -s "/bin/bash" -c "$1" apache
+}
+</code></pre>
+
+<p>Usage:</p>
+
+<pre><code>$ run_as_apache_user 'svn up'
+$ run_as_apache_user 'ls'
+</code></pre>]]></content:encoded></item><item><title><![CDATA[Analyzing Stock Tradebook With R]]></title><description><![CDATA[<p>Given a year worth of trades, the following R script detects the stocks that were not directly bought. They were either acquired as a part of a bonus, split or IPO.</p>
+
+<pre><code>setwd("/Users/vvb/work/projects/trades")  
+getwd()
+
+library(data.table)  
+library(readxl)
+
+trades &lt;- readxl::read_excel("tradebook.</code></pre>]]></description><link>http://localhost:2368/analyzing_stock_tradebook_with_r/</link><guid isPermaLink="false">7a58f72d-e02b-4598-9f31-49532bad7861</guid><category><![CDATA[R]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Sun, 11 Feb 2018 18:45:54 GMT</pubDate><content:encoded><![CDATA[<p>Given a year worth of trades, the following R script detects the stocks that were not directly bought. They were either acquired as a part of a bonus, split or IPO.</p>
+
+<pre><code>setwd("/Users/vvb/work/projects/trades")  
+getwd()
+
+library(data.table)  
+library(readxl)
+
+trades &lt;- readxl::read_excel("tradebook.xlsx", sheet = "TRADEBOOK")  
+trades &lt;- trades %&gt;% as.data.table()  
+head(trades)
+
+findUnbalancedTrades &lt;- function(trades) {  
+  trades1 &lt;- trades[Type=="S",Qty:=-Qty]
+  trades2 &lt;- trades1 %&gt;% group_by(Symbol) %&gt;% summarise(Balance = sum(Qty)) %&gt;% as.data.table()
+  noBuyTrades &lt;- trades2[Balance &lt; 0]
+  if (nrow(noBuyTrades) == 0) {
+    print("Trades are balanced")
+  } else {
+    print("The following trades are not balanced")
+    print(noBuyTrades)
+  }
+}
+
+findUnbalancedTrades(trades)
+</code></pre>
+
+<p>Output  </p>
+
+<pre><code>&gt; setwd("/Users/vvb/work/projects/trades")
+&gt; getwd()
+[1] "/Users/vvb/work/projects/trades"
+&gt; library(data.table)
+&gt; library(readxl)
+&gt; trades &lt;- readxl::read_excel("tradebook.xlsx", sheet = "TRADEBOOK")
+&gt; trades &lt;- trades %&gt;% as.data.table()
+&gt; head(trades)
+   Trade date          Trade time Exchange    Symbol Type Qty   Rate         Order no Trade no
+1: 23-06-2017 1899-12-31 10:07:37      NSE SUNPHARMA    B   2 542.75 1300000000966218 75365300  
+2: 23-06-2017 1899-12-31 10:07:37      NSE SUNPHARMA    B  30 542.75 1300000000966218 75365299  
+3: 23-06-2017 1899-12-31 10:07:37      NSE SUNPHARMA    B  28 542.75 1300000000966218 75365303  
+4: 23-06-2017 1899-12-31 10:07:37      NSE SUNPHARMA    B   2 542.75 1300000000966218 75365302  
+5: 23-06-2017 1899-12-31 10:07:37      NSE SUNPHARMA    B  30 542.75 1300000000966218 75365301  
+6: 27-06-2017 1899-12-31 15:12:07      NSE       TWL    B 500 114.90 1300000003434722 76788334  
+&gt; findUnbalancedTrades &lt;- function(trades) {
++   trades1 &lt;- trades[Type=="S",Qty:=-Qty]
++   trades2 &lt;- trades1 %&gt;% group_by(Symbol) %&gt;% summarise(Balance = sum(Qty)) %&gt;% as.data.table()
++   noBuyTrades &lt;- trades2[Balance &lt; 0]
++   if (nrow(noBuyTrades) == 0) {
++     print("Trades are balanced")
++   } else {
++     print("The following trades are not balanced")
++     print(noBuyTrades)
++   }
++ }
+&gt; findUnbalancedTrades(trades)
+[1] "The following trades are not balanced"
+       Symbol Balance
+1: GODREJAGRO     -32  
+2:   RELIANCE    -200  
+&gt;
+</code></pre>]]></content:encoded></item><item><title><![CDATA[A Day With R]]></title><description><![CDATA[<h3 id="datatypes">Datatypes</h3>
+
+<ul>
+<li>A <code>vector</code> is always homogenous</li>
+<li>A <code>list</code> can be heterogenous</li>
+<li>A <code>matrix</code> is a list of vectors</li>
+<li>A <code>dataframe</code> is a list of lists.</li>
+</ul>
+
+<pre><code>stockprice &lt;- 1900L  
+class(stockprice)
+
+stocks &lt;- c("HEG", "Graphite", "Bajaj", "L&amp;T")  
+prices &lt;- c(1900L, 650L, 500L, 1380L)  
+names(</code></pre>]]></description><link>http://localhost:2368/a-day-with-r/</link><guid isPermaLink="false">e04e9fd9-f70e-47b4-bff8-32d7be2ea0a3</guid><category><![CDATA[R]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Tue, 06 Feb 2018 06:43:33 GMT</pubDate><content:encoded><![CDATA[<h3 id="datatypes">Datatypes</h3>
 
 <ul>
 <li>A <code>vector</code> is always homogenous</li>
@@ -858,150 +857,575 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
 10  19.2  6.00   168 123    3.92  3.44  18.3  1.00  0     4.00  4.00    187  
 # ... with 22 more rows
 &gt; 
+</code></pre>]]></content:encoded></item><item><title><![CDATA[Two Eggs Problem]]></title><description><![CDATA[<h3 id="problem">Problem</h3>
+
+<p>A building has 100 floors. One of the floors is the highest floor an egg can be dropped from without breaking.</p>
+
+<p>If an egg is dropped from above that floor, it will break. If it is dropped from that floor or below, it will be completely undamaged and you</p>]]></description><link>http://localhost:2368/two_egg_problem/</link><guid isPermaLink="false">fa790a70-e893-4cd2-8dab-7ffab4c626b3</guid><category><![CDATA[coding]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 05 Feb 2018 18:02:15 GMT</pubDate><content:encoded><![CDATA[<h3 id="problem">Problem</h3>
+
+<p>A building has 100 floors. One of the floors is the highest floor an egg can be dropped from without breaking.</p>
+
+<p>If an egg is dropped from above that floor, it will break. If it is dropped from that floor or below, it will be completely undamaged and you can drop the egg again.</p>
+
+<p>Given two eggs, find the highest floor an egg can be dropped from without breaking, with as few drops as possible.</p>
+
+<h3 id="solution">Solution</h3>
+
+<p>Assuming we had only 1 egg, then we cannot take any chances and the only way would be to start with Floor 1 and move up floor-by-floor. If the egg breaks on fall from floor <code>n</code>, then floor <code>n-1</code> is our answer. so, worst case 100 drops.</p>
+
+<p>Assuming we had infinite number of eggs, then we could use the binary tree stategy and start with floor 50, then floor 25 and that way we will be able to come to the solution in very few drops.</p>
+
+<p>In a 2 egg scenario, we could start with floor 50 and if the egg breaks, then we have no option but to go one floor at a time. so 1+49 chances.</p>
+
+<p>However, we could do better</p>
+
+<ul>
+<li>Start at floor-10 and drop the egg
+<ul><li>if the egg does not break, go to floor-20</li>
+<li>if the egg breaks, go floor-by-floor from floor-1</li></ul></li>
+</ul>
+
+<p>Repeat this until we find the answer. Worst case being floor 99. 10 + 9=19 drops</p>
+
+<p>Could we do better?</p>
+
+<pre><code>n + (n-1) + (n-2) + (n-3) + .... + 1 &gt;= 100  
 </code></pre>
-	<div id="social-bar">
-	<ul class="rrssb-buttons clearfix">
-      <li class="email">
-          <a href="mailto:?subject=A%20Day%20With%20R&amp;body=http://localhost:2368/a-day-with-r/">
-              <span class="icon">
-                  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewbox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
-                      <path transform="scale(0.014,-0.014) translate(0,-1670)" d="M1792 826v-794q0 -66 -47 -113t-113 -47h-1472q-66 0 -113 47t-47 113v794q44 -49 101 -87q362 -246 497 -345q57 -42 92.5 -65.5t94.5 -48t110 -24.5h1h1q51 0 110 24.5t94.5 48t92.5 65.5q170 123 498 345q57 39 100 87zM1792 1120q0 -79 -49 -151t-122 -123 q-376 -261 -468 -325q-10 -7 -42.5 -30.5t-54 -38t-52 -32.5t-57.5 -27t-50 -9h-1h-1q-23 0 -50 9t-57.5 27t-52 32.5t-54 38t-42.5 30.5q-91 64 -262 182.5t-205 142.5q-62 42 -117 115.5t-55 136.5q0 78 41.5 130t118.5 52h1472q65 0 112.5 -47t47.5 -113z"></path>
-                  </svg>
-              </span>
-              <span class="text">Email</span>
-          </a>
-      </li>
-      <li class="facebook">
-          <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:2368/a-day-with-r/" class="popup">
-              <span class="icon">
-                  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewbox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
-                      <path d="M27.825,4.783c0-2.427-2.182-4.608-4.608-4.608H4.783c-2.422,0-4.608,2.182-4.608,4.608v18.434 c0,2.427,2.181,4.608,4.608,4.608H14V17.379h-3.379v-4.608H14v-1.795c0-3.089,2.335-5.885,5.192-5.885h3.718v4.608h-3.726 c-0.408,0-0.884,0.492-0.884,1.236v1.836h4.609v4.608h-4.609v10.446h4.916c2.422,0,4.608-2.188,4.608-4.608V4.783z"></path>
-                  </svg>
-              </span>
-              <span class="text">Facebook</span>
-          </a>
-      </li>
-			<li class="twitter">
-          <a href="http://twitter.com/home?status=A%20Day%20With%20R%20http://localhost:2368/a-day-with-r/" class="popup">
-              <span class="icon">
-                  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewbox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
-		                  <path d="M24.253,8.756C24.689,17.08,18.297,24.182,9.97,24.62c-3.122,0.162-6.219-0.646-8.861-2.32 c2.703,0.179,5.376-0.648,7.508-2.321c-2.072-0.247-3.818-1.661-4.489-3.638c0.801,0.128,1.62,0.076,2.399-0.155 C4.045,15.72,2.215,13.6,2.115,11.077c0.688,0.275,1.426,0.407,2.168,0.386c-2.135-1.65-2.729-4.621-1.394-6.965 C5.575,7.816,9.54,9.84,13.803,10.071c-0.842-2.739,0.694-5.64,3.434-6.482c2.018-0.623,4.212,0.044,5.546,1.683 c1.186-0.213,2.318-0.662,3.329-1.317c-0.385,1.256-1.247,2.312-2.399,2.942c1.048-0.106,2.069-0.394,3.019-0.851 C26.275,7.229,25.39,8.196,24.253,8.756z"></path>
-                  </svg>
-              </span>
-              <span class="text">Twitter</span>
-          </a>
-      </li>
-			<li class="linkedin">
-          <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:2368/a-day-with-r/&amp;title=A%20Day%20With%20R&amp;summary=Datatypes%20A%20vector%20is%20always%20homogenous%20A%20list%20can%20be%20heterogenous%20A%20matrix%20is%20a%20list%20of%20vectors%20A%20dataframe%20is%20a%20list%20of%20lists.%20stockprice%20&lt;-%201900L%20%20%20class(stockprice)%20stocks%20&lt;-%20c(" heg prices c names class="popup">
-              <span class="icon">
-                  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewbox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
-                      <path d="M25.424,15.887v8.447h-4.896v-7.882c0-1.979-0.709-3.331-2.48-3.331c-1.354,0-2.158,0.911-2.514,1.803 c-0.129,0.315-0.162,0.753-0.162,1.194v8.216h-4.899c0,0,0.066-13.349,0-14.731h4.899v2.088c-0.01,0.016-0.023,0.032-0.033,0.048 h0.033V11.69c0.65-1.002,1.812-2.435,4.414-2.435C23.008,9.254,25.424,11.361,25.424,15.887z M5.348,2.501 c-1.676,0-2.772,1.092-2.772,2.539c0,1.421,1.066,2.538,2.717,2.546h0.032c1.709,0,2.771-1.132,2.771-2.546 C8.054,3.593,7.019,2.501,5.343,2.501H5.348z M2.867,24.334h4.897V9.603H2.867V24.334z"></path>
-                  </svg>
-              </span>
-              <span class="text">LinkedIn</span>
-          </a>
-      </li>
-      <li class="tumblr">
-					<script>
-						document.write('<a href="http://www.tumblr.com/share?v=3&amp;u=' + encodeURIComponent('http://localhost:2368/a-day-with-r/') + '&amp;t=A%20Day%20With%20R" class="popup">');
-					</script>
-              <span class="icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="28px" height="28px" viewbox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
-											<path d="M18.02 21.842c-2.029 0.052-2.422-1.396-2.439-2.446v-7.294h4.729V7.874h-4.71V1.592c0 0-3.653 0-3.714 0 s-0.167 0.053-0.182 0.186c-0.218 1.935-1.144 5.33-4.988 6.688v3.637h2.927v7.677c0 2.8 1.7 6.7 7.3 6.6 c1.863-0.03 3.934-0.795 4.392-1.453l-1.22-3.539C19.595 21.6 18.7 21.8 18 21.842z"></path>
-									</svg>
-              </span>
-              <span class="text">Tumblr</span>
-          <script>document.write('</a>');</script>
-      </li>
-      <li class="reddit">
-          <a href="http://www.reddit.com/submit?url=http://localhost:2368/a-day-with-r/">
-              <span class="icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="28px" height="28px" viewbox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
-											<g>
-													<path d="M11.794 15.316c0-1.029-0.835-1.895-1.866-1.895c-1.03 0-1.893 0.865-1.893 1.895s0.863 1.9 1.9 1.9 C10.958 17.2 11.8 16.3 11.8 15.316z"></path>
-													<path d="M18.1 13.422c-1.029 0-1.895 0.864-1.895 1.895c0 1 0.9 1.9 1.9 1.865c1.031 0 1.869-0.836 1.869-1.865 C19.969 14.3 19.1 13.4 18.1 13.422z"></path>
-													<path d="M17.527 19.791c-0.678 0.678-1.826 1.006-3.514 1.006c-0.004 0-0.009 0-0.014 0c-0.004 0-0.01 0-0.015 0 c-1.686 0-2.834-0.328-3.51-1.005c-0.264-0.265-0.693-0.265-0.958 0c-0.264 0.265-0.264 0.7 0 1 c0.943 0.9 2.4 1.4 4.5 1.402c0.005 0 0 0 0 0c0.005 0 0 0 0 0c2.066 0 3.527-0.459 4.47-1.402 c0.265-0.264 0.265-0.693 0.002-0.958C18.221 19.5 17.8 19.5 17.5 19.791z"></path>
-													<path d="M27.707 13.267c0-1.785-1.453-3.237-3.236-3.237c-0.793 0-1.518 0.287-2.082 0.761c-2.039-1.295-4.646-2.069-7.438-2.219 l1.483-4.691l4.062 0.956c0.071 1.4 1.3 2.6 2.7 2.555c1.488 0 2.695-1.208 2.695-2.695C25.881 3.2 24.7 2 23.2 2 c-1.059 0-1.979 0.616-2.42 1.508l-4.633-1.091c-0.344-0.081-0.693 0.118-0.803 0.455l-1.793 5.7 C10.548 8.6 7.7 9.4 5.6 10.75C5.006 10.3 4.3 10 3.5 10.029c-1.785 0-3.237 1.452-3.237 3.2 c0 1.1 0.6 2.1 1.4 2.69c-0.04 0.272-0.061 0.551-0.061 0.831c0 2.3 1.3 4.4 3.7 5.9 c2.299 1.5 5.3 2.3 8.6 2.325c3.228 0 6.271-0.825 8.571-2.325c2.387-1.56 3.7-3.66 3.7-5.917 c0-0.26-0.016-0.514-0.051-0.768C27.088 15.5 27.7 14.4 27.7 13.267z M23.186 3.355c0.74 0 1.3 0.6 1.3 1.3 c0 0.738-0.6 1.34-1.34 1.34s-1.342-0.602-1.342-1.34C21.844 4 22.4 3.4 23.2 3.355z M1.648 13.3 c0-1.038 0.844-1.882 1.882-1.882c0.31 0 0.6 0.1 0.9 0.209c-1.049 0.868-1.813 1.861-2.26 2.9 C1.832 14.2 1.6 13.8 1.6 13.267z M21.773 21.57c-2.082 1.357-4.863 2.105-7.831 2.105c-2.967 0-5.747-0.748-7.828-2.105 c-1.991-1.301-3.088-3-3.088-4.782c0-1.784 1.097-3.484 3.088-4.784c2.081-1.358 4.861-2.106 7.828-2.106 c2.967 0 5.7 0.7 7.8 2.106c1.99 1.3 3.1 3 3.1 4.784C24.859 18.6 23.8 20.3 21.8 21.57z M25.787 14.6 c-0.432-1.084-1.191-2.095-2.244-2.977c0.273-0.156 0.59-0.245 0.928-0.245c1.035 0 1.9 0.8 1.9 1.9 C26.354 13.8 26.1 14.3 25.8 14.605z"></path>
-											</g>
-									</svg>
-              </span>
-              <span class="text">Reddit</span>
-          </a>
-      </li>
-      <li class="googleplus">
-          <a href="https://plus.google.com/share?url=http://localhost:2368/a-day-with-r/" class="popup">
-              <span class="icon">
-                  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewbox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
-                      <g>
-                          <path d="M14.703,15.854l-1.219-0.948c-0.372-0.308-0.88-0.715-0.88-1.459c0-0.748,0.508-1.223,0.95-1.663 c1.42-1.119,2.839-2.309,2.839-4.817c0-2.58-1.621-3.937-2.399-4.581h2.097l2.202-1.383h-6.67c-1.83,0-4.467,0.433-6.398,2.027 C3.768,4.287,3.059,6.018,3.059,7.576c0,2.634,2.022,5.328,5.604,5.328c0.339,0,0.71-0.033,1.083-0.068 c-0.167,0.408-0.336,0.748-0.336,1.324c0,1.04,0.551,1.685,1.011,2.297c-1.524,0.104-4.37,0.273-6.467,1.562 c-1.998,1.188-2.605,2.916-2.605,4.137c0,2.512,2.358,4.84,7.289,4.84c5.822,0,8.904-3.223,8.904-6.41 c0.008-2.327-1.359-3.489-2.829-4.731H14.703z M10.269,11.951c-2.912,0-4.231-3.765-4.231-6.037c0-0.884,0.168-1.797,0.744-2.511 c0.543-0.679,1.489-1.12,2.372-1.12c2.807,0,4.256,3.798,4.256,6.242c0,0.612-0.067,1.694-0.845,2.478 c-0.537,0.55-1.438,0.948-2.295,0.951V11.951z M10.302,25.609c-3.621,0-5.957-1.732-5.957-4.142c0-2.408,2.165-3.223,2.911-3.492 c1.421-0.479,3.25-0.545,3.555-0.545c0.338,0,0.52,0,0.766,0.034c2.574,1.838,3.706,2.757,3.706,4.479 c-0.002,2.073-1.736,3.665-4.982,3.649L10.302,25.609z"></path>
-                          <polygon points="23.254,11.89 23.254,8.521 21.569,8.521 21.569,11.89 18.202,11.89 18.202,13.604 21.569,13.604 21.569,17.004 23.254,17.004 23.254,13.604 26.653,13.604 26.653,11.89"></polygon>
-                      </g>
-                  </svg>
-              </span>
-              <span class="text">Google+</span>
-          </a>
-      </li>
-      <li class="pinterest">
-          <script>
-						var imgurl = "http://localhost:2368";
-						var firstimg = document.getElementsByClassName("post tag-r")[0].getElementsByTagName("img")[0];
-						if (firstimg !== undefined) {
-							imgurl = firstimg.src;
-						}
-						document.write('<a href="http://pinterest.com/pin/create/button/?url=http://localhost:2368/a-day-with-r/&amp;media=' + imgurl + '&amp;description=A%20Day%20With%20R" class="popup">');
-					</script>
-              <span class="icon">
-                  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewbox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
-		                  <path d="M14.021,1.57C6.96,1.57,1.236,7.293,1.236,14.355c0,7.062,5.724,12.785,12.785,12.785c7.061,0,12.785-5.725,12.785-12.785 C26.807,7.294,21.082,1.57,14.021,1.57z M15.261,18.655c-1.161-0.09-1.649-0.666-2.559-1.219c-0.501,2.626-1.113,5.145-2.925,6.458 c-0.559-3.971,0.822-6.951,1.462-10.116c-1.093-1.84,0.132-5.545,2.438-4.632c2.837,1.123-2.458,6.842,1.099,7.557 c3.711,0.744,5.227-6.439,2.925-8.775c-3.325-3.374-9.678-0.077-8.897,4.754c0.19,1.178,1.408,1.538,0.489,3.168 C7.165,15.378,6.53,13.7,6.611,11.462c0.131-3.662,3.291-6.227,6.46-6.582c4.007-0.448,7.771,1.474,8.29,5.239 c0.579,4.255-1.816,8.865-6.102,8.533L15.261,18.655z"></path>
-                  </svg>
-              </span>
-              <span class="text">Pinterest</span>
-          <script>document.write('</a>');</script>
-      </li>
-      <li class="pocket">
-          <a href="https://getpocket.com/save?url=http://localhost:2368/a-day-with-r/" class="popup">
-              <span class="icon">
-                  <svg width="32px" height="28px" viewbox="0 0 32 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-                      <path d="M28.7817528,0.00172488695 C30.8117487,0.00431221738 31.9749312,1.12074529 31.9644402,3.10781507 C31.942147,6.67703739 32.1336065,10.2669583 31.8057648,13.8090137 C30.7147076,25.5813672 17.2181194,31.8996281 7.20714461,25.3808491 C2.71833574,22.4571656 0.196577202,18.3122624 0.0549495772,12.9357897 C-0.0342233715,9.5774348 0.00642900214,6.21519891 0.0300336062,2.85555035 C0.0405245414,1.1129833 1.21157517,0.0146615391 3.01995012,0.00819321302 C7.34746087,-0.00603710433 11.6775944,0.00431221738 16.0064164,0.00172488695 C20.2644248,0.00172488695 24.5237444,-0.00215610869 28.7817528,0.00172488695 L28.7817528,0.00172488695 Z M8.64885184,7.85611511 C7.38773662,7.99113854 6.66148108,8.42606978 6.29310958,9.33228474 C5.90114134,10.2969233 6.17774769,11.1421181 6.89875951,11.8276216 C9.35282156,14.161969 11.8108164,16.4924215 14.2976518,18.7943114 C15.3844131,19.7966007 16.5354102,19.7836177 17.6116843,18.7813283 C20.0185529,16.5495467 22.4070683,14.2982907 24.7824746,12.0327533 C25.9845979,10.8850542 26.1012707,9.56468083 25.1469132,8.60653379 C24.1361858,7.59255976 22.8449191,7.6743528 21.5890476,8.85191291 C19.9936451,10.3488554 18.3680912,11.8172352 16.8395462,13.3777945 C16.1342655,14.093159 15.7200114,14.0048744 15.0566806,13.3440386 C13.4599671,11.7484252 11.8081945,10.2060421 10.1262706,8.70001155 C9.65564653,8.27936164 9.00411403,8.05345704 8.64885184,7.85611511 L8.64885184,7.85611511 L8.64885184,7.85611511 Z"></path>
-                  </svg>
-              </span>
-              <span class="text">Pocket</span>
-          </a>
-      </li>
-  </ul>
-</div>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="../assets/js/rrssb.min.js?v=569568ca56"></script>
-  <div id="comments">
-	<div id="disqus_thread"></div>
-	<script type="text/javascript">
-	    var disqus_shortname = 'vijayvikrantcom'; // required: replace example with your shortname
-	    var disqus_identifier = '33';
-	    (function() {
-	        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-	        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-	        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-	    })();
-	</script>
-	<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-	<a href="http://disqus.com" class="dsq-brlink">Comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>
-</article>  
 
-		</main>
-		<footer id="footer">
-			<section id="footer-message">© 2018 Servers | Containers | Management. All rights reserved. Powered by <a href="http://ghost.org" target="_blank">Ghost</a>. <a href="https://github.com/kathyqian/crisp-ghost-theme" target="_blank">Crisp</a> theme by <a href="http://kathyqian.com" target="_blank">Kathy Qian</a>.</section>
-		</footer>
-	<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+<pre><code>n(n+1)/2 &gt;= 100  
+</code></pre>
 
-  ga('create', 'UA-78616097-1', 'auto');
-  ga('send', 'pageview');
+<p>n ~ 14</p>
 
-</script>
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
-	<script>hljs.initHighlightingOnLoad();</script>
-	</body>
+<pre><code>14        1       13  
+27        2       12  
+39        3       11  
+50        4       10  
+60        5       9  
+69        6       8  
+77        7       7  
+84        8       6  
+90        9       5  
+95        10      4  
+99        11      3  
+100        12      0  
+</code></pre>]]></content:encoded></item><item><title><![CDATA[setting custom alerts on any device using pushbullet]]></title><description><![CDATA[<p><a href="http://localhost:2368/setting-custom-alerts-on-any-device-using-pushbullet/www.pushbullet.com">pushbullet.com</a> lets you send API based notification/alerts.</p>
+
+<p>Start with creating a Pushbullet account. Install the app on your phone. Go to the pushbullet website, head to "My Account" and then create an access token. Note this token.</p>
+
+<p>The below python code can then be used to send a</p>]]></description><link>http://localhost:2368/setting-custom-alerts-on-any-device-using-pushbullet/</link><guid isPermaLink="false">c518a189-609e-4936-ab67-2a8a632a14fb</guid><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Tue, 15 Aug 2017 13:51:05 GMT</pubDate><content:encoded><![CDATA[<p><a href="http://localhost:2368/setting-custom-alerts-on-any-device-using-pushbullet/www.pushbullet.com">pushbullet.com</a> lets you send API based notification/alerts.</p>
+
+<p>Start with creating a Pushbullet account. Install the app on your phone. Go to the pushbullet website, head to "My Account" and then create an access token. Note this token.</p>
+
+<p>The below python code can then be used to send a notification to all your registered devices.</p>
+
+<pre><code>def send_message(title, msg):  
+    url = "https://api.pushbullet.com/v2/pushes"
+    headers = {'Content-Type': 'application/json',
+               "Access-Token": access_token}
+    data = json.dumps({
+        "type": "note",
+        "title": title,
+        "body": msg
+    })
+    requests.post(url, data=data, headers=headers)
+</code></pre>
+
+<p>My use case was <a href="https://github.com/vvb/stock_alerts/blob/master/portfolio_alerts.py">this</a> python script that generates buy and sell alerts on my mobile phone based on pre-configred prices in a csv sheet.</p>
+
+<p>But there is no reason this cannot be used to get datacenter alerts. I plan to include this as a library method in Cisco Ucs SDKs soon.</p>
+
+<p>note: You might need to signout and sign back in one time after you install the app for the alerts to start showing up.</p>]]></content:encoded></item><item><title><![CDATA[Using http with pip]]></title><description><![CDATA[<p>Enforce using http with pip,</p>
+
+<pre><code>pip install --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org &lt;packageName&gt;  
+</code></pre>]]></description><link>http://localhost:2368/using-http-with-pip/</link><guid isPermaLink="false">7217758c-64c8-4fea-8c83-1fe62d32ec13</guid><category><![CDATA[ucspython]]></category><category><![CDATA[pip]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 17 Apr 2017 19:02:05 GMT</pubDate><content:encoded><![CDATA[<p>Enforce using http with pip,</p>
+
+<pre><code>pip install --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org &lt;packageName&gt;  
+</code></pre>]]></content:encoded></item><item><title><![CDATA[Reflection in go!]]></title><description><![CDATA[<p>Printing struct attributes and values using reflection.</p>
+
+<pre><code>package main
+
+import (  
+    "fmt"
+    "reflect"
+)
+
+type User struct {  
+    FirstName string
+    LastName  string
+    Age       int
+}
+
+func (f *User) reflect() {  
+    v := reflect.ValueOf(f).Elem()
+
+    for i := 0; i &lt; v.NumField(); i++ {
+        val := v.Field(i)
+        t := v.Type().Field(i)
+        fmt.Printf("%s</code></pre>]]></description><link>http://localhost:2368/reflection-in-go/</link><guid isPermaLink="false">81c31105-1037-4f65-99a5-967a31797cb9</guid><category><![CDATA[golang]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 17 Apr 2017 18:54:19 GMT</pubDate><content:encoded><![CDATA[<p>Printing struct attributes and values using reflection.</p>
+
+<pre><code>package main
+
+import (  
+    "fmt"
+    "reflect"
+)
+
+type User struct {  
+    FirstName string
+    LastName  string
+    Age       int
+}
+
+func (f *User) reflect() {  
+    v := reflect.ValueOf(f).Elem()
+
+    for i := 0; i &lt; v.NumField(); i++ {
+        val := v.Field(i)
+        t := v.Type().Field(i)
+        fmt.Printf("%s %v \t", t.Name, val.Interface())
+    }
+}
+
+func main() {  
+    f := &amp;User{
+        FirstName: "John",
+        LastName:  "Doe",
+        Age:       13,
+    }
+
+    f.reflect()
+}
+</code></pre>]]></content:encoded></item><item><title><![CDATA[ansible modules for Cisco UCS IMC server]]></title><description><![CDATA[<h3 id="imcansible">imc-ansible</h3>
+
+<p><code>imc-ansible</code> are a set of ansible modules for Cisco UCS standalone servers(IMC servers). </p>
+
+<h4 id="installation">installation</h4>
+
+<pre><code># Install ansible
+sudo pip install ansible
+
+# install imcsdk from github
+git clone https://github.com/ciscoucs/imcsdk  
+cd imcsdk  
+sudo make install
+
+# install imc-ansible from github
+git clone https://github.com/ciscoucs/imc-ansible  
+cd</code></pre>]]></description><link>http://localhost:2368/ansible-modules-for-cisco-ucs-imc-server/</link><guid isPermaLink="false">53748709-f767-4c0b-b82b-d0e027b4f4be</guid><category><![CDATA[ansible]]></category><category><![CDATA[imcsdk]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 06 Feb 2017 22:55:04 GMT</pubDate><content:encoded><![CDATA[<h3 id="imcansible">imc-ansible</h3>
+
+<p><code>imc-ansible</code> are a set of ansible modules for Cisco UCS standalone servers(IMC servers). </p>
+
+<h4 id="installation">installation</h4>
+
+<pre><code># Install ansible
+sudo pip install ansible
+
+# install imcsdk from github
+git clone https://github.com/ciscoucs/imcsdk  
+cd imcsdk  
+sudo make install
+
+# install imc-ansible from github
+git clone https://github.com/ciscoucs/imc-ansible  
+cd imc-ansible  
+sudo python install.py  
+</code></pre>
+
+<h4 id="samplerun">sample run</h4>
+
+<pre><code>➔ ansible-playbook -i inventory site.yml
+
+PLAY [imc]  
+*********************************************************************
+
+TASK [common : check if imcsdk is installed]  
+***********************************
+ok: [fpmr1_192.168.1.1]
+
+TASK [common : install imcsdk]  
+*************************************************
+skipping: [fpmr1_192.168.1.1]
+
+TASK [admin : set password policy]  
+*********************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : create local user]  
+***********************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : delete local user]  
+***********************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : reset password policy]  
+*******************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : enable ntp]  
+******************************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : disable ntp]  
+*****************************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : enable LDAP]  
+*****************************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : disable LDAP]  
+****************************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [boot : set boot order]  
+***************************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [boot : set boot order alternate]  
+*****************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [storage : create virtual drive]  
+******************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [storage : delete virtual drive]  
+******************************************
+changed: [fpmr1_192.168.1.1]
+
+PLAY RECAP  
+*********************************************************************
+fpmr1_192.168.1.1       : ok=13   changed=12   unreachable=0    failed=0  
+</code></pre>]]></content:encoded></item><item><title><![CDATA[Inventory Ucs Managed servers via ucsmsdk]]></title><description><![CDATA[<p>ucsmsdk 0.9.3.0 will add support for inventory APIs. <br>
+This allows for multi-host multi-component inventory in multiple formats(enough of multiple? :-D ).</p>
+
+<p>The inventory APIs support inventorying,</p>
+
+<pre><code>- fabric interconnects
+- cpus
+- disks
+- dimms
+- storage controller
+- VIC
+- vNICs
+- vHBAs
+- PSUs
+</code></pre>
+
+<p>The</p>]]></description><link>http://localhost:2368/inventory-ucs-managed-servers-via-ucsmsdk/</link><guid isPermaLink="false">017cc972-97b5-4343-a39e-9f777602a504</guid><category><![CDATA[ucspython]]></category><category><![CDATA[ucsmsdk]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Tue, 24 Jan 2017 06:04:13 GMT</pubDate><content:encoded><![CDATA[<p>ucsmsdk 0.9.3.0 will add support for inventory APIs. <br>
+This allows for multi-host multi-component inventory in multiple formats(enough of multiple? :-D ).</p>
+
+<p>The inventory APIs support inventorying,</p>
+
+<pre><code>- fabric interconnects
+- cpus
+- disks
+- dimms
+- storage controller
+- VIC
+- vNICs
+- vHBAs
+- PSUs
+</code></pre>
+
+<p>The supported output formats for the report are,</p>
+
+<pre><code>- csv
+- html
+- json
+</code></pre>
+
+<p>we recommend using the html format, as it has inbuilt javascript based filtering. It can quickly help narrow down a certain component on a certain host.</p>
+
+<pre><code>from ucsmsdk.utils.inventory import get_inventory
+
+# Gets inventory of all components in JSON format
+get_inventory(handle=handle)
+
+# Gets inventory for all servers all components in JSON format
+get_inventory(handle=[handle1, handle2, handle3])
+
+# Gets inventory of one server all components in JSON format
+get_inventory(handle=handle, component="all")
+
+# Gets disks inventory of one server in JSON format
+get_inventory(handle=handle, component="disks")
+
+# Gets cpu and disks inventory for one server in JSON format
+get_inventory(handle=handle, component=["cpu", "disks"])
+
+# Gets cpu and disks inventory for one server in JSON format and writes to inventory.json file
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="json", file_name="inventory.json")
+
+# Gets cpu and disks inventory for one server in CSV format and writes to inventory.csv fie
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="csv", file_name="inventory.csv")
+
+# Gets cpu and disks inventory for one server in HTML format and writes to inventory.html
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="html", file_name="inventory.html")  
+</code></pre>
+
+<p>This can be tried out today via the code available at <a href="https://github.com/ciscoucs/ucsmsdk">https://github.com/ciscoucs/ucsmsdk</a></p>
+
+<p>complete code to run it,  </p>
+
+<pre><code>#! /usr/bin/env python
+
+from ucsmsdk.ucshandle import UcsHandle  
+from ucsmsdk.utils.inventory import get_inventory
+
+handle = UcsHandle("192.168.1.1", "username", "password")  
+handle.login()
+
+# This would create inventory.html in the same directory where the script is run from
+get_inventory(handle=handle, component="all", file_format="html", file_name="inventory.html")
+
+handle.logout()  
+</code></pre>]]></content:encoded></item><item><title><![CDATA[debugging in an ansible environment]]></title><description><![CDATA[<p>I was looking for a PDB sort of debugger for debugging custom ansible modules written in Python. This is when i bumped into <a href="http://michaeldehaan.net/post/35403909347/tips-on-using-debuggers-with-ansible">this</a> blog.</p>
+
+<p>As recommended on the blog, I tried out <code>epdb</code> and it works great for debugging custom ansible modules written in python.</p>
+
+<p><strong>Installation</strong>:</p>
+
+<pre><code>pip install epdb</code></pre>]]></description><link>http://localhost:2368/debugging-in-an-ansible-environment/</link><guid isPermaLink="false">265e74b7-1b71-4d1b-a51c-65520d6f6deb</guid><category><![CDATA[ansible]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Tue, 10 Jan 2017 20:18:27 GMT</pubDate><content:encoded><![CDATA[<p>I was looking for a PDB sort of debugger for debugging custom ansible modules written in Python. This is when i bumped into <a href="http://michaeldehaan.net/post/35403909347/tips-on-using-debuggers-with-ansible">this</a> blog.</p>
+
+<p>As recommended on the blog, I tried out <code>epdb</code> and it works great for debugging custom ansible modules written in python.</p>
+
+<p><strong>Installation</strong>:</p>
+
+<pre><code>pip install epdb  
+</code></pre>
+
+<p>epdb: <a href="https://pypi.python.org/pypi/epdb">https://pypi.python.org/pypi/epdb</a></p>
+
+<p><strong>Usage</strong>:</p>
+
+<p>Insert the below code works as a breakpoint. Insert this at the lines needing debug.</p>
+
+<pre><code>import epdb  
+epdb.serve()  
+</code></pre>
+
+<p>Run ansible with <code>--forks 1</code> option to avoid parallel threads</p>
+
+<pre><code>ansible-playbook -i inventory site.yml --forks 1  
+</code></pre>
+
+<p>This run should hang when it hits the piece of code that has <code>epdb.serve()</code>. At this point run the below from another shell</p>
+
+<pre><code>python -c "import epdb; epdb.connect()"  
+</code></pre>
+
+<p>This should get you to the <code>epdb</code> shell. <br>
+here on, things should look familiar to <code>pdb</code>.</p>]]></content:encoded></item><item><title><![CDATA[imcsdk storage APIs]]></title><description><![CDATA[<p>0.9.2.0 release of imcsdk will add support for <code>imcsdk.apis.server.storage</code> to manage virtual drives.</p>
+
+<ul>
+<li><code>virtual_drive_create</code> <br></li>
+<li><code>virtual_drive_delete</code></li>
+</ul>
+
+<p>Basic usage,  </p>
+
+<pre><code>vd = virtual_drive_create(handle=handle,  
+                          drive_group=[[1]],
+                          controller_slot="MEZZ",
+                          raid_level=0)
+virtual_drive_delete(handle=handle,  
+                     controller_slot="MEZZ"</code></pre>]]></description><link>http://localhost:2368/imcsdk-storage-apis/</link><guid isPermaLink="false">9031319e-31c8-44d7-a324-775ceda5c4a8</guid><category><![CDATA[imcsdk]]></category><category><![CDATA[ucspython]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Sat, 07 Jan 2017 19:04:54 GMT</pubDate><content:encoded><![CDATA[<p>0.9.2.0 release of imcsdk will add support for <code>imcsdk.apis.server.storage</code> to manage virtual drives.</p>
+
+<ul>
+<li><code>virtual_drive_create</code> <br></li>
+<li><code>virtual_drive_delete</code></li>
+</ul>
+
+<p>Basic usage,  </p>
+
+<pre><code>vd = virtual_drive_create(handle=handle,  
+                          drive_group=[[1]],
+                          controller_slot="MEZZ",
+                          raid_level=0)
+virtual_drive_delete(handle=handle,  
+                     controller_slot="MEZZ",
+                     name=vd.virtual_drive_name)
+</code></pre>
+
+<p>Somethings to note about the arguments that <code>virtual_drive_create</code> takes,</p>
+
+<ul>
+<li><code>drive_group</code> needs to be array of an array(s) - <code>[[]]</code>
+The below shows sample inputs for <code>drive_group</code>,  </li>
+</ul>
+
+<pre><code>        For Raid 0  - [[1, 2, 3]]
+        For Raid 10 - [[1, 2], [3, 4], [5, 6]]
+        For Raid 50 - [[1, 2, 3], [4, 5, 6]]
+</code></pre>
+
+<p>Where the numbers are physical drive slots.</p>
+
+<ul>
+<li><p><code>controller_slot</code> is the name/id of the Storage controller. 
+This could be <code>MEZZ</code> in some cases. or could be a number <code>0-9</code> is some.</p></li>
+<li><p><code>raid_level</code> - refer to the raid levels supported by the platform</p></li>
+</ul>]]></content:encoded></item><item><title><![CDATA[Inventorying IMC servers via imcsdk]]></title><description><![CDATA[<p>The <code>0.9.2.0</code> release of <code>imcsdk</code> will add support for <code>inventory</code> APIs. </p>
+
+<p>The following output formats are supported -</p>
+
+<ul>
+<li>JSON (default)</li>
+<li>HTML</li>
+<li>CSV</li>
+</ul>
+
+<p>Refer the API documentation for a list of components that can be inventoried. <code>all</code> fetches inventory for all components.</p>
+
+<p>Usage is shown below,</p>
+
+<pre><code>from imcsdk.</code></pre>]]></description><link>http://localhost:2368/inventorying-imc-servers-via-imcsdk/</link><guid isPermaLink="false">8262e689-c3a1-49c9-b6ca-b0e1b703f4d1</guid><category><![CDATA[ucspython]]></category><category><![CDATA[imcsdk]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Tue, 03 Jan 2017 06:41:48 GMT</pubDate><content:encoded><![CDATA[<p>The <code>0.9.2.0</code> release of <code>imcsdk</code> will add support for <code>inventory</code> APIs. </p>
+
+<p>The following output formats are supported -</p>
+
+<ul>
+<li>JSON (default)</li>
+<li>HTML</li>
+<li>CSV</li>
+</ul>
+
+<p>Refer the API documentation for a list of components that can be inventoried. <code>all</code> fetches inventory for all components.</p>
+
+<p>Usage is shown below,</p>
+
+<pre><code>from imcsdk.apis.server.inventory import get_inventory
+
+# Gets inventory of all components in JSON format
+get_inventory(handle=handle)
+
+# Gets inventory for all servers all components in JSON format
+get_inventory(handle=[handle1, handle2, handle3])
+
+# Gets inventory of one server all components in JSON format
+get_inventory(handle=handle, component="all")
+
+# Gets disks inventory of one server in JSON format
+get_inventory(handle=handle, component="disks")
+
+# Gets cpu and disks inventory for one server in JSON format
+get_inventory(handle=handle, component=["cpu", "disks"])
+
+# Gets cpu and disks inventory for one server in JSON format and writes to inventory.json file
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="json", file_name="inventory.json")
+
+# Gets cpu and disks inventory for one server in CSV format and writes to inventory.csv fie
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="csv", file_name="inventory.csv")
+
+# Gets cpu and disks inventory for one server in HTML format and writes to inventory.html
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="html", file_name="inventory.html")  
+</code></pre>]]></content:encoded></item><item><title><![CDATA[html table search with pure javascript]]></title><description><![CDATA[<p>The below javascript method searches through all the <code>&lt;td&gt;</code> elements and hides <code>&lt;tr&gt;</code> that do not have it.</p>
+
+<pre><code>    function search() {
+    // Declare variables
+    var input, filter, table, tr, td, i, j, tds, ths, matched;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    tr = document.getElementsByTagName("tr");
+
+    // Loop</code></pre>]]></description><link>http://localhost:2368/html-table-search-with-pure-javascript/</link><guid isPermaLink="false">f4922a20-0954-4e6e-a0ca-493230cf8fc0</guid><category><![CDATA[javascript]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Thu, 22 Dec 2016 17:55:35 GMT</pubDate><content:encoded><![CDATA[<p>The below javascript method searches through all the <code>&lt;td&gt;</code> elements and hides <code>&lt;tr&gt;</code> that do not have it.</p>
+
+<pre><code>    function search() {
+    // Declare variables
+    var input, filter, table, tr, td, i, j, tds, ths, matched;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    tr = document.getElementsByTagName("tr");
+
+    // Loop through all table rows, and hide
+    // those who don't match the search query
+    for (i = 0; i &lt; tr.length; i++) {
+        tds = tr[i].getElementsByTagName("td");
+        ths = tr[i].getElementsByTagName("th");
+        matched = false;
+
+        // leave the row header 
+        if (ths.length &gt; 0) {
+            matched = true;
+        }
+        else {
+            for (j = 0; j &lt; tds.length; j++) {
+                td = tds[j];
+                if (td.innerHTML.toUpperCase().indexOf(filter) &gt; -1) {
+                    matched = true;
+                    break;
+                }
+
+            }
+        }
+        if (matched == true) {
+            tr[i].style.display = "";
+        }
+        else {
+            tr[i].style.display = "none";
+        }
+        }
+    }
+</code></pre>
+
+<p>And the below adds the search input box to the webpage and maps it to our <code>search</code> method</p>
+
+<pre><code>    &lt;input type="text" id="searchInput" onkeyup="search()" placeholder="Search.."&gt;
+</code></pre>]]></content:encoded></item><item><title><![CDATA[configuring a secure front-end for a non-secure service]]></title><description><![CDATA[<p>The goal is to enable <code>https</code> only access for a pre-existing <code>http</code> service.</p>
+
+<p>Let us assume that a service is running on <code>http://myserver.com:8000/service</code>. The goal is to make no changes to the pre-existing service and still allow <code>https</code> only access to it.</p>
+
+<p>One way this can</p>]]></description><link>http://localhost:2368/configuring-a-secure-front-end-for-a-non-secure-service/</link><guid isPermaLink="false">90ab218f-6208-452b-91f6-be39f893d871</guid><category><![CDATA[apache]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Tue, 06 Dec 2016 12:24:01 GMT</pubDate><content:encoded><![CDATA[<p>The goal is to enable <code>https</code> only access for a pre-existing <code>http</code> service.</p>
+
+<p>Let us assume that a service is running on <code>http://myserver.com:8000/service</code>. The goal is to make no changes to the pre-existing service and still allow <code>https</code> only access to it.</p>
+
+<p>One way this can be accomplished, is using apache redirects. We are going to use <code>ProxyPass</code> and <code>ProxyPassReverse</code> directives.</p>
+
+<p>Add the following to <code>httpd.conf</code></p>
+
+<pre><code>&lt;VirtualHost myserver.com:443&gt;
+
+# set the SSL options
+
+
+# Enable ProxyPass
+SSLProxyEngine On  
+RewriteEngine On  
+#ProxyPreserveHost On        #Important to comment this
+ProxyPass /service http://myserver.com:8000/service/ nocanon  
+ProxyPassReverse /service http://myserver.com:8000/service/
+
+&lt;/VirtualHost&gt;  
+</code></pre>
+
+<p>The above would expose <code>https://myserver.com/service</code> and internally redirect it to <code>http://myserver.com:8000/service</code>. The <code>ProxyPass</code> directive does that. <code>ProxyPassReverse</code> makes sure that what is sent back to the browser is again converted back to <code>https://msyserver.com/service</code> format.</p>
+
+<p>Now, <code>https</code> access should be working. But we still need to disable the <code>http</code> access. The below allows all access between internal services (<code>https</code> to <code>http</code> in this case), but disables access to port <code>8000</code> from outside.</p>
+
+<pre><code>sudo /sbin/iptables -A INPUT -p tcp -i lo -j ACCEPT  
+sudo /sbin/iptables -A INPUT -p tcp --dport 8000 -j DROP  
+</code></pre>
+
+<p>Done!</p>]]></content:encoded></item><item><title><![CDATA[ansible - pretty printing errors]]></title><description><![CDATA[<p>Ansible does not do a great job at pretty printing exceptions/errors. There are plugins available that make this easy.</p>
+
+<pre><code>mkdir -p ~/ansible/plugins/callback  
+cd ~/ansible/plugins/callback  
+wget https://raw.githubusercontent.com/marcosdiez/ansible_human_log.py/master/human_log.py  
+</code></pre>
+
+<p>create/edit <code>~/.ansible.cfg</code> and add the</p>]]></description><link>http://localhost:2368/ansible-pretty-printing-errors/</link><guid isPermaLink="false">fd95c5bb-4ed0-4c39-899b-6bb2c8cdaa30</guid><category><![CDATA[ansible]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 05 Dec 2016 04:25:34 GMT</pubDate><content:encoded><![CDATA[<p>Ansible does not do a great job at pretty printing exceptions/errors. There are plugins available that make this easy.</p>
+
+<pre><code>mkdir -p ~/ansible/plugins/callback  
+cd ~/ansible/plugins/callback  
+wget https://raw.githubusercontent.com/marcosdiez/ansible_human_log.py/master/human_log.py  
+</code></pre>
+
+<p>create/edit <code>~/.ansible.cfg</code> and add the following to the <code>defaults</code> section,  </p>
+
+<pre><code>[defaults]
+callback_plugins = ~/ansible_plugins/callback  
+</code></pre>
+
+<p>Done!</p>]]></content:encoded></item></channel></rss>

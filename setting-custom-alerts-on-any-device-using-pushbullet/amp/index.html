@@ -1,32 +1,33 @@
-
+<!DOCTYPE html>
+<html ⚡>
 <head>
     <meta charset="utf-8">
 
     <title>setting custom alerts on any device using pushbullet</title>
-    <meta name="description" content="">
+    <meta name="description" content="" />
 
-    <meta name="HandheldFriendly" content="True">
+    <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 
     <link rel="shortcut icon" href="../../favicon.ico">
 
-    <link rel="canonical" href="../index.html">
-    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link rel="canonical" href="../index.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
     
-    <meta property="og:site_name" content="Servers | Containers | Management">
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="setting custom alerts on any device using pushbullet">
-    <meta property="og:description" content='pushbullet.com lets you send API based notification/alerts. Start with creating a Pushbullet account. Install the app on your phone. Go to the pushbullet website, head to "My Account" and then create an access token. Note this token. The below python code can then be used to send a'>
-    <meta property="og:url" content="http://localhost:2368/setting-custom-alerts-on-any-device-using-pushbullet/">
-    <meta property="article:published_time" content="2017-08-15T13:51:05.000Z">
-    <meta property="article:modified_time" content="2017-08-15T13:52:40.000Z">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="setting custom alerts on any device using pushbullet">
-    <meta name="twitter:description" content='pushbullet.com lets you send API based notification/alerts. Start with creating a Pushbullet account. Install the app on your phone. Go to the pushbullet website, head to "My Account" and then create an access token. Note this token. The below python code can then be used to send a'>
-    <meta name="twitter:url" content="http://localhost:2368/setting-custom-alerts-on-any-device-using-pushbullet/">
-    <meta name="twitter:label1" content="Written by">
-    <meta name="twitter:data1" content="vvb">
-    <meta name="twitter:site" content="@vvb__">
+    <meta property="og:site_name" content="Servers | Containers | Management" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="setting custom alerts on any device using pushbullet" />
+    <meta property="og:description" content="pushbullet.com lets you send API based notification/alerts. Start with creating a Pushbullet account. Install the app on your phone. Go to the pushbullet website, head to &quot;My Account&quot; and then create an access token. Note this token. The below python code can then be used to send a" />
+    <meta property="og:url" content="http://localhost:2368/setting-custom-alerts-on-any-device-using-pushbullet/" />
+    <meta property="article:published_time" content="2017-08-15T13:51:05.000Z" />
+    <meta property="article:modified_time" content="2017-08-15T13:52:40.000Z" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="setting custom alerts on any device using pushbullet" />
+    <meta name="twitter:description" content="pushbullet.com lets you send API based notification/alerts. Start with creating a Pushbullet account. Install the app on your phone. Go to the pushbullet website, head to &quot;My Account&quot; and then create an access token. Note this token. The below python code can then be used to send a" />
+    <meta name="twitter:url" content="http://localhost:2368/setting-custom-alerts-on-any-device-using-pushbullet/" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="vvb" />
+    <meta name="twitter:site" content="@vvb__" />
     
     <script type="application/ld+json">
 {
@@ -55,10 +56,10 @@
 }
     </script>
 
-    <meta name="generator" content="Ghost 0.11">
-    <link rel="alternate" type="application/rss+xml" title="Servers | Containers | Management" href="../../rss.43">
+    <meta name="generator" content="Ghost 0.11" />
+    <link rel="alternate" type="application/rss+xml" title="Servers | Containers | Management" href="../../rss/index.html" />
 
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic%7COpen+Sans:700,600,400">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,600,400" />
     <style amp-custom>
         /* ==========================================================================
            Table of Contents
@@ -832,7 +833,7 @@
 <body class="amp-template">
     <header class="main-header">
         <nav class="blog-title">
-            <a href="../../">Servers | Containers | Management</a>
+            <a href="../../index.html">Servers | Containers | Management</a>
         </nav>
     </header>
 
@@ -842,7 +843,7 @@
             <header class="post-header">
                 <h1 class="post-title">setting custom alerts on any device using pushbullet</h1>
                 <section class="post-meta">
-                    <p class="author">by <a href="../../author/vvb/">vvb</a></p>
+                    <p class="author">by <a href="../../author/vvb/index.html">vvb</a></p>
                     <time class="post-date" datetime="2017-08-15">2017-08-15</time>
                 </section>
             </header>
@@ -850,18 +851,18 @@
 
                 <p><a href="http://localhost:2368/setting-custom-alerts-on-any-device-using-pushbullet/www.pushbullet.com">pushbullet.com</a> lets you send API based notification/alerts.</p>
 
-<p>Start with creating a Pushbullet account. Install the app on your phone. Go to the pushbullet website, head to "My Account" and then create an access token. Note this token.</p>
+<p>Start with creating a Pushbullet account. Install the app on your phone. Go to the pushbullet website, head to &quot;My Account&quot; and then create an access token. Note this token.</p>
 
 <p>The below python code can then be used to send a notification to all your registered devices.</p>
 
 <pre><code>def send_message(title, msg):  
-    url = "https://api.pushbullet.com/v2/pushes"
+    url = &quot;https://api.pushbullet.com/v2/pushes&quot;
     headers = {'Content-Type': 'application/json',
-               "Access-Token": access_token}
+               &quot;Access-Token&quot;: access_token}
     data = json.dumps({
-        "type": "note",
-        "title": title,
-        "body": msg
+        &quot;type&quot;: &quot;note&quot;,
+        &quot;title&quot;: title,
+        &quot;body&quot;: msg
     })
     requests.post(url, data=data, headers=headers)
 </code></pre>
@@ -877,7 +878,8 @@
         </article>
     </main>
     <footer class="site-footer clearfix">
-        <section class="copyright"><a href="../../">Servers | Containers | Management</a> © 2018</section>
+        <section class="copyright"><a href="../../index.html">Servers | Containers | Management</a> &copy; 2018</section>
         <section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a></section>
     </footer>
 </body>
+</html>

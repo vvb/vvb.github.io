@@ -1,32 +1,33 @@
-
+<!DOCTYPE html>
+<html ⚡>
 <head>
     <meta charset="utf-8">
 
     <title>Python - deprecating APIs</title>
-    <meta name="description" content="">
+    <meta name="description" content="" />
 
-    <meta name="HandheldFriendly" content="True">
+    <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 
     <link rel="shortcut icon" href="../../favicon.ico">
 
-    <link rel="canonical" href="../index.html">
-    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link rel="canonical" href="../index.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
     
-    <meta property="og:site_name" content="Servers | Containers | Management">
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="Python - deprecating APIs">
-    <meta property="og:description" content="Decorators facilitate an easy way to let users know that a given method is deprecated. You can even point users to the method they should be using instead. This is done by using decorators that accept arguments. The code below demonstrates this, import warnings def deprecated(replaced_by_func):       def">
-    <meta property="og:url" content="http://localhost:2368/python-deprecating-apis/">
-    <meta property="article:published_time" content="2016-11-07T22:23:00.000Z">
-    <meta property="article:modified_time" content="2016-11-07T22:25:24.000Z">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Python - deprecating APIs">
-    <meta name="twitter:description" content="Decorators facilitate an easy way to let users know that a given method is deprecated. You can even point users to the method they should be using instead. This is done by using decorators that accept arguments. The code below demonstrates this, import warnings def deprecated(replaced_by_func):       def">
-    <meta name="twitter:url" content="http://localhost:2368/python-deprecating-apis/">
-    <meta name="twitter:label1" content="Written by">
-    <meta name="twitter:data1" content="vvb">
-    <meta name="twitter:site" content="@vvb__">
+    <meta property="og:site_name" content="Servers | Containers | Management" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Python - deprecating APIs" />
+    <meta property="og:description" content="Decorators facilitate an easy way to let users know that a given method is deprecated. You can even point users to the method they should be using instead. This is done by using decorators that accept arguments. The code below demonstrates this, import warnings def deprecated(replaced_by_func):       def" />
+    <meta property="og:url" content="http://localhost:2368/python-deprecating-apis/" />
+    <meta property="article:published_time" content="2016-11-07T22:23:00.000Z" />
+    <meta property="article:modified_time" content="2016-11-07T22:25:24.000Z" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Python - deprecating APIs" />
+    <meta name="twitter:description" content="Decorators facilitate an easy way to let users know that a given method is deprecated. You can even point users to the method they should be using instead. This is done by using decorators that accept arguments. The code below demonstrates this, import warnings def deprecated(replaced_by_func):       def" />
+    <meta name="twitter:url" content="http://localhost:2368/python-deprecating-apis/" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="vvb" />
+    <meta name="twitter:site" content="@vvb__" />
     
     <script type="application/ld+json">
 {
@@ -55,10 +56,10 @@
 }
     </script>
 
-    <meta name="generator" content="Ghost 0.11">
-    <link rel="alternate" type="application/rss+xml" title="Servers | Containers | Management" href="../../rss.43">
+    <meta name="generator" content="Ghost 0.11" />
+    <link rel="alternate" type="application/rss+xml" title="Servers | Containers | Management" href="../../rss/index.html" />
 
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic%7COpen+Sans:700,600,400">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,600,400" />
     <style amp-custom>
         /* ==========================================================================
            Table of Contents
@@ -832,7 +833,7 @@
 <body class="amp-template">
     <header class="main-header">
         <nav class="blog-title">
-            <a href="../../">Servers | Containers | Management</a>
+            <a href="../../index.html">Servers | Containers | Management</a>
         </nav>
     </header>
 
@@ -842,7 +843,7 @@
             <header class="post-header">
                 <h1 class="post-title">Python - deprecating APIs</h1>
                 <section class="post-meta">
-                    <p class="author">by <a href="../../author/vvb/">vvb</a></p>
+                    <p class="author">by <a href="../../author/vvb/index.html">vvb</a></p>
                     <time class="post-date" datetime="2016-11-08">2016-11-08</time>
                 </section>
             </header>
@@ -859,8 +860,8 @@ def deprecated(replaced_by_func):
         def new_func(*args, **kwargs):
             warnings.simplefilter('always', DeprecationWarning)
             warnings.warn(
-                "Call to deprecated function " + f.__name__ +
-                ". This method is replaced by " + replaced_by_func.__name__,
+                &quot;Call to deprecated function &quot; + f.__name__ +
+                &quot;. This method is replaced by &quot; + replaced_by_func.__name__,
                 category=DeprecationWarning, stacklevel=2)
             warnings.simplefilter('default', DeprecationWarning)
             return f(*args, **kwargs)
@@ -888,7 +889,8 @@ some_old_method(42+42)
         </article>
     </main>
     <footer class="site-footer clearfix">
-        <section class="copyright"><a href="../../">Servers | Containers | Management</a> © 2018</section>
+        <section class="copyright"><a href="../../index.html">Servers | Containers | Management</a> &copy; 2018</section>
         <section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a></section>
     </footer>
 </body>
+</html>

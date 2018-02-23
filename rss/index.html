@@ -1,122 +1,111 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:media="http://search.yahoo.com/mrss/"><channel><title><![CDATA[Servers | Containers | Management]]></title><description><![CDATA[Servers | Containers | Management]]></description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Fri, 23 Feb 2018 08:01:09 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Running Commands As Apache User]]></title><description><![CDATA[<p>I have some django apps that run as apache user. <br>
+And I frequently need to run some commands as an apache user from my regular user shell.</p>
 
-	<title>A Day With R</title>
+<p>The following function in <code>~/.bashrc</code> is awesome for such use cases</p>
 
-	<meta name="HandheldFriendly" content="True" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-	<link rel="stylesheet" type="text/css" href="../assets/css/dependencies.css?v=d475539eeb" />
-	<link rel="stylesheet" type="text/css" href="../assets/css/style.css?v=d475539eeb" />
-
-	<link rel="canonical" href="index.html" />
-    <meta name="referrer" content="no-referrer-when-downgrade" />
-    <link rel="amphtml" href="amp/index.html" />
-    
-    <meta property="og:site_name" content="Servers | Containers | Management" />
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="A Day With R" />
-    <meta property="og:description" content="Datatypes A vector is always homogenous A list can be heterogenous A matrix is a list of vectors A dataframe is a list of lists. stockprice &amp;lt;- 1900L   class(stockprice) stocks &amp;lt;- c(&quot;HEG&quot;, &quot;Graphite&quot;, &quot;Bajaj&quot;, &quot;L&amp;amp;T&quot;)   prices &amp;lt;- c(1900L, 650L, 500L, 1380L)   names(" />
-    <meta property="og:url" content="http://localhost:2368/a-day-with-r/" />
-    <meta property="article:published_time" content="2018-02-06T06:43:33.000Z" />
-    <meta property="article:modified_time" content="2018-02-06T10:13:10.000Z" />
-    <meta property="article:tag" content="R" />
-    
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="A Day With R" />
-    <meta name="twitter:description" content="Datatypes A vector is always homogenous A list can be heterogenous A matrix is a list of vectors A dataframe is a list of lists. stockprice &amp;lt;- 1900L   class(stockprice) stocks &amp;lt;- c(&quot;HEG&quot;, &quot;Graphite&quot;, &quot;Bajaj&quot;, &quot;L&amp;amp;T&quot;)   prices &amp;lt;- c(1900L, 650L, 500L, 1380L)   names(" />
-    <meta name="twitter:url" content="http://localhost:2368/a-day-with-r/" />
-    <meta name="twitter:label1" content="Written by" />
-    <meta name="twitter:data1" content="vvb" />
-    <meta name="twitter:label2" content="Filed under" />
-    <meta name="twitter:data2" content="R" />
-    <meta name="twitter:site" content="@vvb__" />
-    
-    <script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "publisher": {
-        "@type": "Organization",
-        "name": "Servers | Containers | Management",
-        "logo": "http://localhost:2368/ghost/img/ghosticon.jpg"
-    },
-    "author": {
-        "@type": "Person",
-        "name": "vvb",
-        "url": "http://localhost:2368/author/vvb/",
-        "sameAs": []
-    },
-    "headline": "A Day With R",
-    "url": "http://localhost:2368/a-day-with-r/",
-    "datePublished": "2018-02-06T06:43:33.000Z",
-    "dateModified": "2018-02-06T10:13:10.000Z",
-    "keywords": "R",
-    "description": "Datatypes A vector is always homogenous A list can be heterogenous A matrix is a list of vectors A dataframe is a list of lists. stockprice &amp;lt;- 1900L   class(stockprice) stocks &amp;lt;- c(&quot;HEG&quot;, &quot;Graphite&quot;, &quot;Bajaj&quot;, &quot;L&amp;amp;T&quot;)   prices &amp;lt;- c(1900L, 650L, 500L, 1380L)   names(",
-    "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "http://localhost:2368"
-    }
+<pre><code>run_as_apache_user() {  
+    su -s "/bin/bash" -c "$1" apache
 }
-    </script>
+</code></pre>
 
-    <meta name="generator" content="Ghost 0.11" />
-    <link rel="alternate" type="application/rss+xml" title="Servers | Containers | Management" href="../rss/index.html" />
-    <script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: "ca-pub-6134465745215709",
-    enable_page_level_ads: true
-  });
-</script>
-</head>
+<p>Usage:</p>]]></description><link>http://localhost:2368/running-commands-as-apache-user/</link><guid isPermaLink="false">94690a3d-acf6-412f-9a2a-9b5d130b3d00</guid><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Thu, 22 Feb 2018 18:41:13 GMT</pubDate><content:encoded><![CDATA[<p>I have some django apps that run as apache user. <br>
+And I frequently need to run some commands as an apache user from my regular user shell.</p>
 
-<body class="post-template tag-r">
-	<section id="wrapper">
-		<div id="ajax-container">
-			<nav id="nav" class="nav">
-				<div class="inner">
-					<a id="menu-button" title="Navigation">
-	<span class="menu-button-bar menu-button-bar-1"></span>
-	<span class="menu-button-bar menu-button-bar-2"></span>
-	<span class="menu-button-bar menu-button-bar-3"></span>
-</a>
-<div id="menu">
-	<ul class="menu-list">
-		<li class="menu-list-item">
-			<a class="home" href="../index.html">Home</a>
-		</li>
-		<li class="menu-list-item icon">
-			<a class="twitter" href="https://twitter.com/vvb__" title="@vvb__"><i class="icon-twitter"></i></a>
-			<a class="rss" href="../rss/index.html" title="Feed"><i class="icon-rss"></i></a>
-		</li>
-	</ul>
-</div>
-				</div>
-			</nav>			
-			
+<p>The following function in <code>~/.bashrc</code> is awesome for such use cases</p>
 
-<main class="content" role="main">
-	<article class="post tag-r">
+<pre><code>run_as_apache_user() {  
+    su -s "/bin/bash" -c "$1" apache
+}
+</code></pre>
 
-			<div id="push">
+<p>Usage:</p>
 
-			<header class="post-header">
-				<div class="inner">
-					<span class="post-meta">
-						<span class="post-author"><a href="../author/vvb/index.html">vvb</a></span> | <span class="post-date">06 Feb 2018 <span class="post-reading-time">| <span class="estimated-reading-time"></span> (<span class="word-count"></span> words)</span></span>
-					</span>
-					<div class="clear"></div>
-					<h1 class="post-title">A Day With R</h1>
-				</div>
-			</header>
-		
-			<div class="inner">
-				<section class="post-content">
-					<h3 id="datatypes">Datatypes</h3>
+<pre><code>$ run_as_apache_user 'svn up'
+$ run_as_apache_user 'ls'
+</code></pre>]]></content:encoded></item><item><title><![CDATA[Analyzing Stock Tradebook With R]]></title><description><![CDATA[<p>Given a year worth of trades, the following R script detects the stocks that were not directly bought. They were either acquired as a part of a bonus, split or IPO.</p>
+
+<pre><code>setwd("/Users/vvb/work/projects/trades")  
+getwd()
+
+library(data.table)  
+library(readxl)
+
+trades &lt;- readxl::read_excel("tradebook.</code></pre>]]></description><link>http://localhost:2368/analyzing_stock_tradebook_with_r/</link><guid isPermaLink="false">7a58f72d-e02b-4598-9f31-49532bad7861</guid><category><![CDATA[R]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Sun, 11 Feb 2018 18:45:54 GMT</pubDate><content:encoded><![CDATA[<p>Given a year worth of trades, the following R script detects the stocks that were not directly bought. They were either acquired as a part of a bonus, split or IPO.</p>
+
+<pre><code>setwd("/Users/vvb/work/projects/trades")  
+getwd()
+
+library(data.table)  
+library(readxl)
+
+trades &lt;- readxl::read_excel("tradebook.xlsx", sheet = "TRADEBOOK")  
+trades &lt;- trades %&gt;% as.data.table()  
+head(trades)
+
+findUnbalancedTrades &lt;- function(trades) {  
+  trades1 &lt;- trades[Type=="S",Qty:=-Qty]
+  trades2 &lt;- trades1 %&gt;% group_by(Symbol) %&gt;% summarise(Balance = sum(Qty)) %&gt;% as.data.table()
+  noBuyTrades &lt;- trades2[Balance &lt; 0]
+  if (nrow(noBuyTrades) == 0) {
+    print("Trades are balanced")
+  } else {
+    print("The following trades are not balanced")
+    print(noBuyTrades)
+  }
+}
+
+findUnbalancedTrades(trades)
+</code></pre>
+
+<p>Output  </p>
+
+<pre><code>&gt; setwd("/Users/vvb/work/projects/trades")
+&gt; getwd()
+[1] "/Users/vvb/work/projects/trades"
+&gt; library(data.table)
+&gt; library(readxl)
+&gt; trades &lt;- readxl::read_excel("tradebook.xlsx", sheet = "TRADEBOOK")
+&gt; trades &lt;- trades %&gt;% as.data.table()
+&gt; head(trades)
+   Trade date          Trade time Exchange    Symbol Type Qty   Rate         Order no Trade no
+1: 23-06-2017 1899-12-31 10:07:37      NSE SUNPHARMA    B   2 542.75 1300000000966218 75365300  
+2: 23-06-2017 1899-12-31 10:07:37      NSE SUNPHARMA    B  30 542.75 1300000000966218 75365299  
+3: 23-06-2017 1899-12-31 10:07:37      NSE SUNPHARMA    B  28 542.75 1300000000966218 75365303  
+4: 23-06-2017 1899-12-31 10:07:37      NSE SUNPHARMA    B   2 542.75 1300000000966218 75365302  
+5: 23-06-2017 1899-12-31 10:07:37      NSE SUNPHARMA    B  30 542.75 1300000000966218 75365301  
+6: 27-06-2017 1899-12-31 15:12:07      NSE       TWL    B 500 114.90 1300000003434722 76788334  
+&gt; findUnbalancedTrades &lt;- function(trades) {
++   trades1 &lt;- trades[Type=="S",Qty:=-Qty]
++   trades2 &lt;- trades1 %&gt;% group_by(Symbol) %&gt;% summarise(Balance = sum(Qty)) %&gt;% as.data.table()
++   noBuyTrades &lt;- trades2[Balance &lt; 0]
++   if (nrow(noBuyTrades) == 0) {
++     print("Trades are balanced")
++   } else {
++     print("The following trades are not balanced")
++     print(noBuyTrades)
++   }
++ }
+&gt; findUnbalancedTrades(trades)
+[1] "The following trades are not balanced"
+       Symbol Balance
+1: GODREJAGRO     -32  
+2:   RELIANCE    -200  
+&gt;
+</code></pre>]]></content:encoded></item><item><title><![CDATA[A Day With R]]></title><description><![CDATA[<h3 id="datatypes">Datatypes</h3>
+
+<ul>
+<li>A <code>vector</code> is always homogenous</li>
+<li>A <code>list</code> can be heterogenous</li>
+<li>A <code>matrix</code> is a list of vectors</li>
+<li>A <code>dataframe</code> is a list of lists.</li>
+</ul>
+
+<pre><code>stockprice &lt;- 1900L  
+class(stockprice)
+
+stocks &lt;- c("HEG", "Graphite", "Bajaj", "L&amp;T")  
+prices &lt;- c(1900L, 650L, 500L, 1380L)  
+names(</code></pre>]]></description><link>http://localhost:2368/a-day-with-r/</link><guid isPermaLink="false">e04e9fd9-f70e-47b4-bff8-32d7be2ea0a3</guid><category><![CDATA[R]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Tue, 06 Feb 2018 06:43:33 GMT</pubDate><content:encoded><![CDATA[<h3 id="datatypes">Datatypes</h3>
 
 <ul>
 <li>A <code>vector</code> is always homogenous</li>
@@ -868,80 +857,575 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
 10  19.2  6.00   168 123    3.92  3.44  18.3  1.00  0     4.00  4.00    187  
 # ... with 22 more rows
 &gt; 
+</code></pre>]]></content:encoded></item><item><title><![CDATA[Two Eggs Problem]]></title><description><![CDATA[<h3 id="problem">Problem</h3>
+
+<p>A building has 100 floors. One of the floors is the highest floor an egg can be dropped from without breaking.</p>
+
+<p>If an egg is dropped from above that floor, it will break. If it is dropped from that floor or below, it will be completely undamaged and you</p>]]></description><link>http://localhost:2368/two_egg_problem/</link><guid isPermaLink="false">fa790a70-e893-4cd2-8dab-7ffab4c626b3</guid><category><![CDATA[coding]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 05 Feb 2018 18:02:15 GMT</pubDate><content:encoded><![CDATA[<h3 id="problem">Problem</h3>
+
+<p>A building has 100 floors. One of the floors is the highest floor an egg can be dropped from without breaking.</p>
+
+<p>If an egg is dropped from above that floor, it will break. If it is dropped from that floor or below, it will be completely undamaged and you can drop the egg again.</p>
+
+<p>Given two eggs, find the highest floor an egg can be dropped from without breaking, with as few drops as possible.</p>
+
+<h3 id="solution">Solution</h3>
+
+<p>Assuming we had only 1 egg, then we cannot take any chances and the only way would be to start with Floor 1 and move up floor-by-floor. If the egg breaks on fall from floor <code>n</code>, then floor <code>n-1</code> is our answer. so, worst case 100 drops.</p>
+
+<p>Assuming we had infinite number of eggs, then we could use the binary tree stategy and start with floor 50, then floor 25 and that way we will be able to come to the solution in very few drops.</p>
+
+<p>In a 2 egg scenario, we could start with floor 50 and if the egg breaks, then we have no option but to go one floor at a time. so 1+49 chances.</p>
+
+<p>However, we could do better</p>
+
+<ul>
+<li>Start at floor-10 and drop the egg
+<ul><li>if the egg does not break, go to floor-20</li>
+<li>if the egg breaks, go floor-by-floor from floor-1</li></ul></li>
+</ul>
+
+<p>Repeat this until we find the answer. Worst case being floor 99. 10 + 9=19 drops</p>
+
+<p>Could we do better?</p>
+
+<pre><code>n + (n-1) + (n-2) + (n-3) + .... + 1 &gt;= 100  
 </code></pre>
-				</section>
-				
-				<footer class="post-footer">
-					<div class="post-tags">
-						<a href="../tag/r/index.html">R</a>
-					</div>
-					<div class="post-share">
-						<a class="icon-twitter" href="https://twitter.com/share?text=A Day With R&url=http://localhost:2368/a-day-with-r/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-							<span>Twitter</span>
-						</a>
-						<a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:2368/a-day-with-r/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-							<span>Facebook</span>
-						</a>
-						<a class="icon-googleplus" href="https://plus.google.com/share?url=http://localhost:2368/a-day-with-r/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
-							<span>Google+</span>
-						</a>
-					</div>
-				</footer>
-				
-				<aside class="post-comments">
-					<div id="disqus_thread"></div>
-				</aside>
-				
-				</div>
-			</div>
 
-			<nav class="post-nav">
-					<a class="post-nav-item post-nav-next" href="../analyzing_stock_tradebook_with_r/index.html" title="Analyzing Stock Tradebook With R">
-						<span class="post-nav-post">
-							<span class="post-nav-icon">
-								<i class="icon-arrow-left"></i>
-							</span>
-							<h4 class="post-nav-title">Analyzing Stock Tradebook With R</h4>
-							<p class="post-nav-excerpt">Given a year worth of trades, the following R script detects the stocks that were not directly bought. They&hellip;</p>
-						</span>
-					</a>
-					<a class="post-nav-item post-nav-prev" href="../two_egg_problem/index.html" title="Two Eggs Problem">
-						<span class="post-nav-post">
-							<span class="post-nav-icon">
-								<i class="icon-arrow-right"></i>
-							</span>
-							<h4 class="post-nav-title">Two Eggs Problem</h4>
-							<p class="post-nav-excerpt">Problem A building has 100 floors. One of the floors is the highest floor an egg can be dropped&hellip;</p>
-						</span>
-					</a>
-				<div class="clear"></div>
-			</nav>
-	</article>
-</main>
+<pre><code>n(n+1)/2 &gt;= 100  
+</code></pre>
 
-			<div id="body-class" style="display: none;" class="post-template tag-r"></div>
-			<footer id="footer">
-				<div class="inner">
-					<section class="credits">
-						<span class="credits-theme">Theme <a href="https://github.com/zutrinken/austere" target="_blank" rel="nofollow">Austere</a> by <a href="http://zutrinken.com" target="_blank" rel="nofollow">zutrinken</a></span>
-						<span class="credits-software">Published with <a href="http://ghost.org" target="_blank" rel="nofollow">Ghost</a></span>
-					</section>
-				</div>
-			</footer>
-		</div>
-	</section>
-	<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+<p>n ~ 14</p>
 
-  ga('create', 'UA-78616097-1', 'auto');
-  ga('send', 'pageview');
+<pre><code>14        1       13  
+27        2       12  
+39        3       11  
+50        4       10  
+60        5       9  
+69        6       8  
+77        7       7  
+84        8       6  
+90        9       5  
+95        10      4  
+99        11      3  
+100        12      0  
+</code></pre>]]></content:encoded></item><item><title><![CDATA[setting custom alerts on any device using pushbullet]]></title><description><![CDATA[<p><a href="http://localhost:2368/setting-custom-alerts-on-any-device-using-pushbullet/www.pushbullet.com">pushbullet.com</a> lets you send API based notification/alerts.</p>
 
-</script>
-	
-	<script type="text/javascript" src="../assets/js/dependencies.js?v=d475539eeb"></script>
-	<script type="text/javascript" src="../assets/js/script.js?v=d475539eeb"></script>
-</body>
-</html>
+<p>Start with creating a Pushbullet account. Install the app on your phone. Go to the pushbullet website, head to "My Account" and then create an access token. Note this token.</p>
+
+<p>The below python code can then be used to send a</p>]]></description><link>http://localhost:2368/setting-custom-alerts-on-any-device-using-pushbullet/</link><guid isPermaLink="false">c518a189-609e-4936-ab67-2a8a632a14fb</guid><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Tue, 15 Aug 2017 13:51:05 GMT</pubDate><content:encoded><![CDATA[<p><a href="http://localhost:2368/setting-custom-alerts-on-any-device-using-pushbullet/www.pushbullet.com">pushbullet.com</a> lets you send API based notification/alerts.</p>
+
+<p>Start with creating a Pushbullet account. Install the app on your phone. Go to the pushbullet website, head to "My Account" and then create an access token. Note this token.</p>
+
+<p>The below python code can then be used to send a notification to all your registered devices.</p>
+
+<pre><code>def send_message(title, msg):  
+    url = "https://api.pushbullet.com/v2/pushes"
+    headers = {'Content-Type': 'application/json',
+               "Access-Token": access_token}
+    data = json.dumps({
+        "type": "note",
+        "title": title,
+        "body": msg
+    })
+    requests.post(url, data=data, headers=headers)
+</code></pre>
+
+<p>My use case was <a href="https://github.com/vvb/stock_alerts/blob/master/portfolio_alerts.py">this</a> python script that generates buy and sell alerts on my mobile phone based on pre-configred prices in a csv sheet.</p>
+
+<p>But there is no reason this cannot be used to get datacenter alerts. I plan to include this as a library method in Cisco Ucs SDKs soon.</p>
+
+<p>note: You might need to signout and sign back in one time after you install the app for the alerts to start showing up.</p>]]></content:encoded></item><item><title><![CDATA[Using http with pip]]></title><description><![CDATA[<p>Enforce using http with pip,</p>
+
+<pre><code>pip install --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org &lt;packageName&gt;  
+</code></pre>]]></description><link>http://localhost:2368/using-http-with-pip/</link><guid isPermaLink="false">7217758c-64c8-4fea-8c83-1fe62d32ec13</guid><category><![CDATA[ucspython]]></category><category><![CDATA[pip]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 17 Apr 2017 19:02:05 GMT</pubDate><content:encoded><![CDATA[<p>Enforce using http with pip,</p>
+
+<pre><code>pip install --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org &lt;packageName&gt;  
+</code></pre>]]></content:encoded></item><item><title><![CDATA[Reflection in go!]]></title><description><![CDATA[<p>Printing struct attributes and values using reflection.</p>
+
+<pre><code>package main
+
+import (  
+    "fmt"
+    "reflect"
+)
+
+type User struct {  
+    FirstName string
+    LastName  string
+    Age       int
+}
+
+func (f *User) reflect() {  
+    v := reflect.ValueOf(f).Elem()
+
+    for i := 0; i &lt; v.NumField(); i++ {
+        val := v.Field(i)
+        t := v.Type().Field(i)
+        fmt.Printf("%s</code></pre>]]></description><link>http://localhost:2368/reflection-in-go/</link><guid isPermaLink="false">81c31105-1037-4f65-99a5-967a31797cb9</guid><category><![CDATA[golang]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 17 Apr 2017 18:54:19 GMT</pubDate><content:encoded><![CDATA[<p>Printing struct attributes and values using reflection.</p>
+
+<pre><code>package main
+
+import (  
+    "fmt"
+    "reflect"
+)
+
+type User struct {  
+    FirstName string
+    LastName  string
+    Age       int
+}
+
+func (f *User) reflect() {  
+    v := reflect.ValueOf(f).Elem()
+
+    for i := 0; i &lt; v.NumField(); i++ {
+        val := v.Field(i)
+        t := v.Type().Field(i)
+        fmt.Printf("%s %v \t", t.Name, val.Interface())
+    }
+}
+
+func main() {  
+    f := &amp;User{
+        FirstName: "John",
+        LastName:  "Doe",
+        Age:       13,
+    }
+
+    f.reflect()
+}
+</code></pre>]]></content:encoded></item><item><title><![CDATA[ansible modules for Cisco UCS IMC server]]></title><description><![CDATA[<h3 id="imcansible">imc-ansible</h3>
+
+<p><code>imc-ansible</code> are a set of ansible modules for Cisco UCS standalone servers(IMC servers). </p>
+
+<h4 id="installation">installation</h4>
+
+<pre><code># Install ansible
+sudo pip install ansible
+
+# install imcsdk from github
+git clone https://github.com/ciscoucs/imcsdk  
+cd imcsdk  
+sudo make install
+
+# install imc-ansible from github
+git clone https://github.com/ciscoucs/imc-ansible  
+cd</code></pre>]]></description><link>http://localhost:2368/ansible-modules-for-cisco-ucs-imc-server/</link><guid isPermaLink="false">53748709-f767-4c0b-b82b-d0e027b4f4be</guid><category><![CDATA[ansible]]></category><category><![CDATA[imcsdk]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 06 Feb 2017 22:55:04 GMT</pubDate><content:encoded><![CDATA[<h3 id="imcansible">imc-ansible</h3>
+
+<p><code>imc-ansible</code> are a set of ansible modules for Cisco UCS standalone servers(IMC servers). </p>
+
+<h4 id="installation">installation</h4>
+
+<pre><code># Install ansible
+sudo pip install ansible
+
+# install imcsdk from github
+git clone https://github.com/ciscoucs/imcsdk  
+cd imcsdk  
+sudo make install
+
+# install imc-ansible from github
+git clone https://github.com/ciscoucs/imc-ansible  
+cd imc-ansible  
+sudo python install.py  
+</code></pre>
+
+<h4 id="samplerun">sample run</h4>
+
+<pre><code>➔ ansible-playbook -i inventory site.yml
+
+PLAY [imc]  
+*********************************************************************
+
+TASK [common : check if imcsdk is installed]  
+***********************************
+ok: [fpmr1_192.168.1.1]
+
+TASK [common : install imcsdk]  
+*************************************************
+skipping: [fpmr1_192.168.1.1]
+
+TASK [admin : set password policy]  
+*********************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : create local user]  
+***********************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : delete local user]  
+***********************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : reset password policy]  
+*******************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : enable ntp]  
+******************************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : disable ntp]  
+*****************************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : enable LDAP]  
+*****************************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : disable LDAP]  
+****************************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [boot : set boot order]  
+***************************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [boot : set boot order alternate]  
+*****************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [storage : create virtual drive]  
+******************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [storage : delete virtual drive]  
+******************************************
+changed: [fpmr1_192.168.1.1]
+
+PLAY RECAP  
+*********************************************************************
+fpmr1_192.168.1.1       : ok=13   changed=12   unreachable=0    failed=0  
+</code></pre>]]></content:encoded></item><item><title><![CDATA[Inventory Ucs Managed servers via ucsmsdk]]></title><description><![CDATA[<p>ucsmsdk 0.9.3.0 will add support for inventory APIs. <br>
+This allows for multi-host multi-component inventory in multiple formats(enough of multiple? :-D ).</p>
+
+<p>The inventory APIs support inventorying,</p>
+
+<pre><code>- fabric interconnects
+- cpus
+- disks
+- dimms
+- storage controller
+- VIC
+- vNICs
+- vHBAs
+- PSUs
+</code></pre>
+
+<p>The</p>]]></description><link>http://localhost:2368/inventory-ucs-managed-servers-via-ucsmsdk/</link><guid isPermaLink="false">017cc972-97b5-4343-a39e-9f777602a504</guid><category><![CDATA[ucspython]]></category><category><![CDATA[ucsmsdk]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Tue, 24 Jan 2017 06:04:13 GMT</pubDate><content:encoded><![CDATA[<p>ucsmsdk 0.9.3.0 will add support for inventory APIs. <br>
+This allows for multi-host multi-component inventory in multiple formats(enough of multiple? :-D ).</p>
+
+<p>The inventory APIs support inventorying,</p>
+
+<pre><code>- fabric interconnects
+- cpus
+- disks
+- dimms
+- storage controller
+- VIC
+- vNICs
+- vHBAs
+- PSUs
+</code></pre>
+
+<p>The supported output formats for the report are,</p>
+
+<pre><code>- csv
+- html
+- json
+</code></pre>
+
+<p>we recommend using the html format, as it has inbuilt javascript based filtering. It can quickly help narrow down a certain component on a certain host.</p>
+
+<pre><code>from ucsmsdk.utils.inventory import get_inventory
+
+# Gets inventory of all components in JSON format
+get_inventory(handle=handle)
+
+# Gets inventory for all servers all components in JSON format
+get_inventory(handle=[handle1, handle2, handle3])
+
+# Gets inventory of one server all components in JSON format
+get_inventory(handle=handle, component="all")
+
+# Gets disks inventory of one server in JSON format
+get_inventory(handle=handle, component="disks")
+
+# Gets cpu and disks inventory for one server in JSON format
+get_inventory(handle=handle, component=["cpu", "disks"])
+
+# Gets cpu and disks inventory for one server in JSON format and writes to inventory.json file
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="json", file_name="inventory.json")
+
+# Gets cpu and disks inventory for one server in CSV format and writes to inventory.csv fie
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="csv", file_name="inventory.csv")
+
+# Gets cpu and disks inventory for one server in HTML format and writes to inventory.html
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="html", file_name="inventory.html")  
+</code></pre>
+
+<p>This can be tried out today via the code available at <a href="https://github.com/ciscoucs/ucsmsdk">https://github.com/ciscoucs/ucsmsdk</a></p>
+
+<p>complete code to run it,  </p>
+
+<pre><code>#! /usr/bin/env python
+
+from ucsmsdk.ucshandle import UcsHandle  
+from ucsmsdk.utils.inventory import get_inventory
+
+handle = UcsHandle("192.168.1.1", "username", "password")  
+handle.login()
+
+# This would create inventory.html in the same directory where the script is run from
+get_inventory(handle=handle, component="all", file_format="html", file_name="inventory.html")
+
+handle.logout()  
+</code></pre>]]></content:encoded></item><item><title><![CDATA[debugging in an ansible environment]]></title><description><![CDATA[<p>I was looking for a PDB sort of debugger for debugging custom ansible modules written in Python. This is when i bumped into <a href="http://michaeldehaan.net/post/35403909347/tips-on-using-debuggers-with-ansible">this</a> blog.</p>
+
+<p>As recommended on the blog, I tried out <code>epdb</code> and it works great for debugging custom ansible modules written in python.</p>
+
+<p><strong>Installation</strong>:</p>
+
+<pre><code>pip install epdb</code></pre>]]></description><link>http://localhost:2368/debugging-in-an-ansible-environment/</link><guid isPermaLink="false">265e74b7-1b71-4d1b-a51c-65520d6f6deb</guid><category><![CDATA[ansible]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Tue, 10 Jan 2017 20:18:27 GMT</pubDate><content:encoded><![CDATA[<p>I was looking for a PDB sort of debugger for debugging custom ansible modules written in Python. This is when i bumped into <a href="http://michaeldehaan.net/post/35403909347/tips-on-using-debuggers-with-ansible">this</a> blog.</p>
+
+<p>As recommended on the blog, I tried out <code>epdb</code> and it works great for debugging custom ansible modules written in python.</p>
+
+<p><strong>Installation</strong>:</p>
+
+<pre><code>pip install epdb  
+</code></pre>
+
+<p>epdb: <a href="https://pypi.python.org/pypi/epdb">https://pypi.python.org/pypi/epdb</a></p>
+
+<p><strong>Usage</strong>:</p>
+
+<p>Insert the below code works as a breakpoint. Insert this at the lines needing debug.</p>
+
+<pre><code>import epdb  
+epdb.serve()  
+</code></pre>
+
+<p>Run ansible with <code>--forks 1</code> option to avoid parallel threads</p>
+
+<pre><code>ansible-playbook -i inventory site.yml --forks 1  
+</code></pre>
+
+<p>This run should hang when it hits the piece of code that has <code>epdb.serve()</code>. At this point run the below from another shell</p>
+
+<pre><code>python -c "import epdb; epdb.connect()"  
+</code></pre>
+
+<p>This should get you to the <code>epdb</code> shell. <br>
+here on, things should look familiar to <code>pdb</code>.</p>]]></content:encoded></item><item><title><![CDATA[imcsdk storage APIs]]></title><description><![CDATA[<p>0.9.2.0 release of imcsdk will add support for <code>imcsdk.apis.server.storage</code> to manage virtual drives.</p>
+
+<ul>
+<li><code>virtual_drive_create</code> <br></li>
+<li><code>virtual_drive_delete</code></li>
+</ul>
+
+<p>Basic usage,  </p>
+
+<pre><code>vd = virtual_drive_create(handle=handle,  
+                          drive_group=[[1]],
+                          controller_slot="MEZZ",
+                          raid_level=0)
+virtual_drive_delete(handle=handle,  
+                     controller_slot="MEZZ"</code></pre>]]></description><link>http://localhost:2368/imcsdk-storage-apis/</link><guid isPermaLink="false">9031319e-31c8-44d7-a324-775ceda5c4a8</guid><category><![CDATA[imcsdk]]></category><category><![CDATA[ucspython]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Sat, 07 Jan 2017 19:04:54 GMT</pubDate><content:encoded><![CDATA[<p>0.9.2.0 release of imcsdk will add support for <code>imcsdk.apis.server.storage</code> to manage virtual drives.</p>
+
+<ul>
+<li><code>virtual_drive_create</code> <br></li>
+<li><code>virtual_drive_delete</code></li>
+</ul>
+
+<p>Basic usage,  </p>
+
+<pre><code>vd = virtual_drive_create(handle=handle,  
+                          drive_group=[[1]],
+                          controller_slot="MEZZ",
+                          raid_level=0)
+virtual_drive_delete(handle=handle,  
+                     controller_slot="MEZZ",
+                     name=vd.virtual_drive_name)
+</code></pre>
+
+<p>Somethings to note about the arguments that <code>virtual_drive_create</code> takes,</p>
+
+<ul>
+<li><code>drive_group</code> needs to be array of an array(s) - <code>[[]]</code>
+The below shows sample inputs for <code>drive_group</code>,  </li>
+</ul>
+
+<pre><code>        For Raid 0  - [[1, 2, 3]]
+        For Raid 10 - [[1, 2], [3, 4], [5, 6]]
+        For Raid 50 - [[1, 2, 3], [4, 5, 6]]
+</code></pre>
+
+<p>Where the numbers are physical drive slots.</p>
+
+<ul>
+<li><p><code>controller_slot</code> is the name/id of the Storage controller. 
+This could be <code>MEZZ</code> in some cases. or could be a number <code>0-9</code> is some.</p></li>
+<li><p><code>raid_level</code> - refer to the raid levels supported by the platform</p></li>
+</ul>]]></content:encoded></item><item><title><![CDATA[Inventorying IMC servers via imcsdk]]></title><description><![CDATA[<p>The <code>0.9.2.0</code> release of <code>imcsdk</code> will add support for <code>inventory</code> APIs. </p>
+
+<p>The following output formats are supported -</p>
+
+<ul>
+<li>JSON (default)</li>
+<li>HTML</li>
+<li>CSV</li>
+</ul>
+
+<p>Refer the API documentation for a list of components that can be inventoried. <code>all</code> fetches inventory for all components.</p>
+
+<p>Usage is shown below,</p>
+
+<pre><code>from imcsdk.</code></pre>]]></description><link>http://localhost:2368/inventorying-imc-servers-via-imcsdk/</link><guid isPermaLink="false">8262e689-c3a1-49c9-b6ca-b0e1b703f4d1</guid><category><![CDATA[ucspython]]></category><category><![CDATA[imcsdk]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Tue, 03 Jan 2017 06:41:48 GMT</pubDate><content:encoded><![CDATA[<p>The <code>0.9.2.0</code> release of <code>imcsdk</code> will add support for <code>inventory</code> APIs. </p>
+
+<p>The following output formats are supported -</p>
+
+<ul>
+<li>JSON (default)</li>
+<li>HTML</li>
+<li>CSV</li>
+</ul>
+
+<p>Refer the API documentation for a list of components that can be inventoried. <code>all</code> fetches inventory for all components.</p>
+
+<p>Usage is shown below,</p>
+
+<pre><code>from imcsdk.apis.server.inventory import get_inventory
+
+# Gets inventory of all components in JSON format
+get_inventory(handle=handle)
+
+# Gets inventory for all servers all components in JSON format
+get_inventory(handle=[handle1, handle2, handle3])
+
+# Gets inventory of one server all components in JSON format
+get_inventory(handle=handle, component="all")
+
+# Gets disks inventory of one server in JSON format
+get_inventory(handle=handle, component="disks")
+
+# Gets cpu and disks inventory for one server in JSON format
+get_inventory(handle=handle, component=["cpu", "disks"])
+
+# Gets cpu and disks inventory for one server in JSON format and writes to inventory.json file
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="json", file_name="inventory.json")
+
+# Gets cpu and disks inventory for one server in CSV format and writes to inventory.csv fie
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="csv", file_name="inventory.csv")
+
+# Gets cpu and disks inventory for one server in HTML format and writes to inventory.html
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="html", file_name="inventory.html")  
+</code></pre>]]></content:encoded></item><item><title><![CDATA[html table search with pure javascript]]></title><description><![CDATA[<p>The below javascript method searches through all the <code>&lt;td&gt;</code> elements and hides <code>&lt;tr&gt;</code> that do not have it.</p>
+
+<pre><code>    function search() {
+    // Declare variables
+    var input, filter, table, tr, td, i, j, tds, ths, matched;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    tr = document.getElementsByTagName("tr");
+
+    // Loop</code></pre>]]></description><link>http://localhost:2368/html-table-search-with-pure-javascript/</link><guid isPermaLink="false">f4922a20-0954-4e6e-a0ca-493230cf8fc0</guid><category><![CDATA[javascript]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Thu, 22 Dec 2016 17:55:35 GMT</pubDate><content:encoded><![CDATA[<p>The below javascript method searches through all the <code>&lt;td&gt;</code> elements and hides <code>&lt;tr&gt;</code> that do not have it.</p>
+
+<pre><code>    function search() {
+    // Declare variables
+    var input, filter, table, tr, td, i, j, tds, ths, matched;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    tr = document.getElementsByTagName("tr");
+
+    // Loop through all table rows, and hide
+    // those who don't match the search query
+    for (i = 0; i &lt; tr.length; i++) {
+        tds = tr[i].getElementsByTagName("td");
+        ths = tr[i].getElementsByTagName("th");
+        matched = false;
+
+        // leave the row header 
+        if (ths.length &gt; 0) {
+            matched = true;
+        }
+        else {
+            for (j = 0; j &lt; tds.length; j++) {
+                td = tds[j];
+                if (td.innerHTML.toUpperCase().indexOf(filter) &gt; -1) {
+                    matched = true;
+                    break;
+                }
+
+            }
+        }
+        if (matched == true) {
+            tr[i].style.display = "";
+        }
+        else {
+            tr[i].style.display = "none";
+        }
+        }
+    }
+</code></pre>
+
+<p>And the below adds the search input box to the webpage and maps it to our <code>search</code> method</p>
+
+<pre><code>    &lt;input type="text" id="searchInput" onkeyup="search()" placeholder="Search.."&gt;
+</code></pre>]]></content:encoded></item><item><title><![CDATA[configuring a secure front-end for a non-secure service]]></title><description><![CDATA[<p>The goal is to enable <code>https</code> only access for a pre-existing <code>http</code> service.</p>
+
+<p>Let us assume that a service is running on <code>http://myserver.com:8000/service</code>. The goal is to make no changes to the pre-existing service and still allow <code>https</code> only access to it.</p>
+
+<p>One way this can</p>]]></description><link>http://localhost:2368/configuring-a-secure-front-end-for-a-non-secure-service/</link><guid isPermaLink="false">90ab218f-6208-452b-91f6-be39f893d871</guid><category><![CDATA[apache]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Tue, 06 Dec 2016 12:24:01 GMT</pubDate><content:encoded><![CDATA[<p>The goal is to enable <code>https</code> only access for a pre-existing <code>http</code> service.</p>
+
+<p>Let us assume that a service is running on <code>http://myserver.com:8000/service</code>. The goal is to make no changes to the pre-existing service and still allow <code>https</code> only access to it.</p>
+
+<p>One way this can be accomplished, is using apache redirects. We are going to use <code>ProxyPass</code> and <code>ProxyPassReverse</code> directives.</p>
+
+<p>Add the following to <code>httpd.conf</code></p>
+
+<pre><code>&lt;VirtualHost myserver.com:443&gt;
+
+# set the SSL options
+
+
+# Enable ProxyPass
+SSLProxyEngine On  
+RewriteEngine On  
+#ProxyPreserveHost On        #Important to comment this
+ProxyPass /service http://myserver.com:8000/service/ nocanon  
+ProxyPassReverse /service http://myserver.com:8000/service/
+
+&lt;/VirtualHost&gt;  
+</code></pre>
+
+<p>The above would expose <code>https://myserver.com/service</code> and internally redirect it to <code>http://myserver.com:8000/service</code>. The <code>ProxyPass</code> directive does that. <code>ProxyPassReverse</code> makes sure that what is sent back to the browser is again converted back to <code>https://msyserver.com/service</code> format.</p>
+
+<p>Now, <code>https</code> access should be working. But we still need to disable the <code>http</code> access. The below allows all access between internal services (<code>https</code> to <code>http</code> in this case), but disables access to port <code>8000</code> from outside.</p>
+
+<pre><code>sudo /sbin/iptables -A INPUT -p tcp -i lo -j ACCEPT  
+sudo /sbin/iptables -A INPUT -p tcp --dport 8000 -j DROP  
+</code></pre>
+
+<p>Done!</p>]]></content:encoded></item><item><title><![CDATA[ansible - pretty printing errors]]></title><description><![CDATA[<p>Ansible does not do a great job at pretty printing exceptions/errors. There are plugins available that make this easy.</p>
+
+<pre><code>mkdir -p ~/ansible/plugins/callback  
+cd ~/ansible/plugins/callback  
+wget https://raw.githubusercontent.com/marcosdiez/ansible_human_log.py/master/human_log.py  
+</code></pre>
+
+<p>create/edit <code>~/.ansible.cfg</code> and add the</p>]]></description><link>http://localhost:2368/ansible-pretty-printing-errors/</link><guid isPermaLink="false">fd95c5bb-4ed0-4c39-899b-6bb2c8cdaa30</guid><category><![CDATA[ansible]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 05 Dec 2016 04:25:34 GMT</pubDate><content:encoded><![CDATA[<p>Ansible does not do a great job at pretty printing exceptions/errors. There are plugins available that make this easy.</p>
+
+<pre><code>mkdir -p ~/ansible/plugins/callback  
+cd ~/ansible/plugins/callback  
+wget https://raw.githubusercontent.com/marcosdiez/ansible_human_log.py/master/human_log.py  
+</code></pre>
+
+<p>create/edit <code>~/.ansible.cfg</code> and add the following to the <code>defaults</code> section,  </p>
+
+<pre><code>[defaults]
+callback_plugins = ~/ansible_plugins/callback  
+</code></pre>
+
+<p>Done!</p>]]></content:encoded></item></channel></rss>

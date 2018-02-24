@@ -1,37 +1,36 @@
-<!DOCTYPE html>
-<html ⚡>
+
 <head>
     <meta charset="utf-8">
 
     <title>debugging in an ansible environment</title>
-    <meta name="description" content="" />
+    <meta name="description" content="">
 
-    <meta name="HandheldFriendly" content="True" />
+    <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 
     <link rel="shortcut icon" href="../../favicon.ico">
 
-    <link rel="canonical" href="../index.html" />
-    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="canonical" href="../index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
     
-    <meta property="og:site_name" content="Servers | Containers | Management" />
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="debugging in an ansible environment" />
-    <meta property="og:description" content="I was looking for a PDB sort of debugger for debugging custom ansible modules written in Python. This is when i bumped into this blog. As recommended on the blog, I tried out epdb and it works great for debugging custom ansible modules written in python. Installation: pip install epdb" />
-    <meta property="og:url" content="http://localhost:2368/debugging-in-an-ansible-environment/" />
-    <meta property="article:published_time" content="2017-01-10T20:18:27.000Z" />
-    <meta property="article:modified_time" content="2017-01-11T02:44:50.000Z" />
-    <meta property="article:tag" content="ansible" />
+    <meta property="og:site_name" content="Servers | Containers | Management">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="debugging in an ansible environment">
+    <meta property="og:description" content="I was looking for a PDB sort of debugger for debugging custom ansible modules written in Python. This is when i bumped into this blog. As recommended on the blog, I tried out epdb and it works great for debugging custom ansible modules written in python. Installation: pip install epdb">
+    <meta property="og:url" content="http://localhost:2368/debugging-in-an-ansible-environment/">
+    <meta property="article:published_time" content="2017-01-10T20:18:27.000Z">
+    <meta property="article:modified_time" content="2017-01-11T02:44:50.000Z">
+    <meta property="article:tag" content="ansible">
     
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="debugging in an ansible environment" />
-    <meta name="twitter:description" content="I was looking for a PDB sort of debugger for debugging custom ansible modules written in Python. This is when i bumped into this blog. As recommended on the blog, I tried out epdb and it works great for debugging custom ansible modules written in python. Installation: pip install epdb" />
-    <meta name="twitter:url" content="http://localhost:2368/debugging-in-an-ansible-environment/" />
-    <meta name="twitter:label1" content="Written by" />
-    <meta name="twitter:data1" content="vvb" />
-    <meta name="twitter:label2" content="Filed under" />
-    <meta name="twitter:data2" content="ansible" />
-    <meta name="twitter:site" content="@vvb__" />
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="debugging in an ansible environment">
+    <meta name="twitter:description" content="I was looking for a PDB sort of debugger for debugging custom ansible modules written in Python. This is when i bumped into this blog. As recommended on the blog, I tried out epdb and it works great for debugging custom ansible modules written in python. Installation: pip install epdb">
+    <meta name="twitter:url" content="http://localhost:2368/debugging-in-an-ansible-environment/">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="vvb">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="ansible">
+    <meta name="twitter:site" content="@vvb__">
     
     <script type="application/ld+json">
 {
@@ -61,10 +60,10 @@
 }
     </script>
 
-    <meta name="generator" content="Ghost 0.11" />
-    <link rel="alternate" type="application/rss+xml" title="Servers | Containers | Management" href="../../rss/index.html" />
+    <meta name="generator" content="Ghost 0.11">
+    <link rel="alternate" type="application/rss+xml" title="Servers | Containers | Management" href="../../rss.44">
 
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,600,400" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic%7COpen+Sans:700,600,400">
     <style amp-custom>
         /* ==========================================================================
            Table of Contents
@@ -838,7 +837,7 @@
 <body class="amp-template">
     <header class="main-header">
         <nav class="blog-title">
-            <a href="../../index.html">Servers | Containers | Management</a>
+            <a href="../../">Servers | Containers | Management</a>
         </nav>
     </header>
 
@@ -848,7 +847,7 @@
             <header class="post-header">
                 <h1 class="post-title">debugging in an ansible environment</h1>
                 <section class="post-meta">
-                    <p class="author">by <a href="../../author/vvb/index.html">vvb</a></p>
+                    <p class="author">by <a href="../../author/vvb/">vvb</a></p>
                     <time class="post-date" datetime="2017-01-11">2017-01-11</time>
                 </section>
             </header>
@@ -880,10 +879,10 @@ epdb.serve()
 
 <p>This run should hang when it hits the piece of code that has <code>epdb.serve()</code>. At this point run the below from another shell</p>
 
-<pre><code>python -c &quot;import epdb; epdb.connect()&quot;  
+<pre><code>python -c "import epdb; epdb.connect()"  
 </code></pre>
 
-<p>This should get you to the <code>epdb</code> shell. <br></br>
+<p>This should get you to the <code>epdb</code> shell. <br>
 here on, things should look familiar to <code>pdb</code>.</p>
 
             </section>
@@ -891,8 +890,7 @@ here on, things should look familiar to <code>pdb</code>.</p>
         </article>
     </main>
     <footer class="site-footer clearfix">
-        <section class="copyright"><a href="../../index.html">Servers | Containers | Management</a> &copy; 2018</section>
+        <section class="copyright"><a href="../../">Servers | Containers | Management</a> © 2018</section>
         <section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a></section>
     </footer>
 </body>
-</html>

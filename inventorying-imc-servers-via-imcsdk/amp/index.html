@@ -1,38 +1,37 @@
-<!DOCTYPE html>
-<html ⚡>
+
 <head>
     <meta charset="utf-8">
 
     <title>Inventorying IMC servers via imcsdk</title>
-    <meta name="description" content="" />
+    <meta name="description" content="">
 
-    <meta name="HandheldFriendly" content="True" />
+    <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 
     <link rel="shortcut icon" href="../../favicon.ico">
 
-    <link rel="canonical" href="../index.html" />
-    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="canonical" href="../index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
     
-    <meta property="og:site_name" content="Servers | Containers | Management" />
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="Inventorying IMC servers via imcsdk" />
-    <meta property="og:description" content="The 0.9.2.0 release of imcsdk will add support for inventory APIs.  The following output formats are supported - JSON (default) HTML CSV Refer the API documentation for a list of components that can be inventoried. all fetches inventory for all components. Usage is shown below, from imcsdk." />
-    <meta property="og:url" content="http://localhost:2368/inventorying-imc-servers-via-imcsdk/" />
-    <meta property="article:published_time" content="2017-01-03T06:41:48.000Z" />
-    <meta property="article:modified_time" content="2017-01-03T06:44:06.000Z" />
-    <meta property="article:tag" content="ucspython" />
-    <meta property="article:tag" content="imcsdk" />
+    <meta property="og:site_name" content="Servers | Containers | Management">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Inventorying IMC servers via imcsdk">
+    <meta property="og:description" content="The 0.9.2.0 release of imcsdk will add support for inventory APIs.  The following output formats are supported - JSON (default) HTML CSV Refer the API documentation for a list of components that can be inventoried. all fetches inventory for all components. Usage is shown below, from imcsdk.">
+    <meta property="og:url" content="http://localhost:2368/inventorying-imc-servers-via-imcsdk/">
+    <meta property="article:published_time" content="2017-01-03T06:41:48.000Z">
+    <meta property="article:modified_time" content="2017-01-03T06:44:06.000Z">
+    <meta property="article:tag" content="ucspython">
+    <meta property="article:tag" content="imcsdk">
     
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Inventorying IMC servers via imcsdk" />
-    <meta name="twitter:description" content="The 0.9.2.0 release of imcsdk will add support for inventory APIs.  The following output formats are supported - JSON (default) HTML CSV Refer the API documentation for a list of components that can be inventoried. all fetches inventory for all components. Usage is shown below, from imcsdk." />
-    <meta name="twitter:url" content="http://localhost:2368/inventorying-imc-servers-via-imcsdk/" />
-    <meta name="twitter:label1" content="Written by" />
-    <meta name="twitter:data1" content="vvb" />
-    <meta name="twitter:label2" content="Filed under" />
-    <meta name="twitter:data2" content="ucspython, imcsdk" />
-    <meta name="twitter:site" content="@vvb__" />
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Inventorying IMC servers via imcsdk">
+    <meta name="twitter:description" content="The 0.9.2.0 release of imcsdk will add support for inventory APIs.  The following output formats are supported - JSON (default) HTML CSV Refer the API documentation for a list of components that can be inventoried. all fetches inventory for all components. Usage is shown below, from imcsdk.">
+    <meta name="twitter:url" content="http://localhost:2368/inventorying-imc-servers-via-imcsdk/">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="vvb">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="ucspython, imcsdk">
+    <meta name="twitter:site" content="@vvb__">
     
     <script type="application/ld+json">
 {
@@ -62,10 +61,10 @@
 }
     </script>
 
-    <meta name="generator" content="Ghost 0.11" />
-    <link rel="alternate" type="application/rss+xml" title="Servers | Containers | Management" href="../../rss/index.html" />
+    <meta name="generator" content="Ghost 0.11">
+    <link rel="alternate" type="application/rss+xml" title="Servers | Containers | Management" href="../../rss.44">
 
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,600,400" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic%7COpen+Sans:700,600,400">
     <style amp-custom>
         /* ==========================================================================
            Table of Contents
@@ -839,7 +838,7 @@
 <body class="amp-template">
     <header class="main-header">
         <nav class="blog-title">
-            <a href="../../index.html">Servers | Containers | Management</a>
+            <a href="../../">Servers | Containers | Management</a>
         </nav>
     </header>
 
@@ -849,7 +848,7 @@
             <header class="post-header">
                 <h1 class="post-title">Inventorying IMC servers via imcsdk</h1>
                 <section class="post-meta">
-                    <p class="author">by <a href="../../author/vvb/index.html">vvb</a></p>
+                    <p class="author">by <a href="../../author/vvb/">vvb</a></p>
                     <time class="post-date" datetime="2017-01-03">2017-01-03</time>
                 </section>
             </header>
@@ -878,22 +877,22 @@ get_inventory(handle=handle)
 get_inventory(handle=[handle1, handle2, handle3])
 
 # Gets inventory of one server all components in JSON format
-get_inventory(handle=handle, component=&quot;all&quot;)
+get_inventory(handle=handle, component="all")
 
 # Gets disks inventory of one server in JSON format
-get_inventory(handle=handle, component=&quot;disks&quot;)
+get_inventory(handle=handle, component="disks")
 
 # Gets cpu and disks inventory for one server in JSON format
-get_inventory(handle=handle, component=[&quot;cpu&quot;, &quot;disks&quot;])
+get_inventory(handle=handle, component=["cpu", "disks"])
 
 # Gets cpu and disks inventory for one server in JSON format and writes to inventory.json file
-get_inventory(handle=handle, component=[&quot;cpu&quot;, &quot;disks&quot;], file_format=&quot;json&quot;, file_name=&quot;inventory.json&quot;)
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="json", file_name="inventory.json")
 
 # Gets cpu and disks inventory for one server in CSV format and writes to inventory.csv fie
-get_inventory(handle=handle, component=[&quot;cpu&quot;, &quot;disks&quot;], file_format=&quot;csv&quot;, file_name=&quot;inventory.csv&quot;)
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="csv", file_name="inventory.csv")
 
 # Gets cpu and disks inventory for one server in HTML format and writes to inventory.html
-get_inventory(handle=handle, component=[&quot;cpu&quot;, &quot;disks&quot;], file_format=&quot;html&quot;, file_name=&quot;inventory.html&quot;)  
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="html", file_name="inventory.html")  
 </code></pre>
 
             </section>
@@ -901,8 +900,7 @@ get_inventory(handle=handle, component=[&quot;cpu&quot;, &quot;disks&quot;], fil
         </article>
     </main>
     <footer class="site-footer clearfix">
-        <section class="copyright"><a href="../../index.html">Servers | Containers | Management</a> &copy; 2018</section>
+        <section class="copyright"><a href="../../">Servers | Containers | Management</a> © 2018</section>
         <section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a></section>
     </footer>
 </body>
-</html>

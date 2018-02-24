@@ -1,37 +1,36 @@
-<!DOCTYPE html>
-<html ⚡>
+
 <head>
     <meta charset="utf-8">
 
     <title>Reflection in go!</title>
-    <meta name="description" content="" />
+    <meta name="description" content="">
 
-    <meta name="HandheldFriendly" content="True" />
+    <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 
     <link rel="shortcut icon" href="../../favicon.ico">
 
-    <link rel="canonical" href="../index.html" />
-    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="canonical" href="../index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
     
-    <meta property="og:site_name" content="Servers | Containers | Management" />
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="Reflection in go!" />
-    <meta property="og:description" content="Printing struct attributes and values using reflection. package main import (       &quot;fmt&quot;     &quot;reflect&quot; ) type User struct {       FirstName string     LastName  string     Age       int } func (f *User) reflect() {       v :&#x3D; reflect.ValueOf(f).Elem()     for i :&#x3D; 0; i &amp;lt; v.NumField(); i++ {         val :&#x3D; v.Field(i)         t :&#x3D; v.Type().Field(i)         fmt.Printf(&quot;%s" />
-    <meta property="og:url" content="http://localhost:2368/reflection-in-go/" />
-    <meta property="article:published_time" content="2017-04-17T18:54:19.000Z" />
-    <meta property="article:modified_time" content="2017-04-17T18:59:07.000Z" />
-    <meta property="article:tag" content="golang" />
+    <meta property="og:site_name" content="Servers | Containers | Management">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Reflection in go!">
+    <meta property="og:description" content='Printing struct attributes and values using reflection. package main import (       "fmt"     "reflect" ) type User struct {       FirstName string     LastName  string     Age       int } func (f *User) reflect() {       v := reflect.ValueOf(f).Elem()     for i := 0; i &amp;lt; v.NumField(); i++ {         val := v.Field(i)         t := v.Type().Field(i)         fmt.Printf("%s'>
+    <meta property="og:url" content="http://localhost:2368/reflection-in-go/">
+    <meta property="article:published_time" content="2017-04-17T18:54:19.000Z">
+    <meta property="article:modified_time" content="2017-04-17T18:59:07.000Z">
+    <meta property="article:tag" content="golang">
     
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Reflection in go!" />
-    <meta name="twitter:description" content="Printing struct attributes and values using reflection. package main import (       &quot;fmt&quot;     &quot;reflect&quot; ) type User struct {       FirstName string     LastName  string     Age       int } func (f *User) reflect() {       v :&#x3D; reflect.ValueOf(f).Elem()     for i :&#x3D; 0; i &amp;lt; v.NumField(); i++ {         val :&#x3D; v.Field(i)         t :&#x3D; v.Type().Field(i)         fmt.Printf(&quot;%s" />
-    <meta name="twitter:url" content="http://localhost:2368/reflection-in-go/" />
-    <meta name="twitter:label1" content="Written by" />
-    <meta name="twitter:data1" content="vvb" />
-    <meta name="twitter:label2" content="Filed under" />
-    <meta name="twitter:data2" content="golang" />
-    <meta name="twitter:site" content="@vvb__" />
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Reflection in go!">
+    <meta name="twitter:description" content='Printing struct attributes and values using reflection. package main import (       "fmt"     "reflect" ) type User struct {       FirstName string     LastName  string     Age       int } func (f *User) reflect() {       v := reflect.ValueOf(f).Elem()     for i := 0; i &amp;lt; v.NumField(); i++ {         val := v.Field(i)         t := v.Type().Field(i)         fmt.Printf("%s'>
+    <meta name="twitter:url" content="http://localhost:2368/reflection-in-go/">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="vvb">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="golang">
+    <meta name="twitter:site" content="@vvb__">
     
     <script type="application/ld+json">
 {
@@ -61,10 +60,10 @@
 }
     </script>
 
-    <meta name="generator" content="Ghost 0.11" />
-    <link rel="alternate" type="application/rss+xml" title="Servers | Containers | Management" href="../../rss/index.html" />
+    <meta name="generator" content="Ghost 0.11">
+    <link rel="alternate" type="application/rss+xml" title="Servers | Containers | Management" href="../../rss.44">
 
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,600,400" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic%7COpen+Sans:700,600,400">
     <style amp-custom>
         /* ==========================================================================
            Table of Contents
@@ -838,7 +837,7 @@
 <body class="amp-template">
     <header class="main-header">
         <nav class="blog-title">
-            <a href="../../index.html">Servers | Containers | Management</a>
+            <a href="../../">Servers | Containers | Management</a>
         </nav>
     </header>
 
@@ -848,7 +847,7 @@
             <header class="post-header">
                 <h1 class="post-title">Reflection in go!</h1>
                 <section class="post-meta">
-                    <p class="author">by <a href="../../author/vvb/index.html">vvb</a></p>
+                    <p class="author">by <a href="../../author/vvb/">vvb</a></p>
                     <time class="post-date" datetime="2017-04-18">2017-04-18</time>
                 </section>
             </header>
@@ -859,8 +858,8 @@
 <pre><code>package main
 
 import (  
-    &quot;fmt&quot;
-    &quot;reflect&quot;
+    "fmt"
+    "reflect"
 )
 
 type User struct {  
@@ -875,14 +874,14 @@ func (f *User) reflect() {
     for i := 0; i &lt; v.NumField(); i++ {
         val := v.Field(i)
         t := v.Type().Field(i)
-        fmt.Printf(&quot;%s %v \t&quot;, t.Name, val.Interface())
+        fmt.Printf("%s %v \t", t.Name, val.Interface())
     }
 }
 
 func main() {  
     f := &amp;User{
-        FirstName: &quot;John&quot;,
-        LastName:  &quot;Doe&quot;,
+        FirstName: "John",
+        LastName:  "Doe",
         Age:       13,
     }
 
@@ -895,8 +894,7 @@ func main() {
         </article>
     </main>
     <footer class="site-footer clearfix">
-        <section class="copyright"><a href="../../index.html">Servers | Containers | Management</a> &copy; 2018</section>
+        <section class="copyright"><a href="../../">Servers | Containers | Management</a> © 2018</section>
         <section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a></section>
     </footer>
 </body>
-</html>

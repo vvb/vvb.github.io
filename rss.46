@@ -1,859 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:media="http://search.yahoo.com/mrss/"><channel><title><![CDATA[Servers | Containers | Management]]></title><description><![CDATA[Servers | Containers | Management]]></description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Tue, 12 Jun 2018 05:53:12 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Upgrading Fedora]]></title><description><![CDATA[<p>For self,</p>
 
-<head>
-    <meta charset="utf-8">
+<pre><code>sudo dnf upgrade --refresh  
+sudo dnf install dnf-plugin-system-upgrade  
+sudo dnf system-upgrade download --refresh --releasever=28  
+sudo dnf system-upgrade reboot  
+</code></pre>]]></description><link>http://localhost:2368/upgrading-fedora/</link><guid isPermaLink="false">16ff2893-7563-480c-af39-e82da0355da5</guid><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Tue, 12 Jun 2018 05:50:41 GMT</pubDate><content:encoded><![CDATA[<p>For self,</p>
 
-    <title>A Day With R</title>
-    <meta name="description" content="">
+<pre><code>sudo dnf upgrade --refresh  
+sudo dnf install dnf-plugin-system-upgrade  
+sudo dnf system-upgrade download --refresh --releasever=28  
+sudo dnf system-upgrade reboot  
+</code></pre>]]></content:encoded></item><item><title><![CDATA[Removing Duplicate Iptables Rules]]></title><description><![CDATA[<p>Snippet for removing duplicate entries from iptables</p>
 
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<pre><code>iptables-save &gt; /tmp/iptables_backup.conf  
+iptables-save | awk '!x[$0]++' &gt; /tmp/iptables.conf  
+iptables -F  
+iptables-restore &lt; /tmp/iptables.conf  
+service iptables save  
+service iptables restart  
+</code></pre>]]></description><link>http://localhost:2368/removing-duplicate-iptables-rules/</link><guid isPermaLink="false">0732fab3-2880-4d43-9edf-6d341049e32b</guid><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Tue, 12 Jun 2018 05:48:30 GMT</pubDate><content:encoded><![CDATA[<p>Snippet for removing duplicate entries from iptables</p>
 
-    <link rel="shortcut icon" href="../../favicon.ico">
+<pre><code>iptables-save &gt; /tmp/iptables_backup.conf  
+iptables-save | awk '!x[$0]++' &gt; /tmp/iptables.conf  
+iptables -F  
+iptables-restore &lt; /tmp/iptables.conf  
+service iptables save  
+service iptables restart  
+</code></pre>]]></content:encoded></item><item><title><![CDATA[Running Commands As Apache User]]></title><description><![CDATA[<p>I have some django apps that run as apache user. <br>
+And I frequently need to run some commands as an apache user from my regular user shell.</p>
 
-    <link rel="canonical" href="../index.html">
-    <meta name="referrer" content="no-referrer-when-downgrade">
-    
-    <meta property="og:site_name" content="Servers | Containers | Management">
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="A Day With R">
-    <meta property="og:description" content='Datatypes A vector is always homogenous A list can be heterogenous A matrix is a list of vectors A dataframe is a list of lists. stockprice &amp;lt;- 1900L   class(stockprice) stocks &amp;lt;- c("HEG", "Graphite", "Bajaj", "L&amp;amp;T")   prices &amp;lt;- c(1900L, 650L, 500L, 1380L)   names('>
-    <meta property="og:url" content="http://localhost:2368/a-day-with-r/">
-    <meta property="article:published_time" content="2018-02-06T06:43:33.000Z">
-    <meta property="article:modified_time" content="2018-02-06T10:13:10.000Z">
-    <meta property="article:tag" content="R">
-    
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="A Day With R">
-    <meta name="twitter:description" content='Datatypes A vector is always homogenous A list can be heterogenous A matrix is a list of vectors A dataframe is a list of lists. stockprice &amp;lt;- 1900L   class(stockprice) stocks &amp;lt;- c("HEG", "Graphite", "Bajaj", "L&amp;amp;T")   prices &amp;lt;- c(1900L, 650L, 500L, 1380L)   names('>
-    <meta name="twitter:url" content="http://localhost:2368/a-day-with-r/">
-    <meta name="twitter:label1" content="Written by">
-    <meta name="twitter:data1" content="vvb">
-    <meta name="twitter:label2" content="Filed under">
-    <meta name="twitter:data2" content="R">
-    <meta name="twitter:site" content="@vvb__">
-    
-    <script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "publisher": {
-        "@type": "Organization",
-        "name": "Servers | Containers | Management",
-        "logo": "http://localhost:2368/ghost/img/ghosticon.jpg"
-    },
-    "author": {
-        "@type": "Person",
-        "name": "vvb",
-        "url": "http://localhost:2368/author/vvb/",
-        "sameAs": []
-    },
-    "headline": "A Day With R",
-    "url": "http://localhost:2368/a-day-with-r/",
-    "datePublished": "2018-02-06T06:43:33.000Z",
-    "dateModified": "2018-02-06T10:13:10.000Z",
-    "keywords": "R",
-    "description": "Datatypes A vector is always homogenous A list can be heterogenous A matrix is a list of vectors A dataframe is a list of lists. stockprice &amp;lt;- 1900L   class(stockprice) stocks &amp;lt;- c(&quot;HEG&quot;, &quot;Graphite&quot;, &quot;Bajaj&quot;, &quot;L&amp;amp;T&quot;)   prices &amp;lt;- c(1900L, 650L, 500L, 1380L)   names(",
-    "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "http://localhost:2368"
-    }
+<p>The following function in <code>~/.bashrc</code> is awesome for such use cases</p>
+
+<pre><code>run_as_apache_user() {  
+    su -s "/bin/bash" -c "$1" apache
 }
-    </script>
-
-    <meta name="generator" content="Ghost 0.11">
-    <link rel="alternate" type="application/rss+xml" title="Servers | Containers | Management" href="../../rss.46">
-
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic%7COpen+Sans:700,600,400">
-    <style amp-custom>
-        /* ==========================================================================
-           Table of Contents
-           ========================================================================== */
-
-        /*
-
-            0. Normalize
-            1. General
-            2. Utilities
-            3. AMP Post
-            4. Footer
-
-        */
-
-        /* ==========================================================================
-           0. normalize.css v3.0.3 | MIT License | git.io/normalize | (minified)
-           ========================================================================== */
-
-        html {
-            font-family: sans-serif;
-
-            -ms-text-size-adjust: 100%;
-            -webkit-text-size-adjust: 100%;
-        }
-        body {
-            margin: 0;
-        }
-        article,
-        aside,
-        details,
-        figcaption,
-        figure,
-        footer,
-        header,
-        main,
-        menu,
-        nav,
-        section,
-        summary {
-            display: block;
-        }
-        audio,
-        canvas,
-        progress,
-        video {
-            display: inline-block;
-            vertical-align: baseline;
-        }
-        audio:not([controls]) {
-            display: none;
-            height: 0;
-        }
-        [hidden],
-        template {
-            display: none;
-        }
-        a {
-            background-color: transparent;
-        }
-        a:active,
-        a:hover {
-            outline: 0;
-        }
-        abbr[title] {
-            border-bottom: 1px dotted;
-        }
-        b,
-        strong {
-            font-weight: bold;
-        }
-        dfn {
-            font-style: italic;
-        }
-        h1 {
-            margin: 0.67em 0;
-            font-size: 2em;
-        }
-        mark {
-            background: #ff0;
-            color: #000;
-        }
-        small {
-            font-size: 80%;
-        }
-        sub,
-        sup {
-            position: relative;
-            vertical-align: baseline;
-            font-size: 75%;
-            line-height: 0;
-        }
-        sup {
-            top: -0.5em;
-        }
-        sub {
-            bottom: -0.25em;
-        }
-        img {
-            border: 0;
-        }
-        amp-img {
-            border: 0;
-        }
-        svg:not(:root) {
-            overflow: hidden;
-        }
-        figure {
-            margin: 1em 40px;
-        }
-        hr {
-            box-sizing: content-box;
-            height: 0;
-        }
-        pre {
-            overflow: auto;
-        }
-        code,
-        kbd,
-        pre,
-        samp {
-            font-family: monospace, monospace;
-            font-size: 1em;
-        }
-        button,
-        input,
-        optgroup,
-        select,
-        textarea {
-            margin: 0;
-            color: inherit;
-            font: inherit;
-        }
-        button {
-            overflow: visible;
-        }
-        button,
-        select {
-            text-transform: none;
-        }
-        button,
-        html input[type="button"],
-        input[type="reset"],
-        input[type="submit"] {
-            cursor: pointer;
-
-            -webkit-appearance: button;
-        }
-        button[disabled],
-        html input[disabled] {
-            cursor: default;
-        }
-        button::-moz-focus-inner,
-        input::-moz-focus-inner {
-            padding: 0;
-            border: 0;
-        }
-        input {
-            line-height: normal;
-        }
-        input[type="checkbox"],
-        input[type="radio"] {
-            box-sizing: border-box;
-            padding: 0;
-        }
-        input[type="number"]::-webkit-inner-spin-button,
-        input[type="number"]::-webkit-outer-spin-button {
-            height: auto;
-        }
-        input[type="search"] {
-            -webkit-appearance: textfield;
-        }
-        input[type="search"]::-webkit-search-cancel-button,
-        input[type="search"]::-webkit-search-decoration {
-            -webkit-appearance: none;
-        }
-        fieldset {
-            margin: 0 2px;
-            padding: 0.35em 0.625em 0.75em;
-            border: 1px solid #c0c0c0;
-        }
-        legend {
-            padding: 0;
-            border: 0;
-        }
-        textarea {
-            overflow: auto;
-        }
-        optgroup {
-            font-weight: bold;
-        }
-        table {
-            border-spacing: 0;
-            border-collapse: collapse;
-        }
-        td,
-        th {
-            padding: 0;
-        }
-
-
-        /* ==========================================================================
-           1. General - Setting up some base styles
-           ========================================================================== */
-
-        html {
-            max-height: 100%;
-            height: 100%;
-            font-size: 62.5%;
-
-            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-        }
-
-        body {
-            max-height: 100%;
-            height: 100%;
-            color: #3a4145;
-            background: #f4f8fb;
-            letter-spacing: 0.01rem;
-            font-family: "Merriweather", serif;
-            font-size: 1.8rem;
-            line-height: 1.75em;
-            text-rendering: geometricPrecision;
-
-            -webkit-font-feature-settings: "kern" 1;
-            -moz-font-feature-settings: "kern" 1;
-            -o-font-feature-settings: "kern" 1;
-        }
-
-        ::-moz-selection {
-            background: #d6edff;
-        }
-
-        ::selection {
-            background: #d6edff;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            margin: 0 0 0.3em 0;
-            color: #2e2e2e;
-            font-family: "Open Sans", sans-serif;
-            line-height: 1.15em;
-            text-rendering: geometricPrecision;
-
-            -webkit-font-feature-settings: "dlig" 1, "liga" 1, "lnum" 1, "kern" 1;
-            -moz-font-feature-settings: "dlig" 1, "liga" 1, "lnum" 1, "kern" 1;
-            -o-font-feature-settings: "dlig" 1, "liga" 1, "lnum" 1, "kern" 1;
-        }
-
-        h1 {
-            text-indent: -2px;
-            letter-spacing: -1px;
-            font-size: 2.6rem;
-        }
-
-        h2 {
-            letter-spacing: 0;
-            font-size: 2.4rem;
-        }
-
-        h3 {
-            letter-spacing: -0.6px;
-            font-size: 2.1rem;
-        }
-
-        h4 {
-            font-size: 1.9rem;
-        }
-
-        h5 {
-            font-size: 1.8rem;
-        }
-
-        h6 {
-            font-size: 1.8rem;
-        }
-
-        a {
-            color: #4a4a4a;
-        }
-
-        a:hover {
-            color: #111;
-        }
-
-        p,
-        ul,
-        ol,
-        dl {
-            margin: 0 0 2.5rem 0;
-            font-size: 1.5rem;
-            text-rendering: geometricPrecision;
-
-            -webkit-font-feature-settings: "liga" 1, "onum" 1, "kern" 1;
-            -moz-font-feature-settings: "liga" 1, "onum" 1, "kern" 1;
-            -o-font-feature-settings: "liga" 1, "onum" 1, "kern" 1;
-        }
-
-        ol,
-        ul {
-            padding-left: 2em;
-        }
-
-        ol ol,
-        ul ul,
-        ul ol,
-        ol ul {
-            margin: 0 0 0.4em 0;
-            padding-left: 2em;
-        }
-
-        dl dt {
-            float: left;
-            clear: left;
-            overflow: hidden;
-            margin-bottom: 1em;
-            width: 180px;
-            text-align: right;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            font-weight: 700;
-        }
-
-        dl dd {
-            margin-bottom: 1em;
-            margin-left: 200px;
-        }
-
-        li {
-            margin: 0.4em 0;
-        }
-
-        li li {
-            margin: 0;
-        }
-
-        hr {
-            display: block;
-            margin: 1.75em 0;
-            padding: 0;
-            height: 1px;
-            border: 0;
-            border-top: #efefef 1px solid;
-        }
-
-        blockquote {
-            box-sizing: border-box;
-            margin: 1.75em 0 1.75em 0;
-            padding: 0 0 0 1.75em;
-            border-left: #4a4a4a 0.4em solid;
-
-            -moz-box-sizing: border-box;
-        }
-
-        blockquote p {
-            margin: 0.8em 0;
-            font-style: italic;
-        }
-
-        blockquote small {
-            display: inline-block;
-            margin: 0.8em 0 0.8em 1.5em;
-            color: #ccc;
-            font-size: 0.9em;
-        }
-
-        blockquote small:before {
-            content: "\2014 \00A0";
-        }
-
-        blockquote cite {
-            font-weight: 700;
-        }
-
-        blockquote cite a {
-            font-weight: normal;
-        }
-
-        mark {
-            background-color: #fdffb6;
-        }
-
-        code,
-        tt {
-            padding: 1px 3px;
-            border: #e3edf3 1px solid;
-            background: #f7fafb;
-            border-radius: 2px;
-            white-space: pre-wrap;
-            font-family: Inconsolata, monospace, sans-serif;
-            font-size: 0.85em;
-            font-feature-settings: "liga" 0;
-
-            -webkit-font-feature-settings: "liga" 0;
-            -moz-font-feature-settings: "liga" 0;
-        }
-
-        pre {
-            overflow: auto;
-            box-sizing: border-box;
-            margin: 0 0 1.75em 0;
-            padding: 10px;
-            width: 100%;
-            border: #e3edf3 1px solid;
-            background: #f7fafb;
-            border-radius: 3px;
-            white-space: pre;
-            font-family: Inconsolata, monospace, sans-serif;
-            font-size: 0.9em;
-
-            -moz-box-sizing: border-box;
-        }
-
-        pre code,
-        pre tt {
-            padding: 0;
-            border: none;
-            background: transparent;
-            white-space: pre-wrap;
-            font-size: inherit;
-        }
-
-        kbd {
-            display: inline-block;
-            margin-bottom: 0.4em;
-            padding: 1px 8px;
-            border: #ccc 1px solid;
-            background: #f4f4f4;
-            border-radius: 4px;
-            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2),
-            0 1px 0 0 #fff inset;
-            color: #666;
-            text-shadow: #fff 0 1px 0;
-            font-size: 0.9em;
-            font-weight: 700;
-        }
-
-        table {
-            box-sizing: border-box;
-            margin: 1.75em 0;
-            max-width: 100%;
-            width: 100%;
-            background-color: transparent;
-
-            -moz-box-sizing: border-box;
-        }
-
-        table th,
-        table td {
-            padding: 8px;
-            border-top: #efefef 1px solid;
-            vertical-align: top;
-            text-align: left;
-            line-height: 20px;
-        }
-
-        table th {
-            color: #000;
-        }
-
-        table caption + thead tr:first-child th,
-        table caption + thead tr:first-child td,
-        table colgroup + thead tr:first-child th,
-        table colgroup + thead tr:first-child td,
-        table thead:first-child tr:first-child th,
-        table thead:first-child tr:first-child td {
-            border-top: 0;
-        }
-
-        table tbody + tbody {
-            border-top: #efefef 2px solid;
-        }
-
-        table table table {
-            background-color: #fff;
-        }
-
-        table tbody > tr:nth-child(odd) > td,
-        table tbody > tr:nth-child(odd) > th {
-            background-color: #f6f6f6;
-        }
-
-        table.plain tbody > tr:nth-child(odd) > td,
-        table.plain tbody > tr:nth-child(odd) > th {
-            background: transparent;
-        }
-
-        iframe,
-        amp-iframe,
-        .fluid-width-video-wrapper {
-            display: block;
-            margin: 1.75em 0;
-        }
-
-        /* When a video is inside the fitvids wrapper, drop the
-        margin on the iframe, cause it breaks stuff. */
-        .fluid-width-video-wrapper iframe,
-        .fluid-width-video-wrapper amp-iframe {
-            margin: 0;
-        }
-
-        textarea,
-        select,
-        input {
-            margin: 0 0 5px 0;
-            padding: 6px 9px;
-            width: 260px;
-            outline: 0;
-            border: #e7eef2 1px solid;
-            background: #fff;
-            border-radius: 4px;
-            box-shadow: none;
-            font-family: "Open Sans", sans-serif;
-            font-size: 1.6rem;
-            line-height: 1.4em;
-            font-weight: 100;
-
-            -webkit-appearance: none;
-        }
-
-        textarea {
-            min-width: 250px;
-            min-height: 80px;
-            max-width: 340px;
-            width: 100%;
-            height: auto;
-        }
-
-        input[type="text"]:focus,
-        input[type="email"]:focus,
-        input[type="search"]:focus,
-        input[type="tel"]:focus,
-        input[type="url"]:focus,
-        input[type="password"]:focus,
-        input[type="number"]:focus,
-        input[type="date"]:focus,
-        input[type="month"]:focus,
-        input[type="week"]:focus,
-        input[type="time"]:focus,
-        input[type="datetime"]:focus,
-        input[type="datetime-local"]:focus,
-        textarea:focus {
-            outline: none;
-            outline-width: 0;
-            border: #bbc7cc 1px solid;
-            background: #fff;
-        }
-
-        select {
-            width: 270px;
-            height: 30px;
-            line-height: 30px;
-        }
-
-        /* ==========================================================================
-           2. Utilities
-           ========================================================================== */
-
-        /* Clears shit */
-        .clearfix:before,
-        .clearfix:after {
-            content: " ";
-            display: table;
-        }
-        .clearfix:after {
-            clear: both;
-        }
-        .clearfix {
-            zoom: 1;
-        }
-
-        /* ==========================================================================
-           3. AMP Post
-           ========================================================================== */
-
-
-
-        .main-header {
-            position: relative;
-            display: table;
-            overflow: hidden;
-            box-sizing: border-box;
-            width: 100%;
-            height: 50px;
-            background: #5ba4e5 no-repeat center center;
-            background-size: cover;
-            text-align: left;
-
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-        }
-
-        .content {
-            background: #fff;
-            padding-top: 15px;
-        }
-        .blog-title,
-        .content {
-            margin: auto;
-            max-width: 600px;
-        }
-
-        .blog-title a {
-            display: block;
-            padding-right: 16px;
-            padding-left: 16px;
-            height: 50px;
-            color: #fff;
-            text-decoration: none;
-            font-family: "Open Sans", sans-serif;
-            font-size: 16px;
-            line-height: 50px;
-            font-weight: 600;
-        }
-
-        .post {
-            position: relative;
-            margin-top: 0;
-            margin-right: 16px;
-            margin-left: 16px;
-            padding-bottom: 0;
-            max-width: 100%;
-            border-bottom: #ebf2f6 1px solid;
-            word-wrap: break-word;
-            font-size: 0.95em;
-            line-height: 1.65em;
-        }
-
-        .post-header {
-            margin-bottom: 1rem;
-        }
-
-        .post-title {
-            margin-bottom: 0;
-        }
-
-        .post-title a {
-            text-decoration: none;
-        }
-
-        .post-meta {
-            display: block;
-            margin: 3px 0 0 0;
-            color: #9eabb3;
-            font-family: "Open Sans", sans-serif;
-            font-size: 1.3rem;
-            line-height: 2.2rem;
-        }
-
-        .post-meta a {
-            color: #9eabb3;
-            text-decoration: none;
-        }
-
-        .post-meta a:hover {
-            text-decoration: underline;
-        }
-
-        .post-meta .author {
-            margin: 0;
-            font-size: 1.3rem;
-            line-height: 1.3em;
-        }
-
-        .post-date {
-            display: inline-block;
-            text-transform: uppercase;
-            white-space: nowrap;
-            font-size: 1.2rem;
-            line-height: 1.2em;
-        }
-
-        .post-image {
-            margin: 0;
-            padding-top: 3rem;
-            padding-bottom: 30px;
-            border-top: 1px #E8E8E8 solid;
-        }
-
-        /* Keep images centered, and allow images wider than the main
-           text column to break out. */
-        .post-content amp-img,
-        .post-content amp-anim {
-            /* Centers an image by (1) pushing its left edge to the
-               center of its container and (2) shifting the entire image
-               in the opposite direction by half its own width.
-               Works for images that are larger than their containers. */
-            position: relative;
-            left: 50%;
-            display: block;
-            padding: 0;
-            min-width: 0;
-            max-width: 112%; /* fallback when calc doesn't work */
-            width: calc(100% + 32px); /* expand with to image + margins */
-            height: auto;
-            transform: translateX(-50%);
-
-            -webkit-transform: translateX(-50%); /* for Safari and iOS */
-            -ms-transform: translateX(-50%); /* for IE9 */
-        }
-
-        .footnotes {
-            font-size: 1.3rem;
-            line-height: 1.6em;
-            font-style: italic;
-        }
-
-        .footnotes li {
-            margin: 0.6rem 0;
-        }
-
-        .footnotes p {
-            margin: 0;
-        }
-
-        .footnotes p a:last-child {
-            text-decoration: none;
-        }
-
-        /* ==========================================================================
-           4. Footer - The bottom the AMP Post
-           ========================================================================== */
-
-        .site-footer {
-            position: relative;
-            margin: 0 auto 20px auto;
-            padding: 1rem 15px;
-            max-width: 600px;
-            color: rgba(0,0,0,0.5);
-            font-family: "Open Sans", sans-serif;
-            font-size: 1.1rem;
-            line-height: 1.75em;
-        }
-
-        .site-footer a {
-            color: rgba(0,0,0,0.5);
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .site-footer a:hover {
-            border-bottom: #bbc7cc 1px solid;
-        }
-
-        .poweredby {
-            display: block;
-            float: right;
-            width: 45%;
-            text-align: right;
-        }
-
-        .copyright {
-            display: block;
-            float: left;
-            width: 45%;
-        }
-    </style>
-
-    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
-    <script async src="https://cdn.ampproject.org/v0.js"></script>
-
-    
-
-</head>
-
-<body class="amp-template">
-    <header class="main-header">
-        <nav class="blog-title">
-            <a href="../../">Servers | Containers | Management</a>
-        </nav>
-    </header>
-
-    <main class="content" role="main">
-        <article class="post">
-
-            <header class="post-header">
-                <h1 class="post-title">A Day With R</h1>
-                <section class="post-meta">
-                    <p class="author">by <a href="../../author/vvb/">vvb</a></p>
-                    <time class="post-date" datetime="2018-02-06">2018-02-06</time>
-                </section>
-            </header>
-            <section class="post-content">
-
-                <h3 id="datatypes">Datatypes</h3>
+</code></pre>
+
+<p>Usage:</p>]]></description><link>http://localhost:2368/running-commands-as-apache-user/</link><guid isPermaLink="false">94690a3d-acf6-412f-9a2a-9b5d130b3d00</guid><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Thu, 22 Feb 2018 18:41:13 GMT</pubDate><content:encoded><![CDATA[<p>I have some django apps that run as apache user. <br>
+And I frequently need to run some commands as an apache user from my regular user shell.</p>
+
+<p>The following function in <code>~/.bashrc</code> is awesome for such use cases</p>
+
+<pre><code>run_as_apache_user() {  
+    su -s "/bin/bash" -c "$1" apache
+}
+</code></pre>
+
+<p>Usage:</p>
+
+<pre><code>$ run_as_apache_user 'svn up'
+$ run_as_apache_user 'ls'
+</code></pre>]]></content:encoded></item><item><title><![CDATA[Analyzing Stock Tradebook With R]]></title><description><![CDATA[<p>Given a year worth of trades, the following R script detects the stocks that were not directly bought. They were either acquired as a part of a bonus, split or IPO.</p>
+
+<pre><code>setwd("/Users/vvb/work/projects/trades")  
+getwd()
+
+library(data.table)  
+library(readxl)
+
+trades &lt;- readxl::read_excel("tradebook.</code></pre>]]></description><link>http://localhost:2368/analyzing_stock_tradebook_with_r/</link><guid isPermaLink="false">7a58f72d-e02b-4598-9f31-49532bad7861</guid><category><![CDATA[R]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Sun, 11 Feb 2018 18:45:54 GMT</pubDate><content:encoded><![CDATA[<p>Given a year worth of trades, the following R script detects the stocks that were not directly bought. They were either acquired as a part of a bonus, split or IPO.</p>
+
+<pre><code>setwd("/Users/vvb/work/projects/trades")  
+getwd()
+
+library(data.table)  
+library(readxl)
+
+trades &lt;- readxl::read_excel("tradebook.xlsx", sheet = "TRADEBOOK")  
+trades &lt;- trades %&gt;% as.data.table()  
+head(trades)
+
+findUnbalancedTrades &lt;- function(trades) {  
+  trades1 &lt;- trades[Type=="S",Qty:=-Qty]
+  trades2 &lt;- trades1 %&gt;% group_by(Symbol) %&gt;% summarise(Balance = sum(Qty)) %&gt;% as.data.table()
+  noBuyTrades &lt;- trades2[Balance &lt; 0]
+  if (nrow(noBuyTrades) == 0) {
+    print("Trades are balanced")
+  } else {
+    print("The following trades are not balanced")
+    print(noBuyTrades)
+  }
+}
+
+findUnbalancedTrades(trades)
+</code></pre>
+
+<p>Output  </p>
+
+<pre><code>&gt; setwd("/Users/vvb/work/projects/trades")
+&gt; getwd()
+[1] "/Users/vvb/work/projects/trades"
+&gt; library(data.table)
+&gt; library(readxl)
+&gt; trades &lt;- readxl::read_excel("tradebook.xlsx", sheet = "TRADEBOOK")
+&gt; trades &lt;- trades %&gt;% as.data.table()
+&gt; head(trades)
+   Trade date          Trade time Exchange    Symbol Type Qty   Rate         Order no Trade no
+1: 23-06-2017 1899-12-31 10:07:37      NSE SUNPHARMA    B   2 542.75 1300000000966218 75365300  
+2: 23-06-2017 1899-12-31 10:07:37      NSE SUNPHARMA    B  30 542.75 1300000000966218 75365299  
+3: 23-06-2017 1899-12-31 10:07:37      NSE SUNPHARMA    B  28 542.75 1300000000966218 75365303  
+4: 23-06-2017 1899-12-31 10:07:37      NSE SUNPHARMA    B   2 542.75 1300000000966218 75365302  
+5: 23-06-2017 1899-12-31 10:07:37      NSE SUNPHARMA    B  30 542.75 1300000000966218 75365301  
+6: 27-06-2017 1899-12-31 15:12:07      NSE       TWL    B 500 114.90 1300000003434722 76788334  
+&gt; findUnbalancedTrades &lt;- function(trades) {
++   trades1 &lt;- trades[Type=="S",Qty:=-Qty]
++   trades2 &lt;- trades1 %&gt;% group_by(Symbol) %&gt;% summarise(Balance = sum(Qty)) %&gt;% as.data.table()
++   noBuyTrades &lt;- trades2[Balance &lt; 0]
++   if (nrow(noBuyTrades) == 0) {
++     print("Trades are balanced")
++   } else {
++     print("The following trades are not balanced")
++     print(noBuyTrades)
++   }
++ }
+&gt; findUnbalancedTrades(trades)
+[1] "The following trades are not balanced"
+       Symbol Balance
+1: GODREJAGRO     -32  
+2:   RELIANCE    -200  
+&gt;
+</code></pre>]]></content:encoded></item><item><title><![CDATA[A Day With R]]></title><description><![CDATA[<h3 id="datatypes">Datatypes</h3>
+
+<ul>
+<li>A <code>vector</code> is always homogenous</li>
+<li>A <code>list</code> can be heterogenous</li>
+<li>A <code>matrix</code> is a list of vectors</li>
+<li>A <code>dataframe</code> is a list of lists.</li>
+</ul>
+
+<pre><code>stockprice &lt;- 1900L  
+class(stockprice)
+
+stocks &lt;- c("HEG", "Graphite", "Bajaj", "L&amp;T")  
+prices &lt;- c(1900L, 650L, 500L, 1380L)  
+names(</code></pre>]]></description><link>http://localhost:2368/a-day-with-r/</link><guid isPermaLink="false">e04e9fd9-f70e-47b4-bff8-32d7be2ea0a3</guid><category><![CDATA[R]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Tue, 06 Feb 2018 06:43:33 GMT</pubDate><content:encoded><![CDATA[<h3 id="datatypes">Datatypes</h3>
 
 <ul>
 <li>A <code>vector</code> is always homogenous</li>
@@ -1605,14 +885,520 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
 10  19.2  6.00   168 123    3.92  3.44  18.3  1.00  0     4.00  4.00    187  
 # ... with 22 more rows
 &gt; 
+</code></pre>]]></content:encoded></item><item><title><![CDATA[Two Eggs Problem]]></title><description><![CDATA[<h3 id="problem">Problem</h3>
+
+<p>A building has 100 floors. One of the floors is the highest floor an egg can be dropped from without breaking.</p>
+
+<p>If an egg is dropped from above that floor, it will break. If it is dropped from that floor or below, it will be completely undamaged and you</p>]]></description><link>http://localhost:2368/two_egg_problem/</link><guid isPermaLink="false">fa790a70-e893-4cd2-8dab-7ffab4c626b3</guid><category><![CDATA[coding]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 05 Feb 2018 18:02:15 GMT</pubDate><content:encoded><![CDATA[<h3 id="problem">Problem</h3>
+
+<p>A building has 100 floors. One of the floors is the highest floor an egg can be dropped from without breaking.</p>
+
+<p>If an egg is dropped from above that floor, it will break. If it is dropped from that floor or below, it will be completely undamaged and you can drop the egg again.</p>
+
+<p>Given two eggs, find the highest floor an egg can be dropped from without breaking, with as few drops as possible.</p>
+
+<h3 id="solution">Solution</h3>
+
+<p>Assuming we had only 1 egg, then we cannot take any chances and the only way would be to start with Floor 1 and move up floor-by-floor. If the egg breaks on fall from floor <code>n</code>, then floor <code>n-1</code> is our answer. so, worst case 100 drops.</p>
+
+<p>Assuming we had infinite number of eggs, then we could use the binary tree stategy and start with floor 50, then floor 25 and that way we will be able to come to the solution in very few drops.</p>
+
+<p>In a 2 egg scenario, we could start with floor 50 and if the egg breaks, then we have no option but to go one floor at a time. so 1+49 chances.</p>
+
+<p>However, we could do better</p>
+
+<ul>
+<li>Start at floor-10 and drop the egg
+<ul><li>if the egg does not break, go to floor-20</li>
+<li>if the egg breaks, go floor-by-floor from floor-1</li></ul></li>
+</ul>
+
+<p>Repeat this until we find the answer. Worst case being floor 99. 10 + 9=19 drops</p>
+
+<p>Could we do better?</p>
+
+<pre><code>n + (n-1) + (n-2) + (n-3) + .... + 1 &gt;= 100  
 </code></pre>
 
-            </section>
+<pre><code>n(n+1)/2 &gt;= 100  
+</code></pre>
 
-        </article>
-    </main>
-    <footer class="site-footer clearfix">
-        <section class="copyright"><a href="../../">Servers | Containers | Management</a> © 2018</section>
-        <section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a></section>
-    </footer>
-</body>
+<p>n ~ 14</p>
+
+<pre><code>14        1       13  
+27        2       12  
+39        3       11  
+50        4       10  
+60        5       9  
+69        6       8  
+77        7       7  
+84        8       6  
+90        9       5  
+95        10      4  
+99        11      3  
+100        12      0  
+</code></pre>]]></content:encoded></item><item><title><![CDATA[setting custom alerts on any device using pushbullet]]></title><description><![CDATA[<p><a href="http://localhost:2368/setting-custom-alerts-on-any-device-using-pushbullet/www.pushbullet.com">pushbullet.com</a> lets you send API based notification/alerts.</p>
+
+<p>Start with creating a Pushbullet account. Install the app on your phone. Go to the pushbullet website, head to "My Account" and then create an access token. Note this token.</p>
+
+<p>The below python code can then be used to send a</p>]]></description><link>http://localhost:2368/setting-custom-alerts-on-any-device-using-pushbullet/</link><guid isPermaLink="false">c518a189-609e-4936-ab67-2a8a632a14fb</guid><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Tue, 15 Aug 2017 13:51:05 GMT</pubDate><content:encoded><![CDATA[<p><a href="http://localhost:2368/setting-custom-alerts-on-any-device-using-pushbullet/www.pushbullet.com">pushbullet.com</a> lets you send API based notification/alerts.</p>
+
+<p>Start with creating a Pushbullet account. Install the app on your phone. Go to the pushbullet website, head to "My Account" and then create an access token. Note this token.</p>
+
+<p>The below python code can then be used to send a notification to all your registered devices.</p>
+
+<pre><code>def send_message(title, msg):  
+    url = "https://api.pushbullet.com/v2/pushes"
+    headers = {'Content-Type': 'application/json',
+               "Access-Token": access_token}
+    data = json.dumps({
+        "type": "note",
+        "title": title,
+        "body": msg
+    })
+    requests.post(url, data=data, headers=headers)
+</code></pre>
+
+<p>My use case was <a href="https://github.com/vvb/stock_alerts/blob/master/portfolio_alerts.py">this</a> python script that generates buy and sell alerts on my mobile phone based on pre-configred prices in a csv sheet.</p>
+
+<p>But there is no reason this cannot be used to get datacenter alerts. I plan to include this as a library method in Cisco Ucs SDKs soon.</p>
+
+<p>note: You might need to signout and sign back in one time after you install the app for the alerts to start showing up.</p>]]></content:encoded></item><item><title><![CDATA[Using http with pip]]></title><description><![CDATA[<p>Enforce using http with pip,</p>
+
+<pre><code>pip install --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org &lt;packageName&gt;  
+</code></pre>]]></description><link>http://localhost:2368/using-http-with-pip/</link><guid isPermaLink="false">7217758c-64c8-4fea-8c83-1fe62d32ec13</guid><category><![CDATA[ucspython]]></category><category><![CDATA[pip]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 17 Apr 2017 19:02:05 GMT</pubDate><content:encoded><![CDATA[<p>Enforce using http with pip,</p>
+
+<pre><code>pip install --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org &lt;packageName&gt;  
+</code></pre>]]></content:encoded></item><item><title><![CDATA[Reflection in go!]]></title><description><![CDATA[<p>Printing struct attributes and values using reflection.</p>
+
+<pre><code>package main
+
+import (  
+    "fmt"
+    "reflect"
+)
+
+type User struct {  
+    FirstName string
+    LastName  string
+    Age       int
+}
+
+func (f *User) reflect() {  
+    v := reflect.ValueOf(f).Elem()
+
+    for i := 0; i &lt; v.NumField(); i++ {
+        val := v.Field(i)
+        t := v.Type().Field(i)
+        fmt.Printf("%s</code></pre>]]></description><link>http://localhost:2368/reflection-in-go/</link><guid isPermaLink="false">81c31105-1037-4f65-99a5-967a31797cb9</guid><category><![CDATA[golang]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 17 Apr 2017 18:54:19 GMT</pubDate><content:encoded><![CDATA[<p>Printing struct attributes and values using reflection.</p>
+
+<pre><code>package main
+
+import (  
+    "fmt"
+    "reflect"
+)
+
+type User struct {  
+    FirstName string
+    LastName  string
+    Age       int
+}
+
+func (f *User) reflect() {  
+    v := reflect.ValueOf(f).Elem()
+
+    for i := 0; i &lt; v.NumField(); i++ {
+        val := v.Field(i)
+        t := v.Type().Field(i)
+        fmt.Printf("%s %v \t", t.Name, val.Interface())
+    }
+}
+
+func main() {  
+    f := &amp;User{
+        FirstName: "John",
+        LastName:  "Doe",
+        Age:       13,
+    }
+
+    f.reflect()
+}
+</code></pre>]]></content:encoded></item><item><title><![CDATA[ansible modules for Cisco UCS IMC server]]></title><description><![CDATA[<h3 id="imcansible">imc-ansible</h3>
+
+<p><code>imc-ansible</code> are a set of ansible modules for Cisco UCS standalone servers(IMC servers). </p>
+
+<h4 id="installation">installation</h4>
+
+<pre><code># Install ansible
+sudo pip install ansible
+
+# install imcsdk from github
+git clone https://github.com/ciscoucs/imcsdk  
+cd imcsdk  
+sudo make install
+
+# install imc-ansible from github
+git clone https://github.com/ciscoucs/imc-ansible  
+cd</code></pre>]]></description><link>http://localhost:2368/ansible-modules-for-cisco-ucs-imc-server/</link><guid isPermaLink="false">53748709-f767-4c0b-b82b-d0e027b4f4be</guid><category><![CDATA[ansible]]></category><category><![CDATA[imcsdk]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Mon, 06 Feb 2017 22:55:04 GMT</pubDate><content:encoded><![CDATA[<h3 id="imcansible">imc-ansible</h3>
+
+<p><code>imc-ansible</code> are a set of ansible modules for Cisco UCS standalone servers(IMC servers). </p>
+
+<h4 id="installation">installation</h4>
+
+<pre><code># Install ansible
+sudo pip install ansible
+
+# install imcsdk from github
+git clone https://github.com/ciscoucs/imcsdk  
+cd imcsdk  
+sudo make install
+
+# install imc-ansible from github
+git clone https://github.com/ciscoucs/imc-ansible  
+cd imc-ansible  
+sudo python install.py  
+</code></pre>
+
+<h4 id="samplerun">sample run</h4>
+
+<pre><code>➔ ansible-playbook -i inventory site.yml
+
+PLAY [imc]  
+*********************************************************************
+
+TASK [common : check if imcsdk is installed]  
+***********************************
+ok: [fpmr1_192.168.1.1]
+
+TASK [common : install imcsdk]  
+*************************************************
+skipping: [fpmr1_192.168.1.1]
+
+TASK [admin : set password policy]  
+*********************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : create local user]  
+***********************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : delete local user]  
+***********************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : reset password policy]  
+*******************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : enable ntp]  
+******************************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : disable ntp]  
+*****************************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : enable LDAP]  
+*****************************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : disable LDAP]  
+****************************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [boot : set boot order]  
+***************************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [boot : set boot order alternate]  
+*****************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [storage : create virtual drive]  
+******************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [storage : delete virtual drive]  
+******************************************
+changed: [fpmr1_192.168.1.1]
+
+PLAY RECAP  
+*********************************************************************
+fpmr1_192.168.1.1       : ok=13   changed=12   unreachable=0    failed=0  
+</code></pre>]]></content:encoded></item><item><title><![CDATA[Inventory Ucs Managed servers via ucsmsdk]]></title><description><![CDATA[<p>ucsmsdk 0.9.3.0 will add support for inventory APIs. <br>
+This allows for multi-host multi-component inventory in multiple formats(enough of multiple? :-D ).</p>
+
+<p>The inventory APIs support inventorying,</p>
+
+<pre><code>- fabric interconnects
+- cpus
+- disks
+- dimms
+- storage controller
+- VIC
+- vNICs
+- vHBAs
+- PSUs
+</code></pre>
+
+<p>The</p>]]></description><link>http://localhost:2368/inventory-ucs-managed-servers-via-ucsmsdk/</link><guid isPermaLink="false">017cc972-97b5-4343-a39e-9f777602a504</guid><category><![CDATA[ucspython]]></category><category><![CDATA[ucsmsdk]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Tue, 24 Jan 2017 06:04:13 GMT</pubDate><content:encoded><![CDATA[<p>ucsmsdk 0.9.3.0 will add support for inventory APIs. <br>
+This allows for multi-host multi-component inventory in multiple formats(enough of multiple? :-D ).</p>
+
+<p>The inventory APIs support inventorying,</p>
+
+<pre><code>- fabric interconnects
+- cpus
+- disks
+- dimms
+- storage controller
+- VIC
+- vNICs
+- vHBAs
+- PSUs
+</code></pre>
+
+<p>The supported output formats for the report are,</p>
+
+<pre><code>- csv
+- html
+- json
+</code></pre>
+
+<p>we recommend using the html format, as it has inbuilt javascript based filtering. It can quickly help narrow down a certain component on a certain host.</p>
+
+<pre><code>from ucsmsdk.utils.inventory import get_inventory
+
+# Gets inventory of all components in JSON format
+get_inventory(handle=handle)
+
+# Gets inventory for all servers all components in JSON format
+get_inventory(handle=[handle1, handle2, handle3])
+
+# Gets inventory of one server all components in JSON format
+get_inventory(handle=handle, component="all")
+
+# Gets disks inventory of one server in JSON format
+get_inventory(handle=handle, component="disks")
+
+# Gets cpu and disks inventory for one server in JSON format
+get_inventory(handle=handle, component=["cpu", "disks"])
+
+# Gets cpu and disks inventory for one server in JSON format and writes to inventory.json file
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="json", file_name="inventory.json")
+
+# Gets cpu and disks inventory for one server in CSV format and writes to inventory.csv fie
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="csv", file_name="inventory.csv")
+
+# Gets cpu and disks inventory for one server in HTML format and writes to inventory.html
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="html", file_name="inventory.html")  
+</code></pre>
+
+<p>This can be tried out today via the code available at <a href="https://github.com/ciscoucs/ucsmsdk">https://github.com/ciscoucs/ucsmsdk</a></p>
+
+<p>complete code to run it,  </p>
+
+<pre><code>#! /usr/bin/env python
+
+from ucsmsdk.ucshandle import UcsHandle  
+from ucsmsdk.utils.inventory import get_inventory
+
+handle = UcsHandle("192.168.1.1", "username", "password")  
+handle.login()
+
+# This would create inventory.html in the same directory where the script is run from
+get_inventory(handle=handle, component="all", file_format="html", file_name="inventory.html")
+
+handle.logout()  
+</code></pre>]]></content:encoded></item><item><title><![CDATA[debugging in an ansible environment]]></title><description><![CDATA[<p>I was looking for a PDB sort of debugger for debugging custom ansible modules written in Python. This is when i bumped into <a href="http://michaeldehaan.net/post/35403909347/tips-on-using-debuggers-with-ansible">this</a> blog.</p>
+
+<p>As recommended on the blog, I tried out <code>epdb</code> and it works great for debugging custom ansible modules written in python.</p>
+
+<p><strong>Installation</strong>:</p>
+
+<pre><code>pip install epdb</code></pre>]]></description><link>http://localhost:2368/debugging-in-an-ansible-environment/</link><guid isPermaLink="false">265e74b7-1b71-4d1b-a51c-65520d6f6deb</guid><category><![CDATA[ansible]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Tue, 10 Jan 2017 20:18:27 GMT</pubDate><content:encoded><![CDATA[<p>I was looking for a PDB sort of debugger for debugging custom ansible modules written in Python. This is when i bumped into <a href="http://michaeldehaan.net/post/35403909347/tips-on-using-debuggers-with-ansible">this</a> blog.</p>
+
+<p>As recommended on the blog, I tried out <code>epdb</code> and it works great for debugging custom ansible modules written in python.</p>
+
+<p><strong>Installation</strong>:</p>
+
+<pre><code>pip install epdb  
+</code></pre>
+
+<p>epdb: <a href="https://pypi.python.org/pypi/epdb">https://pypi.python.org/pypi/epdb</a></p>
+
+<p><strong>Usage</strong>:</p>
+
+<p>Insert the below code works as a breakpoint. Insert this at the lines needing debug.</p>
+
+<pre><code>import epdb  
+epdb.serve()  
+</code></pre>
+
+<p>Run ansible with <code>--forks 1</code> option to avoid parallel threads</p>
+
+<pre><code>ansible-playbook -i inventory site.yml --forks 1  
+</code></pre>
+
+<p>This run should hang when it hits the piece of code that has <code>epdb.serve()</code>. At this point run the below from another shell</p>
+
+<pre><code>python -c "import epdb; epdb.connect()"  
+</code></pre>
+
+<p>This should get you to the <code>epdb</code> shell. <br>
+here on, things should look familiar to <code>pdb</code>.</p>]]></content:encoded></item><item><title><![CDATA[imcsdk storage APIs]]></title><description><![CDATA[<p>0.9.2.0 release of imcsdk will add support for <code>imcsdk.apis.server.storage</code> to manage virtual drives.</p>
+
+<ul>
+<li><code>virtual_drive_create</code> <br></li>
+<li><code>virtual_drive_delete</code></li>
+</ul>
+
+<p>Basic usage,  </p>
+
+<pre><code>vd = virtual_drive_create(handle=handle,  
+                          drive_group=[[1]],
+                          controller_slot="MEZZ",
+                          raid_level=0)
+virtual_drive_delete(handle=handle,  
+                     controller_slot="MEZZ"</code></pre>]]></description><link>http://localhost:2368/imcsdk-storage-apis/</link><guid isPermaLink="false">9031319e-31c8-44d7-a324-775ceda5c4a8</guid><category><![CDATA[imcsdk]]></category><category><![CDATA[ucspython]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Sat, 07 Jan 2017 19:04:54 GMT</pubDate><content:encoded><![CDATA[<p>0.9.2.0 release of imcsdk will add support for <code>imcsdk.apis.server.storage</code> to manage virtual drives.</p>
+
+<ul>
+<li><code>virtual_drive_create</code> <br></li>
+<li><code>virtual_drive_delete</code></li>
+</ul>
+
+<p>Basic usage,  </p>
+
+<pre><code>vd = virtual_drive_create(handle=handle,  
+                          drive_group=[[1]],
+                          controller_slot="MEZZ",
+                          raid_level=0)
+virtual_drive_delete(handle=handle,  
+                     controller_slot="MEZZ",
+                     name=vd.virtual_drive_name)
+</code></pre>
+
+<p>Somethings to note about the arguments that <code>virtual_drive_create</code> takes,</p>
+
+<ul>
+<li><code>drive_group</code> needs to be array of an array(s) - <code>[[]]</code>
+The below shows sample inputs for <code>drive_group</code>,  </li>
+</ul>
+
+<pre><code>        For Raid 0  - [[1, 2, 3]]
+        For Raid 10 - [[1, 2], [3, 4], [5, 6]]
+        For Raid 50 - [[1, 2, 3], [4, 5, 6]]
+</code></pre>
+
+<p>Where the numbers are physical drive slots.</p>
+
+<ul>
+<li><p><code>controller_slot</code> is the name/id of the Storage controller. 
+This could be <code>MEZZ</code> in some cases. or could be a number <code>0-9</code> is some.</p></li>
+<li><p><code>raid_level</code> - refer to the raid levels supported by the platform</p></li>
+</ul>]]></content:encoded></item><item><title><![CDATA[Inventorying IMC servers via imcsdk]]></title><description><![CDATA[<p>The <code>0.9.2.0</code> release of <code>imcsdk</code> will add support for <code>inventory</code> APIs. </p>
+
+<p>The following output formats are supported -</p>
+
+<ul>
+<li>JSON (default)</li>
+<li>HTML</li>
+<li>CSV</li>
+</ul>
+
+<p>Refer the API documentation for a list of components that can be inventoried. <code>all</code> fetches inventory for all components.</p>
+
+<p>Usage is shown below,</p>
+
+<pre><code>from imcsdk.</code></pre>]]></description><link>http://localhost:2368/inventorying-imc-servers-via-imcsdk/</link><guid isPermaLink="false">8262e689-c3a1-49c9-b6ca-b0e1b703f4d1</guid><category><![CDATA[ucspython]]></category><category><![CDATA[imcsdk]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Tue, 03 Jan 2017 06:41:48 GMT</pubDate><content:encoded><![CDATA[<p>The <code>0.9.2.0</code> release of <code>imcsdk</code> will add support for <code>inventory</code> APIs. </p>
+
+<p>The following output formats are supported -</p>
+
+<ul>
+<li>JSON (default)</li>
+<li>HTML</li>
+<li>CSV</li>
+</ul>
+
+<p>Refer the API documentation for a list of components that can be inventoried. <code>all</code> fetches inventory for all components.</p>
+
+<p>Usage is shown below,</p>
+
+<pre><code>from imcsdk.apis.server.inventory import get_inventory
+
+# Gets inventory of all components in JSON format
+get_inventory(handle=handle)
+
+# Gets inventory for all servers all components in JSON format
+get_inventory(handle=[handle1, handle2, handle3])
+
+# Gets inventory of one server all components in JSON format
+get_inventory(handle=handle, component="all")
+
+# Gets disks inventory of one server in JSON format
+get_inventory(handle=handle, component="disks")
+
+# Gets cpu and disks inventory for one server in JSON format
+get_inventory(handle=handle, component=["cpu", "disks"])
+
+# Gets cpu and disks inventory for one server in JSON format and writes to inventory.json file
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="json", file_name="inventory.json")
+
+# Gets cpu and disks inventory for one server in CSV format and writes to inventory.csv fie
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="csv", file_name="inventory.csv")
+
+# Gets cpu and disks inventory for one server in HTML format and writes to inventory.html
+get_inventory(handle=handle, component=["cpu", "disks"], file_format="html", file_name="inventory.html")  
+</code></pre>]]></content:encoded></item><item><title><![CDATA[html table search with pure javascript]]></title><description><![CDATA[<p>The below javascript method searches through all the <code>&lt;td&gt;</code> elements and hides <code>&lt;tr&gt;</code> that do not have it.</p>
+
+<pre><code>    function search() {
+    // Declare variables
+    var input, filter, table, tr, td, i, j, tds, ths, matched;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    tr = document.getElementsByTagName("tr");
+
+    // Loop</code></pre>]]></description><link>http://localhost:2368/html-table-search-with-pure-javascript/</link><guid isPermaLink="false">f4922a20-0954-4e6e-a0ca-493230cf8fc0</guid><category><![CDATA[javascript]]></category><dc:creator><![CDATA[vvb]]></dc:creator><pubDate>Thu, 22 Dec 2016 17:55:35 GMT</pubDate><content:encoded><![CDATA[<p>The below javascript method searches through all the <code>&lt;td&gt;</code> elements and hides <code>&lt;tr&gt;</code> that do not have it.</p>
+
+<pre><code>    function search() {
+    // Declare variables
+    var input, filter, table, tr, td, i, j, tds, ths, matched;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    tr = document.getElementsByTagName("tr");
+
+    // Loop through all table rows, and hide
+    // those who don't match the search query
+    for (i = 0; i &lt; tr.length; i++) {
+        tds = tr[i].getElementsByTagName("td");
+        ths = tr[i].getElementsByTagName("th");
+        matched = false;
+
+        // leave the row header 
+        if (ths.length &gt; 0) {
+            matched = true;
+        }
+        else {
+            for (j = 0; j &lt; tds.length; j++) {
+                td = tds[j];
+                if (td.innerHTML.toUpperCase().indexOf(filter) &gt; -1) {
+                    matched = true;
+                    break;
+                }
+
+            }
+        }
+        if (matched == true) {
+            tr[i].style.display = "";
+        }
+        else {
+            tr[i].style.display = "none";
+        }
+        }
+    }
+</code></pre>
+
+<p>And the below adds the search input box to the webpage and maps it to our <code>search</code> method</p>
+
+<pre><code>    &lt;input type="text" id="searchInput" onkeyup="search()" placeholder="Search.."&gt;
+</code></pre>]]></content:encoded></item></channel></rss>

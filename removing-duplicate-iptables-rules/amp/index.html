@@ -2,7 +2,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Polling for a specific event ucsmsdk.</title>
+    <title>Removing Duplicate Iptables Rules</title>
     <meta name="description" content="">
 
     <meta name="HandheldFriendly" content="True">
@@ -15,22 +15,17 @@
     
     <meta property="og:site_name" content="Servers | Containers | Management">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Polling for a specific event ucsmsdk.">
-    <meta property="og:description" content="Optional poll mode is added to waitforevent API The below code will wait for the usr_lbl property of the service profile org-root/ls-demo-sp to change to demo_label. It will poll the server every poll_sec=10 here. It will timeout after 600 seconds. wait_for_event will keep">
-    <meta property="og:url" content="http://localhost:2368/polling-for-a-specific-event-ucsmsdk/">
-    <meta property="article:published_time" content="2016-11-07T23:01:12.000Z">
-    <meta property="article:modified_time" content="2016-11-07T23:01:12.000Z">
-    <meta property="article:tag" content="ucsmsdk">
-    <meta property="article:tag" content="ucspython">
-    
+    <meta property="og:title" content="Removing Duplicate Iptables Rules">
+    <meta property="og:description" content="Snippet for removing duplicate entries from iptables iptables-save &amp;gt; /tmp/iptables_backup.conf   iptables-save | awk '!x[$0]++' &amp;gt; /tmp/iptables.conf   iptables -F   iptables-restore &amp;lt; /tmp/iptables.conf   service iptables save   service iptables restart">
+    <meta property="og:url" content="http://localhost:2368/removing-duplicate-iptables-rules/">
+    <meta property="article:published_time" content="2018-06-12T05:48:30.000Z">
+    <meta property="article:modified_time" content="2018-06-12T05:48:30.000Z">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Polling for a specific event ucsmsdk.">
-    <meta name="twitter:description" content="Optional poll mode is added to waitforevent API The below code will wait for the usr_lbl property of the service profile org-root/ls-demo-sp to change to demo_label. It will poll the server every poll_sec=10 here. It will timeout after 600 seconds. wait_for_event will keep">
-    <meta name="twitter:url" content="http://localhost:2368/polling-for-a-specific-event-ucsmsdk/">
+    <meta name="twitter:title" content="Removing Duplicate Iptables Rules">
+    <meta name="twitter:description" content="Snippet for removing duplicate entries from iptables iptables-save &amp;gt; /tmp/iptables_backup.conf   iptables-save | awk '!x[$0]++' &amp;gt; /tmp/iptables.conf   iptables -F   iptables-restore &amp;lt; /tmp/iptables.conf   service iptables save   service iptables restart">
+    <meta name="twitter:url" content="http://localhost:2368/removing-duplicate-iptables-rules/">
     <meta name="twitter:label1" content="Written by">
     <meta name="twitter:data1" content="vvb">
-    <meta name="twitter:label2" content="Filed under">
-    <meta name="twitter:data2" content="ucsmsdk, ucspython">
     <meta name="twitter:site" content="@vvb__">
     
     <script type="application/ld+json">
@@ -48,12 +43,11 @@
         "url": "http://localhost:2368/author/vvb/",
         "sameAs": []
     },
-    "headline": "Polling for a specific event ucsmsdk.",
-    "url": "http://localhost:2368/polling-for-a-specific-event-ucsmsdk/",
-    "datePublished": "2016-11-07T23:01:12.000Z",
-    "dateModified": "2016-11-07T23:01:12.000Z",
-    "keywords": "ucsmsdk, ucspython",
-    "description": "Optional poll mode is added to waitforevent API The below code will wait for the usr_lbl property of the service profile org-root/ls-demo-sp to change to demo_label. It will poll the server every poll_sec&#x3D;10 here. It will timeout after 600 seconds. wait_for_event will keep",
+    "headline": "Removing Duplicate Iptables Rules",
+    "url": "http://localhost:2368/removing-duplicate-iptables-rules/",
+    "datePublished": "2018-06-12T05:48:30.000Z",
+    "dateModified": "2018-06-12T05:48:30.000Z",
+    "description": "Snippet for removing duplicate entries from iptables iptables-save &amp;gt; /tmp/iptables_backup.conf   iptables-save | awk &#x27;!x[$0]++&#x27; &amp;gt; /tmp/iptables.conf   iptables -F   iptables-restore &amp;lt; /tmp/iptables.conf   service iptables save   service iptables restart",
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "http://localhost:2368"
@@ -846,39 +840,22 @@
         <article class="post">
 
             <header class="post-header">
-                <h1 class="post-title">Polling for a specific event ucsmsdk.</h1>
+                <h1 class="post-title">Removing Duplicate Iptables Rules</h1>
                 <section class="post-meta">
                     <p class="author">by <a href="../../author/vvb/">vvb</a></p>
-                    <time class="post-date" datetime="2016-11-08">2016-11-08</time>
+                    <time class="post-date" datetime="2018-06-12">2018-06-12</time>
                 </section>
             </header>
             <section class="post-content">
 
-                <p>Optional poll mode is added to wait<em>for</em>event API</p>
+                <p>Snippet for removing duplicate entries from iptables</p>
 
-<p>The below code will wait for the <code>usr_lbl</code> property of the service profile <code>org-root/ls-demo-sp</code> to change to <code>demo_label</code>. It will poll the server every poll_sec=10 here. It will timeout after 600 seconds.</p>
-
-<p><code>wait_for_event</code> will keep the script alive until (i) either the condition is met or (ii) timeout is triggered</p>
-
-<pre><code>from ucsmsdk.ucshandle import UcsHandle
-
-def usr_label_changed(mce):  
-     print(mce.mo.usr_label)
-     handle.logout()
-
-handle = UcsHandle("192.168.1.1", "username", "password")  
-handle.login()
-
-sp_mo = handle.query_dn("org-root/ls-demo-sp")
-
-handle.wait_for_event(  
-    mo=sp_mo,
-    prop="usr_lbl",
-    value="demo_label",
-    cb=usr_label_changed,
-    timeout=600,
-    poll_sec=10
-    )
+<pre><code>iptables-save &gt; /tmp/iptables_backup.conf  
+iptables-save | awk '!x[$0]++' &gt; /tmp/iptables.conf  
+iptables -F  
+iptables-restore &lt; /tmp/iptables.conf  
+service iptables save  
+service iptables restart  
 </code></pre>
 
             </section>

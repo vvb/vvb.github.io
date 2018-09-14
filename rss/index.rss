@@ -1,4 +1,44 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Tue, 12 Jun 2018 05:53:12 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Upgrading Fedora</title><description>&lt;p&gt;For self,&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Fri, 14 Sep 2018 06:52:40 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Fetching site cookies via Go</title><description>&lt;p&gt;Depicts the usage of cookiejar to retrieve cookies from a website.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;type MyClient struct {  
+    client    http.Client    //http client
+    jar       *cookiejar.Jar //jar
+}
+
+// init - initialises the http client
+func (s *MyClient) init() {  
+    s.jar, _ = cookiejar.New(nil)
+    s.client = http.Client{Jar: s.jar}
+}
+
+// getCookies - Gets cookies
+func&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/fetching-site-cookies-via-go/</link><guid isPermaLink="false">799c81f3-2403-4441-8c7b-40c505002c77</guid><category>golang</category><dc:creator>vvb</dc:creator><pubDate>Fri, 14 Sep 2018 06:52:13 GMT</pubDate><content:encoded>&lt;p&gt;Depicts the usage of cookiejar to retrieve cookies from a website.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;type MyClient struct {  
+    client    http.Client    //http client
+    jar       *cookiejar.Jar //jar
+}
+
+// init - initialises the http client
+func (s *MyClient) init() {  
+    s.jar, _ = cookiejar.New(nil)
+    s.client = http.Client{Jar: s.jar}
+}
+
+// getCookies - Gets cookies
+func (s *MyClient) getCookies() map[string][]*http.Cookie {  
+    cookies := make(map[string][]*http.Cookie)
+    r, err := s.client.Get("https://some-website.com")
+    if err != nil {
+        fmt.Println(err)
+        return cookies
+    }
+    defer r.Body.Close()
+    siteCookies := s.jar.Cookies(r.Request.URL)
+    cookies["cookies"] = siteCookies
+    return cookies
+}
+&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title>Upgrading Fedora</title><description>&lt;p&gt;For self,&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;sudo dnf upgrade --refresh  
 sudo dnf install dnf-plugin-system-upgrade  
@@ -1349,56 +1389,4 @@ get_inventory(handle=handle, component=["cpu", "disks"], file_format="csv", file
 
 # Gets cpu and disks inventory for one server in HTML format and writes to inventory.html
 get_inventory(handle=handle, component=["cpu", "disks"], file_format="html", file_name="inventory.html")  
-&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title>html table search with pure javascript</title><description>&lt;p&gt;The below javascript method searches through all the &lt;code&gt;&amp;lt;td&amp;gt;&lt;/code&gt; elements and hides &lt;code&gt;&amp;lt;tr&amp;gt;&lt;/code&gt; that do not have it.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    function search() {
-    // Declare variables
-    var input, filter, table, tr, td, i, j, tds, ths, matched;
-    input = document.getElementById("searchInput");
-    filter = input.value.toUpperCase();
-    tr = document.getElementsByTagName("tr");
-
-    // Loop&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/html-table-search-with-pure-javascript/</link><guid isPermaLink="false">f4922a20-0954-4e6e-a0ca-493230cf8fc0</guid><category>javascript</category><dc:creator>vvb</dc:creator><pubDate>Thu, 22 Dec 2016 17:55:35 GMT</pubDate><content:encoded>&lt;p&gt;The below javascript method searches through all the &lt;code&gt;&amp;lt;td&amp;gt;&lt;/code&gt; elements and hides &lt;code&gt;&amp;lt;tr&amp;gt;&lt;/code&gt; that do not have it.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    function search() {
-    // Declare variables
-    var input, filter, table, tr, td, i, j, tds, ths, matched;
-    input = document.getElementById("searchInput");
-    filter = input.value.toUpperCase();
-    tr = document.getElementsByTagName("tr");
-
-    // Loop through all table rows, and hide
-    // those who don't match the search query
-    for (i = 0; i &amp;lt; tr.length; i++) {
-        tds = tr[i].getElementsByTagName("td");
-        ths = tr[i].getElementsByTagName("th");
-        matched = false;
-
-        // leave the row header 
-        if (ths.length &amp;gt; 0) {
-            matched = true;
-        }
-        else {
-            for (j = 0; j &amp;lt; tds.length; j++) {
-                td = tds[j];
-                if (td.innerHTML.toUpperCase().indexOf(filter) &amp;gt; -1) {
-                    matched = true;
-                    break;
-                }
-
-            }
-        }
-        if (matched == true) {
-            tr[i].style.display = "";
-        }
-        else {
-            tr[i].style.display = "none";
-        }
-        }
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;And the below adds the search input box to the webpage and maps it to our &lt;code&gt;search&lt;/code&gt; method&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    &amp;lt;input type="text" id="searchInput" onkeyup="search()" placeholder="Search.."&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;</content:encoded></item></channel></rss>

@@ -1,4 +1,4 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Fri, 14 Sep 2018 06:52:40 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Fetching site cookies via Go</title><description>&lt;p&gt;Depicts the usage of cookiejar to retrieve cookies from a website.&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Fri, 14 Sep 2018 06:56:21 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Fetching site cookies via Go</title><description>&lt;p&gt;Depicts the usage of cookiejar to retrieve cookies from a website.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;type MyClient struct {  
     client    http.Client    //http client
@@ -37,6 +37,14 @@ func (s *MyClient) getCookies() map[string][]*http.Cookie {
     siteCookies := s.jar.Cookies(r.Request.URL)
     cookies["cookies"] = siteCookies
     return cookies
+}
+
+
+func main() {  
+    cc := &amp;amp;MyClient{}
+    cc.init()
+    cookies := cc.getCookies()
+        fmt.Println(cookies)
 }
 &lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title>Upgrading Fedora</title><description>&lt;p&gt;For self,&lt;/p&gt;
 

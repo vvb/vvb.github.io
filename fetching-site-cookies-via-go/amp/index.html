@@ -19,7 +19,7 @@
     <meta property="og:description" content="Depicts the usage of cookiejar to retrieve cookies from a website. type MyClient struct {       client    http.Client    //http client     jar       *cookiejar.Jar //jar } // init - initialises the http client func (s *MyClient) init() {       s.jar, _ = cookiejar.New(nil)     s.client = http.Client{Jar: s.jar} } // getCookies - Gets cookies func">
     <meta property="og:url" content="http://localhost:2368/fetching-site-cookies-via-go/">
     <meta property="article:published_time" content="2018-09-14T06:52:13.000Z">
-    <meta property="article:modified_time" content="2018-09-14T06:52:13.000Z">
+    <meta property="article:modified_time" content="2018-09-14T06:56:11.000Z">
     <meta property="article:tag" content="golang">
     
     <meta name="twitter:card" content="summary">
@@ -50,7 +50,7 @@
     "headline": "Fetching site cookies via Go",
     "url": "http://localhost:2368/fetching-site-cookies-via-go/",
     "datePublished": "2018-09-14T06:52:13.000Z",
-    "dateModified": "2018-09-14T06:52:13.000Z",
+    "dateModified": "2018-09-14T06:56:11.000Z",
     "keywords": "golang",
     "description": "Depicts the usage of cookiejar to retrieve cookies from a website. type MyClient struct {       client    http.Client    //http client     jar       *cookiejar.Jar //jar } // init - initialises the http client func (s *MyClient) init() {       s.jar, _ &#x3D; cookiejar.New(nil)     s.client &#x3D; http.Client{Jar: s.jar} } // getCookies - Gets cookies func",
     "mainEntityOfPage": {
@@ -61,7 +61,7 @@
     </script>
 
     <meta name="generator" content="Ghost 0.11">
-    <link rel="alternate" type="application/rss+xml" title="Servers | Containers | Management" href="../../rss.48">
+    <link rel="alternate" type="application/rss+xml" title="Servers | Containers | Management" href="../../rss.49">
 
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic%7COpen+Sans:700,600,400">
     <style amp-custom>
@@ -878,6 +878,14 @@ func (s *MyClient) getCookies() map[string][]*http.Cookie {
     siteCookies := s.jar.Cookies(r.Request.URL)
     cookies["cookies"] = siteCookies
     return cookies
+}
+
+
+func main() {  
+    cc := &amp;MyClient{}
+    cc.init()
+    cookies := cc.getCookies()
+        fmt.Println(cookies)
 }
 </code></pre>
 

@@ -1,4 +1,4 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Tue, 18 Sep 2018 16:53:00 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Parallel Processing in Python</title><description>&lt;p&gt;Parallel processing has been made easy with the &lt;code&gt;multiprocessing&lt;/code&gt; library. Earlier we had to use a &lt;code&gt;Thread&lt;/code&gt; and &lt;code&gt;Queue&lt;/code&gt; implementation to get a &lt;code&gt;ThreadPool&lt;/code&gt; functionality with multiple workers.&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Tue, 18 Sep 2018 16:54:46 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Parallel Processing in Python</title><description>&lt;p&gt;Parallel processing has been made easy with the &lt;code&gt;multiprocessing&lt;/code&gt; library. Earlier we had to use a &lt;code&gt;Thread&lt;/code&gt; and &lt;code&gt;Queue&lt;/code&gt; implementation to get a &lt;code&gt;ThreadPool&lt;/code&gt; functionality with multiple workers.&lt;/p&gt;
 
 &lt;p&gt;This has been simplified in the &lt;code&gt;multiprocessing&lt;/code&gt; library. It is not very well documented though,&lt;/p&gt;
 
@@ -23,7 +23,8 @@ def create_and_run_threadpool(input_map):
     pool.join()
     return results
 
-create_and_run_threadpool(["first", "second", "third", "fourth", "fifth"])  
+if __name__ == '__main__':  
+    create_and_run_threadpool(["first", "second", "third", "fourth", "fifth"])
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;The above code uses python threads and run all the code on the same CPU core. We can also make the workers run on different CPU cores. This is illustrated below,&lt;/p&gt;
@@ -42,7 +43,8 @@ def create_and_run_workers_on_cores(input_map):
         pool.join()
     return results
 
-create_and_run_workers_on_cores(["first", "second", "third", "fourth", "fifth"])  
+if __name__ == '__main__':  
+    create_and_run_workers_on_cores(["first", "second", "third", "fourth", "fifth"])
 &lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title>Fetching site cookies via Go</title><description>&lt;p&gt;Depicts the usage of cookiejar to retrieve cookies from a website.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;type MyClient struct {  

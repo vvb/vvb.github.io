@@ -2,7 +2,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>checking if a docker container is running</title>
+    <title>Parallel Processing in Python</title>
     <meta name="description" content="">
 
     <meta name="HandheldFriendly" content="True">
@@ -15,21 +15,22 @@
     
     <meta property="og:site_name" content="Servers | Containers | Management">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="checking if a docker container is running">
-    <meta property="og:description" content="The following will return true if the container is running and false otherwise. docker inspect -f {{.State.Running}} &quot;$container_id&quot; The following fetches container id based on it's name, name=alpine   count=$(docker ps | grep &quot;$name&quot; | wc -l)   if [ $count == 1 ]; then       id=$(docker ps | grep &quot;$name&quot; | cut -d '">
-    <meta property="og:url" content="http://localhost:2368/checking-if-a-docker-container-is-running/">
-    <meta property="article:published_time" content="2016-11-07T22:57:28.000Z">
-    <meta property="article:modified_time" content="2016-11-07T22:57:28.000Z">
-    <meta property="article:tag" content="docker">
+    <meta property="og:title" content="Parallel Processing in Python">
+    <meta property="og:description" content="Parallel processing has been made easy with the multiprocessing library. Earlier we had to use a Thread and Queue implementation to get a ThreadPool functionality with multiple workers. This has been simplified in the multiprocessing library. It is not very well documented though, Using multiprocessing library in the ThreadPool mode,">
+    <meta property="og:url" content="http://localhost:2368/parallel-processing-in-python/">
+    <meta property="article:published_time" content="2018-09-18T16:51:32.000Z">
+    <meta property="article:modified_time" content="2018-09-18T16:51:32.000Z">
+    <meta property="article:tag" content="python">
+    <meta property="article:tag" content="multiprocessing">
     
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="checking if a docker container is running">
-    <meta name="twitter:description" content="The following will return true if the container is running and false otherwise. docker inspect -f {{.State.Running}} &quot;$container_id&quot; The following fetches container id based on it's name, name=alpine   count=$(docker ps | grep &quot;$name&quot; | wc -l)   if [ $count == 1 ]; then       id=$(docker ps | grep &quot;$name&quot; | cut -d '">
-    <meta name="twitter:url" content="http://localhost:2368/checking-if-a-docker-container-is-running/">
+    <meta name="twitter:title" content="Parallel Processing in Python">
+    <meta name="twitter:description" content="Parallel processing has been made easy with the multiprocessing library. Earlier we had to use a Thread and Queue implementation to get a ThreadPool functionality with multiple workers. This has been simplified in the multiprocessing library. It is not very well documented though, Using multiprocessing library in the ThreadPool mode,">
+    <meta name="twitter:url" content="http://localhost:2368/parallel-processing-in-python/">
     <meta name="twitter:label1" content="Written by">
     <meta name="twitter:data1" content="vvb">
     <meta name="twitter:label2" content="Filed under">
-    <meta name="twitter:data2" content="docker">
+    <meta name="twitter:data2" content="python, multiprocessing">
     <meta name="twitter:site" content="@vvb__">
     
     <script type="application/ld+json">
@@ -47,12 +48,12 @@
         "url": "http://localhost:2368/author/vvb/",
         "sameAs": []
     },
-    "headline": "checking if a docker container is running",
-    "url": "http://localhost:2368/checking-if-a-docker-container-is-running/",
-    "datePublished": "2016-11-07T22:57:28.000Z",
-    "dateModified": "2016-11-07T22:57:28.000Z",
-    "keywords": "docker",
-    "description": "The following will return true if the container is running and false otherwise. docker inspect -f {{.State.Running}} &quot;$container_id&quot; The following fetches container id based on it&#x27;s name, name&#x3D;alpine   count&#x3D;$(docker ps | grep &quot;$name&quot; | wc -l)   if [ $count &#x3D;&#x3D; 1 ]; then       id&#x3D;$(docker ps | grep &quot;$name&quot; | cut -d &#x27;",
+    "headline": "Parallel Processing in Python",
+    "url": "http://localhost:2368/parallel-processing-in-python/",
+    "datePublished": "2018-09-18T16:51:32.000Z",
+    "dateModified": "2018-09-18T16:51:32.000Z",
+    "keywords": "python, multiprocessing",
+    "description": "Parallel processing has been made easy with the multiprocessing library. Earlier we had to use a Thread and Queue implementation to get a ThreadPool functionality with multiple workers. This has been simplified in the multiprocessing library. It is not very well documented though, Using multiprocessing library in the ThreadPool mode,",
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "http://localhost:2368"
@@ -845,33 +846,56 @@
         <article class="post">
 
             <header class="post-header">
-                <h1 class="post-title">checking if a docker container is running</h1>
+                <h1 class="post-title">Parallel Processing in Python</h1>
                 <section class="post-meta">
                     <p class="author">by <a href="../../author/vvb/">vvb</a></p>
-                    <time class="post-date" datetime="2016-11-08">2016-11-08</time>
+                    <time class="post-date" datetime="2018-09-18">2018-09-18</time>
                 </section>
             </header>
             <section class="post-content">
 
-                <p>The following will return true if the container is running and false otherwise.</p>
+                <p>Parallel processing has been made easy with the <code>multiprocessing</code> library. Earlier we had to use a <code>Thread</code> and <code>Queue</code> implementation to get a <code>ThreadPool</code> functionality with multiple workers.</p>
 
-<p><code>docker inspect -f {{.State.Running}} "$container_id"</code></p>
+<p>This has been simplified in the <code>multiprocessing</code> library. It is not very well documented though,</p>
 
-<p>The following fetches container id based on it's name,</p>
+<p>Using <code>multiprocessing</code> library in the ThreadPool mode,</p>
 
-<pre><code>name=alpine  
-count=$(docker ps | grep "$name" | wc -l)  
-if [ $count == 1 ]; then  
-    id=$(docker ps | grep "$name" | cut -d ' ' -f 1)
-    echo "$container_id"
-elif [ $count == 0 ]; then  
-    echo "No container with name $name"
-else  
-    echo "more than one container with name $name"
-fi  
+<pre><code>from multiprocessing.dummy import Pool as ThreadPool
+
+def dummy_print(my_string):  
+    print("I am a harmless print:" + my_string)
+
+def create_and_run_threadpool(input_map):  
+    number_of_workers = 5
+    pool = ThreadPool(number_of_workers)
+
+    # Call dummy_print with each element of the input_map. These calls are executed by the worker threads.
+    results = pool.map(dummy_print, input_map)
+    pool.close()
+    pool.join()
+    return results
+
+create_and_run_threadpool(["first", "second", "third", "fourth", "fifth"])  
 </code></pre>
 
-<p>note: In the above example we use docker ps and not docker ps -a. So, we can already assume that the containers it returns are in running state.</p>
+<p>The above code uses python threads and run all the code on the same CPU core. We can also make the workers run on different CPU cores. This is illustrated below,</p>
+
+<pre><code>from multiprocessing import Pool, cpu_count  
+from contextlib import closing
+
+def dummy_print(my_string):  
+    print(my_string)
+
+def create_and_run_workers_on_cores(input_map):  
+    # Call dummy_print with each element of the input_map. These calls are executed by the workers across CPU cores.
+    with closing(Pool(cpu_count())) as pool:
+        results = pool.map(dummy_print, input_map)
+        pool.close()
+        pool.join()
+    return results
+
+create_and_run_workers_on_cores(["first", "second", "third", "fourth", "fifth"])  
+</code></pre>
 
             </section>
 

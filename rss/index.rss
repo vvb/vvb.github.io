@@ -1,4 +1,49 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Fri, 14 Sep 2018 06:56:21 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Fetching site cookies via Go</title><description>&lt;p&gt;Depicts the usage of cookiejar to retrieve cookies from a website.&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Servers | Containers | Management</title><description>Servers | Containers | Management</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Tue, 18 Sep 2018 16:53:00 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Parallel Processing in Python</title><description>&lt;p&gt;Parallel processing has been made easy with the &lt;code&gt;multiprocessing&lt;/code&gt; library. Earlier we had to use a &lt;code&gt;Thread&lt;/code&gt; and &lt;code&gt;Queue&lt;/code&gt; implementation to get a &lt;code&gt;ThreadPool&lt;/code&gt; functionality with multiple workers.&lt;/p&gt;
+
+&lt;p&gt;This has been simplified in the &lt;code&gt;multiprocessing&lt;/code&gt; library. It is not very well documented though,&lt;/p&gt;
+
+&lt;p&gt;Using &lt;code&gt;multiprocessing&lt;/code&gt; library in the ThreadPool mode,&lt;/p&gt;</description><link>http://localhost:2368/parallel-processing-in-python/</link><guid isPermaLink="false">2d6dd98d-4445-448a-bb04-60d1ab7b79e3</guid><category>python</category><category>multiprocessing</category><dc:creator>vvb</dc:creator><pubDate>Tue, 18 Sep 2018 16:51:32 GMT</pubDate><content:encoded>&lt;p&gt;Parallel processing has been made easy with the &lt;code&gt;multiprocessing&lt;/code&gt; library. Earlier we had to use a &lt;code&gt;Thread&lt;/code&gt; and &lt;code&gt;Queue&lt;/code&gt; implementation to get a &lt;code&gt;ThreadPool&lt;/code&gt; functionality with multiple workers.&lt;/p&gt;
+
+&lt;p&gt;This has been simplified in the &lt;code&gt;multiprocessing&lt;/code&gt; library. It is not very well documented though,&lt;/p&gt;
+
+&lt;p&gt;Using &lt;code&gt;multiprocessing&lt;/code&gt; library in the ThreadPool mode,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;from multiprocessing.dummy import Pool as ThreadPool
+
+def dummy_print(my_string):  
+    print("I am a harmless print:" + my_string)
+
+def create_and_run_threadpool(input_map):  
+    number_of_workers = 5
+    pool = ThreadPool(number_of_workers)
+
+    # Call dummy_print with each element of the input_map. These calls are executed by the worker threads.
+    results = pool.map(dummy_print, input_map)
+    pool.close()
+    pool.join()
+    return results
+
+create_and_run_threadpool(["first", "second", "third", "fourth", "fifth"])  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The above code uses python threads and run all the code on the same CPU core. We can also make the workers run on different CPU cores. This is illustrated below,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;from multiprocessing import Pool, cpu_count  
+from contextlib import closing
+
+def dummy_print(my_string):  
+    print(my_string)
+
+def create_and_run_workers_on_cores(input_map):  
+    # Call dummy_print with each element of the input_map. These calls are executed by the workers across CPU cores.
+    with closing(Pool(cpu_count())) as pool:
+        results = pool.map(dummy_print, input_map)
+        pool.close()
+        pool.join()
+    return results
+
+create_and_run_workers_on_cores(["first", "second", "third", "fourth", "fifth"])  
+&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title>Fetching site cookies via Go</title><description>&lt;p&gt;Depicts the usage of cookiejar to retrieve cookies from a website.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;type MyClient struct {  
     client    http.Client    //http client
@@ -1344,57 +1389,4 @@ The below shows sample inputs for &lt;code&gt;drive_group&lt;/code&gt;,  &lt;/li
 &lt;li&gt;&lt;p&gt;&lt;code&gt;controller_slot&lt;/code&gt; is the name/id of the Storage controller. 
 This could be &lt;code&gt;MEZZ&lt;/code&gt; in some cases. or could be a number &lt;code&gt;0-9&lt;/code&gt; is some.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;code&gt;raid_level&lt;/code&gt; - refer to the raid levels supported by the platform&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;</content:encoded></item><item><title>Inventorying IMC servers via imcsdk</title><description>&lt;p&gt;The &lt;code&gt;0.9.2.0&lt;/code&gt; release of &lt;code&gt;imcsdk&lt;/code&gt; will add support for &lt;code&gt;inventory&lt;/code&gt; APIs. &lt;/p&gt;
-
-&lt;p&gt;The following output formats are supported -&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;JSON (default)&lt;/li&gt;
-&lt;li&gt;HTML&lt;/li&gt;
-&lt;li&gt;CSV&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Refer the API documentation for a list of components that can be inventoried. &lt;code&gt;all&lt;/code&gt; fetches inventory for all components.&lt;/p&gt;
-
-&lt;p&gt;Usage is shown below,&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;from imcsdk.&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/inventorying-imc-servers-via-imcsdk/</link><guid isPermaLink="false">8262e689-c3a1-49c9-b6ca-b0e1b703f4d1</guid><category>ucspython</category><category>imcsdk</category><dc:creator>vvb</dc:creator><pubDate>Tue, 03 Jan 2017 06:41:48 GMT</pubDate><content:encoded>&lt;p&gt;The &lt;code&gt;0.9.2.0&lt;/code&gt; release of &lt;code&gt;imcsdk&lt;/code&gt; will add support for &lt;code&gt;inventory&lt;/code&gt; APIs. &lt;/p&gt;
-
-&lt;p&gt;The following output formats are supported -&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;JSON (default)&lt;/li&gt;
-&lt;li&gt;HTML&lt;/li&gt;
-&lt;li&gt;CSV&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Refer the API documentation for a list of components that can be inventoried. &lt;code&gt;all&lt;/code&gt; fetches inventory for all components.&lt;/p&gt;
-
-&lt;p&gt;Usage is shown below,&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;from imcsdk.apis.server.inventory import get_inventory
-
-# Gets inventory of all components in JSON format
-get_inventory(handle=handle)
-
-# Gets inventory for all servers all components in JSON format
-get_inventory(handle=[handle1, handle2, handle3])
-
-# Gets inventory of one server all components in JSON format
-get_inventory(handle=handle, component="all")
-
-# Gets disks inventory of one server in JSON format
-get_inventory(handle=handle, component="disks")
-
-# Gets cpu and disks inventory for one server in JSON format
-get_inventory(handle=handle, component=["cpu", "disks"])
-
-# Gets cpu and disks inventory for one server in JSON format and writes to inventory.json file
-get_inventory(handle=handle, component=["cpu", "disks"], file_format="json", file_name="inventory.json")
-
-# Gets cpu and disks inventory for one server in CSV format and writes to inventory.csv fie
-get_inventory(handle=handle, component=["cpu", "disks"], file_format="csv", file_name="inventory.csv")
-
-# Gets cpu and disks inventory for one server in HTML format and writes to inventory.html
-get_inventory(handle=handle, component=["cpu", "disks"], file_format="html", file_name="inventory.html")  
-&lt;/code&gt;&lt;/pre&gt;</content:encoded></item></channel></rss>
+&lt;/ul&gt;</content:encoded></item></channel></rss>

@@ -1,0 +1,1253 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:media="http://search.yahoo.com/mrss/"><channel><title><![CDATA[Servers | Containers | Management | Software]]></title><description><![CDATA[Servers | Containers | Management | Software]]></description><link>http://blog.vijayvikrant.com/</link><image><url>http://blog.vijayvikrant.com/favicon.png</url><title>Servers | Containers | Management | Software</title><link>http://blog.vijayvikrant.com/</link></image><generator>Ghost 2.6</generator><lastBuildDate>Wed, 14 Nov 2018 15:25:53 GMT</lastBuildDate><atom:link href="http://blog.vijayvikrant.com/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Writing In Markdown]]></title><description><![CDATA[<p>Writing in Markdown format is great to be able to version control your documents.<br>
+But Markdown may not be a easy when there is too much formatting involved. like, tables etc.</p>
+<p>Welcome Pandoc!</p>
+<p>With Pandoc, you can write your documents in Microsoft word and convert them into Markdown automatically.</p>
+<h4 id="installation">Installation</h4>]]></description><link>http://blog.vijayvikrant.com/writing-in-markdown/</link><guid isPermaLink="false">5bec34b10b000afff267798e</guid><category><![CDATA[pandoc]]></category><dc:creator><![CDATA[Vikrant Balyan]]></dc:creator><pubDate>Fri, 12 Oct 2018 04:48:45 GMT</pubDate><content:encoded><![CDATA[<p>Writing in Markdown format is great to be able to version control your documents.<br>
+But Markdown may not be a easy when there is too much formatting involved. like, tables etc.</p>
+<p>Welcome Pandoc!</p>
+<p>With Pandoc, you can write your documents in Microsoft word and convert them into Markdown automatically.</p>
+<h4 id="installation">Installation</h4>
+<p>For Mac OS,</p>
+<pre><code>brew install pandoc
+brew cask install basictex
+</code></pre>
+<p>Fire up a new terminal</p>
+<p>note: for other Operating systems - Pick the release from <a href="https://github.com/jgm/pandoc/releases">https://github.com/jgm/pandoc/releases</a></p>
+<h3 id="convertingdocxtovariousformats">Converting .docx to various formats</h3>
+<pre><code>pandoc --extract-media . test.docx -o test.md
+pandoc --extract-media . test.docx -o test.pdf
+pandoc --extract-media . test.docx -o test.epub
+pandoc --extract-media . test.docx -o test.html
+</code></pre>
+<p>The <code>--extract-media</code> argument is required when you have pictures in the document. It defines the directory in which pictures are extracted and saved.</p>
+]]></content:encoded></item><item><title><![CDATA[Parallel Processing in Python]]></title><description><![CDATA[<p>Parallel processing has been made easy with the <code>multiprocessing</code> library. Earlier we had to use a <code>Thread</code> and <code>Queue</code> implementation to get a <code>ThreadPool</code> functionality with multiple workers.</p>
+<p>This has been simplified in the <code>multiprocessing</code> library. It is not very well documented though,</p>
+<p>Using <code>multiprocessing</code> library in the ThreadPool mode,</p>]]></description><link>http://blog.vijayvikrant.com/parallel-processing-in-python/</link><guid isPermaLink="false">5bec34b10b000afff267798d</guid><category><![CDATA[python]]></category><category><![CDATA[multiprocessing]]></category><dc:creator><![CDATA[Vikrant Balyan]]></dc:creator><pubDate>Tue, 18 Sep 2018 16:51:32 GMT</pubDate><content:encoded><![CDATA[<p>Parallel processing has been made easy with the <code>multiprocessing</code> library. Earlier we had to use a <code>Thread</code> and <code>Queue</code> implementation to get a <code>ThreadPool</code> functionality with multiple workers.</p>
+<p>This has been simplified in the <code>multiprocessing</code> library. It is not very well documented though,</p>
+<p>Using <code>multiprocessing</code> library in the ThreadPool mode,</p>
+<pre><code>from multiprocessing.dummy import Pool as ThreadPool
+
+def dummy_print(my_string):
+    print(&quot;I am a harmless print:&quot; + my_string)
+
+def create_and_run_threadpool(input_map):
+    number_of_workers = 5
+    pool = ThreadPool(number_of_workers)
+    
+    # Call dummy_print with each element of the input_map. These calls are executed by the worker threads.
+    results = pool.map(dummy_print, input_map)
+    pool.close()
+    pool.join()
+    return results
+
+if __name__ == '__main__':
+    create_and_run_threadpool([&quot;first&quot;, &quot;second&quot;, &quot;third&quot;, &quot;fourth&quot;, &quot;fifth&quot;])
+</code></pre>
+<p>The above code uses python threads and run all the code on the same CPU core. We can also make the workers run on different CPU cores. This is illustrated below,</p>
+<pre><code>from multiprocessing import Pool, cpu_count
+from contextlib import closing
+
+def dummy_print(my_string):
+    print(my_string)
+
+def create_and_run_workers_on_cores(input_map):    
+    # Call dummy_print with each element of the input_map. These calls are executed by the workers across CPU cores.
+    with closing(Pool(cpu_count())) as pool:
+        results = pool.map(dummy_print, input_map)
+        pool.close()
+        pool.join()
+    return results
+
+if __name__ == '__main__':
+    create_and_run_workers_on_cores([&quot;first&quot;, &quot;second&quot;, &quot;third&quot;, &quot;fourth&quot;, &quot;fifth&quot;])
+</code></pre>
+]]></content:encoded></item><item><title><![CDATA[Fetching site cookies via Go]]></title><description><![CDATA[<p>Depicts the usage of cookiejar to retrieve cookies from a website.</p>
+<pre><code>type MyClient struct {
+	client    http.Client    //http client
+	jar       *cookiejar.Jar //jar
+}
+
+// init - initialises the http client
+func (s *MyClient) init() {
+	s.jar, _ = cookiejar.New(nil)
+	s.client = http.Client{Jar: s.jar}
+}
+
+// getCookies - Gets cookies
+func</code></pre>]]></description><link>http://blog.vijayvikrant.com/fetching-site-cookies-via-go/</link><guid isPermaLink="false">5bec34b10b000afff267798c</guid><category><![CDATA[golang]]></category><dc:creator><![CDATA[Vikrant Balyan]]></dc:creator><pubDate>Fri, 14 Sep 2018 06:52:13 GMT</pubDate><content:encoded><![CDATA[<p>Depicts the usage of cookiejar to retrieve cookies from a website.</p>
+<pre><code>type MyClient struct {
+	client    http.Client    //http client
+	jar       *cookiejar.Jar //jar
+}
+
+// init - initialises the http client
+func (s *MyClient) init() {
+	s.jar, _ = cookiejar.New(nil)
+	s.client = http.Client{Jar: s.jar}
+}
+
+// getCookies - Gets cookies
+func (s *MyClient) getCookies() map[string][]*http.Cookie {
+	cookies := make(map[string][]*http.Cookie)
+	r, err := s.client.Get(&quot;https://some-website.com&quot;)
+	if err != nil {
+		fmt.Println(err)
+		return cookies
+	}
+	defer r.Body.Close()
+	siteCookies := s.jar.Cookies(r.Request.URL)
+	cookies[&quot;cookies&quot;] = siteCookies
+	return cookies
+}
+
+
+func main() {
+	cc := &amp;MyClient{}
+	cc.init()
+	cookies := cc.getCookies()
+        fmt.Println(cookies)
+}
+
+</code></pre>
+]]></content:encoded></item><item><title><![CDATA[Upgrading Fedora]]></title><description><![CDATA[<p>For self,</p>
+<pre><code>sudo dnf upgrade --refresh
+sudo dnf install dnf-plugin-system-upgrade
+sudo dnf system-upgrade download --refresh --releasever=28
+sudo dnf system-upgrade reboot
+</code></pre>]]></description><link>http://blog.vijayvikrant.com/upgrading-fedora/</link><guid isPermaLink="false">5bec34b10b000afff267798b</guid><dc:creator><![CDATA[Vikrant Balyan]]></dc:creator><pubDate>Tue, 12 Jun 2018 05:50:41 GMT</pubDate><content:encoded><![CDATA[<p>For self,</p>
+<pre><code>sudo dnf upgrade --refresh
+sudo dnf install dnf-plugin-system-upgrade
+sudo dnf system-upgrade download --refresh --releasever=28
+sudo dnf system-upgrade reboot
+</code></pre>
+]]></content:encoded></item><item><title><![CDATA[Removing Duplicate Iptables Rules]]></title><description><![CDATA[<p>Snippet for removing duplicate entries from iptables</p>
+<pre><code>iptables-save &gt; /tmp/iptables_backup.conf
+iptables-save | awk '!x[$0]++' &gt; /tmp/iptables.conf
+iptables -F
+iptables-restore &lt; /tmp/iptables.conf
+service iptables save
+service iptables restart
+</code></pre>]]></description><link>http://blog.vijayvikrant.com/removing-duplicate-iptables-rules/</link><guid isPermaLink="false">5bec34b10b000afff267798a</guid><dc:creator><![CDATA[Vikrant Balyan]]></dc:creator><pubDate>Tue, 12 Jun 2018 05:48:30 GMT</pubDate><content:encoded><![CDATA[<p>Snippet for removing duplicate entries from iptables</p>
+<pre><code>iptables-save &gt; /tmp/iptables_backup.conf
+iptables-save | awk '!x[$0]++' &gt; /tmp/iptables.conf
+iptables -F
+iptables-restore &lt; /tmp/iptables.conf
+service iptables save
+service iptables restart
+</code></pre>
+]]></content:encoded></item><item><title><![CDATA[Running Commands As Apache User]]></title><description><![CDATA[<p>I have some django apps that run as apache user.<br>
+And I frequently need to run some commands as an apache user from my regular user shell.</p>
+<p>The following function in <code>~/.bashrc</code> is awesome for such use cases</p>
+<pre><code>run_as_apache_user() {
+    su -s &quot;/bin/bash&quot; -c &quot;</code></pre>]]></description><link>http://blog.vijayvikrant.com/running-commands-as-apache-user/</link><guid isPermaLink="false">5bec34b10b000afff2677989</guid><dc:creator><![CDATA[Vikrant Balyan]]></dc:creator><pubDate>Thu, 22 Feb 2018 18:41:13 GMT</pubDate><content:encoded><![CDATA[<p>I have some django apps that run as apache user.<br>
+And I frequently need to run some commands as an apache user from my regular user shell.</p>
+<p>The following function in <code>~/.bashrc</code> is awesome for such use cases</p>
+<pre><code>run_as_apache_user() {
+    su -s &quot;/bin/bash&quot; -c &quot;$1&quot; apache
+}
+</code></pre>
+<p>Usage:</p>
+<pre><code>$ run_as_apache_user 'svn up'
+$ run_as_apache_user 'ls'
+</code></pre>
+]]></content:encoded></item><item><title><![CDATA[Analyzing Stock Tradebook With R]]></title><description><![CDATA[<p>Given a year worth of trades, the following R script detects the stocks that were not directly bought. They were either acquired as a part of a bonus, split or IPO.</p>
+<pre><code>setwd(&quot;/Users/vvb/work/projects/trades&quot;)
+getwd()
+
+library(data.table)
+library(readxl)
+
+trades &lt;- readxl::read_</code></pre>]]></description><link>http://blog.vijayvikrant.com/analyzing_stock_tradebook_with_r/</link><guid isPermaLink="false">5bec34b10b000afff2677988</guid><category><![CDATA[R]]></category><dc:creator><![CDATA[Vikrant Balyan]]></dc:creator><pubDate>Sun, 11 Feb 2018 18:45:54 GMT</pubDate><content:encoded><![CDATA[<p>Given a year worth of trades, the following R script detects the stocks that were not directly bought. They were either acquired as a part of a bonus, split or IPO.</p>
+<pre><code>setwd(&quot;/Users/vvb/work/projects/trades&quot;)
+getwd()
+
+library(data.table)
+library(readxl)
+
+trades &lt;- readxl::read_excel(&quot;tradebook.xlsx&quot;, sheet = &quot;TRADEBOOK&quot;)
+trades &lt;- trades %&gt;% as.data.table()
+head(trades)
+
+findUnbalancedTrades &lt;- function(trades) {
+  trades1 &lt;- trades[Type==&quot;S&quot;,Qty:=-Qty]
+  trades2 &lt;- trades1 %&gt;% group_by(Symbol) %&gt;% summarise(Balance = sum(Qty)) %&gt;% as.data.table()
+  noBuyTrades &lt;- trades2[Balance &lt; 0]
+  if (nrow(noBuyTrades) == 0) {
+    print(&quot;Trades are balanced&quot;)
+  } else {
+    print(&quot;The following trades are not balanced&quot;)
+    print(noBuyTrades)
+  }
+}
+
+findUnbalancedTrades(trades)
+
+
+</code></pre>
+<p>Output</p>
+<pre><code>&gt; setwd(&quot;/Users/vvb/work/projects/trades&quot;)
+&gt; getwd()
+[1] &quot;/Users/vvb/work/projects/trades&quot;
+&gt; library(data.table)
+&gt; library(readxl)
+&gt; trades &lt;- readxl::read_excel(&quot;tradebook.xlsx&quot;, sheet = &quot;TRADEBOOK&quot;)
+&gt; trades &lt;- trades %&gt;% as.data.table()
+&gt; head(trades)
+   Trade date          Trade time Exchange    Symbol Type Qty   Rate         Order no Trade no
+1: 23-06-2017 1899-12-31 10:07:37      NSE SUNPHARMA    B   2 542.75 1300000000966218 75365300
+2: 23-06-2017 1899-12-31 10:07:37      NSE SUNPHARMA    B  30 542.75 1300000000966218 75365299
+3: 23-06-2017 1899-12-31 10:07:37      NSE SUNPHARMA    B  28 542.75 1300000000966218 75365303
+4: 23-06-2017 1899-12-31 10:07:37      NSE SUNPHARMA    B   2 542.75 1300000000966218 75365302
+5: 23-06-2017 1899-12-31 10:07:37      NSE SUNPHARMA    B  30 542.75 1300000000966218 75365301
+6: 27-06-2017 1899-12-31 15:12:07      NSE       TWL    B 500 114.90 1300000003434722 76788334
+&gt; findUnbalancedTrades &lt;- function(trades) {
++   trades1 &lt;- trades[Type==&quot;S&quot;,Qty:=-Qty]
++   trades2 &lt;- trades1 %&gt;% group_by(Symbol) %&gt;% summarise(Balance = sum(Qty)) %&gt;% as.data.table()
++   noBuyTrades &lt;- trades2[Balance &lt; 0]
++   if (nrow(noBuyTrades) == 0) {
++     print(&quot;Trades are balanced&quot;)
++   } else {
++     print(&quot;The following trades are not balanced&quot;)
++     print(noBuyTrades)
++   }
++ }
+&gt; findUnbalancedTrades(trades)
+[1] &quot;The following trades are not balanced&quot;
+       Symbol Balance
+1: GODREJAGRO     -32
+2:   RELIANCE    -200
+&gt;
+</code></pre>
+]]></content:encoded></item><item><title><![CDATA[A Day With R]]></title><description><![CDATA[<h3 id="datatypes">Datatypes</h3>
+<ul>
+<li>A <code>vector</code> is always homogenous</li>
+<li>A <code>list</code> can be heterogenous</li>
+<li>A <code>matrix</code> is a list of vectors</li>
+<li>A <code>dataframe</code> is a list of lists.</li>
+</ul>
+<pre><code>stockprice &lt;- 1900L
+class(stockprice)
+
+stocks &lt;- c(&quot;HEG&quot;, &quot;Graphite&quot;, &quot;Bajaj&quot;, &quot;L&amp;T&quot;)
+prices</code></pre>]]></description><link>http://blog.vijayvikrant.com/a-day-with-r/</link><guid isPermaLink="false">5bec34b10b000afff2677987</guid><category><![CDATA[R]]></category><dc:creator><![CDATA[Vikrant Balyan]]></dc:creator><pubDate>Tue, 06 Feb 2018 06:43:33 GMT</pubDate><content:encoded><![CDATA[<h3 id="datatypes">Datatypes</h3>
+<ul>
+<li>A <code>vector</code> is always homogenous</li>
+<li>A <code>list</code> can be heterogenous</li>
+<li>A <code>matrix</code> is a list of vectors</li>
+<li>A <code>dataframe</code> is a list of lists.</li>
+</ul>
+<pre><code>stockprice &lt;- 1900L
+class(stockprice)
+
+stocks &lt;- c(&quot;HEG&quot;, &quot;Graphite&quot;, &quot;Bajaj&quot;, &quot;L&amp;T&quot;)
+prices &lt;- c(1900L, 650L, 500L, 1380L)
+names(stocks) &lt;- c(&quot;Carbon&quot;, &quot;Carbon&quot;, &quot;Auto&quot;, &quot;Infra&quot;)
+
+isAuto &lt;- TRUE
+isAuto &lt;- FALSE
+
+data = factor(names(stocks))
+
+mat1 &lt;- matrix(c(1:10), nrow=2)
+mat1 &lt;- matrix(c(1:40), nrow=4)
+
+p &lt;- c(6,8,10)
+p1 &lt;- list(6,8,10)
+p2 &lt;- list(c(6,8,10))
+</code></pre>
+<h3 id="vectorofnumericvalues">Vector of numeric values</h3>
+<pre><code>p &lt;- c(6,8,10)
+
+&gt; p
+[1]  6  8 10
+&gt;
+&gt; for (i in 1:length(p)) {
++   print(p[[i]]*2)
++ }
+[1] 12
+[1] 16
+[1] 20
+&gt;
+</code></pre>
+<h3 id="listofvectorof3elems">List of vector of 3 elems</h3>
+<pre><code>p1 &lt;- list(6,8,10)
+&gt; p1
+[[1]]
+[1] 6
+
+[[2]]
+[1] 8
+
+[[3]]
+[1] 10
+
+&gt; for (each in p1) {
++   print(each*2)
++ }
+[1] 12
+[1] 16
+[1] 20
+&gt;
+</code></pre>
+<h3 id="listofvectorofoneelemwhichisalsoalist">List of vector of one elem which is also a list</h3>
+<pre><code>p2 &lt;- list(c(6,8,10))
+&gt; p2
+[[1]]
+[1]  6  8 10
+
+&gt; for (i in 1:length(p2[[1]])) {
++   print(p2[[1]][i]*2)
++ }
+[1] 12
+[1] 16
+[1] 20
+&gt;
+</code></pre>
+<h3 id="lapply">lapply</h3>
+<ul>
+<li>output is always a list</li>
+</ul>
+<pre><code>&gt; mul &lt;- function(x){x*2}
+&gt; p
+[1]  6  8 10
+&gt; lapply(p, mul)
+[[1]]
+[1] 12
+
+[[2]]
+[1] 16
+
+[[3]]
+[1] 20
+
+&gt; p1
+[[1]]
+[1] 6
+
+[[2]]
+[1] 8
+
+[[3]]
+[1] 10
+
+&gt; lapply(p1, mul)
+[[1]]
+[1] 12
+
+[[2]]
+[1] 16
+
+[[3]]
+[1] 20
+
+&gt; unlist(lapply(p1, mul))
+[1] 12 16 20
+</code></pre>
+<h3 id="sapply">sapply</h3>
+<ul>
+<li>Good for reporting.</li>
+<li>Needs high level of confidence in data structures used.</li>
+<li>Output can be vector or matrix or list</li>
+</ul>
+<pre><code>&gt; mul &lt;- function(x){x*2}
+&gt; p
+[1]  6  8 10
+&gt; sapply(p, mul)
+[1] 12 16 20
+&gt; p1
+[[1]]
+[1] 6
+
+[[2]]
+[1] 8
+
+[[3]]
+[1] 10
+
+&gt; sapply(p1, mul)
+[1] 12 16 20
+&gt; p2
+[[1]]
+[1]  6  8 10
+
+&gt; sapply(p2, mul)
+     [,1]
+[1,]   12
+[2,]   16
+[3,]   20
+</code></pre>
+<h3 id="vapply">vapply</h3>
+<ul>
+<li>Verify apply</li>
+<li>Verifies if the return type of the function matches with the last arg</li>
+</ul>
+<pre><code>&gt; mul &lt;- function(x){x*2}
+&gt; p
+[1]  6  8 10
+&gt; vapply(p, mul, numeric(1))
+[1] 12 16 20
+&gt; p
+[1]  6  8 10
+&gt; vapply(p, mul, numeric(2))
+Error in vapply(p, mul, numeric(2)) : values must be length 2,
+ but FUN(X[[1]]) result is length 1
+&gt; p
+[1]  6  8 10
+&gt; vapply(p, mul, character(1))
+Error in vapply(p, mul, character(1)) : values must be type 'character',
+ but FUN(X[[1]]) result is type 'double'
+&gt; 
+</code></pre>
+<h3 id="tapply">tapply</h3>
+<ul>
+<li>split, apply, combine</li>
+<li>group_by and for each group do a task</li>
+<li>outputs an array</li>
+<li>tapply can have only one y variable, multiple x variables. i.e. mean sepal length for multiple species.</li>
+<li>aggregate can also be used for the same purpose</li>
+<li>aggregate gives data frame as output</li>
+<li>aggregate can have multiple x and multiple y variables. i.e. sales and profit number for multiple companies.</li>
+</ul>
+<h3 id="exercise1">Exercise #1</h3>
+<ul>
+<li>Q - From a given list of names print the min and max char in every name in a report format.</li>
+<li>The below also demonstrates the difference between lapply and sapply.</li>
+</ul>
+<pre><code>&gt; names &lt;- c(&quot;Ankur&quot;, &quot;Ganesan&quot;, &quot;Bhargavi&quot;, &quot;pankaj&quot;, &quot;Vivek&quot;, &quot;Srikrishnan&quot;)
+&gt; firstlast &lt;- function(x) {
++   s &lt;- strsplit(x, &quot;&quot;)[[1]]
++   return(c(first=min(s), last=max(s)))
++   
++ }
+&gt; lapply(names, firstlast)
+[[1]]
+first  last 
+  &quot;A&quot;   &quot;u&quot; 
+
+[[2]]
+first  last 
+  &quot;G&quot;   &quot;s&quot; 
+
+[[3]]
+first  last 
+  &quot;B&quot;   &quot;v&quot; 
+
+[[4]]
+first  last 
+  &quot;a&quot;   &quot;p&quot; 
+
+[[5]]
+first  last 
+  &quot;V&quot;   &quot;v&quot; 
+
+[[6]]
+first  last 
+  &quot;S&quot;   &quot;s&quot; 
+&gt; class(lapply(names, firstlast))
+[1] &quot;list&quot;
+&gt;
+&gt; sapply(names, firstlast)
+      Ankur Ganesan Bhargavi pankaj Vivek Srikrishnan
+first &quot;A&quot;   &quot;G&quot;     &quot;B&quot;      &quot;a&quot;    &quot;V&quot;   &quot;S&quot;        
+last  &quot;u&quot;   &quot;s&quot;     &quot;v&quot;      &quot;p&quot;    &quot;v&quot;   &quot;s&quot;        
+&gt;
+&gt; class(sapply(names, firstlast))
+[1] &quot;matrix&quot;
+</code></pre>
+<h3 id="exercise2">Exercise #2</h3>
+<ul>
+<li>Q - from a given list of names print only the unique characters per name</li>
+</ul>
+<pre><code>&gt; names &lt;- c(&quot;ankur&quot;, &quot;ganesan&quot;, &quot;bhargavi&quot;, &quot;pankaj&quot;, &quot;vivek&quot;, &quot;srikrishnan&quot;)
+&gt; uniquenames &lt;- function(x) {
++   s &lt;- strsplit(x, &quot;&quot;)[[1]]
++   return(unique(s))
++ }
+
+&gt; sapply(names, uniquenames)
+$ankur
+[1] &quot;a&quot; &quot;n&quot; &quot;k&quot; &quot;u&quot; &quot;r&quot;
+
+$ganesan
+[1] &quot;g&quot; &quot;a&quot; &quot;n&quot; &quot;e&quot; &quot;s&quot;
+
+$bhargavi
+[1] &quot;b&quot; &quot;h&quot; &quot;a&quot; &quot;r&quot; &quot;g&quot; &quot;v&quot; &quot;i&quot;
+
+$pankaj
+[1] &quot;p&quot; &quot;a&quot; &quot;n&quot; &quot;k&quot; &quot;j&quot;
+
+$vivek
+[1] &quot;v&quot; &quot;i&quot; &quot;e&quot; &quot;k&quot;
+
+$srikrishnan
+[1] &quot;s&quot; &quot;r&quot; &quot;i&quot; &quot;k&quot; &quot;h&quot; &quot;n&quot; &quot;a&quot;
+
+&gt;
+</code></pre>
+<h2 id="tidythedata">Tidy the data</h2>
+<ul>
+<li>We use <code>reshape2</code> and <code>tidyr</code> libraries here.</li>
+<li><code>reshape2</code> provides us the <code>melt</code> method that will help us convert data from report format to a more program friendly format.</li>
+<li><code>tidyr</code> provides us with the <code>gather</code> API, this does exactly the same thing as <code>melt</code></li>
+<li>In the below example we hav religions as rows and salary ranges as columns.</li>
+<li>To convert it to tidy data we need to stack religion:salary_range as rows.</li>
+<li>Tidy data allows for easy operation on the dataset - like groupby, filter etc.</li>
+</ul>
+<pre><code>&gt; setwd(&quot;/Users/vvb/work/projects/datascience&quot;)
+&gt; getwd()
+[1] &quot;/Users/vvb/work/projects/datascience&quot;
+
+&gt; rawdata &lt;- read.csv(&quot;pew.csv&quot;, check.names = F, encoding = &quot;UTF-8&quot;)
+&gt; head(rawdata)
+                   religion &lt;$10k $10-20k $20-30k $30-40k $40-50k $50-75k $75-100k $100-150k &gt;150k Don't know/refused
+1                  Agnostic    27      34      60      81      76     137      122       109    84                 96
+2                   Atheist    12      27      37      52      35      70       73        59    74                 76
+3                  Buddhist    27      21      30      34      33      58       62        39    53                 54
+4                  Catholic   418     617     732     670     638    1116      949       792   633               1489
+5 Don&lt;U+2019&gt;t know/refused    15      14      15      11      10      35       21        17    18                116
+6          Evangelical Prot   575     869    1064     982     881    1486      949       723   414               1529
+
+&gt; library(reshape2)
+&gt; library(tidyr)
+&gt; tidydata &lt;- rawdata %&gt;%
++               melt(id= &quot;religion&quot;,
++                    variable.name = &quot;salary&quot;,
++                    value.name = &quot;count&quot;)
+
+&gt; head(tidydata)
+                   religion salary count
+1                  Agnostic  &lt;$10k    27
+2                   Atheist  &lt;$10k    12
+3                  Buddhist  &lt;$10k    27
+4                  Catholic  &lt;$10k   418
+5 Don&lt;U+2019&gt;t know/refused  &lt;$10k    15
+6          Evangelical Prot  &lt;$10k   575
+
+&gt; tidydata2 &lt;- rawdata %&gt;%
++                 gather(2:11,
++                        key = &quot;salary&quot;,
++                        value = &quot;count&quot;)
+
+&gt; head(tidydata2)
+                   religion salary count
+1                  Agnostic  &lt;$10k    27
+2                   Atheist  &lt;$10k    12
+3                  Buddhist  &lt;$10k    27
+4                  Catholic  &lt;$10k   418
+5 Don&lt;U+2019&gt;t know/refused  &lt;$10k    15
+6          Evangelical Prot  &lt;$10k   575
+&gt; 
+</code></pre>
+<ul>
+<li>Below is the min and max temperature data for various (year, month, day) pairs.</li>
+<li>We need to transform this to a <code>year:month:day</code> as row format.</li>
+<li>Note that id can be a list of columns - <code>c(&quot;year&quot;, &quot;month&quot;, &quot;element&quot;)</code> where element is <code>temp_max/temp_min</code></li>
+</ul>
+<pre><code>&gt; rawdata1 &lt;- read.delim(&quot;weather.txt&quot;, check.names = F, na.strings = '.')
+&gt; head(rawdata1)
+  year month element  1   2   3  4   5  6  7  8  9  10  11 12 13 14 15  16 17 18 19 20 21 22  23 24 25 26 27 28 29  30 31
+1 2010     1    tmax NA  NA  NA NA  NA NA NA NA NA  NA  NA NA NA NA NA  NA NA NA NA NA NA NA  NA NA NA NA NA NA NA 278 NA
+2 2010     1    tmin NA  NA  NA NA  NA NA NA NA NA  NA  NA NA NA NA NA  NA NA NA NA NA NA NA  NA NA NA NA NA NA NA 145 NA
+3 2010     2    tmax NA 273 241 NA  NA NA NA NA NA  NA 297 NA NA NA NA  NA NA NA NA NA NA NA 299 NA NA NA NA NA NA  NA NA
+4 2010     2    tmin NA 144 144 NA  NA NA NA NA NA  NA 134 NA NA NA NA  NA NA NA NA NA NA NA 107 NA NA NA NA NA NA  NA NA
+5 2010     3    tmax NA  NA  NA NA 321 NA NA NA NA 345  NA NA NA NA NA 311 NA NA NA NA NA NA  NA NA NA NA NA NA NA  NA NA
+6 2010     3    tmin NA  NA  NA NA 142 NA NA NA NA 168  NA NA NA NA NA 176 NA NA NA NA NA NA  NA NA NA NA NA NA NA  NA NA
+&gt; str(rawdata1)
+'data.frame':	22 obs. of  34 variables:
+ $ year   : int  2010 2010 2010 2010 2010 2010 2010 2010 2010 2010 ...
+ $ month  : int  1 1 2 2 3 3 4 4 5 5 ...
+ $ element: Factor w/ 2 levels &quot;tmax&quot;,&quot;tmin&quot;: 1 2 1 2 1 2 1 2 1 2 ...
+ $ 1      : int  NA NA NA NA NA NA NA NA NA NA ...
+ $ 2      : int  NA NA 273 144 NA NA NA NA NA NA ...
+ $ 3      : int  NA NA 241 144 NA NA NA NA NA NA ...
+ $ 4      : int  NA NA NA NA NA NA NA NA NA NA ...
+ $ 5      : int  NA NA NA NA 321 142 NA NA NA NA ...
+ $ 6      : int  NA NA NA NA NA NA NA NA NA NA ...
+ $ 7      : int  NA NA NA NA NA NA NA NA NA NA ...
+ $ 8      : int  NA NA NA NA NA NA NA NA NA NA ...
+ $ 9      : logi  NA NA NA NA NA NA ...
+ $ 10     : int  NA NA NA NA 345 168 NA NA NA NA ...
+ $ 11     : int  NA NA 297 134 NA NA NA NA NA NA ...
+ $ 12     : logi  NA NA NA NA NA NA ...
+ $ 13     : int  NA NA NA NA NA NA NA NA NA NA ...
+ $ 14     : int  NA NA NA NA NA NA NA NA NA NA ...
+ $ 15     : int  NA NA NA NA NA NA NA NA NA NA ...
+ $ 16     : int  NA NA NA NA 311 176 NA NA NA NA ...
+ $ 17     : int  NA NA NA NA NA NA NA NA NA NA ...
+ $ 18     : logi  NA NA NA NA NA NA ...
+ $ 19     : logi  NA NA NA NA NA NA ...
+ $ 20     : logi  NA NA NA NA NA NA ...
+ $ 21     : logi  NA NA NA NA NA NA ...
+ $ 22     : logi  NA NA NA NA NA NA ...
+ $ 23     : int  NA NA 299 107 NA NA NA NA NA NA ...
+ $ 24     : logi  NA NA NA NA NA NA ...
+ $ 25     : int  NA NA NA NA NA NA NA NA NA NA ...
+ $ 26     : int  NA NA NA NA NA NA NA NA NA NA ...
+ $ 27     : int  NA NA NA NA NA NA 363 167 332 182 ...
+ $ 28     : int  NA NA NA NA NA NA NA NA NA NA ...
+ $ 29     : int  NA NA NA NA NA NA NA NA NA NA ...
+ $ 30     : int  278 145 NA NA NA NA NA NA NA NA ...
+ $ 31     : int  NA NA NA NA NA NA NA NA NA NA ...
+&gt; tidydata3 &lt;- rawdata1 %&gt;% melt(id = c(&quot;year&quot;, &quot;month&quot;, &quot;element&quot;),
++                                variable.name = &quot;day&quot;,
++                                value.name = &quot;temp&quot;)
+&gt; head(tidydata3)
+  year month element day temp
+1 2010     1    tmax   1   NA
+2 2010     1    tmin   1   NA
+3 2010     2    tmax   1   NA
+4 2010     2    tmin   1   NA
+5 2010     3    tmax   1   NA
+6 2010     3    tmin   1   NA
+&gt; tidydata4 &lt;- rawdata1 %&gt;% melt(id = c(&quot;year&quot;, &quot;month&quot;, &quot;element&quot;),
++                                variable.name = &quot;day&quot;,
++                                value.name = &quot;temp&quot;,
++                                na.rm = TRUE)
+&gt; head(tidydata4)
+   year month element day temp
+21 2010    12    tmax   1  299
+22 2010    12    tmin   1  138
+25 2010     2    tmax   2  273
+26 2010     2    tmin   2  144
+41 2010    11    tmax   2  313
+42 2010    11    tmin   2  163
+&gt; tidydata5 &lt;- rawdata1 %&gt;% gather(4:34, 
++                                  key = &quot;day&quot;,
++                                  value = &quot;temp&quot;)
+&gt; head(tidydata5)
+  year month element day temp
+1 2010     1    tmax   1   NA
+2 2010     1    tmin   1   NA
+3 2010     2    tmax   1   NA
+4 2010     2    tmin   1   NA
+5 2010     3    tmax   1   NA
+6 2010     3    tmin   1   NA
+&gt; tidydata6 &lt;- rawdata1 %&gt;% gather(4:34, 
++                                  key = &quot;day&quot;,
++                                  value = &quot;temp&quot;,
++                                  na.rm = TRUE)
+&gt; head(tidydata6)
+   year month element day temp
+21 2010    12    tmax   1  299
+22 2010    12    tmin   1  138
+25 2010     2    tmax   2  273
+26 2010     2    tmin   2  144
+41 2010    11    tmax   2  313
+42 2010    11    tmin   2  163
+&gt;
+</code></pre>
+<h3 id="dcastandspread">dcast and spread</h3>
+<pre><code>&gt; # transform the data to a format that dcast can use
+&gt; tidydata7 &lt;- tidydata6[,c(&quot;year&quot;, &quot;month&quot;, &quot;day&quot;, &quot;element&quot;, &quot;temp&quot;)]
+&gt; head(tidydata7)
+   year month day element temp
+21 2010    12   1    tmax  299
+22 2010    12   1    tmin  138
+25 2010     2   2    tmax  273
+26 2010     2   2    tmin  144
+41 2010    11   2    tmax  313
+42 2010    11   2    tmin  163
+&gt; # use element values as column names, pick the values from &quot;temp&quot;
+&gt; tidydata8 &lt;- dcast(year + month + day ~ element, data = tidydata7, value.var = &quot;temp&quot;)
+&gt; head(tidydata8)
+  year month day tmax tmin
+1 2010     1  30  278  145
+2 2010     2  11  297  134
+3 2010     2   2  273  144
+4 2010     2  23  299  107
+5 2010     2   3  241  144
+6 2010     3  10  345  168
+&gt; # do the same using spread - spread element as columns and use values from temp
+&gt; tidydata9 &lt;- spread(tidydata6, element, temp)
+&gt; head(tidydata9)
+  year month day tmax tmin
+1 2010     1  30  278  145
+2 2010     2  11  297  134
+3 2010     2   2  273  144
+4 2010     2  23  299  107
+5 2010     2   3  241  144
+6 2010     3  10  345  168
+&gt; # adding a new column which shows difference in temperature
+&gt; tidydata8$tdiff &lt;- tidydata8$tmax - tidydata8$tmin
+&gt; head(tidydata8)
+  year month day tmax tmin tdiff
+1 2010     1  30  278  145   133
+2 2010     2  11  297  134   163
+3 2010     2   2  273  144   129
+4 2010     2  23  299  107   192
+5 2010     2   3  241  144    97
+6 2010     3  10  345  168   177
+&gt;
+&gt;
+</code></pre>
+<h3 id="analyzethetitanicshipwreckdatatoanswerthefollowing">Analyze the titanic shipwreck data to answer the following,</h3>
+<ul>
+<li>For each group of Class+Age+Gender what is the survival rate?</li>
+<li>To answer this question, we need to transform the given data</li>
+</ul>
+<pre><code>&gt; rawdata2 &lt;- read.csv(&quot;shipwreck.csv&quot;, check.names = F, encoding = &quot;UTF-8&quot;)
+&gt; rawdata2
+   class   age     fate male female
+1    1st adult perished  118      4
+2    1st adult survived   57    140
+3    1st child perished    0      0
+4    1st child survived    5      1
+5    2nd adult perished  154     13
+6    2nd adult survived   14     80
+7    2nd child perished    0      0
+8    2nd child survived   11     13
+9    3rd adult perished  387     89
+10   3rd adult survived   75     76
+11   3rd child perished   35     17
+12   3rd child survived   13     14
+13  Crew adult perished  670      3
+14  Crew adult survived  192     20
+15  Crew child perished    0      0
+16  Crew child survived    0      0
+
+&gt; # Q - For each group of Class+Age+Gender what is the survival rate?
+&gt; tidydata10 &lt;- rawdata2 %&gt;% gather(4:5,
++                                   key = &quot;gender&quot;,
++                                   value = &quot;count&quot;)
+&gt; tidydata10
+   class   age     fate gender count
+1    1st adult perished   male   118
+2    1st adult survived   male    57
+3    1st child perished   male     0
+4    1st child survived   male     5
+5    2nd adult perished   male   154
+6    2nd adult survived   male    14
+7    2nd child perished   male     0
+8    2nd child survived   male    11
+9    3rd adult perished   male   387
+10   3rd adult survived   male    75
+11   3rd child perished   male    35
+12   3rd child survived   male    13
+13  Crew adult perished   male   670
+14  Crew adult survived   male   192
+15  Crew child perished   male     0
+16  Crew child survived   male     0
+17   1st adult perished female     4
+18   1st adult survived female   140
+19   1st child perished female     0
+20   1st child survived female     1
+21   2nd adult perished female    13
+22   2nd adult survived female    80
+23   2nd child perished female     0
+24   2nd child survived female    13
+25   3rd adult perished female    89
+26   3rd adult survived female    76
+27   3rd child perished female    17
+28   3rd child survived female    14
+29  Crew adult perished female     3
+30  Crew adult survived female    20
+31  Crew child perished female     0
+32  Crew child survived female     0
+
+&gt; tidydata10 &lt;- tidydata10 %&gt;% spread(fate, count)
+&gt; tidydata10
+   class   age gender perished survived
+1    1st adult female        4      140
+2    1st adult   male      118       57
+3    1st child female        0        1
+4    1st child   male        0        5
+5    2nd adult female       13       80
+6    2nd adult   male      154       14
+7    2nd child female        0       13
+8    2nd child   male        0       11
+9    3rd adult female       89       76
+10   3rd adult   male      387       75
+11   3rd child female       17       14
+12   3rd child   male       35       13
+13  Crew adult female        3       20
+14  Crew adult   male      670      192
+15  Crew child female        0        0
+16  Crew child   male        0        0
+&gt;
+</code></pre>
+<h3 id="deplyr">deplyr</h3>
+<ul>
+<li>filter</li>
+<li>arrange</li>
+<li>mutate</li>
+<li>summarize</li>
+<li>select</li>
+<li>group_by</li>
+</ul>
+<pre><code>&gt; # filter data for Jan
+&gt; head(flights)
+# A tibble: 6 x 19
+   year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time arr_delay carrier flight tailnum origin dest  air_time distance  hour minute
+  &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt; &lt;chr&gt;    &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+1  2013     1     1      517            515      2.00      830            819      11.0 UA        1545 N14228  EWR    IAH        227     1400  5.00   15.0
+2  2013     1     1      533            529      4.00      850            830      20.0 UA        1714 N24211  LGA    IAH        227     1416  5.00   29.0
+3  2013     1     1      542            540      2.00      923            850      33.0 AA        1141 N619AA  JFK    MIA        160     1089  5.00   40.0
+4  2013     1     1      544            545     -1.00     1004           1022     -18.0 B6         725 N804JB  JFK    BQN        183     1576  5.00   45.0
+5  2013     1     1      554            600     -6.00      812            837     -25.0 DL         461 N668DN  LGA    ATL        116      762  6.00    0  
+6  2013     1     1      554            558     -4.00      740            728      12.0 UA        1696 N39463  EWR    ORD        150      719  5.00   58.0
+# ... with 1 more variable: time_hour &lt;dttm&gt;
+&gt; flights %&gt;% filter(month==1)
+# A tibble: 27,004 x 19
+    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time arr_delay carrier flight tailnum origin dest  air_time distance  hour minute
+   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt; &lt;chr&gt;    &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+ 1  2013     1     1      517            515      2.00      830            819     11.0  UA        1545 N14228  EWR    IAH      227       1400  5.00   15.0
+ 2  2013     1     1      533            529      4.00      850            830     20.0  UA        1714 N24211  LGA    IAH      227       1416  5.00   29.0
+ 3  2013     1     1      542            540      2.00      923            850     33.0  AA        1141 N619AA  JFK    MIA      160       1089  5.00   40.0
+ 4  2013     1     1      544            545     -1.00     1004           1022    -18.0  B6         725 N804JB  JFK    BQN      183       1576  5.00   45.0
+ 5  2013     1     1      554            600     -6.00      812            837    -25.0  DL         461 N668DN  LGA    ATL      116        762  6.00    0  
+ 6  2013     1     1      554            558     -4.00      740            728     12.0  UA        1696 N39463  EWR    ORD      150        719  5.00   58.0
+ 7  2013     1     1      555            600     -5.00      913            854     19.0  B6         507 N516JB  EWR    FLL      158       1065  6.00    0  
+ 8  2013     1     1      557            600     -3.00      709            723    -14.0  EV        5708 N829AS  LGA    IAD       53.0      229  6.00    0  
+ 9  2013     1     1      557            600     -3.00      838            846    - 8.00 B6          79 N593JB  JFK    MCO      140        944  6.00    0  
+10  2013     1     1      558            600     -2.00      753            745      8.00 AA         301 N3ALAA  LGA    ORD      138        733  6.00    0  
+# ... with 26,994 more rows, and 1 more variable: time_hour &lt;dttm&gt;
+&gt; # filter data for Nov and Dec
+&gt; flights %&gt;% filter(month==11 | month == 12)
+# A tibble: 55,403 x 19
+    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time arr_delay carrier flight tailnum origin dest  air_time distance  hour minute
+   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt; &lt;chr&gt;    &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+ 1  2013    11     1        5           2359      6.00      352            345      7.00 B6         745 N568JB  JFK    PSE      205       1617 23.0    59.0
+ 2  2013    11     1       35           2250    105         123           2356     87.0  B6        1816 N353JB  JFK    SYR       36.0      209 22.0    50.0
+ 3  2013    11     1      455            500   -  5.00      641            651    -10.0  US        1895 N192UW  EWR    CLT       88.0      529  5.00    0  
+ 4  2013    11     1      539            545   -  6.00      856            827     29.0  UA        1714 N38727  LGA    IAH      229       1416  5.00   45.0
+ 5  2013    11     1      542            545   -  3.00      831            855    -24.0  AA        2243 N5CLAA  JFK    MIA      147       1089  5.00   45.0
+ 6  2013    11     1      549            600   - 11.0       912            923    -11.0  UA         303 N595UA  JFK    SFO      359       2586  6.00    0  
+ 7  2013    11     1      550            600   - 10.0       705            659      6.00 US        2167 N748UW  LGA    DCA       57.0      214  6.00    0  
+ 8  2013    11     1      554            600   -  6.00      659            701    - 2.00 US        2134 N742PS  LGA    BOS       40.0      184  6.00    0  
+ 9  2013    11     1      554            600   -  6.00      826            827    - 1.00 DL         563 N912DE  LGA    ATL      126        762  6.00    0  
+10  2013    11     1      554            600   -  6.00      749            751    - 2.00 DL         731 N315NB  LGA    DTW       93.0      502  6.00    0  
+# ... with 55,393 more rows, and 1 more variable: time_hour &lt;dttm&gt;
+&gt; flights %&gt;% filter(month %in% c(11,12))
+# A tibble: 55,403 x 19
+    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time arr_delay carrier flight tailnum origin dest  air_time distance  hour minute
+   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt; &lt;chr&gt;    &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+ 1  2013    11     1        5           2359      6.00      352            345      7.00 B6         745 N568JB  JFK    PSE      205       1617 23.0    59.0
+ 2  2013    11     1       35           2250    105         123           2356     87.0  B6        1816 N353JB  JFK    SYR       36.0      209 22.0    50.0
+ 3  2013    11     1      455            500   -  5.00      641            651    -10.0  US        1895 N192UW  EWR    CLT       88.0      529  5.00    0  
+ 4  2013    11     1      539            545   -  6.00      856            827     29.0  UA        1714 N38727  LGA    IAH      229       1416  5.00   45.0
+ 5  2013    11     1      542            545   -  3.00      831            855    -24.0  AA        2243 N5CLAA  JFK    MIA      147       1089  5.00   45.0
+ 6  2013    11     1      549            600   - 11.0       912            923    -11.0  UA         303 N595UA  JFK    SFO      359       2586  6.00    0  
+ 7  2013    11     1      550            600   - 10.0       705            659      6.00 US        2167 N748UW  LGA    DCA       57.0      214  6.00    0  
+ 8  2013    11     1      554            600   -  6.00      659            701    - 2.00 US        2134 N742PS  LGA    BOS       40.0      184  6.00    0  
+ 9  2013    11     1      554            600   -  6.00      826            827    - 1.00 DL         563 N912DE  LGA    ATL      126        762  6.00    0  
+10  2013    11     1      554            600   -  6.00      749            751    - 2.00 DL         731 N315NB  LGA    DTW       93.0      502  6.00    0  
+# ... with 55,393 more rows, and 1 more variable: time_hour &lt;dttm&gt;
+&gt; # filter data with departure and arrival delay &lt; 2 hours
+&gt; str(flights)
+Classes 'tbl_df', 'tbl' and 'data.frame':	336776 obs. of  19 variables:
+ $ year          : int  2013 2013 2013 2013 2013 2013 2013 2013 2013 2013 ...
+ $ month         : int  1 1 1 1 1 1 1 1 1 1 ...
+ $ day           : int  1 1 1 1 1 1 1 1 1 1 ...
+ $ dep_time      : int  517 533 542 544 554 554 555 557 557 558 ...
+ $ sched_dep_time: int  515 529 540 545 600 558 600 600 600 600 ...
+ $ dep_delay     : num  2 4 2 -1 -6 -4 -5 -3 -3 -2 ...
+ $ arr_time      : int  830 850 923 1004 812 740 913 709 838 753 ...
+ $ sched_arr_time: int  819 830 850 1022 837 728 854 723 846 745 ...
+ $ arr_delay     : num  11 20 33 -18 -25 12 19 -14 -8 8 ...
+ $ carrier       : chr  &quot;UA&quot; &quot;UA&quot; &quot;AA&quot; &quot;B6&quot; ...
+ $ flight        : int  1545 1714 1141 725 461 1696 507 5708 79 301 ...
+ $ tailnum       : chr  &quot;N14228&quot; &quot;N24211&quot; &quot;N619AA&quot; &quot;N804JB&quot; ...
+ $ origin        : chr  &quot;EWR&quot; &quot;LGA&quot; &quot;JFK&quot; &quot;JFK&quot; ...
+ $ dest          : chr  &quot;IAH&quot; &quot;IAH&quot; &quot;MIA&quot; &quot;BQN&quot; ...
+ $ air_time      : num  227 227 160 183 116 150 158 53 140 138 ...
+ $ distance      : num  1400 1416 1089 1576 762 ...
+ $ hour          : num  5 5 5 5 6 5 6 6 6 6 ...
+ $ minute        : num  15 29 40 45 0 58 0 0 0 0 ...
+ $ time_hour     : POSIXct, format: &quot;2013-01-01 05:00:00&quot; &quot;2013-01-01 05:00:00&quot; &quot;2013-01-01 05:00:00&quot; &quot;2013-01-01 05:00:00&quot; ...
+&gt; flights %&gt;% filter(dep_delay &lt; 120 &amp; arr_delay &lt; 120) %&gt;% select(arr_delay, dep_delay, everything())
+# A tibble: 315,868 x 19
+   arr_delay dep_delay  year month   day dep_time sched_dep_time arr_time sched_arr_time carrier flight tailnum origin dest  air_time distance  hour minute
+       &lt;dbl&gt;     &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;    &lt;int&gt;          &lt;int&gt; &lt;chr&gt;    &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+ 1     11.0       2.00  2013     1     1      517            515      830            819 UA        1545 N14228  EWR    IAH      227       1400  5.00   15.0
+ 2     20.0       4.00  2013     1     1      533            529      850            830 UA        1714 N24211  LGA    IAH      227       1416  5.00   29.0
+ 3     33.0       2.00  2013     1     1      542            540      923            850 AA        1141 N619AA  JFK    MIA      160       1089  5.00   40.0
+ 4    -18.0      -1.00  2013     1     1      544            545     1004           1022 B6         725 N804JB  JFK    BQN      183       1576  5.00   45.0
+ 5    -25.0      -6.00  2013     1     1      554            600      812            837 DL         461 N668DN  LGA    ATL      116        762  6.00    0  
+ 6     12.0      -4.00  2013     1     1      554            558      740            728 UA        1696 N39463  EWR    ORD      150        719  5.00   58.0
+ 7     19.0      -5.00  2013     1     1      555            600      913            854 B6         507 N516JB  EWR    FLL      158       1065  6.00    0  
+ 8    -14.0      -3.00  2013     1     1      557            600      709            723 EV        5708 N829AS  LGA    IAD       53.0      229  6.00    0  
+ 9    - 8.00     -3.00  2013     1     1      557            600      838            846 B6          79 N593JB  JFK    MCO      140        944  6.00    0  
+10      8.00     -2.00  2013     1     1      558            600      753            745 AA         301 N3ALAA  LGA    ORD      138        733  6.00    0  
+# ... with 315,858 more rows, and 1 more variable: time_hour &lt;dttm&gt;
+&gt; # show the makeup time
+&gt; flights %&gt;% mutate(makeuptime = dep_delay - arr_delay) %&gt;% select(makeuptime, everything())
+# A tibble: 336,776 x 20
+   makeuptime  year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time arr_delay carrier flight tailnum origin dest  air_time distance  hour
+        &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt; &lt;chr&gt;    &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;
+ 1     - 9.00  2013     1     1      517            515      2.00      830            819     11.0  UA        1545 N14228  EWR    IAH      227       1400  5.00
+ 2     -16.0   2013     1     1      533            529      4.00      850            830     20.0  UA        1714 N24211  LGA    IAH      227       1416  5.00
+ 3     -31.0   2013     1     1      542            540      2.00      923            850     33.0  AA        1141 N619AA  JFK    MIA      160       1089  5.00
+ 4      17.0   2013     1     1      544            545     -1.00     1004           1022    -18.0  B6         725 N804JB  JFK    BQN      183       1576  5.00
+ 5      19.0   2013     1     1      554            600     -6.00      812            837    -25.0  DL         461 N668DN  LGA    ATL      116        762  6.00
+ 6     -16.0   2013     1     1      554            558     -4.00      740            728     12.0  UA        1696 N39463  EWR    ORD      150        719  5.00
+ 7     -24.0   2013     1     1      555            600     -5.00      913            854     19.0  B6         507 N516JB  EWR    FLL      158       1065  6.00
+ 8      11.0   2013     1     1      557            600     -3.00      709            723    -14.0  EV        5708 N829AS  LGA    IAD       53.0      229  6.00
+ 9       5.00  2013     1     1      557            600     -3.00      838            846    - 8.00 B6          79 N593JB  JFK    MCO      140        944  6.00
+10     -10.0   2013     1     1      558            600     -2.00      753            745      8.00 AA         301 N3ALAA  LGA    ORD      138        733  6.00
+# ... with 336,766 more rows, and 2 more variables: minute &lt;dbl&gt;, time_hour &lt;dttm&gt;
+&gt; 
+&gt; head(iris)
+  Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+1          5.1         3.5          1.4         0.2  setosa
+2          4.9         3.0          1.4         0.2  setosa
+3          4.7         3.2          1.3         0.2  setosa
+4          4.6         3.1          1.5         0.2  setosa
+5          5.0         3.6          1.4         0.2  setosa
+6          5.4         3.9          1.7         0.4  setosa
+&gt; # for every species list the average sepal length
+&gt; iris %&gt;% group_by(Species) %&gt;% summarise(meanSepl = mean(Sepal.Length))
+# A tibble: 3 x 2
+  Species    meanSepl
+  &lt;fct&gt;         &lt;dbl&gt;
+1 setosa         5.01
+2 versicolor     5.94
+3 virginica      6.59
+&gt; head(mtcars)
+                   mpg cyl disp  hp drat    wt  qsec vs am gear carb
+Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
+&gt; # list mean of mpg for every combination of gear and cylinder
+&gt; mtcars %&gt;% group_by(gear, cyl) %&gt;% summarise(mean1 = mean(mpg))
+# A tibble: 8 x 3
+# Groups:   gear [?]
+   gear   cyl mean1
+  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1  3.00  4.00  21.5
+2  3.00  6.00  19.8
+3  3.00  8.00  15.0
+4  4.00  4.00  26.9
+5  4.00  6.00  19.8
+6  5.00  4.00  28.2
+7  5.00  6.00  19.7
+8  5.00  8.00  15.4
+&gt; # add a new column that lists mpg + displacement
+&gt; mtcars %&gt;% group_by(gear, cyl) %&gt;% mutate(newcol = mpg + disp)
+# A tibble: 32 x 12
+# Groups:   gear, cyl [8]
+     mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb newcol
+   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+ 1  21.0  6.00   160 110    3.90  2.62  16.5  0     1.00  4.00  4.00    181
+ 2  21.0  6.00   160 110    3.90  2.88  17.0  0     1.00  4.00  4.00    181
+ 3  22.8  4.00   108  93.0  3.85  2.32  18.6  1.00  1.00  4.00  1.00    131
+ 4  21.4  6.00   258 110    3.08  3.22  19.4  1.00  0     3.00  1.00    279
+ 5  18.7  8.00   360 175    3.15  3.44  17.0  0     0     3.00  2.00    379
+ 6  18.1  6.00   225 105    2.76  3.46  20.2  1.00  0     3.00  1.00    243
+ 7  14.3  8.00   360 245    3.21  3.57  15.8  0     0     3.00  4.00    374
+ 8  24.4  4.00   147  62.0  3.69  3.19  20.0  1.00  0     4.00  2.00    171
+ 9  22.8  4.00   141  95.0  3.92  3.15  22.9  1.00  0     4.00  2.00    164
+10  19.2  6.00   168 123    3.92  3.44  18.3  1.00  0     4.00  4.00    187
+# ... with 22 more rows
+&gt; 
+</code></pre>
+]]></content:encoded></item><item><title><![CDATA[Two Eggs Problem]]></title><description><![CDATA[<h3 id="problem">Problem</h3>
+<p>A building has 100 floors. One of the floors is the highest floor an egg can be dropped from without breaking.</p>
+<p>If an egg is dropped from above that floor, it will break. If it is dropped from that floor or below, it will be completely undamaged and you</p>]]></description><link>http://blog.vijayvikrant.com/two_egg_problem/</link><guid isPermaLink="false">5bec34b10b000afff2677986</guid><category><![CDATA[coding]]></category><dc:creator><![CDATA[Vikrant Balyan]]></dc:creator><pubDate>Mon, 05 Feb 2018 18:02:15 GMT</pubDate><content:encoded><![CDATA[<h3 id="problem">Problem</h3>
+<p>A building has 100 floors. One of the floors is the highest floor an egg can be dropped from without breaking.</p>
+<p>If an egg is dropped from above that floor, it will break. If it is dropped from that floor or below, it will be completely undamaged and you can drop the egg again.</p>
+<p>Given two eggs, find the highest floor an egg can be dropped from without breaking, with as few drops as possible.</p>
+<h3 id="solution">Solution</h3>
+<p>Assuming we had only 1 egg, then we cannot take any chances and the only way would be to start with Floor 1 and move up floor-by-floor. If the egg breaks on fall from floor <code>n</code>, then floor <code>n-1</code> is our answer. so, worst case 100 drops.</p>
+<p>Assuming we had infinite number of eggs, then we could use the binary tree stategy and start with floor 50, then floor 25 and that way we will be able to come to the solution in very few drops.</p>
+<p>In a 2 egg scenario, we could start with floor 50 and if the egg breaks, then we have no option but to go one floor at a time. so 1+49 chances.</p>
+<p>However, we could do better</p>
+<ul>
+<li>Start at floor-10 and drop the egg
+<ul>
+<li>if the egg does not break, go to floor-20</li>
+<li>if the egg breaks, go floor-by-floor from floor-1</li>
+</ul>
+</li>
+</ul>
+<p>Repeat this until we find the answer. Worst case being floor 99. 10 + 9=19 drops</p>
+<p>Could we do better?</p>
+<pre><code>n + (n-1) + (n-2) + (n-3) + .... + 1 &gt;= 100
+</code></pre>
+<pre><code>n(n+1)/2 &gt;= 100
+</code></pre>
+<p>n ~ 14</p>
+<pre><code>14		1		13
+27		2		12
+39		3		11
+50		4		10
+60		5		9
+69		6		8
+77		7		7
+84		8		6
+90		9		5
+95		10		4
+99		11		3
+100		12		0
+</code></pre>
+]]></content:encoded></item><item><title><![CDATA[setting custom alerts on any device using pushbullet]]></title><description><![CDATA[<p><a href="http://blog.vijayvikrant.com/setting-custom-alerts-on-any-device-using-pushbullet/www.pushbullet.com">pushbullet.com</a> lets you send API based notification/alerts.</p>
+<p>Start with creating a Pushbullet account. Install the app on your phone. Go to the pushbullet website, head to &quot;My Account&quot; and then create an access token. Note this token.</p>
+<p>The below python code can then be used to</p>]]></description><link>http://blog.vijayvikrant.com/setting-custom-alerts-on-any-device-using-pushbullet/</link><guid isPermaLink="false">5bec34b10b000afff2677985</guid><dc:creator><![CDATA[Vikrant Balyan]]></dc:creator><pubDate>Tue, 15 Aug 2017 13:51:05 GMT</pubDate><content:encoded><![CDATA[<p><a href="http://blog.vijayvikrant.com/setting-custom-alerts-on-any-device-using-pushbullet/www.pushbullet.com">pushbullet.com</a> lets you send API based notification/alerts.</p>
+<p>Start with creating a Pushbullet account. Install the app on your phone. Go to the pushbullet website, head to &quot;My Account&quot; and then create an access token. Note this token.</p>
+<p>The below python code can then be used to send a notification to all your registered devices.</p>
+<pre><code>def send_message(title, msg):
+    url = &quot;https://api.pushbullet.com/v2/pushes&quot;
+    headers = {'Content-Type': 'application/json',
+               &quot;Access-Token&quot;: access_token}
+    data = json.dumps({
+        &quot;type&quot;: &quot;note&quot;,
+        &quot;title&quot;: title,
+        &quot;body&quot;: msg
+    })
+    requests.post(url, data=data, headers=headers)
+</code></pre>
+<p>My use case was <a href="https://github.com/vvb/stock_alerts/blob/master/portfolio_alerts.py">this</a> python script that generates buy and sell alerts on my mobile phone based on pre-configred prices in a csv sheet.</p>
+<p>But there is no reason this cannot be used to get datacenter alerts. I plan to include this as a library method in Cisco Ucs SDKs soon.</p>
+<p>note: You might need to signout and sign back in one time after you install the app for the alerts to start showing up.</p>
+]]></content:encoded></item><item><title><![CDATA[Using http with pip]]></title><description><![CDATA[<p>Enforce using http with pip,</p>
+<pre><code>pip install --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org &lt;packageName&gt;
+</code></pre>]]></description><link>http://blog.vijayvikrant.com/using-http-with-pip/</link><guid isPermaLink="false">5bec34b10b000afff2677984</guid><category><![CDATA[ucspython]]></category><category><![CDATA[pip]]></category><dc:creator><![CDATA[Vikrant Balyan]]></dc:creator><pubDate>Mon, 17 Apr 2017 19:02:05 GMT</pubDate><content:encoded><![CDATA[<p>Enforce using http with pip,</p>
+<pre><code>pip install --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org &lt;packageName&gt;
+</code></pre>
+]]></content:encoded></item><item><title><![CDATA[Reflection in go!]]></title><description><![CDATA[<p>Printing struct attributes and values using reflection.</p>
+<pre><code>package main
+
+import (
+	&quot;fmt&quot;
+	&quot;reflect&quot;
+)
+
+type User struct {
+	FirstName string
+	LastName  string
+	Age       int
+}
+
+func (f *User) reflect() {
+	v := reflect.ValueOf(f).Elem()
+
+	for i := 0; i &lt; v.NumField(); i++ {
+		val := v.Field(i)
+		t := v.Type().Field(</code></pre>]]></description><link>http://blog.vijayvikrant.com/reflection-in-go/</link><guid isPermaLink="false">5bec34b10b000afff2677983</guid><category><![CDATA[golang]]></category><dc:creator><![CDATA[Vikrant Balyan]]></dc:creator><pubDate>Mon, 17 Apr 2017 18:54:19 GMT</pubDate><content:encoded><![CDATA[<p>Printing struct attributes and values using reflection.</p>
+<pre><code>package main
+
+import (
+	&quot;fmt&quot;
+	&quot;reflect&quot;
+)
+
+type User struct {
+	FirstName string
+	LastName  string
+	Age       int
+}
+
+func (f *User) reflect() {
+	v := reflect.ValueOf(f).Elem()
+
+	for i := 0; i &lt; v.NumField(); i++ {
+		val := v.Field(i)
+		t := v.Type().Field(i)
+		fmt.Printf(&quot;%s %v \t&quot;, t.Name, val.Interface())
+	}
+}
+
+func main() {
+	f := &amp;User{
+		FirstName: &quot;John&quot;,
+		LastName:  &quot;Doe&quot;,
+		Age:       13,
+	}
+
+	f.reflect()
+}
+</code></pre>
+]]></content:encoded></item><item><title><![CDATA[ansible modules for Cisco UCS IMC server]]></title><description><![CDATA[<h3 id="imcansible">imc-ansible</h3>
+<p><code>imc-ansible</code> are a set of ansible modules for Cisco UCS standalone servers(IMC servers).</p>
+<h4 id="installation">installation</h4>
+<pre><code># Install ansible
+sudo pip install ansible
+
+# install imcsdk from github
+git clone https://github.com/ciscoucs/imcsdk
+cd imcsdk
+sudo make install
+
+# install imc-ansible from github
+git clone https://github.com/ciscoucs/imc-ansible
+cd</code></pre>]]></description><link>http://blog.vijayvikrant.com/ansible-modules-for-cisco-ucs-imc-server/</link><guid isPermaLink="false">5bec34b10b000afff2677982</guid><category><![CDATA[ansible]]></category><category><![CDATA[imcsdk]]></category><dc:creator><![CDATA[Vikrant Balyan]]></dc:creator><pubDate>Mon, 06 Feb 2017 22:55:04 GMT</pubDate><content:encoded><![CDATA[<h3 id="imcansible">imc-ansible</h3>
+<p><code>imc-ansible</code> are a set of ansible modules for Cisco UCS standalone servers(IMC servers).</p>
+<h4 id="installation">installation</h4>
+<pre><code># Install ansible
+sudo pip install ansible
+
+# install imcsdk from github
+git clone https://github.com/ciscoucs/imcsdk
+cd imcsdk
+sudo make install
+
+# install imc-ansible from github
+git clone https://github.com/ciscoucs/imc-ansible
+cd imc-ansible
+sudo python install.py
+</code></pre>
+<h4 id="samplerun">sample run</h4>
+<pre><code>➔ ansible-playbook -i inventory site.yml
+
+PLAY [imc]
+*********************************************************************
+
+TASK [common : check if imcsdk is installed]
+***********************************
+ok: [fpmr1_192.168.1.1]
+
+TASK [common : install imcsdk]
+*************************************************
+skipping: [fpmr1_192.168.1.1]
+
+TASK [admin : set password policy]
+*********************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : create local user]
+***********************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : delete local user]
+***********************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : reset password policy]
+*******************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : enable ntp]
+******************************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : disable ntp]
+*****************************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : enable LDAP]
+*****************************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [admin : disable LDAP]
+****************************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [boot : set boot order]
+***************************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [boot : set boot order alternate]
+*****************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [storage : create virtual drive]
+******************************************
+changed: [fpmr1_192.168.1.1]
+
+TASK [storage : delete virtual drive]
+******************************************
+changed: [fpmr1_192.168.1.1]
+
+PLAY RECAP
+*********************************************************************
+fpmr1_192.168.1.1       : ok=13   changed=12   unreachable=0    failed=0
+</code></pre>
+]]></content:encoded></item><item><title><![CDATA[Inventory Ucs Managed servers via ucsmsdk]]></title><description><![CDATA[<p>ucsmsdk 0.9.3.0 will add support for inventory APIs.<br>
+This allows for multi-host multi-component inventory in multiple formats(enough of multiple? :-D ).</p>
+<p>The inventory APIs support inventorying,</p>
+<pre><code>- fabric interconnects
+- cpus
+- disks
+- dimms
+- storage controller
+- VIC
+- vNICs
+- vHBAs
+- PSUs
+</code></pre>
+<p>The</p>]]></description><link>http://blog.vijayvikrant.com/inventory-ucs-managed-servers-via-ucsmsdk/</link><guid isPermaLink="false">5bec34b10b000afff2677981</guid><category><![CDATA[ucspython]]></category><category><![CDATA[ucsmsdk]]></category><dc:creator><![CDATA[Vikrant Balyan]]></dc:creator><pubDate>Tue, 24 Jan 2017 06:04:13 GMT</pubDate><content:encoded><![CDATA[<p>ucsmsdk 0.9.3.0 will add support for inventory APIs.<br>
+This allows for multi-host multi-component inventory in multiple formats(enough of multiple? :-D ).</p>
+<p>The inventory APIs support inventorying,</p>
+<pre><code>- fabric interconnects
+- cpus
+- disks
+- dimms
+- storage controller
+- VIC
+- vNICs
+- vHBAs
+- PSUs
+</code></pre>
+<p>The supported output formats for the report are,</p>
+<pre><code>- csv
+- html
+- json
+</code></pre>
+<p>we recommend using the html format, as it has inbuilt javascript based filtering. It can quickly help narrow down a certain component on a certain host.</p>
+<pre><code>from ucsmsdk.utils.inventory import get_inventory
+
+# Gets inventory of all components in JSON format
+get_inventory(handle=handle)
+
+# Gets inventory for all servers all components in JSON format
+get_inventory(handle=[handle1, handle2, handle3])
+
+# Gets inventory of one server all components in JSON format
+get_inventory(handle=handle, component=&quot;all&quot;)
+
+# Gets disks inventory of one server in JSON format
+get_inventory(handle=handle, component=&quot;disks&quot;)
+
+# Gets cpu and disks inventory for one server in JSON format
+get_inventory(handle=handle, component=[&quot;cpu&quot;, &quot;disks&quot;])
+
+# Gets cpu and disks inventory for one server in JSON format and writes to inventory.json file
+get_inventory(handle=handle, component=[&quot;cpu&quot;, &quot;disks&quot;], file_format=&quot;json&quot;, file_name=&quot;inventory.json&quot;)
+
+# Gets cpu and disks inventory for one server in CSV format and writes to inventory.csv fie
+get_inventory(handle=handle, component=[&quot;cpu&quot;, &quot;disks&quot;], file_format=&quot;csv&quot;, file_name=&quot;inventory.csv&quot;)
+
+# Gets cpu and disks inventory for one server in HTML format and writes to inventory.html
+get_inventory(handle=handle, component=[&quot;cpu&quot;, &quot;disks&quot;], file_format=&quot;html&quot;, file_name=&quot;inventory.html&quot;)  
+</code></pre>
+<p>This can be tried out today via the code available at <a href="https://github.com/ciscoucs/ucsmsdk">https://github.com/ciscoucs/ucsmsdk</a></p>
+<p>complete code to run it,</p>
+<pre><code>#! /usr/bin/env python
+
+from ucsmsdk.ucshandle import UcsHandle
+from ucsmsdk.utils.inventory import get_inventory
+
+handle = UcsHandle(&quot;192.168.1.1&quot;, &quot;username&quot;, &quot;password&quot;)
+handle.login()
+
+# This would create inventory.html in the same directory where the script is run from
+get_inventory(handle=handle, component=&quot;all&quot;, file_format=&quot;html&quot;, file_name=&quot;inventory.html&quot;)
+
+handle.logout()
+</code></pre>
+]]></content:encoded></item><item><title><![CDATA[debugging in an ansible environment]]></title><description><![CDATA[<p>I was looking for a PDB sort of debugger for debugging custom ansible modules written in Python. This is when i bumped into <a href="http://michaeldehaan.net/post/35403909347/tips-on-using-debuggers-with-ansible">this</a> blog.</p>
+<p>As recommended on the blog, I tried out <code>epdb</code> and it works great for debugging custom ansible modules written in python.</p>
+<p><strong>Installation</strong>:</p>
+<pre><code>pip install epdb</code></pre>]]></description><link>http://blog.vijayvikrant.com/debugging-in-an-ansible-environment/</link><guid isPermaLink="false">5bec34b10b000afff2677980</guid><category><![CDATA[ansible]]></category><dc:creator><![CDATA[Vikrant Balyan]]></dc:creator><pubDate>Tue, 10 Jan 2017 20:18:27 GMT</pubDate><content:encoded><![CDATA[<p>I was looking for a PDB sort of debugger for debugging custom ansible modules written in Python. This is when i bumped into <a href="http://michaeldehaan.net/post/35403909347/tips-on-using-debuggers-with-ansible">this</a> blog.</p>
+<p>As recommended on the blog, I tried out <code>epdb</code> and it works great for debugging custom ansible modules written in python.</p>
+<p><strong>Installation</strong>:</p>
+<pre><code>pip install epdb
+</code></pre>
+<p>epdb: <a href="https://pypi.python.org/pypi/epdb">https://pypi.python.org/pypi/epdb</a></p>
+<p><strong>Usage</strong>:</p>
+<p>Insert the below code works as a breakpoint. Insert this at the lines needing debug.</p>
+<pre><code>import epdb
+epdb.serve()
+</code></pre>
+<p>Run ansible with <code>--forks 1</code> option to avoid parallel threads</p>
+<pre><code>ansible-playbook -i inventory site.yml --forks 1
+</code></pre>
+<p>This run should hang when it hits the piece of code that has <code>epdb.serve()</code>. At this point run the below from another shell</p>
+<pre><code>python -c &quot;import epdb; epdb.connect()&quot;
+</code></pre>
+<p>This should get you to the <code>epdb</code> shell.<br>
+here on, things should look familiar to <code>pdb</code>.</p>
+]]></content:encoded></item></channel></rss>

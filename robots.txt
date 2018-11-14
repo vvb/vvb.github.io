@@ -1,3 +1,2 @@
 User-agent: *
-Sitemap: http://blog.vijayvikrant.com/sitemap.xml
 Disallow: /ghost/

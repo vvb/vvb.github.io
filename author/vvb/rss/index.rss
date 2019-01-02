@@ -1,4 +1,23 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Vikrant Balyan - Software and stuff..</title><description>Vikrant Balyan - Software and stuff..</description><link>http://blog.vijayvikrant.com/</link><image><url>http://blog.vijayvikrant.com/favicon.png</url><title>Vikrant Balyan - Software and stuff..</title><link>http://blog.vijayvikrant.com/</link></image><generator>Ghost 2.6</generator><lastBuildDate>Wed, 02 Jan 2019 16:11:29 GMT</lastBuildDate><atom:link href="http://blog.vijayvikrant.com/author/vvb/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Writing In Markdown</title><description>&lt;p&gt;Writing in Markdown format is great to be able to version control your documents.&lt;br&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Vikrant Balyan - Software and stuff..</title><description>Vikrant Balyan - Software and stuff..</description><link>http://blog.vijayvikrant.com/</link><image><url>http://blog.vijayvikrant.com/favicon.png</url><title>Vikrant Balyan - Software and stuff..</title><link>http://blog.vijayvikrant.com/</link></image><generator>Ghost 2.6</generator><lastBuildDate>Wed, 02 Jan 2019 16:56:49 GMT</lastBuildDate><atom:link href="http://blog.vijayvikrant.com/author/vvb/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Notes from Deep Work by Cal Newport</title><description>&lt;p&gt;My notes from reading &lt;a href="https://www.amazon.com/Deep-Work-Focused-Success-Distracted/dp/1455586692"&gt;"Deep Work by Cal Newport"&lt;/a&gt;&lt;/p&gt;&lt;p&gt;This book emphasizes on sound proofing yourself from the world in order to be able to do deep work. Below is the gist of things that I want to remember from the book,&lt;/p&gt;&lt;h3 id="4dx-framework-"&gt;4DX Framework:&lt;/h3&gt;&lt;p&gt; Focus on the wildly important  &lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;The&lt;/li&gt;&lt;/ul&gt;</description><link>http://blog.vijayvikrant.com/notes-from-deep-work-by-cal-newport/</link><guid isPermaLink="false">5c2ceb09a39758726ba5ec34</guid><dc:creator>Vikrant Balyan</dc:creator><pubDate>Wed, 02 Jan 2019 16:47:29 GMT</pubDate><content:encoded>&lt;p&gt;My notes from reading &lt;a href="https://www.amazon.com/Deep-Work-Focused-Success-Distracted/dp/1455586692"&gt;"Deep Work by Cal Newport"&lt;/a&gt;&lt;/p&gt;&lt;p&gt;This book emphasizes on sound proofing yourself from the world in order to be able to do deep work. Below is the gist of things that I want to remember from the book,&lt;/p&gt;&lt;h3 id="4dx-framework-"&gt;4DX Framework:&lt;/h3&gt;&lt;p&gt; Focus on the wildly important  &lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;The more you try to do, the lesser you will accomplish.&lt;/li&gt;
+&lt;li&gt;Execute small number of super important goals.&lt;/li&gt;
+&lt;li&gt;Let the goals produce ambitious outcomes.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Act on lead measures  &lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;Once you had identified a goal, find a way to access if you plan is working.&lt;/li&gt;
+&lt;li&gt;In context of software lifecycle, Instead of accessing the number of features shipped (lag indicator), try and access how many hours of deep work were you able to spend(lead indicator) on the feature.&lt;/li&gt;
+&lt;li&gt;Idea is to control the behaviour in the short-term which will have a positive impact on your long term goals.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Keep a compelling scoreboard  &lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;Keep a physical artifact in the workplace that displays the current deep work hours count. It could also be done at a team level to motivate others.&lt;/li&gt;
+&lt;li&gt;It will also help you access if you are heading in the right direction.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Create a cadence of accountability  &lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;To maintain focus on the lead measures, a rhythm of regular checks on scoreboard must be done and the resuts must be analyzed.&lt;/li&gt;
+&lt;li&gt;Corrective action should be taken if the results are not satisfactory. Regular accountability is must.&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded></item><item><title>Writing In Markdown</title><description>&lt;p&gt;Writing in Markdown format is great to be able to version control your documents.&lt;br&gt;
 But Markdown may not be a easy when there is too much formatting involved. like, tables etc.&lt;/p&gt;
 &lt;p&gt;Welcome Pandoc!&lt;/p&gt;
 &lt;p&gt;With Pandoc, you can write your documents in Microsoft word and convert them into Markdown automatically.&lt;/p&gt;
@@ -1228,26 +1247,4 @@ get_inventory(handle=handle, component=&amp;quot;all&amp;quot;, file_format=&amp
 
 handle.logout()
 &lt;/code&gt;&lt;/pre&gt;
-</content:encoded></item><item><title>debugging in an ansible environment</title><description>&lt;p&gt;I was looking for a PDB sort of debugger for debugging custom ansible modules written in Python. This is when i bumped into &lt;a href="http://michaeldehaan.net/post/35403909347/tips-on-using-debuggers-with-ansible"&gt;this&lt;/a&gt; blog.&lt;/p&gt;
-&lt;p&gt;As recommended on the blog, I tried out &lt;code&gt;epdb&lt;/code&gt; and it works great for debugging custom ansible modules written in python.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Installation&lt;/strong&gt;:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;pip install epdb&lt;/code&gt;&lt;/pre&gt;</description><link>http://blog.vijayvikrant.com/debugging-in-an-ansible-environment/</link><guid isPermaLink="false">5bec34b10b000afff2677980</guid><category>ansible</category><dc:creator>Vikrant Balyan</dc:creator><pubDate>Tue, 10 Jan 2017 20:18:27 GMT</pubDate><content:encoded>&lt;p&gt;I was looking for a PDB sort of debugger for debugging custom ansible modules written in Python. This is when i bumped into &lt;a href="http://michaeldehaan.net/post/35403909347/tips-on-using-debuggers-with-ansible"&gt;this&lt;/a&gt; blog.&lt;/p&gt;
-&lt;p&gt;As recommended on the blog, I tried out &lt;code&gt;epdb&lt;/code&gt; and it works great for debugging custom ansible modules written in python.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Installation&lt;/strong&gt;:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;pip install epdb
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;epdb: &lt;a href="https://pypi.python.org/pypi/epdb"&gt;https://pypi.python.org/pypi/epdb&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Usage&lt;/strong&gt;:&lt;/p&gt;
-&lt;p&gt;Insert the below code works as a breakpoint. Insert this at the lines needing debug.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;import epdb
-epdb.serve()
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Run ansible with &lt;code&gt;--forks 1&lt;/code&gt; option to avoid parallel threads&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;ansible-playbook -i inventory site.yml --forks 1
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;This run should hang when it hits the piece of code that has &lt;code&gt;epdb.serve()&lt;/code&gt;. At this point run the below from another shell&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;python -c &amp;quot;import epdb; epdb.connect()&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;This should get you to the &lt;code&gt;epdb&lt;/code&gt; shell.&lt;br&gt;
-here on, things should look familiar to &lt;code&gt;pdb&lt;/code&gt;.&lt;/p&gt;
 </content:encoded></item></channel></rss>

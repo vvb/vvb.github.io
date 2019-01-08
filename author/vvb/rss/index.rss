@@ -1,4 +1,48 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Vikrant Balyan - Software and stuff..</title><description>Vikrant Balyan - Software and stuff..</description><link>http://blog.vijayvikrant.com/</link><image><url>http://blog.vijayvikrant.com/favicon.png</url><title>Vikrant Balyan - Software and stuff..</title><link>http://blog.vijayvikrant.com/</link></image><generator>Ghost 2.6</generator><lastBuildDate>Sun, 06 Jan 2019 06:16:17 GMT</lastBuildDate><atom:link href="http://blog.vijayvikrant.com/author/vvb/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Tracking Books Read in 2019</title><description>1. Catcher in the rye
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Vikrant Balyan - Software and stuff..</title><description>Vikrant Balyan - Software and stuff..</description><link>http://blog.vijayvikrant.com/</link><image><url>http://blog.vijayvikrant.com/favicon.png</url><title>Vikrant Balyan - Software and stuff..</title><link>http://blog.vijayvikrant.com/</link></image><generator>Ghost 2.6</generator><lastBuildDate>Tue, 08 Jan 2019 18:46:39 GMT</lastBuildDate><atom:link href="http://blog.vijayvikrant.com/author/vvb/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Xterm Configuration</title><description>Xterm made beautiful. Changing fonts, background, copy-paste bindings.</description><link>http://blog.vijayvikrant.com/xterm-configuration/</link><guid isPermaLink="false">5c34eef8c5ec92224837a666</guid><dc:creator>Vikrant Balyan</dc:creator><pubDate>Tue, 08 Jan 2019 18:45:01 GMT</pubDate><content:encoded>&lt;p&gt;Xterm is the fastest terminal emulator out there but it looks and feels crappy in its default settings. Here are a couple of tweaks that I apply for it to be usable for me.&lt;/p&gt;&lt;p&gt;Add/Create the following in your &lt;code&gt;~/.Xresources&lt;/code&gt; file&lt;/p&gt;&lt;pre&gt;&lt;code&gt;! Use a nice truetype font and size by default... 
+xterm*faceName: DejaVu Sans Mono Book
+xterm*faceSize: 11
+
+! Every shell is a login shell by default (for inclusion of all necessary environment variables)
+xterm*loginshell: true
+
+! I like a LOT of scrollback...
+xterm*savelines: 16384
+
+! double-click to select whole URLs :D
+xterm*charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
+
+! DOS-box colours...
+xterm*foreground: rgb:a8/a8/a8
+xterm*background: rgb:00/00/00
+xterm*color0: rgb:00/00/00
+xterm*color1: rgb:a8/00/00
+xterm*color2: rgb:00/a8/00
+xterm*color3: rgb:a8/54/00
+xterm*color4: rgb:00/00/a8
+xterm*color5: rgb:a8/00/a8
+xterm*color6: rgb:00/a8/a8
+xterm*color7: rgb:a8/a8/a8
+xterm*color8: rgb:54/54/54
+xterm*color9: rgb:fc/54/54
+xterm*color10: rgb:54/fc/54
+xterm*color11: rgb:fc/fc/54
+xterm*color12: rgb:54/54/fc
+xterm*color13: rgb:fc/54/fc
+xterm*color14: rgb:54/fc/fc
+xterm*color15: rgb:fc/fc/fc
+
+! right hand side scrollbar...
+xterm*rightScrollBar: true
+xterm*ScrollBar: true
+
+! stop output to terminal from jumping down to bottom of scroll again
+xterm*scrollTtyOutput: false
+
+! allow for regular copy paste that works in other terminals
+xterm*VT100.Translations: #override \
+                 Ctrl Shift &amp;lt;Key&amp;gt;V:    insert-selection(CLIPBOARD) \n\
+                 Ctrl Shift &amp;lt;Key&amp;gt;C:    copy-selection(CLIPBOARD)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Apply the changes using&lt;/p&gt;&lt;p&gt;&lt;code&gt;xrdb -merge ~/.Xresources&lt;/code&gt;&lt;/p&gt;&lt;p&gt;The changes should now work for any new Xterm window.&lt;/p&gt;</content:encoded></item><item><title>Concurrency in Go</title><description>&lt;h3 id="goroutines"&gt;Goroutines&lt;/h3&gt;&lt;h3 id="synchronization"&gt;Synchronization&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;WaitGroups&lt;/li&gt;&lt;li&gt;GoSched&lt;/li&gt;&lt;li&gt;Channels&lt;/li&gt;&lt;li&gt;Channel &lt;code&gt;select&lt;/code&gt;&lt;/li&gt;&lt;/ul&gt;</description><link>http://blog.vijayvikrant.com/concurrency-in-go/</link><guid isPermaLink="false">5c32c9a8a39758726ba5ec8a</guid><dc:creator>Vikrant Balyan</dc:creator><pubDate>Mon, 07 Jan 2019 03:38:24 GMT</pubDate><content:encoded>&lt;h3 id="goroutines"&gt;Goroutines&lt;/h3&gt;&lt;h3 id="synchronization"&gt;Synchronization&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;WaitGroups&lt;/li&gt;&lt;li&gt;GoSched&lt;/li&gt;&lt;li&gt;Channels&lt;/li&gt;&lt;li&gt;Channel &lt;code&gt;select&lt;/code&gt;&lt;/li&gt;&lt;/ul&gt;</content:encoded></item><item><title>Tracking Books Read in 2019</title><description>1. Catcher in the rye
 2. Deep Work: Rules for focused success in a distracted world
 3. Peak: Secrets from the new science of expertise</description><link>http://blog.vijayvikrant.com/books-read-2019/</link><guid isPermaLink="false">5c2e3c47a39758726ba5ec78</guid><dc:creator>Vikrant Balyan</dc:creator><pubDate>Thu, 03 Jan 2019 16:46:40 GMT</pubDate><content:encoded>&lt;ol&gt;&lt;li&gt;&lt;a href="https://www.amazon.com/Catcher-Rye-J-D-Salinger/dp/0316769487"&gt;Catcher in the rye&lt;/a&gt; by J.D. Salinger&lt;/li&gt;&lt;li&gt;&lt;a href="https://www.amazon.com/Deep-Work-Focused-Success-Distracted/dp/1455586692/ref=sr_1_2?ie=UTF8&amp;amp;qid=1546534061&amp;amp;sr=8-2&amp;amp;keywords=deep+work+cal+newport"&gt;Deep Work: Rules for Focused Success in a Distracted World&lt;/a&gt; by Cal Newport - &lt;a href="http://blog.vijayvikrant.com/notes-from-deep-work-by-cal-newport/"&gt;Notes&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://www.amazon.in/Peak-Secrets-New-Science-Expertise/dp/0544456238"&gt;Peak: Secrets from the New Science of Expertise&lt;/a&gt; by K. Anders Ericsson and Robert Pool&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;Notes:&lt;br&gt;
 Emphasizes on &amp;quot;Deliberate practice modelled by following the best in the area&amp;quot;. It provides a lot of examples, some in painfully lot of detail. It becomes too repetitive and boring by the end. It is in some ways similar to the book &amp;quot;Outliers&amp;quot; and can be skipped if a similar book has been read before.&lt;/p&gt;
@@ -1028,153 +1072,5 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
 &lt;pre&gt;&lt;code&gt;pip install --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org &amp;lt;packageName&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;</description><link>http://blog.vijayvikrant.com/using-http-with-pip/</link><guid isPermaLink="false">5bec34b10b000afff2677984</guid><category>ucspython</category><category>pip</category><dc:creator>Vikrant Balyan</dc:creator><pubDate>Mon, 17 Apr 2017 19:02:05 GMT</pubDate><content:encoded>&lt;p&gt;Enforce using http with pip,&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;pip install --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org &amp;lt;packageName&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-</content:encoded></item><item><title>Reflection in go!</title><description>&lt;p&gt;Printing struct attributes and values using reflection.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;package main
-
-import (
-	&amp;quot;fmt&amp;quot;
-	&amp;quot;reflect&amp;quot;
-)
-
-type User struct {
-	FirstName string
-	LastName  string
-	Age       int
-}
-
-func (f *User) reflect() {
-	v := reflect.ValueOf(f).Elem()
-
-	for i := 0; i &amp;lt; v.NumField(); i++ {
-		val := v.Field(i)
-		t := v.Type().Field(&lt;/code&gt;&lt;/pre&gt;</description><link>http://blog.vijayvikrant.com/reflection-in-go/</link><guid isPermaLink="false">5bec34b10b000afff2677983</guid><category>golang</category><dc:creator>Vikrant Balyan</dc:creator><pubDate>Mon, 17 Apr 2017 18:54:19 GMT</pubDate><content:encoded>&lt;p&gt;Printing struct attributes and values using reflection.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;package main
-
-import (
-	&amp;quot;fmt&amp;quot;
-	&amp;quot;reflect&amp;quot;
-)
-
-type User struct {
-	FirstName string
-	LastName  string
-	Age       int
-}
-
-func (f *User) reflect() {
-	v := reflect.ValueOf(f).Elem()
-
-	for i := 0; i &amp;lt; v.NumField(); i++ {
-		val := v.Field(i)
-		t := v.Type().Field(i)
-		fmt.Printf(&amp;quot;%s %v \t&amp;quot;, t.Name, val.Interface())
-	}
-}
-
-func main() {
-	f := &amp;amp;User{
-		FirstName: &amp;quot;John&amp;quot;,
-		LastName:  &amp;quot;Doe&amp;quot;,
-		Age:       13,
-	}
-
-	f.reflect()
-}
-&lt;/code&gt;&lt;/pre&gt;
-</content:encoded></item><item><title>ansible modules for Cisco UCS IMC server</title><description>&lt;h3 id="imcansible"&gt;imc-ansible&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;imc-ansible&lt;/code&gt; are a set of ansible modules for Cisco UCS standalone servers(IMC servers).&lt;/p&gt;
-&lt;h4 id="installation"&gt;installation&lt;/h4&gt;
-&lt;pre&gt;&lt;code&gt;# Install ansible
-sudo pip install ansible
-
-# install imcsdk from github
-git clone https://github.com/ciscoucs/imcsdk
-cd imcsdk
-sudo make install
-
-# install imc-ansible from github
-git clone https://github.com/ciscoucs/imc-ansible
-cd&lt;/code&gt;&lt;/pre&gt;</description><link>http://blog.vijayvikrant.com/ansible-modules-for-cisco-ucs-imc-server/</link><guid isPermaLink="false">5bec34b10b000afff2677982</guid><category>ansible</category><category>imcsdk</category><dc:creator>Vikrant Balyan</dc:creator><pubDate>Mon, 06 Feb 2017 22:55:04 GMT</pubDate><content:encoded>&lt;h3 id="imcansible"&gt;imc-ansible&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;imc-ansible&lt;/code&gt; are a set of ansible modules for Cisco UCS standalone servers(IMC servers).&lt;/p&gt;
-&lt;h4 id="installation"&gt;installation&lt;/h4&gt;
-&lt;pre&gt;&lt;code&gt;# Install ansible
-sudo pip install ansible
-
-# install imcsdk from github
-git clone https://github.com/ciscoucs/imcsdk
-cd imcsdk
-sudo make install
-
-# install imc-ansible from github
-git clone https://github.com/ciscoucs/imc-ansible
-cd imc-ansible
-sudo python install.py
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h4 id="samplerun"&gt;sample run&lt;/h4&gt;
-&lt;pre&gt;&lt;code&gt;➔ ansible-playbook -i inventory site.yml
-
-PLAY [imc]
-*********************************************************************
-
-TASK [common : check if imcsdk is installed]
-***********************************
-ok: [fpmr1_192.168.1.1]
-
-TASK [common : install imcsdk]
-*************************************************
-skipping: [fpmr1_192.168.1.1]
-
-TASK [admin : set password policy]
-*********************************************
-changed: [fpmr1_192.168.1.1]
-
-TASK [admin : create local user]
-***********************************************
-changed: [fpmr1_192.168.1.1]
-
-TASK [admin : delete local user]
-***********************************************
-changed: [fpmr1_192.168.1.1]
-
-TASK [admin : reset password policy]
-*******************************************
-changed: [fpmr1_192.168.1.1]
-
-TASK [admin : enable ntp]
-******************************************************
-changed: [fpmr1_192.168.1.1]
-
-TASK [admin : disable ntp]
-*****************************************************
-changed: [fpmr1_192.168.1.1]
-
-TASK [admin : enable LDAP]
-*****************************************************
-changed: [fpmr1_192.168.1.1]
-
-TASK [admin : disable LDAP]
-****************************************************
-changed: [fpmr1_192.168.1.1]
-
-TASK [boot : set boot order]
-***************************************************
-changed: [fpmr1_192.168.1.1]
-
-TASK [boot : set boot order alternate]
-*****************************************
-changed: [fpmr1_192.168.1.1]
-
-TASK [storage : create virtual drive]
-******************************************
-changed: [fpmr1_192.168.1.1]
-
-TASK [storage : delete virtual drive]
-******************************************
-changed: [fpmr1_192.168.1.1]
-
-PLAY RECAP
-*********************************************************************
-fpmr1_192.168.1.1       : ok=13   changed=12   unreachable=0    failed=0
 &lt;/code&gt;&lt;/pre&gt;
 </content:encoded></item></channel></rss>

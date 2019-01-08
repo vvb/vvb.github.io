@@ -2,7 +2,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>html table search with pure javascript</title>
+    <title>Concurrency in Go</title>
 
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,27 +17,23 @@
     <link rel="stylesheet" href="../assets/css/style.css?v=75d392f7d1">
 
     <link rel="shortcut icon" href="../favicon.png" type="image/png">
-    <link rel="canonical" href="http://blog.vijayvikrant.com/html-table-search-with-pure-javascript/">
+    <link rel="canonical" href="http://blog.vijayvikrant.com/concurrency-in-go/">
     <meta name="referrer" content="no-referrer-when-downgrade">
-    <link rel="amphtml" href="http://blog.vijayvikrant.com/html-table-search-with-pure-javascript/amp/">
+    <link rel="amphtml" href="http://blog.vijayvikrant.com/concurrency-in-go/amp/">
     
     <meta property="og:site_name" content="Software and stuff..">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="html table search with pure javascript">
-    <meta property="og:description" content="The below javascript method searches through all the &amp;lt;td&amp;gt; elements and hides &amp;lt;tr&amp;gt; that do not have it.     function search() {     // Declare variables     var input, filter, table, tr, td, i, j, tds, ths, matched;     input = document.getElementById(&amp;quot;searchInput&amp;quot;);     filter = input.value.toUpperCase();     tr = document.getElementsByTagName(">
-    <meta property="og:url" content="http://blog.vijayvikrant.com/html-table-search-with-pure-javascript/">
-    <meta property="article:published_time" content="2016-12-22T17:55:35.000Z">
-    <meta property="article:modified_time" content="2016-12-22T18:07:10.000Z">
-    <meta property="article:tag" content="javascript">
-    
+    <meta property="og:title" content="Concurrency in Go">
+    <meta property="og:description" content="GoroutinesSynchronizationWaitGroupsGoSchedChannelsChannel select">
+    <meta property="og:url" content="http://blog.vijayvikrant.com/concurrency-in-go/">
+    <meta property="article:published_time" content="2019-01-07T03:38:24.000Z">
+    <meta property="article:modified_time" content="2019-01-07T03:41:15.000Z">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="html table search with pure javascript">
-    <meta name="twitter:description" content="The below javascript method searches through all the &amp;lt;td&amp;gt; elements and hides &amp;lt;tr&amp;gt; that do not have it.     function search() {     // Declare variables     var input, filter, table, tr, td, i, j, tds, ths, matched;     input = document.getElementById(&amp;quot;searchInput&amp;quot;);     filter = input.value.toUpperCase();     tr = document.getElementsByTagName(">
-    <meta name="twitter:url" content="http://blog.vijayvikrant.com/html-table-search-with-pure-javascript/">
+    <meta name="twitter:title" content="Concurrency in Go">
+    <meta name="twitter:description" content="GoroutinesSynchronizationWaitGroupsGoSchedChannelsChannel select">
+    <meta name="twitter:url" content="http://blog.vijayvikrant.com/concurrency-in-go/">
     <meta name="twitter:label1" content="Written by">
     <meta name="twitter:data1" content="Vikrant Balyan">
-    <meta name="twitter:label2" content="Filed under">
-    <meta name="twitter:data2" content="javascript">
     <meta name="twitter:site" content="@lazy_vvb">
     
     <script type="application/ld+json">
@@ -60,12 +56,11 @@
         "url": "http://blog.vijayvikrant.com/author/vvb/",
         "sameAs": []
     },
-    "headline": "html table search with pure javascript",
-    "url": "http://blog.vijayvikrant.com/html-table-search-with-pure-javascript/",
-    "datePublished": "2016-12-22T17:55:35.000Z",
-    "dateModified": "2016-12-22T18:07:10.000Z",
-    "keywords": "javascript",
-    "description": "The below javascript method searches through all the &amp;lt;td&amp;gt; elements and hides &amp;lt;tr&amp;gt; that do not have it.     function search() {     // Declare variables     var input, filter, table, tr, td, i, j, tds, ths, matched;     input &#x3D; document.getElementById(&amp;quot;searchInput&amp;quot;);     filter &#x3D; input.value.toUpperCase();     tr &#x3D; document.getElementsByTagName(",
+    "headline": "Concurrency in Go",
+    "url": "http://blog.vijayvikrant.com/concurrency-in-go/",
+    "datePublished": "2019-01-07T03:38:24.000Z",
+    "dateModified": "2019-01-07T03:41:15.000Z",
+    "description": "GoroutinesSynchronizationWaitGroupsGoSchedChannelsChannel select",
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "http://blog.vijayvikrant.com/"
@@ -85,7 +80,7 @@
 
     <script src="../assets/js/vendor/modernizr.js?v=75d392f7d1"></script>
 </head>
-<body class="post-template tag-javascript">
+<body class="post-template">
 
     
 
@@ -98,77 +93,36 @@
 </nav>
 <header class="post-view-header js-blog-bg-image no-cover">
     <div class="post-header-content">
-        <h1 class="post-title js-bg-check">html table search with pure javascript</h1>
+        <h1 class="post-title js-bg-check">Concurrency in Go</h1>
         <section class="post-meta js-bg-check">
-            <time class="post-date" datetime="2016-12-22">22 December 2016</time>
+            <time class="post-date" datetime="2019-01-07">07 January 2019</time>
         </section>
     </div>
 </header>
 
 <main class="post-view-content" role="main">
 
-    <article class="post tag-javascript">
+    <article class="post">
 
         <section class="post-content row">
-            <div class="small-12 columns"><p>The below javascript method searches through all the <code>&lt;td&gt;</code> elements and hides <code>&lt;tr&gt;</code> that do not have it.</p>
-<pre><code>    function search() {
-    // Declare variables
-    var input, filter, table, tr, td, i, j, tds, ths, matched;
-    input = document.getElementById("searchInput");
-    filter = input.value.toUpperCase();
-    tr = document.getElementsByTagName("tr");
-
-    // Loop through all table rows, and hide
-    // those who don't match the search query
-    for (i = 0; i &lt; tr.length; i++) {
-        tds = tr[i].getElementsByTagName("td");
-        ths = tr[i].getElementsByTagName("th");
-        matched = false;
-        
-        // leave the row header 
-        if (ths.length &gt; 0) {
-            matched = true;
-        }
-        else {
-            for (j = 0; j &lt; tds.length; j++) {
-                td = tds[j];
-                if (td.innerHTML.toUpperCase().indexOf(filter) &gt; -1) {
-                    matched = true;
-                    break;
-                }
-
-            }
-        }
-        if (matched == true) {
-            tr[i].style.display = "";
-        }
-        else {
-            tr[i].style.display = "none";
-        }
-        }
-    }
-</code></pre>
-<p>And the below adds the search input box to the webpage and maps it to our <code>search</code> method</p>
-<pre><code>    &lt;input type="text" id="searchInput" onkeyup="search()" placeholder="Search.."&gt;
-</code></pre>
-</div>
+            <div class="small-12 columns"><h3 id="goroutines">Goroutines</h3><h3 id="synchronization">Synchronization</h3><ul><li>WaitGroups</li><li>GoSched</li><li>Channels</li><li>Channel <code>select</code></li></ul></div>
         </section>
 
         <footer class="post-footer row">
             <div class="small-12 columns">
                 <section class="post-tags">
-                    Tags: <a href="../tag/javascript/">javascript</a>
+                    
                 </section>
 
                 <section class="share">
                     <h5>Share this post:</h5>
-                    <a class="icon-twitter" href="https://twitter.com/share?text=html%20table%20search%20with%20pure%20javascript&amp;url=http://blog.vijayvikrant.com/html-table-search-with-pure-javascript/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <a class="icon-twitter" href="https://twitter.com/share?text=Concurrency%20in%20Go&amp;url=http://blog.vijayvikrant.com/concurrency-in-go/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                         <span class="hidden"><i class="fa fa-twitter-square"></i></span>
                     </a>
-                    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.vijayvikrant.com/html-table-search-with-pure-javascript/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.vijayvikrant.com/concurrency-in-go/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
                         <span class="hidden"><i class="fa fa-facebook-square"></i></span>
                     </a>
-                    <a class="icon-google-plus" href="https://plus.google.com/share?url=http://blog.vijayvikrant.com/html-table-search-with-pure-javascript/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <a class="icon-google-plus" href="https://plus.google.com/share?url=http://blog.vijayvikrant.com/concurrency-in-go/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
                         <span class="hidden"><i class="fa fa-google-plus-square"></i></span>
                     </a>
                 </section>
@@ -178,22 +132,22 @@
         <div class="row post-prev-next-pagination">
             <div class="prev small-6 columns text-left">
                     <div class="prev-next-label">
-                        <a href="../configuring-a-secure-front-end-for-a-non-secure-service/">
+                        <a href="../books-read-2019/">
                             <i class="fa fa-angle-double-left"></i> Previous
                         </a>
                     </div>
-                    <a href="../configuring-a-secure-front-end-for-a-non-secure-service/" class="title">
-                        configuring a secure front-end for a non-secure service
+                    <a href="../books-read-2019/" class="title">
+                        Tracking Books Read in 2019
                     </a>
             </div>
             <div class="next small-6 columns text-right">
                     <div class="prev-next-label">
-                        <a href="../inventorying-imc-servers-via-imcsdk/">
+                        <a href="../xterm-configuration/">
                             Next <i class="fa fa-angle-double-right"></i>
                         </a>
                     </div>
-                    <a href="../inventorying-imc-servers-via-imcsdk/" class="title">
-                        Inventorying IMC servers via imcsdk
+                    <a href="../xterm-configuration/" class="title">
+                        Xterm Configuration
                     </a>
             </div>
         </div>

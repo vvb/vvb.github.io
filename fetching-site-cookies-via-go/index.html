@@ -7,7 +7,7 @@
 			<link href="http://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet" type="text/css">
 			<link href="http://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 			<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
-			<link rel="stylesheet" type="text/css" href="../assets/styles/crisp.css?v=8a3dd1861b">
+			<link rel="stylesheet" type="text/css" href="../assets/styles/crisp.css?v=2e5e8df84a">
 	    <meta name="HandheldFriendly" content="True">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -15,7 +15,7 @@
 				<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 				<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 			<![endif]-->
-				<link rel="stylesheet" type="text/css" href="../assets/styles/rrssb.css?v=8a3dd1861b">
+				<link rel="stylesheet" type="text/css" href="../assets/styles/rrssb.css?v=2e5e8df84a">
 	<meta property="og:title" content="Fetching site cookies via Go">
 	<meta property="og:type" content="article">
 	<meta property="og:description" content="Depicts the usage of cookiejar to retrieve cookies from a website. type MyClient struct { 	client    http.Client    //http client 	jar       *cookiejar.Jar //jar } // init - initialises the http client func (s *MyClient) init() { 	s.jar, _ = cookiejar.New(nil) 	s.client = http.Client{Jar: s.jar} } // getCookies - Gets cookies func...">
@@ -265,7 +265,7 @@ func main() {
   </ul>	
 </div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="../assets/js/rrssb.min.js?v=8a3dd1861b"></script>
+<script src="../assets/js/rrssb.min.js?v=2e5e8df84a"></script>
   <div id="comments">
 	<div id="disqus_thread"></div>
 	<script>
@@ -275,7 +275,8 @@ func main() {
 		};
 		(function() { // DON'T EDIT BELOW THIS LINE
 		var d = document, s = d.createElement('script');
-		s.src = 'https://blogdotghost.disqus.com/embed.js';
+		//s.src = 'https://blogdotghost.disqus.com/embed.js';
+        s.src = 'https://vijayvikrantcom.disqus.com/embed.js';
 		s.setAttribute('data-timestamp', +new Date());
 		(d.head || d.body).appendChild(s);
 		})();
@@ -300,4 +301,5 @@ func main() {
 </script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
 	<script>hljs.initHighlightingOnLoad();</script>
+  <script id="dsq-count-scr" src="http://vijayvikrantcom.disqus.com/count.js" async></script>
 	</body>
